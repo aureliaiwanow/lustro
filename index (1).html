@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aurelia Iwanow – Biohacking</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #F5C842;
+      --cyan: #4DE8D0;
+      --pink: #FF6B9D;
+      --white: #FFFFFF;
+      --dark: #080C10;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--dark);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to bottom, rgba(8,12,16,0.4) 0%, rgba(8,12,16,0.05) 40%, rgba(8,12,16,0.55) 100%),
+        url('1000089285.png');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      z-index: 0;
+    }
+
+    nav {
+      position: relative;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+    }
+
+    .logo {
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.1rem;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn-sub {
+      background: var(--gold);
+      color: #111;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2.5px;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+    .dropdown {
+      position: absolute;
+      top: 72px;
+      right: 16px;
+      background: rgba(8,12,16,0.96);
+      border: 1px solid rgba(245,200,66,0.25);
+      border-top: 3px solid var(--gold);
+      width: 200px;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.35s ease, opacity 0.3s;
+      opacity: 0;
+      z-index: 200;
+    }
+    .dropdown.open { max-height: 200px; opacity: 1; }
+    .dropdown a {
+      display: block;
+      padding: 15px 22px;
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.95rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: background 0.2s, color 0.2s;
+    }
+    .dropdown a:last-child { border-bottom: none; }
+    .dropdown a:hover { background: rgba(245,200,66,0.1); color: var(--gold); }
+
+    .hero__content {
+      position: relative;
+      z-index: 10;
+      flex: 1;
+    }
+
+    .bottom-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      background: rgba(8,12,16,0.35);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 18px 16px 14px;
+    }
+
+    .tags {
+      display: flex;
+      justify-content: space-around;
+      gap: 8px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+    }
+    .tag strong { display: block; font-weight: 600; font-size: 0.82rem; }
+    .cyan { color: var(--cyan); }
+    .gold { color: var(--gold); }
+    .pink { color: var(--pink); }
+
+    .socials {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .social-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.7);
+    }
+    .social-left a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      transition: transform 0.18s;
+    }
+    .social-left a:hover { transform: scale(1.15); }
+
+    .social-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.82rem;
+      transition: color 0.2s;
+    }
+    .social-right:hover { color: var(--white); }
+
+    .page {
+      display: none;
+      min-height: 100vh;
+      background: var(--dark);
+      flex-direction: column;
+    }
+    .page.active { display: flex; }
+
+    .page-nav { padding: 20px 24px; }
+
+    .back-btn {
+      background: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      padding: 8px 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .back-btn:hover { border-color: var(--gold); }
+
+    .page-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px 60px;
+      text-align: center;
+    }
+
+    .page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 14vw, 6rem);
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+
+    .page-body {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      max-width: 340px;
+      line-height: 1.7;
+    }
+
+    .link-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 32px;
+      width: 100%;
+      max-width: 340px;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 15px 20px;
+      text-decoration: none;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      font-size: 0.9rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .link-btn:hover { border-color: var(--gold); background: rgba(245,200,66,0.07); }
+    .link-btn span { font-size: 1.3rem; }
+
+    .sub-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .sub-form {
+      width: 100%;
+      max-width: 380px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .sub-form input {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      padding: 15px 18px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .sub-form input::placeholder { color: rgba(255,255,255,0.35); }
+    .sub-form input:focus { border-color: var(--gold); }
+
+    .sub-form button {
+      background: var(--gold);
+      color: #111;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: none;
+      padding: 16px;
+      cursor: pointer;
+    }
+
+    .sub-note {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.3);
+      text-align: center;
+    }
+
+    .success-msg {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .success-msg.show { display: flex; }
+    .success-icon { font-size: 3rem; }
+    .success-text { font-size: 1.1rem; font-weight: 600; color: var(--cyan); }
+    .success-sub { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div id="heroPage" class="hero">
+  <div class="hero__bg"></div>
+
+  <nav>
+    <a href="#" class="logo">Aurelia Iwanow</a>
+    <div class="nav-right">
+      <a href="#" class="btn-sub" id="subBtn">SUBSKRYBUJ</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="dropdown" id="dropdown">
+    <a href="#" data-page="podcastPage">Podcast</a>
+    <a href="#" data-page="aboutPage">O mnie</a>
+    <a href="#" data-page="contactPage">Kontakt</a>
+  </div>
+
+  <div class="hero__content"></div>
+
+  <div class="bottom-bar">
+    <div class="tags">
+      <div class="tag">Studentka<br><strong class="cyan">Nutrigenomiki</strong></div>
+      <div class="tag"><strong class="gold">Dietetyk</strong></div>
+      <div class="tag">Entuzjastka<br><strong class="pink">Psychologii</strong></div>
+    </div>
+    <div class="socials">
+      <div class="social-left">
+        <span>Podcast na</span>
+        <a href="https://youtube.com/@aureliaiwanowpodcast?si=HygrxQ_hsq6CP2O-" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg width="30" height="21" viewBox="0 0 30 21" fill="none">
+            <rect width="30" height="21" rx="5" fill="#FF0000"/>
+            <polygon points="12,6 12,15 21,10.5" fill="white"/>
+          </svg>
+        </a>
+        <span>&amp;</span>
+        <a href="[Tu wklej link Spotify]" target="_blank" rel="noopener" aria-label="Spotify">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+            <circle cx="13" cy="13" r="13" fill="#1DB954"/>
+            <path d="M8 10.5c3.2-1 6.8-1 10 0" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M8.5 13.5c2.8-.8 5.8-.8 8.5 0" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M9.5 16.5c2.2-.6 4.5-.6 6.8 0" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+      <a href="https://www.instagram.com/aureliaiwanow?igsh=MXJmN2xlbG91ZW56dA==" target="_blank" rel="noopener" class="social-right">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <defs>
+            <linearGradient id="ig" x1="0" y1="22" x2="22" y2="0" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#FD5949"/>
+              <stop offset="50%" stop-color="#D6249F"/>
+              <stop offset="100%" stop-color="#285AEB"/>
+            </linearGradient>
+          </defs>
+          <rect width="22" height="22" rx="6" fill="url(#ig)"/>
+          <circle cx="11" cy="11" r="4.2" stroke="white" stroke-width="1.6" fill="none"/>
+          <circle cx="16.3" cy="5.7" r="1.1" fill="white"/>
+        </svg>
+        <span>aureliaiwanow</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- SUBSKRYPCJA -->
+<div id="subscribePage" class="page">
+  <div class="page-nav">
+    <button class="back-btn" data-back="heroPage">← Wróć</button>
+  </div>
+  <div class="page-content">
+    <p class="sub-eyebrow">Newsletter</p>
+    <h2 class="page-title">DOŁĄCZ DO<br>SPOŁECZNOŚCI</h2>
+    <p class="page-body">Otrzymuj ekskluzywne treści o biohackingu, dietetyce i optymalizacji umysłu prosto na swoją skrzynkę.</p>
+    <div class="sub-form" id="subForm">
+      <input type="text" id="nameInput" placeholder="Twoje imię" autocomplete="given-name" />
+      <input type="email" id="emailInput" placeholder="Adres e-mail" autocomplete="email" />
+      <button type="button" id="subSubmit">ZAPISZ SIĘ</button>
+      <p class="sub-note">Bez spamu. Możesz się wypisać w każdej chwili.</p>
+    </div>
+    <div class="success-msg" id="successMsg">
+      <div class="success-icon">✅</div>
+      <p class="success-text">Witaj w społeczności!</p>
+      <p class="success-sub">Sprawdź swoją skrzynkę e-mail.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PODCAST -->
+<div id="podcastPage" class="page">
+  <div class="page-nav">
+    <button class="back-btn" data-back="heroPage">← Wróć</button>
+  </div>
+  <div class="page-content">
+    <h2 class="page-title">PODCAST</h2>
+    <p class="page-body">Słuchaj rozmów o biohackingu, dietetyce, neurobiologii i psychologii. Nowe odcinki regularnie na YouTube i Spotify.</p>
+    <div class="link-list">
+      <a href="https://youtube.com/@aureliaiwanowpodcast?si=HygrxQ_hsq6CP2O-" target="_blank" rel="noopener" class="link-btn">
+        <span>▶️</span> YouTube – Aurelia Iwanow Podcast
+      </a>
+      <a href="[Tu wklej link Spotify]" target="_blank" rel="noopener" class="link-btn">
+        <span>🎧</span> Spotify – Aurelia Iwanow Podcast
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- O MNIE -->
+<div id="aboutPage" class="page">
+  <div class="page-nav">
+    <button class="back-btn" data-back="heroPage">← Wróć</button>
+  </div>
+  <div class="page-content">
+    <h2 class="page-title">O MNIE</h2>
+    <p class="page-body">
+      Jestem Aurelia – studentka Nutrigenomiki, dietetyk i entuzjastka psychologii.<br><br>
+      Zajmuję się optymalizacją ciała i umysłu poprzez biohacking – łącząc naukę, żywienie i codzienne nawyki.
+    </p>
+  </div>
+</div>
+
+<!-- KONTAKT -->
+<div id="contactPage" class="page">
+  <div class="page-nav">
+    <button class="back-btn" data-back="heroPage">← Wróć</button>
+  </div>
+  <div class="page-content">
+    <h2 class="page-title">KONTAKT</h2>
+    <p class="page-body">Współpraca, pytania lub po prostu cześć? Napisz do mnie na Instagramie lub wyślij e-mail.</p>
+    <div class="link-list">
+      <a href="https://www.instagram.com/aureliaiwanow?igsh=MXJmN2xlbG91ZW56dA==" target="_blank" rel="noopener" class="link-btn">
+        <span>📸</span> Instagram @aureliaiwanow
+      </a>
+      <a href="mailto:kontakt@aureliaiwanow.pl" class="link-btn">
+        <span>✉️</span> kontakt@aureliaiwanow.pl
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const allPages = ['heroPage','subscribePage','podcastPage','aboutPage','contactPage'];
+
+  function showPage(id) {
+    allPages.forEach(p => {
+      const el = document.getElementById(p);
+      el.style.display = 'none';
+      el.classList.remove('active');
+    });
+    const target = document.getElementById(id);
+    target.style.display = 'flex';
+    target.classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  showPage('heroPage');
+
+  document.getElementById('subBtn').addEventListener('click', e => {
+    e.preventDefault();
+    showPage('subscribePage');
+  });
+
+  document.querySelectorAll('.dropdown a').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      closeDropdown();
+      showPage(link.dataset.page);
+    });
+  });
+
+  document.querySelectorAll('.back-btn').forEach(btn => {
+    btn.addEventListener('click', () => showPage(btn.dataset.back || 'heroPage'));
+  });
+
+  const hamburger = document.getElementById('hamburger');
+  const dropdown  = document.getElementById('dropdown');
+
+  function closeDropdown() {
+    hamburger.classList.remove('open');
+    dropdown.classList.remove('open');
+  }
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    dropdown.classList.toggle('open');
+  });
+
+  document.addEventListener('click', e => {
+    if (!hamburger.contains(e.target) && !dropdown.contains(e.target)) closeDropdown();
+  });
+
+  document.getElementById('subSubmit').addEventListener('click', () => {
+    const name  = document.getElementById('nameInput').value.trim();
+    const email = document.getElementById('emailInput').value.trim();
+    if (!name || !email) { alert('Proszę wypełnić wszystkie pola.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Podaj poprawny adres e-mail.'); return; }
+    document.getElementById('subForm').style.display = 'none';
+    document.getElementById('successMsg').classList.add('show');
+  });
+</script>
+</body>
+</html>
