@@ -14,7 +14,6 @@
       --pink: #FF6B9D;
       --white: #FFFFFF;
       --dark: #080C10;
-      --overlay: rgba(8,12,16,0.55);
     }
 
     html, body {
@@ -25,25 +24,41 @@
       overflow-x: hidden;
     }
 
-    /* ── HERO ── */
+    /* ══ HERO ══ */
     .hero {
       position: relative;
-      min-height: 100svh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       overflow: hidden;
     }
 
+    /* Telefon – pionowe zdjecie */
     .hero__bg {
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(to bottom, rgba(8,12,16,0.7) 0%, rgba(8,12,16,0.3) 40%, rgba(8,12,16,0.65) 100%),
-        url('1000089285.png') center/cover no-repeat;
+      background-image:
+        linear-gradient(to bottom, rgba(8,12,16,0.4) 0%, rgba(8,12,16,0.05) 40%, rgba(8,12,16,0.55) 100%),
+        url('1000088785.png');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
       z-index: 0;
     }
 
-    /* ── NAV ── */
+    /* Desktop – poziome zdjecie */
+    @media (min-width: 768px) {
+      .hero__bg {
+        background-image:
+          linear-gradient(to bottom, rgba(8,12,16,0.4) 0%, rgba(8,12,16,0.05) 40%, rgba(8,12,16,0.55) 100%),
+          url('1000089582.png');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+    }
+
+    /* ══ NAV ══ */
     nav {
       position: relative;
       z-index: 100;
@@ -54,11 +69,9 @@
     }
 
     .logo {
-      font-family: 'DM Sans', cursive;
       font-style: italic;
       font-weight: 300;
       font-size: 1.1rem;
-      letter-spacing: 0.02em;
       color: var(--white);
       text-decoration: none;
     }
@@ -72,7 +85,6 @@
     .btn-sub {
       background: var(--gold);
       color: #111;
-      font-family: 'DM Sans', sans-serif;
       font-weight: 700;
       font-size: 0.85rem;
       letter-spacing: 0.1em;
@@ -82,11 +94,8 @@
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
-      transition: transform 0.15s, box-shadow 0.15s;
     }
-    .btn-sub:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245,200,66,0.45); }
 
-    /* Hamburger */
     .hamburger {
       display: flex;
       flex-direction: column;
@@ -108,7 +117,6 @@
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 
-    /* Dropdown menu */
     .dropdown {
       position: absolute;
       top: 72px;
@@ -119,62 +127,39 @@
       width: 200px;
       overflow: hidden;
       max-height: 0;
-      transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.3s;
+      transition: max-height 0.35s ease, opacity 0.3s;
       opacity: 0;
       z-index: 200;
     }
     .dropdown.open { max-height: 200px; opacity: 1; }
-
     .dropdown a {
       display: block;
       padding: 15px 22px;
       color: var(--white);
       text-decoration: none;
       font-size: 0.95rem;
-      font-weight: 400;
-      letter-spacing: 0.05em;
       border-bottom: 1px solid rgba(255,255,255,0.07);
-      transition: background 0.2s, color 0.2s, padding-left 0.2s;
+      transition: background 0.2s, color 0.2s;
     }
     .dropdown a:last-child { border-bottom: none; }
-    .dropdown a:hover { background: rgba(245,200,66,0.1); color: var(--gold); padding-left: 30px; }
+    .dropdown a:hover { background: rgba(245,200,66,0.1); color: var(--gold); }
 
-    /* ── HERO CONTENT ── */
     .hero__content {
       position: relative;
       z-index: 10;
       flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 30px;
     }
 
-    .hero__title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(4.5rem, 20vw, 9rem);
-      letter-spacing: 0.04em;
-      line-height: 0.9;
-      color: var(--white);
-      text-shadow: 0 0 60px rgba(0,0,0,0.8);
-      animation: fadeDown 0.8s ease both;
-    }
-
-    .hero__sub {
-      font-size: clamp(1rem, 4vw, 1.4rem);
-      font-weight: 300;
-      letter-spacing: 0.08em;
-      margin-top: 8px;
-      color: rgba(255,255,255,0.88);
-      animation: fadeDown 0.8s 0.15s ease both;
-    }
-
-    /* ── BOTTOM BAR ── */
+    /* ══ BOTTOM BAR ══ */
     .bottom-bar {
-      position: relative;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
       z-index: 10;
-      background: rgba(8,12,16,0.82);
-      backdrop-filter: blur(10px);
+      background: rgba(8,12,16,0.35);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       padding: 18px 16px 14px;
     }
 
@@ -193,14 +178,10 @@
       color: rgba(255,255,255,0.7);
       line-height: 1.5;
     }
-    .tag strong {
-      display: block;
-      font-weight: 600;
-      font-size: 0.82rem;
-    }
-    .tag .cyan  { color: var(--cyan); }
-    .tag .gold  { color: var(--gold); }
-    .tag .pink  { color: var(--pink); }
+    .tag strong { display: block; font-weight: 600; font-size: 0.82rem; }
+    .cyan { color: var(--cyan); }
+    .gold { color: var(--gold); }
+    .pink { color: var(--pink); }
 
     .socials {
       display: flex;
@@ -212,18 +193,17 @@
     .social-left {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       font-size: 0.82rem;
       color: rgba(255,255,255,0.7);
     }
-
     .social-left a {
       display: flex;
       align-items: center;
       text-decoration: none;
-      transition: transform 0.18s, opacity 0.18s;
+      transition: transform 0.18s;
     }
-    .social-left a:hover { transform: scale(1.18); opacity: 0.85; }
+    .social-left a:hover { transform: scale(1.15); }
 
     .social-right {
       display: flex;
@@ -235,33 +215,17 @@
       transition: color 0.2s;
     }
     .social-right:hover { color: var(--white); }
-    .social-right svg { transition: transform 0.18s; }
-    .social-right:hover svg { transform: scale(1.12); }
 
-    /* ── SUBSCRIBE PAGE ── */
-    .subscribe-page {
+    /* ══ INNE STRONY ══ */
+    .page {
       display: none;
-      min-height: 100svh;
+      min-height: 100vh;
       background: var(--dark);
-      position: relative;
-      overflow: hidden;
+      flex-direction: column;
     }
+    .page.active { display: flex; }
 
-    .subscribe-page.active { display: flex; flex-direction: column; }
-
-    .sub-bg {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(245,200,66,0.08) 0%, transparent 70%),
-                  radial-gradient(ellipse 60% 40% at 80% 80%, rgba(77,232,208,0.06) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .sub-nav {
-      position: relative;
-      z-index: 10;
-      padding: 20px 24px;
-    }
+    .page-nav { padding: 20px 24px; }
 
     .back-btn {
       background: none;
@@ -270,18 +234,12 @@
       padding: 8px 18px;
       font-family: 'DM Sans', sans-serif;
       font-size: 0.85rem;
-      letter-spacing: 0.06em;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: border-color 0.2s, background 0.2s;
+      transition: border-color 0.2s;
     }
-    .back-btn:hover { border-color: var(--gold); background: rgba(245,200,66,0.08); }
+    .back-btn:hover { border-color: var(--gold); }
 
-    .sub-content {
-      position: relative;
-      z-index: 10;
+    .page-content {
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -291,6 +249,45 @@
       text-align: center;
     }
 
+    .page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 14vw, 6rem);
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+
+    .page-body {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      max-width: 340px;
+      line-height: 1.7;
+    }
+
+    .link-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 32px;
+      width: 100%;
+      max-width: 340px;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 15px 20px;
+      text-decoration: none;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      font-size: 0.9rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .link-btn:hover { border-color: var(--gold); background: rgba(245,200,66,0.07); }
+    .link-btn span { font-size: 1.3rem; }
+
     .sub-eyebrow {
       font-size: 0.75rem;
       letter-spacing: 0.25em;
@@ -299,29 +296,13 @@
       margin-bottom: 16px;
     }
 
-    .sub-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.8rem, 12vw, 5rem);
-      line-height: 0.95;
-      letter-spacing: 0.05em;
-      margin-bottom: 16px;
-    }
-
-    .sub-desc {
-      font-size: 0.9rem;
-      font-weight: 300;
-      color: rgba(255,255,255,0.6);
-      max-width: 320px;
-      line-height: 1.65;
-      margin-bottom: 40px;
-    }
-
     .sub-form {
       width: 100%;
       max-width: 380px;
       display: flex;
       flex-direction: column;
       gap: 14px;
+      margin-top: 32px;
     }
 
     .sub-form input {
@@ -333,10 +314,10 @@
       padding: 15px 18px;
       width: 100%;
       outline: none;
-      transition: border-color 0.2s, background 0.2s;
+      transition: border-color 0.2s;
     }
     .sub-form input::placeholder { color: rgba(255,255,255,0.35); }
-    .sub-form input:focus { border-color: var(--gold); background: rgba(245,200,66,0.05); }
+    .sub-form input:focus { border-color: var(--gold); }
 
     .sub-form button {
       background: var(--gold);
@@ -349,15 +330,12 @@
       border: none;
       padding: 16px;
       cursor: pointer;
-      transition: transform 0.15s, box-shadow 0.15s;
     }
-    .sub-form button:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,200,66,0.4); }
 
     .sub-note {
-      margin-top: 18px;
       font-size: 0.72rem;
       color: rgba(255,255,255,0.3);
-      letter-spacing: 0.03em;
+      text-align: center;
     }
 
     .success-msg {
@@ -365,86 +343,17 @@
       flex-direction: column;
       align-items: center;
       gap: 12px;
-      animation: fadeDown 0.5s ease both;
+      margin-top: 32px;
     }
     .success-msg.show { display: flex; }
     .success-icon { font-size: 3rem; }
     .success-text { font-size: 1.1rem; font-weight: 600; color: var(--cyan); }
     .success-sub { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-18px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── SECTION PAGES (podcast / o mnie / kontakt) ── */
-    .section-page {
-      display: none;
-      min-height: 100svh;
-      background: var(--dark);
-      position: relative;
-      overflow: hidden;
-      flex-direction: column;
-    }
-    .section-page.active { display: flex; }
-
-    .section-content {
-      position: relative;
-      z-index: 10;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 24px;
-      text-align: center;
-    }
-
-    .section-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3rem, 14vw, 6rem);
-      letter-spacing: 0.05em;
-      margin-bottom: 16px;
-    }
-
-    .section-body {
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: rgba(255,255,255,0.6);
-      max-width: 340px;
-      line-height: 1.7;
-    }
-
-    .platform-links {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-top: 32px;
-      width: 100%;
-      max-width: 340px;
-    }
-
-    .platform-btn {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 15px 20px;
-      text-decoration: none;
-      color: var(--white);
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      font-size: 0.9rem;
-      font-weight: 400;
-      transition: border-color 0.2s, background 0.2s, transform 0.15s;
-    }
-    .platform-btn:hover { border-color: var(--gold); background: rgba(245,200,66,0.07); transform: translateX(6px); }
-    .platform-btn span { font-size: 1.4rem; }
   </style>
 </head>
 <body>
 
-<!-- ════════════════════ HERO PAGE ════════════════════ -->
+<!-- ══ HERO ══ -->
 <div id="heroPage" class="hero">
   <div class="hero__bg"></div>
 
@@ -458,17 +367,13 @@
     </div>
   </nav>
 
-  <!-- Dropdown -->
   <div class="dropdown" id="dropdown">
     <a href="#" data-page="podcastPage">Podcast</a>
     <a href="#" data-page="aboutPage">O mnie</a>
     <a href="#" data-page="contactPage">Kontakt</a>
   </div>
 
-  <div class="hero__content">
-    <h1 class="hero__title">BIOHACKING</h1>
-    <p class="hero__sub">Optymalizacja ciała i umysłu</p>
-  </div>
+  <div class="hero__content"></div>
 
   <div class="bottom-bar">
     <div class="tags">
@@ -476,24 +381,18 @@
       <div class="tag"><strong class="gold">Dietetyk</strong></div>
       <div class="tag">Entuzjastka<br><strong class="pink">Psychologii</strong></div>
     </div>
-
     <div class="socials">
       <div class="social-left">
-        <span style="color:rgba(255,255,255,0.6);font-size:0.82rem;">Podcast na</span>
-
-        <!-- YouTube -->
-        <a href="https://youtube.com/@aureliaiwanowpodcast?si=HygrxQ_hsq6CP2O-" target="_blank" rel="noopener" aria-label="YouTube" style="margin-left:6px;">
-          <svg width="30" height="21" viewBox="0 0 30 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <span>Podcast na</span>
+        <a href="https://youtube.com/@aureliaiwanowpodcast?si=HygrxQ_hsq6CP2O-" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg width="30" height="21" viewBox="0 0 30 21" fill="none">
             <rect width="30" height="21" rx="5" fill="#FF0000"/>
             <polygon points="12,6 12,15 21,10.5" fill="white"/>
           </svg>
         </a>
-
-        <span style="color:rgba(255,255,255,0.5);font-size:0.85rem;">&amp;</span>
-
-        <!-- Spotify -->
-        <a href="[Tu wklej link]" target="_blank" rel="noopener" aria-label="Spotify">
-          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <span>&amp;</span>
+        <a href="[Tu wklej link Spotify]" target="_blank" rel="noopener" aria-label="Spotify">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
             <circle cx="13" cy="13" r="13" fill="#1DB954"/>
             <path d="M8 10.5c3.2-1 6.8-1 10 0" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
             <path d="M8.5 13.5c2.8-.8 5.8-.8 8.5 0" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
@@ -501,10 +400,8 @@
           </svg>
         </a>
       </div>
-
-      <!-- Instagram -->
-      <a href="https://www.instagram.com/aureliaiwanow?igsh=MXJmN2xlbG91ZW56dA==" target="_blank" rel="noopener" class="social-right" aria-label="Instagram">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <a href="https://www.instagram.com/aureliaiwanow?igsh=MXJmN2xlbG91ZW56dA==" target="_blank" rel="noopener" class="social-right">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
           <defs>
             <linearGradient id="ig" x1="0" y1="22" x2="22" y2="0" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stop-color="#FD5949"/>
@@ -522,26 +419,21 @@
   </div>
 </div>
 
-<!-- ════════════════════ SUBSCRIBE PAGE ════════════════════ -->
-<div id="subscribePage" class="subscribe-page">
-  <div class="sub-bg"></div>
-  <div class="sub-nav">
-    <button class="back-btn" data-back="heroPage">
-      ← Wróć
-    </button>
+<!-- ══ SUBSKRYPCJA ══ -->
+<div id="subscribePage" class="page">
+  <div class="page-nav">
+    <button class="back-btn" data-back="heroPage">← Wróć</button>
   </div>
-  <div class="sub-content">
+  <div class="page-content">
     <p class="sub-eyebrow">Newsletter</p>
-    <h2 class="sub-title">DOŁĄCZ DO<br>SPOŁECZNOŚCI</h2>
-    <p class="sub-desc">Otrzymuj ekskluzywne treści o biohackingu, dietetyce i optymalizacji umysłu prosto na swoją skrzynkę.</p>
-
+    <h2 class="page-title">DOŁĄCZ DO<br>SPOŁECZNOŚCI</h2>
+    <p class="page-body">Otrzymuj ekskluzywne treści o biohackingu, dietetyce i optymalizacji umysłu prosto na swoją skrzynkę.</p>
     <div class="sub-form" id="subForm">
       <input type="text" id="nameInput" placeholder="Twoje imię" autocomplete="given-name" />
       <input type="email" id="emailInput" placeholder="Adres e-mail" autocomplete="email" />
       <button type="button" id="subSubmit">ZAPISZ SIĘ</button>
       <p class="sub-note">Bez spamu. Możesz się wypisać w każdej chwili.</p>
     </div>
-
     <div class="success-msg" id="successMsg">
       <div class="success-icon">✅</div>
       <p class="success-text">Witaj w społeczności!</p>
@@ -550,52 +442,52 @@
   </div>
 </div>
 
-<!-- ════════════════════ PODCAST PAGE ════════════════════ -->
-<div id="podcastPage" class="section-page">
-  <div class="sub-nav">
+<!-- ══ PODCAST ══ -->
+<div id="podcastPage" class="page">
+  <div class="page-nav">
     <button class="back-btn" data-back="heroPage">← Wróć</button>
   </div>
-  <div class="section-content">
-    <h2 class="section-title">PODCAST</h2>
-    <p class="section-body">Słuchaj rozmów o biohackingu, dietetyce, neurobiologii i psychologii. Nowe odcinki regularnie na YouTube i Spotify.</p>
-    <div class="platform-links">
-      <a href="https://youtube.com/@aureliaiwanowpodcast?si=HygrxQ_hsq6CP2O-" target="_blank" rel="noopener" class="platform-btn">
+  <div class="page-content">
+    <h2 class="page-title">PODCAST</h2>
+    <p class="page-body">Słuchaj rozmów o biohackingu, dietetyce, neurobiologii i psychologii. Nowe odcinki regularnie na YouTube i Spotify.</p>
+    <div class="link-list">
+      <a href="https://youtube.com/@aureliaiwanowpodcast?si=HygrxQ_hsq6CP2O-" target="_blank" rel="noopener" class="link-btn">
         <span>▶️</span> YouTube – Aurelia Iwanow Podcast
       </a>
-      <a href="[Tu wklej link]" target="_blank" rel="noopener" class="platform-btn">
+      <a href="[Tu wklej link Spotify]" target="_blank" rel="noopener" class="link-btn">
         <span>🎧</span> Spotify – Aurelia Iwanow Podcast
       </a>
     </div>
   </div>
 </div>
 
-<!-- ════════════════════ O MNIE PAGE ════════════════════ -->
-<div id="aboutPage" class="section-page">
-  <div class="sub-nav">
+<!-- ══ O MNIE ══ -->
+<div id="aboutPage" class="page">
+  <div class="page-nav">
     <button class="back-btn" data-back="heroPage">← Wróć</button>
   </div>
-  <div class="section-content">
-    <h2 class="section-title">O MNIE</h2>
-    <p class="section-body">
+  <div class="page-content">
+    <h2 class="page-title">O MNIE</h2>
+    <p class="page-body">
       Jestem Aurelia – studentka Nutrigenomiki, dietetyk i entuzjastka psychologii.<br><br>
       Zajmuję się optymalizacją ciała i umysłu poprzez biohacking – łącząc naukę, żywienie i codzienne nawyki.
     </p>
   </div>
 </div>
 
-<!-- ════════════════════ KONTAKT PAGE ════════════════════ -->
-<div id="contactPage" class="section-page">
-  <div class="sub-nav">
+<!-- ══ KONTAKT ══ -->
+<div id="contactPage" class="page">
+  <div class="page-nav">
     <button class="back-btn" data-back="heroPage">← Wróć</button>
   </div>
-  <div class="section-content">
-    <h2 class="section-title">KONTAKT</h2>
-    <p class="section-body">Współpraca, pytania lub po prostu cześć? Napisz do mnie na Instagramie lub wyślij e-mail.</p>
-    <div class="platform-links">
-      <a href="https://www.instagram.com/aureliaiwanow?igsh=MXJmN2xlbG91ZW56dA==" target="_blank" rel="noopener" class="platform-btn">
+  <div class="page-content">
+    <h2 class="page-title">KONTAKT</h2>
+    <p class="page-body">Współpraca, pytania lub po prostu cześć? Napisz do mnie na Instagramie lub wyślij e-mail.</p>
+    <div class="link-list">
+      <a href="https://www.instagram.com/aureliaiwanow?igsh=MXJmN2xlbG91ZW56dA==" target="_blank" rel="noopener" class="link-btn">
         <span>📸</span> Instagram @aureliaiwanow
       </a>
-      <a href="mailto:kontakt@aureliaiwanow.pl" class="platform-btn">
+      <a href="mailto:kontakt@aureliaiwanow.pl" class="link-btn">
         <span>✉️</span> kontakt@aureliaiwanow.pl
       </a>
     </div>
@@ -603,50 +495,39 @@
 </div>
 
 <script>
-  // ── Page switching ──
-  const pages = ['heroPage','subscribePage','podcastPage','aboutPage','contactPage'];
+  const allPages = ['heroPage','subscribePage','podcastPage','aboutPage','contactPage'];
 
   function showPage(id) {
-    pages.forEach(p => {
-      document.getElementById(p).style.display = 'none';
+    allPages.forEach(p => {
+      const el = document.getElementById(p);
+      el.style.display = 'none';
+      el.classList.remove('active');
     });
     const target = document.getElementById(id);
-    if (target) {
-      target.style.display = id === 'heroPage' ? 'flex' : 'flex';
-      // restore hero flex layout
-      if (id === 'heroPage') { target.style.flexDirection = 'column'; }
-      window.scrollTo(0,0);
-    }
+    target.style.display = 'flex';
+    target.classList.add('active');
+    window.scrollTo(0, 0);
   }
 
-  // Init: show only hero
   showPage('heroPage');
 
-  // Subscribe button
   document.getElementById('subBtn').addEventListener('click', e => {
     e.preventDefault();
     showPage('subscribePage');
   });
 
-  // Dropdown nav links
   document.querySelectorAll('.dropdown a').forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
-      const target = link.dataset.page;
       closeDropdown();
-      if (target) showPage(target);
+      showPage(link.dataset.page);
     });
   });
 
-  // Back buttons
   document.querySelectorAll('.back-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const target = btn.dataset.back || 'heroPage';
-      showPage(target);
-    });
+    btn.addEventListener('click', () => showPage(btn.dataset.back || 'heroPage'));
   });
 
-  // ── Hamburger / dropdown ──
   const hamburger = document.getElementById('hamburger');
   const dropdown  = document.getElementById('dropdown');
 
@@ -664,18 +545,11 @@
     if (!hamburger.contains(e.target) && !dropdown.contains(e.target)) closeDropdown();
   });
 
-  // ── Subscribe form ──
   document.getElementById('subSubmit').addEventListener('click', () => {
     const name  = document.getElementById('nameInput').value.trim();
     const email = document.getElementById('emailInput').value.trim();
-    if (!name || !email) {
-      alert('Proszę wypełnić wszystkie pola.');
-      return;
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      alert('Podaj poprawny adres e-mail.');
-      return;
-    }
+    if (!name || !email) { alert('Proszę wypełnić wszystkie pola.'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Podaj poprawny adres e-mail.'); return; }
     document.getElementById('subForm').style.display = 'none';
     document.getElementById('successMsg').classList.add('show');
   });
