@@ -3,159 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aurelia Iwanow - Biohacking</title>
+    <title>Aurelia Iwanow | Biohacking Expert & Human Optimization</title>
+    <link rel="icon" type="image/png" href="fav.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
     <style>
-        /* 1. RESET I PODSTAWA */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        body, html { height: 100%; width: 100%; overflow-x: hidden; background-color: #000; }
-
-        /* 2. RESPORSYWNE TŁA */
-        .hero {
-            height: 100vh;
-            width: 100%;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            position: relative;
+        /* CSS RESET & BASICS */
+        :root {
+            --asp-black: #000000;
+            --asp-white: #ffffff;
+            --asp-gold: #fbbc05; /* Twój złoty kolor */
+            --asp-gray: #222222;
+            --font-main: 'Open Sans', sans-serif;
+            --font-head: 'Montserrat', sans-serif;
         }
 
-        /* Desktop - Zdjęcie 3 */
-        @media (min-width: 1025px) {
-            .hero { background-image: url('zdjecie3.png'); }
-        }
-        /* Phone - Zdjęcie 2 */
-        @media (max-width: 1024px) {
-            .hero { background-image: url('zdjecie2.png'); background-position: center top; }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-main); background-color: var(--asp-black); color: var(--asp-white); line-height: 1.6; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
 
-        /* 3. NAWIGACJA */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 30px 50px;
-            z-index: 100;
-        }
-        .logo {
-            color: #fff;
-            text-decoration: none;
-            font-size: 28px;
-            font-weight: 300;
-            letter-spacing: 1px;
-            font-style: italic; /* Styl podpisu */
-        }
-        .nav-right { display: flex; align-items: center; gap: 25px; }
-        .sub-btn {
-            background-color: #fbbc05;
-            color: #000;
-            padding: 12px 24px;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            border-radius: 2px;
-            font-size: 13px;
-            letter-spacing: 1px;
-        }
-        .hamburger {
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        .hamburger span {
-            display: block;
-            width: 28px;
-            height: 2px;
-            background-color: #fbbc05;
-        }
-
-        /* 4. KOMPAKTOWE MENU BOCZNE (WYSUWANE) */
-        .side-menu {
-            position: fixed;
-            top: 0;
-            right: -280px; /* Schowane */
-            width: 280px;
-            height: 100%;
-            background: rgba(10, 10, 10, 0.98);
-            z-index: 1000;
-            transition: 0.4s ease;
-            display: flex;
-            flex-direction: column;
-            padding: 80px 40px;
-            gap: 25px;
-            border-left: 1px solid #fbbc05;
-        }
-        .side-menu.active { right: 0; }
-        .side-menu a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.2rem;
+        /* HELPER CLASSES */
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .btn {
+            display: inline-block;
+            padding: 18px 35px;
+            background-color: var(--asp-gold);
+            color: var(--asp-black);
+            font-family: var(--font-head);
+            font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 2px;
-            transition: 0.3s;
-        }
-        .side-menu a:hover { color: #fbbc05; }
-        .close-btn {
-            position: absolute;
-            top: 30px;
-            right: 40px;
-            color: #fbbc05;
-            font-size: 35px;
+            font-size: 14px;
+            border-radius: 2px;
             cursor: pointer;
+            border: none;
+            transition: 0.3s ease;
+        }
+        .btn:hover { background-color: var(--asp-white); }
+
+        /* 1. NAVIGATION */
+        header {
+            position: fixed;
+            top: 0; width: 100%;
+            background-color: rgba(0,0,0,0.9);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        nav { display: flex; justify-content: space-between; align-items: center; height: 90px; }
+        .logo { font-family: var(--font-head); font-weight: 900; font-size: 24px; text-transform: uppercase; letter-spacing: 1px; }
+        .logo span { color: var(--asp-gold); }
+
+        .nav-right { display: flex; align-items: center; gap: 30px; }
+        .main-menu { display: flex; gap: 25px; }
+        .main-menu a { font-family: var(--font-head); font-weight: 700; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; color: #aaa; }
+        .main-menu a:hover, .main-menu a.active { color: var(--asp-white); }
+
+        /* Kompaktowe Menu (Schowane domyślnie na desktop) */
+        .side-menu {
+            position: fixed; top: 0; right: -300px; width: 300px; height: 100%;
+            background: rgba(10,10,10,0.98); z-index: 1001; transition: 0.4s;
+            display: flex; flex-direction: column; padding: 100px 40px; gap: 30px;
+            border-left: 2px solid var(--asp-gold);
+        }
+        .side-menu.active { right: 0; }
+        .side-menu a { font-family: var(--font-head); font-weight: 800; text-transform: uppercase; font-size: 1.2rem; letter-spacing: 2px; }
+        .close-btn { position: absolute; top: 30px; right: 40px; color: var(--asp-gold); font-size: 40px; cursor: pointer; }
+
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 6px; z-index: 1002; }
+        .hamburger span { display: block; width: 30px; height: 3px; background-color: var(--asp-gold); transition: 0.3s; }
+
+        /* 2. HERO SECTION (W STYLU DAVE'A) */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            padding-top: 90px; /* offset dla nav */
         }
 
-        /* 5. NAPISY - OBNIŻONE (ZGODNIE ZE ZDJ 1 I 4) */
-        .main-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end; /* Spycha napisy w dół */
-            padding-bottom: 15vh; /* Odstęp od dołu, aby nie zasłaniały twarzy */
-            align-items: center;
-            text-align: center;
-            color: #fff;
+        /* Desktop Overlay i Zdjęcie 3 */
+        @media (min-width: 1025px) {
+            .hero {
+                background-image: url('zdjecie3.png');
+                background-position: right center; /* Ważne: Ty po prawej */
+            }
+            .hero::before {
+                content: ''; position: absolute; top: 0; left: 0; width: 50%; height: 100%;
+                background: linear-gradient(to right, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+            }
         }
-        .main-content h1 {
-            font-size: clamp(3.5rem, 12vw, 9rem);
+
+        /* Mobile Zdjęcie 2 */
+        @media (max-width: 1024px) {
+            .hero {
+                background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('zdjecie2.png');
+                background-position: center top;
+                justify-content: center;
+                text-align: center;
+            }
+            .hero-content { max-width: 90% !important; margin: 0 auto; }
+        }
+
+        .hero-content {
+            position: relative; z-index: 10;
+            max-width: 600px; /* Napisy po lewej */
+            padding-left: 50px;
+        }
+        .hero h1 {
+            font-family: var(--font-head);
             font-weight: 900;
-            letter-spacing: -2px;
-            line-height: 0.85;
-            margin: 0;
-        }
-        .main-content p {
-            font-size: clamp(0.9rem, 2.5vw, 1.5rem);
+            font-size: clamp(3rem, 7vw, 6rem);
+            line-height: 1;
             text-transform: uppercase;
-            letter-spacing: 6px;
-            margin-top: 10px;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
         }
+        .hero h1 span { display: block; color: var(--asp-gold); }
+        .hero p { font-size: clamp(1rem, 2vw, 1.3rem); color: #ccc; max-width: 500px; margin-bottom: 40px; font-weight: 400; }
 
-        /* 6. DOLNY PASEK INFO (INFO-BAR) */
+        /* 3. INFO BAR (SPECS) */
         .info-bar {
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
-            padding: 25px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            background-color: var(--asp-gray);
+            padding: 30px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        .specs { display: flex; gap: 50px; }
-        .spec-box { display: flex; flex-direction: column; }
-        .spec-label { color: #777; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
-        .spec-value { font-weight: bold; font-size: 16px; margin-top: 2px; }
+        .info-bar .container { display: flex; justify-content: space-between; align-items: center; }
+        .specs { display: flex; gap: 40px; }
+        .spec-item { text-align: center; }
+        .spec-label { display: block; color: #888; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+        .spec-value { display: block; font-family: var(--font-head); font-weight: 800; font-size: 18px; margin-top: 4px; }
 
-        /* KOLOROWE IKONY SOCIAL MEDIA */
-        .socials { display: flex; align-items: center; gap: 20px; color: #fff; }
-        .social-link { display: flex; align-items: center; gap: 8px; text-decoration: none; color: #fff; font-size: 14px; }
-        .icon { width: 24px; height: 24px; object-fit: contain; }
+        /* KOLOROWE IKONY */
+        .socials { display: flex; align-items: center; gap: 20px; font-weight: 600; font-size: 14px; }
+        .socials span { color: #888; }
+        .icon { width: 25px; height: 25px; object-fit: contain; }
 
-        /* RESPONSYWNOŚĆ PASKÓW (ZDJĘCIE 4) */
+        /* RESPONSYWNOŚĆ DLA INFO BAR i NAV */
         @media (max-width: 768px) {
-            nav { padding: 20px; }
-            .info-bar { flex-direction: column; gap: 25px; padding: 30px 20px; text-align: center; }
-            .specs { gap: 20px; flex-wrap: wrap; justify-content: center; }
-            .main-content { padding-bottom: 10vh; }
+            .main-menu, .desktop-only { display: none; }
+            .hamburger { display: flex; }
+            .info-bar .container { flex-direction: column; gap: 25px; text-align: center; }
+            .specs { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .hero-content { padding-left: 0; }
+        }
+        
+        @media (max-width: 1024px) {
+            .close-btn { display: block; }
+        }
+        @media (min-width: 1025px) {
+            .close-btn { display: none; }
         }
     </style>
 </head>
@@ -163,39 +164,56 @@
 
     <div class="side-menu" id="menu">
         <span class="close-btn" onclick="toggleMenu()">&times;</span>
-        <a href="#">Podcast</a>
-        <a href="#">O mnie</a>
-        <a href="#">Kontakt</a>
+        <a href="#podcast">Podcast</a>
+        <a href="#o-mnie">O mnie</a>
+        <a href="#kontakt">Kontakt</a>
     </div>
 
-    <div class="hero">
-        <nav>
-            <a href="index.html" class="logo">Aurelia Iwanow</a>
-            <div class="nav-right">
-                <a href="subscribe.html" class="sub-btn">Subskrybuj</a>
-                <div class="hamburger" onclick="toggleMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Aurelia <span>Iwanow</span></a>
+                
+                <div class="nav-right">
+                    <ul class="main-menu">
+                        <li><a href="#podcast">Podcast</a></li>
+                        <li><a href="#o-mnie">O mnie</a></li>
+                        <li><a href="#kontakt">Kontakt</a></li>
+                    </ul>
+                    <a href="subscribe.html" class="btn desktop-only">Subskrybuj</a>
+                    
+                    <div class="hamburger" onclick="toggleMenu()">
+                        <span></span><span></span><span></span>
+                    </div>
                 </div>
-            </div>
-        </nav>
-
-        <div class="main-content">
-            <h1>BIOHACKING</h1>
-            <p>Optymalizacja ciała i umysłu</p>
+            </nav>
         </div>
+    </header>
 
-        <div class="info-bar">
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>
+                    Optymalizacja
+                    <span>Ciała i Umysłu</span>
+                </h1>
+                <p>Odkryj naukowe metody biohackingu, nutrygenomiki i psychologii, aby przejąć kontrolę nad swoją biologią i żyć na 100%.</p>
+                <a href="subscribe.html" class="btn">Rozpocznij Transformację</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-bar">
+        <div class="container">
             <div class="specs">
-                <div class="spec-box">
-                    <span class="spec-label">Studentka</span>
+                <div class="spec-item">
+                    <span class="spec-label">Ekspertka</span>
                     <span class="spec-value" style="color: #40e0d0;">Nutrygenomiki</span>
                 </div>
-                <div class="spec-box" style="justify-content: center;">
-                    <span class="spec-value" style="color: #fbbc05;">Dietetyk</span>
+                <div class="spec-item" style="justify-content: center; display: flex; align-items: center;">
+                    <span class="spec-value" style="color: var(--asp-gold);">Dietetyk</span>
                 </div>
-                <div class="spec-box">
+                <div class="spec-item">
                     <span class="spec-label">Entuzjastka</span>
                     <span class="spec-value" style="color: #ff4d4d;">Psychologii</span>
                 </div>
@@ -207,20 +225,25 @@
                     <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" class="icon" alt="YouTube">
                 </a>
                 <span>&</span>
-                <a href="#" class="social-link"> <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" class="icon" alt="Spotify">
+                <a href="#"> <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" class="icon" alt="Spotify">
                 </a>
-                <a href="https://www.instagram.com/aureliaiwanow?igsh=MXJmN2xlbG91ZW56dA==" target="_blank" class="social-link" style="margin-left: 10px;">
+                <a href="https://www.instagram.com/aureliaiwanow" target="_blank" style="margin-left: 10px;" class="desktop-only">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" class="icon" alt="Instagram">
-                    <span>@aureliaiwanow</span>
                 </a>
             </div>
         </div>
-    </div>
+    </section>
 
     <script>
         function toggleMenu() {
             document.getElementById('menu').classList.toggle('active');
         }
+        // Automatyczne zamykanie menu po kliknięciu w link
+        document.querySelectorAll('.side-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('menu').classList.remove('active');
+            });
+        });
     </script>
 </body>
 </html>

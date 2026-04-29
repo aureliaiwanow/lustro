@@ -3,73 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subskrybuj - Aurelia Iwanow</title>
+    <title>Dołącz do Społeczności | Aurelia Iwanow</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            margin: 0;
             height: 100vh;
-            background: #000;
+            background-color: #000;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Open Sans', sans-serif;
             background-size: cover;
             background-position: center;
             color: #fff;
         }
 
-        /* Responsywne tło dla subskrypcji */
-        @media (min-width: 1025px) { body { background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('zdjecie3.png'); } }
-        @media (max-width: 1024px) { body { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('zdjecie2.png'); } }
+        /* Responsywne tło subskrypcji */
+        @media (min-width: 1025px) { body { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('zdjecie3.png'); } }
+        @media (max-width: 1024px) { body { background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('zdjecie2.png'); } }
 
         .form-container {
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(10, 10, 10, 0.8);
             backdrop-filter: blur(15px);
-            padding: 50px;
-            border: 1px solid #fbbc05;
+            padding: 60px;
+            border: 2px solid #fbbc05;
             width: 90%;
-            max-width: 450px;
+            max-width: 500px;
             text-align: center;
+            border-radius: 4px;
         }
 
-        h2 { font-weight: 900; letter-spacing: 2px; margin-bottom: 30px; text-transform: uppercase; color: #fbbc05; }
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 32px;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+        p { color: #aaa; margin-bottom: 40px; font-size: 15px; }
 
         input {
             width: 100%;
-            padding: 15px;
-            margin-bottom: 15px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
+            padding: 18px;
+            margin-bottom: 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
             color: white;
-            outline: none;
+            font-size: 16px;
+            border-radius: 2px;
         }
+        input:focus { border-color: #fbbc05; outline: none; background: rgba(255,255,255,0.1); }
 
         button {
             width: 100%;
-            padding: 15px;
+            padding: 18px;
             background: #fbbc05;
             color: #000;
             border: none;
-            font-weight: bold;
-            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 14px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            cursor: pointer;
             transition: 0.3s;
+            border-radius: 2px;
         }
         button:hover { background: #fff; }
         
-        .back-link { display: block; margin-top: 20px; color: #777; text-decoration: none; font-size: 12px; text-transform: uppercase; }
+        .back-link { display: block; margin-top: 30px; color: #666; text-decoration: none; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+        .back-link:hover { color: #fbbc05; }
     </style>
 </head>
 <body>
     <div class="form-container">
-        <h2>Dołącz do newslettera</h2>
+        <h2>Przejmij Kontrolę</h2>
+        <p>Zapisz się, aby otrzymywać ekskluzywne protokoły biohackingu i wiedzę, której nie znajdziesz nigdzie indziej.</p>
         <form>
-            <input type="text" placeholder="IMIĘ" required>
-            <input type="email" placeholder="EMAIL" required>
-            <button type="submit">Zapisz się</button>
+            <input type="text" placeholder="Twoje Imię" required>
+            <input type="email" placeholder="Twój Adres E-mail" required>
+            <button type="submit">Dołącz Teraz</button>
         </form>
-        <a href="index.html" class="back-link">← powrót</a>
+        <a href="index.html" class="back-link">← powrót do strony głównej</a>
     </div>
 </body>
 </html>
