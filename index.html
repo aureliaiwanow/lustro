@@ -3,73 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subskrybuj - Aurelia Iwanow</title>
+    <title>Aurelia Iwanow - Biohacking</title>
     <style>
-        body {
-            margin: 0;
+        /* 1. RESET I PODSTAWA */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body, html { height: 100%; width: 100%; overflow-x: hidden; background-color: #000; }
+
+        /* 2. RESPORSYWNE TŁA */
+        .hero {
             height: 100vh;
-            background: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Inter', sans-serif;
+            width: 100%;
             background-size: cover;
             background-position: center;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Desktop - Zdjęcie 3 */
+        @media (min-width: 1025px) {
+            .hero { background-image: url('zdjecie3.png'); }
+        }
+        /* Phone - Zdjęcie 2 */
+        @media (max-width: 1024px) {
+            .hero { background-image: url('zdjecie2.png'); background-position: center top; }
+        }
+
+        /* 3. NAWIGACJA */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 50px;
+            z-index: 100;
+        }
+        .logo {
             color: #fff;
-        }
-
-        /* Responsywne tło dla subskrypcji */
-        @media (min-width: 1025px) { body { background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('zdjecie3.png'); } }
-        @media (max-width: 1024px) { body { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('zdjecie2.png'); } }
-
-        .form-container {
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(15px);
-            padding: 50px;
-            border: 1px solid #fbbc05;
-            width: 90%;
-            max-width: 450px;
-            text-align: center;
-        }
-
-        h2 { font-weight: 900; letter-spacing: 2px; margin-bottom: 30px; text-transform: uppercase; color: #fbbc05; }
-
-        input {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 15px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white;
-            outline: none;
-        }
-
-        button {
-            width: 100%;
-            padding: 15px;
-            background: #fbbc05;
-            color: #000;
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
-            text-transform: uppercase;
+            text-decoration: none;
+            font-size: 28px;
+            font-weight: 300;
             letter-spacing: 1px;
+            font-style: italic; /* Styl podpisu */
+        }
+        .nav-right { display: flex; align-items: center; gap: 25px; }
+        .sub-btn {
+            background-color: #fbbc05;
+            color: #000;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 2px;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+        .hamburger {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 2px;
+            background-color: #fbbc05;
+        }
+
+        /* 4. KOMPAKTOWE MENU BOCZNE (WYSUWANE) */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -280px; /* Schowane */
+            width: 280px;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.98);
+            z-index: 1000;
+            transition: 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            padding: 80px 40px;
+            gap: 25px;
+            border-left: 1px solid #fbbc05;
+        }
+        .side-menu.active { right: 0; }
+        .side-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             transition: 0.3s;
         }
-        button:hover { background: #fff; }
-        
-        .back-link { display: block; margin-top: 20px; color: #777; text-decoration: none; font-size: 12px; text-transform: uppercase; }
+        .side-menu a:hover { color: #fbbc05; }
+        .close-btn {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: #fbbc05;
+            font-size: 35px;
+            cursor: pointer;
+        }
+
+        /* 5. NAPISY - OBNIŻONE (ZGODNIE ZE ZDJ 1 I 4) */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; /* Spycha napisy w dół */
+            padding-bottom: 15vh; /* Odstęp od dołu, aby nie zasłaniały twarzy */
+            align-items: center;
+            text-align: center;
+            color: #fff;
+        }
+        .main-content h1 {
+            font-size: clamp(3.5rem, 12vw, 9rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            line-height: 0.85;
+            margin: 0;
+        }
+        .main-content p {
+            font-size: clamp(0.9rem, 2.5vw, 1.5rem);
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            margin-top: 10px;
+        }
+
+        /* 6. DOLNY PASEK INFO (INFO-BAR) */
+        .info-bar {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 25px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .specs { display: flex; gap: 50px; }
+        .spec-box { display: flex; flex-direction: column; }
+        .spec-label { color: #777; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+        .spec-value { font-weight: bold; font-size: 16px; margin-top: 2px; }
+
+        /* KOLOROWE IKONY SOCIAL MEDIA */
+        .socials { display: flex; align-items: center; gap: 20px; color: #fff; }
+        .social-link { display: flex; align-items: center; gap: 8px; text-decoration: none; color: #fff; font-size: 14px; }
+        .icon { width: 24px; height: 24px; object-fit: contain; }
+
+        /* RESPONSYWNOŚĆ PASKÓW (ZDJĘCIE 4) */
+        @media (max-width: 768px) {
+            nav { padding: 20px; }
+            .info-bar { flex-direction: column; gap: 25px; padding: 30px 20px; text-align: center; }
+            .specs { gap: 20px; flex-wrap: wrap; justify-content: center; }
+            .main-content { padding-bottom: 10vh; }
+        }
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <h2>Dołącz do newslettera</h2>
-        <form>
-            <input type="text" placeholder="IMIĘ" required>
-            <input type="email" placeholder="EMAIL" required>
-            <button type="submit">Zapisz się</button>
-        </form>
-        <a href="index.html" class="back-link">← powrót</a>
+
+    <div class="side-menu" id="menu">
+        <span class="close-btn" onclick="toggleMenu()">&times;</span>
+        <a href="#">Podcast</a>
+        <a href="#">O mnie</a>
+        <a href="#">Kontakt</a>
     </div>
+
+    <div class="hero">
+        <nav>
+            <a href="index.html" class="logo">Aurelia Iwanow</a>
+            <div class="nav-right">
+                <a href="subscribe.html" class="sub-btn">Subskrybuj</a>
+                <div class="hamburger" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+
+        <div class="main-content">
+            <h1>BIOHACKING</h1>
+            <p>Optymalizacja ciała i umysłu</p>
+        </div>
+
+        <div class="info-bar">
+            <div class="specs">
+                <div class="spec-box">
+                    <span class="spec-label">Studentka</span>
+                    <span class="spec-value" style="color: #40e0d0;">Nutrygenomiki</span>
+                </div>
+                <div class="spec-box" style="justify-content: center;">
+                    <span class="spec-value" style="color: #fbbc05;">Dietetyk</span>
+                </div>
+                <div class="spec-box">
+                    <span class="spec-label">Entuzjastka</span>
+                    <span class="spec-value" style="color: #ff4d4d;">Psychologii</span>
+                </div>
+            </div>
+
+            <div class="socials">
+                <span>Podcast na</span>
+                <a href="https://youtube.com/@aureliaiwanowpodcast?si=F8OPBfGyuJC3FWCP" target="_blank">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" class="icon" alt="YouTube">
+                </a>
+                <span>&</span>
+                <a href="#" class="social-link"> <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" class="icon" alt="Spotify">
+                </a>
+                <a href="https://www.instagram.com/aureliaiwanow?igsh=MXJmN2xlbG91ZW56dA==" target="_blank" class="social-link" style="margin-left: 10px;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" class="icon" alt="Instagram">
+                    <span>@aureliaiwanow</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('menu').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
