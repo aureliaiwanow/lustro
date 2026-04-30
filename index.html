@@ -6,300 +6,166 @@
     <title>Aurelia Iwanow - Biohacking</title>
     <!-- Font Awesome dla ikon social media (jeśli będą potrzebne poza grafiką) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-yellow: #FFB800;
-            --bg-dark: #000;
-            --text-white: #fff;
-        }
+  <style>
+    :root {
+        --primary-yellow: #FFB800;
+        --bg-dark: #000;
+    }
 
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-white);
-            overflow-x: hidden;
-        }
+    body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        font-family: 'Arial', sans-serif;
+        background-color: var(--bg-dark);
+        color: white;
+        overflow-x: hidden;
+    }
 
-        /* GŁÓWNA KONTENER - DOMYŚLNIE DESKTOP */
+    /* TŁO GŁÓWNE */
+    .hero-section {
+        width: 100%;
+        height: 100vh;
+        background-image: url('desktop-bg.png'); /* Twoje czyste zdjęcie 2 */
+        background-size: cover;
+        background-position: center top;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* HEADER */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        z-index: 100;
+    }
+
+    .logo {
+        font-family: 'Brush Script MT', cursive;
+        font-size: 28px;
+        text-decoration: none;
+        color: white;
+    }
+
+    .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .btn-subscribe {
+        background-color: var(--primary-yellow);
+        color: black;
+        padding: 10px 20px;
+        border: none;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    .hamburger {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .hamburger span {
+        display: block;
+        width: 30px;
+        height: 3px;
+        background-color: var(--primary-yellow);
+    }
+
+    /* UKŁAD DESKTOP (NAPISY) */
+    .desktop-only-content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .desktop-only-content h1 {
+        font-size: 100px;
+        margin: 0;
+        letter-spacing: 10px;
+        font-weight: 900;
+    }
+
+    .desktop-only-content p {
+        font-size: 30px;
+        margin-top: 10px;
+    }
+
+    /* STOPKA DESKTOP */
+    .desktop-footer {
+        background: rgba(0,0,0,0.7);
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* WERSJA MOBILE */
+    @media (max-width: 768px) {
         .hero-section {
+            background-image: url('mobile-bg.png') !important; /* Twoje zdjęcie z grafiką */
+            background-position: center center;
+        }
+
+        /* KLUCZOWE: Ukrywamy wszystkie napisy generowane kodem, 
+           bo są już "wtopione" w Twoje zdjęcie */
+        .desktop-only-content, 
+        .desktop-footer {
+            display: none !important;
+        }
+
+        /* Przezroczysta strefa na dole dla linków social media na grafice */
+        .mobile-social-overlay {
+            position: absolute;
+            bottom: 0;
             width: 100%;
-            height: 100vh;
-            background-image: url('desktop-bg.png'); /* Tutaj wstawiasz 'image_2.png' */
-            background-size: cover;
-            background-position: center top; /* Pozycjonowanie, aby miasto było widoczne */
-            position: relative;
+            height: 150px;
             display: flex;
-            flex-direction: column;
-        }
-
-        /* HEADER */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px;
-            position: relative;
-            z-index: 10; /* Nad grafiką portretu */
-        }
-
-        .logo {
-            font-family: 'Brush Script MT', cursive; /* Styl zbliżony do podpisu */
-            font-size: 32px;
-            text-decoration: none;
-            color: var(--text-white);
-            cursor: pointer;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-
-        .btn-subscribe {
-            background-color: var(--primary-yellow);
-            color: black;
-            padding: 12px 24px;
-            border: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            text-decoration: none;
-            cursor: pointer;
-            border-radius: 2px;
-        }
-
-        .hamburger {
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .hamburger span {
-            display: block;
-            width: 35px;
-            height: 4px;
-            background-color: var(--primary-yellow);
-        }
-
-        /* MENU ROZWIJANE */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 280px;
-            height: 100%;
-            background-color: rgba(0,0,0,0.98);
-            transition: 0.4s ease-out;
-            z-index: 1000;
-            padding: 60px 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .mobile-menu.active {
-            right: 0;
-        }
-
-        .mobile-menu .close-btn {
-            align-self: flex-end;
-            color: var(--primary-yellow);
-            text-decoration: none;
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .mobile-menu a {
-            color: var(--text-white);
-            text-decoration: none;
-            font-size: 22px;
-            border-bottom: 1px solid #333;
-            padding-bottom: 15px;
-            transition: color 0.2s;
-        }
-
-        .mobile-menu a:hover {
-            color: var(--primary-yellow);
-        }
-
-        /* === TREŚĆ DESKTOP (KODOWANA) === */
-        .desktop-content {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            z-index: 5;
+            align-items: flex-end;
+            padding-bottom: 30px;
+            z-index: 50;
         }
 
-        .desktop-content h1 {
-            font-size: 120px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 15px;
-            margin: 0;
-            line-height: 1;
-            color: rgba(255, 255, 255, 0.9);
+        .mobile-social-overlay a {
+            width: 50px;
+            height: 50px;
+            margin: 0 10px;
+            /* background: rgba(255,255,255,0.1); // Odkomentuj, żeby widzieć gdzie klikać przy testach */
         }
+    }
 
-        .desktop-content p.subtitle {
-            font-size: 36px;
-            font-weight: 300;
-            letter-spacing: 2px;
-            margin: 10px 0 0 0;
-        }
+    /* MENU BOCZNE */
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100%;
+        background: black;
+        transition: 0.3s;
+        z-index: 1000;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
 
-        /* PASEK DOLNY DESKTOP */
-        .desktop-bottom-bar {
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(15px);
-            padding: 30px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            z-index: 10;
-        }
-
-        .info-grid {
-            display: flex;
-            gap: 60px;
-            text-align: left;
-        }
-
-        .info-item {
-            font-size: 18px;
-            line-height: 1.4;
-        }
-
-        .info-item .title {
-            color: #aaa;
-            display: block;
-        }
-
-        .info-item .value {
-            font-weight: bold;
-        }
-
-        .info-item .value.nutri { color: #00F0FF; }
-        .info-item .value.diet { color: var(--primary-yellow); }
-        .info-item .value.psych { color: #FF4F81; }
-
-        .podcast-social {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            font-size: 20px;
-        }
-
-        .podcast-social .label {
-            color: var(--primary-yellow);
-            margin-right: 10px;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .social-icons a {
-            color: var(--text-white);
-            text-decoration: none;
-            font-size: 28px;
-            transition: opacity 0.2s;
-        }
-
-        .social-icons a:hover {
-            opacity: 0.8;
-        }
-
-        /* Element ukrywający kodowaną treść na mobile */
-        .mobile-overlay-graphic {
-            display: none;
-        }
-
-        /* ========================================= */
-        /* === WERSJA MOBILE (PONIŻEJ 768px) === */
-        /* ========================================= */
-        @media (max-width: 768px) {
-            .hero-section {
-                /* Używamy ZDJĘCIA Z GRAFIKĄ (image_3.png) */
-                background-image: url('mobile-bg.png'); 
-                background-position: center center;
-                background-size: cover;
-            }
-
-            header {
-                padding: 15px 20px;
-            }
-
-            .logo {
-                font-size: 24px;
-            }
-
-            .nav-right {
-                gap: 15px;
-            }
-
-            .btn-subscribe {
-                padding: 8px 16px;
-                font-size: 14px;
-            }
-
-            .hamburger span {
-                width: 28px;
-                height: 3px;
-                gap: 5px;
-            }
-
-            /* Ukrywamy kodowaną treść desktopową */
-            .desktop-content,
-            .desktop-bottom-bar {
-                display: none !none !important;
-            }
-
-            /* Tworzymy przezroczystą nakładkę, aby kliknięcia w ikony na grafice działały */
-            .mobile-overlay-graphic {
-                display: block;
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                height: 30vh; /* Wysokość strefy ikon na dole grafiki */
-                z-index: 5;
-                /* background: rgba(255,0,0,0.3); // Odkomentuj, aby zobaczyć strefę trafienia */
-            }
-
-            /* Mapowanie linków na grafice mobilnej (wymaga precyzji) */
-            .mobile-link-area {
-                position: absolute;
-                display: block;
-                /* background: rgba(0,255,0,0.3); // Odkomentuj, aby dostosować pozycję */
-            }
-
-            /* Przykład pozycjonowania ikon na dole grafiki (image_3.png) */
-            .mobile-link-yt {
-                bottom: 8%; left: 33%;
-                width: 10%; height: 10%;
-            }
-            .mobile-link-spotify {
-                bottom: 8%; left: 45%;
-                width: 10%; height: 10%;
-            }
-            .mobile-link-insta {
-                bottom: 8%; left: 80%;
-                width: 10%; height: 10%;
-            }
-        }
-    </style>
+    .mobile-menu.active { right: 0; }
+    .mobile-menu a { color: white; text-decoration: none; font-size: 20px; border-bottom: 1px dotted #444; padding-bottom: 10px; }
+</style>
 </head>
 <body>
 
