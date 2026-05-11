@@ -14,33 +14,32 @@ html,body{width:100%;height:100%;overflow-x:hidden}
 body{font-family:'Barlow',sans-serif;background:#0a0a0f;color:#fff}
 :root{--gold:#F5C518;--cyan:#00E5FF;--pink:#FF6B9D}
 
-/* ═══════════════════════════════ HERO ═══════════════════════════════ */
 .hero{
   position:relative;width:100%;height:100vh;min-height:640px;overflow:hidden;
 }
 
-/* Desktop bg – landscape image, show full height */
 .hero-bg{
   position:absolute;inset:0;width:100%;height:100%;
   z-index:0;
 }
 .hero-bg-desktop{
-  display: block;
-  object-fit: cover;
-  object-position: center center;
+  display:block;
+  object-fit:cover;
+  object-position:center center;
 }
 .hero-bg-mobile{
-  display: none;
+  display:none;
 }
 
-@media (max-width: 768px) {
-  .hero-bg-desktop{ display: none; }
+@media(max-width:768px){
+  .hero-bg-desktop{display:none}
   .hero-bg-mobile{
-    display: block;
-    object-fit: cover;
-    object-position: center top;
+    display:block;
+    object-fit:cover;
+    object-position:center top;
   }
 }
+
 .hero-overlay{
   position:absolute;inset:0;z-index:1;
   background:linear-gradient(to bottom,
@@ -51,16 +50,15 @@ body{font-family:'Barlow',sans-serif;background:#0a0a0f;color:#fff}
   );
 }
 
-/* ═══════════════════════════════ NAV ═══════════════════════════════ */
 nav{
   position:absolute;top:0;left:0;right:0;z-index:10;
   display:flex;align-items:center;justify-content:space-between;
-  padding:22px 28px 22px 36px;   /* slightly less right padding → elements move left */
+  padding:22px 28px 22px 36px;
 }
 
 .nav-logo{
-  font-family:'Reenie Beanie',cursive;  /* casual, messy handwriting */
-  font-size:5.5 rem;font-weight:400;
+  font-family:'Reenie Beanie',cursive;
+  font-size:2.5rem;font-weight:400;
   color:#fff;text-decoration:none;
   text-shadow:0 2px 16px rgba(0,0,0,.75);
   letter-spacing:0.02em;
@@ -70,14 +68,14 @@ nav{
 
 .nav-right{
   display:flex;align-items:center;gap:14px;
-  margin-right:6px;   /* push slightly left */
+  margin-right:6px;
 }
 
 .btn-sub{
   background:var(--gold);color:#000;
   font-family:'Barlow Condensed',sans-serif;font-weight:700;
   font-size:1.05rem;letter-spacing:.10em;
-  padding:11px 26px;          /* slightly bigger */
+  padding:11px 26px;
   border:none;cursor:pointer;text-decoration:none;display:inline-block;
   transition:filter .2s,transform .15s;
 }
@@ -88,14 +86,13 @@ nav{
   cursor:pointer;padding:7px;z-index:20;
 }
 .hamburger span{
-  display:block;width:30px;height:3px;   /* slightly bigger bars */
+  display:block;width:30px;height:3px;
   background:var(--gold);border-radius:2px;transition:all .3s;
 }
 .hamburger.open span:nth-child(1){transform:translateY(9px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
 
-/* ═══════════════════════════════ DROPDOWN ═══════════════════════════════ */
 .dropdown{
   position:absolute;top:74px;right:28px;
   background:rgba(10,10,15,.93);border:1px solid rgba(245,197,24,.3);
@@ -104,15 +101,32 @@ nav{
   transition:transform .25s ease,opacity .2s ease;z-index:30;
 }
 .dropdown.open{transform:scaleY(1);opacity:1;pointer-events:all}
+
 .dropdown a{
-  display:block;font-family:'Barlow Condensed',sans-serif;
+  display:block;
+  font-family:'Barlow Condensed',sans-serif;
   font-size:1.1rem;letter-spacing:.07em;text-transform:uppercase;
   color:#fff;text-decoration:none;padding:15px 24px;
-border-bottom:1px solid rgba(255,255,255,.07);transition:color .2s,background .2s;}
-.dropdown a:last-child{border-bottom:none}
+  border-bottom:1px solid rgba(255,255,255,.07);
+  transition:color .2s,background .2s;
+}
 .dropdown a:hover{color:var(--gold);background:rgba(245,197,24,.07)}
 
-/* ═══════════════════════════════ TITLE ═══════════════════════════════ */
+.dropdown-socials{
+  display:flex;gap:16px;padding:14px 24px;
+  border-top:1px solid rgba(255,255,255,.07);
+}
+.dropdown-socials a{
+  display:flex;align-items:center;justify-content:center;
+  width:28px;height:28px;
+  border:none;padding:0;
+  background:none;
+  text-decoration:none;
+  transition:opacity .2s;
+}
+.dropdown-socials a:hover{opacity:.7}
+.dropdown-socials svg{width:22px;height:22px;fill:#fff}
+
 .hero-title-block{
   position:absolute;left:0;right:0;
   top:50%;transform:translateY(-54%);
@@ -131,19 +145,16 @@ border-bottom:1px solid rgba(255,255,255,.07);transition:color .2s,background .2
   text-shadow:0 2px 14px rgba(0,0,0,.55);
 }
 
-/* ═══════════════════════════════ DESKTOP FOOTER BAR ═══════════════════════════════ */
 .hero-footer{
   position:absolute;bottom:0;left:0;right:0;z-index:6;
-  /* semi-transparent – NOT solid black */
   background:rgba(10,10,15,.10);
   display:flex;align-items:center;justify-content:space-between;
   padding:16px 52px;gap:12px;
 }
 
-/* tags spread across width */
 .tag-group{
   display:flex;align-items:center;
-  flex:1;justify-content:space-between;  /* spread evenly */
+  flex:1;justify-content:space-between;
   max-width:600px;
 }
 .tag{display:flex;flex-direction:column;align-items:center;line-height:1.3}
@@ -151,25 +162,6 @@ border-bottom:1px solid rgba(255,255,255,.07);transition:color .2s,background .2
 .tag .val{font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:400;letter-spacing:.05em}
 .cyan{color:var(--cyan)}.gold{color:var(--gold)}.pink{color:var(--pink)}
 
-.social-group{
-  display:flex;align-items:center;gap:10px;
-  margin-left:auto;
-}
-.social-group .lbl{font-size:.88rem;font-weight:300;color:rgba(255,255,255,.75);letter-spacing:.05em}
-.amp{color:rgba(255,255,255,.45);font-size:.9rem}
-
-.si{
-  width:34px;height:34px;border-radius:8px;
-  display:flex;align-items:center;justify-content:center;
-  text-decoration:none;transition:transform .18s,filter .18s;
-}
-.si:hover{transform:scale(1.14);filter:brightness(1.2)}
-.si svg{width:20px;height:20px}
-.si.sp{background:#1DB954}
-.si.yt{background:#FF0000}
-.si.ig{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
-
-/* ═══════════════════════════════ SUBSCRIBE PAGE ═══════════════════════════════ */
 #sub-page{display:none;position:fixed;inset:0;z-index:100;overflow-y:auto}
 .sub-bg{
   position:fixed;inset:0;
@@ -224,85 +216,35 @@ border-bottom:1px solid rgba(255,255,255,.07);transition:color .2s,background .2
 }
 .sub-back:hover{color:rgba(255,255,255,.72)}
 .sub-logo{
- font-family:'Reenie Beanie',cursive;font-size:1.3rem;
+  font-family:'Reenie Beanie',cursive;font-size:1.3rem;
   color:rgba(255,255,255,.45);margin-top:30px;display:block;
 }
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 
-/* ═══════════════════════════════ MOBILE ═══════════════════════════════ */
 @media(max-width:768px){
-  .hero-bg-desktop{display:none}
-  .hero-bg-mobile{display:block}
-
-  /* Mobile bg: portrait photo, fit full screen without zoom */
-  .hero-bg-mobile{
-    object-fit:cover;
-    object-position:center center;
-  }
-
   nav{padding:14px 16px 14px 30px}
-
-  .nav-logo{
-    font-size:1.15rem;/* smaller, one line */
-    font-weight:700;
-    white-space:nowrap;
-    line-height:1.8;
-  }
-
+  .nav-logo{font-size:1.15rem;font-weight:700;white-space:nowrap;line-height:1.8}
   .btn-sub{font-size:.92rem;padding:9px 16px}
   .hamburger span{width:24px}
-
   .dropdown{right:16px;top:60px}
 
-  /* Title: starts around shoulder height (roughly 55–60% down) */
   .hero-title-block{
-    top:auto;
-    bottom:155px;          /* sit just above the footer bar */
-    transform:none;
-    text-align:center;
-    padding:0 18px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+    top:auto;bottom:155px;transform:none;
+    text-align:center;padding:0 18px;
+    display:flex;flex-direction:column;align-items:center;
   }
-  .hero-title{
-    font-size:clamp(3.4rem,17vw,5rem);
-    text-align:center;
-    text-shadow:0 3px 28px rgba(0,0,0,.65);
-  }
-  .hero-subtitle{
-    font-size:.95rem;
-    text-align:center;
-    letter-spacing:.09em;
-    margin-top:6px;
-  }
+  .hero-title{font-size:clamp(3.4rem,17vw,5rem);text-align:center;text-shadow:0 3px 28px rgba(0,0,0,.65)}
+  .hero-subtitle{font-size:.95rem;text-align:center;letter-spacing:.09em;margin-top:6px}
 
-  /* Mobile footer: semi-transparent rect, everything centered */
   .hero-footer{
     position:absolute;bottom:0;left:0;right:0;
     background:rgba(10,10,15,.52);
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    padding:14px 20px 18px;
-    gap:10px;
+    flex-direction:column;align-items:center;justify-content:center;
+    padding:14px 20px 18px;gap:10px;
   }
-
-  /* Tags: spread centered on mobile */
-  .tag-group{
-    width:100%;max-width:100%;
-    justify-content:space-evenly;
-    gap:0;
-  }
+  .tag-group{width:100%;max-width:100%;justify-content:space-evenly;gap:0}
   .tag{align-items:center}
-
-  /* Social group centered */
-  .social-group{
-    margin-left:0;
-    justify-content:center;
-    width:100%;
-  }
 }
 
 @media(max-width:380px){
@@ -313,10 +255,9 @@ border-bottom:1px solid rgba(255,255,255,.07);transition:color .2s,background .2
 </head>
 <body>
 
-<!-- ═══════════════════ LANDING ═══════════════════ -->
 <section class="hero" id="hero">
   <img class="hero-bg hero-bg-desktop" src="bg-desktop.png" alt="Aurelia Iwanow"/>
- <img class="hero-bg hero-bg-mobile" src="bg-mobile.png" alt="Aurelia Iwanow"/>
+  <img class="hero-bg hero-bg-mobile" src="bg-mobile.png" alt="Aurelia Iwanow"/>
   <div class="hero-overlay"></div>
 
   <nav>
@@ -329,23 +270,24 @@ border-bottom:1px solid rgba(255,255,255,.07);transition:color .2s,background .2
     </div>
   </nav>
 
- <div class="dropdown" id="ddmenu">
-  <a href="#" onclick="showLanding();closeMenu();return false" style="font-family:'Reenie Beanie',cursive;font-size:1.6rem;letter-spacing:0.02em;text-transform:none;">Aurelia Iwanow</a>
-  <a href="#podcast" onclick="closeMenu()">Podcast</a>
-  <a href="#omnie" onclick="closeMenu()">O mnie</a>
-  <a href="#kontakt" onclick="closeMenu()">Kontakt</a>
-  <div style="display:flex;gap:12px;padding:15px 24px;border-top:1px solid rgba(255,255,255,.07);">
-    <a href="https://open.spotify.com" target="_blank" id="spotify-link" style="width:34px;height:34px;display:flex;align-items:center;justify-content:center;text-decoration:none;">
-      <svg viewBox="0 0 24 24" width="24" height="24"><path fill="#fff" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.559 17.32a.75.75 0 01-1.03.25c-2.82-1.724-6.368-2.114-10.545-1.158a.75.75 0 01-.335-1.462c4.573-1.046 8.49-.596 11.66 1.34a.75.75 0 01.25 1.03zm1.483-3.302a.937.937 0 01-1.288.308C14.95 12.5 11.07 11.9 7.47 12.943a.937.937 0 01-.518-1.8c4.064-1.168 8.39-.602 11.782 1.587a.937.937 0 01.308 1.288zm.128-3.44a1.124 1.124 0 01-1.543.378C14.52 8.87 9.74 8.718 5.906 9.905a1.125 1.125 0 01-.65-2.153c4.396-1.33 9.7-1.15 13.554 1.29a1.125 1.125 0 01.36 1.536z"/></svg>
-    </a>
-    <a href="https://youtube.com/@aureliaiwanowpodcast?si=F8OPBfGyuJC3FWCP" target="_blank" style="width:34px;height:34px;display:flex;align-items:center;justify-content:center;text-decoration:none;">
-      <svg viewBox="0 0 24 24" width="24" height="24"><path fill="#fff" d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-    </a>
-    <a href="https://www.instagram.com/aureliaiwanow?igsh=MXJmN2xlbG91ZW56dA==" target="_blank" style="width:34px;height:34px;display:flex;align-items:center;justify-content:center;text-decoration:none;">
-      <svg viewBox="0 0 24 24" width="24" height="24"><path fill="#fff" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-    </a>
+  <div class="dropdown" id="ddmenu">
+    <a href="#" onclick="showLanding();closeMenu();return false" style="font-family:'Reenie Beanie',cursive;font-size:1.6rem;letter-spacing:0.02em;text-transform:none;">Aurelia Iwanow</a>
+    <a href="#podcast" onclick="closeMenu()">Podcast</a>
+    <a href="#omnie" onclick="closeMenu()">O mnie</a>
+    <a href="#kontakt" onclick="closeMenu()">Kontakt</a>
+    <div class="dropdown-socials">
+      <a href="https://open.spotify.com" target="_blank" id="spotify-link" title="Spotify">
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.559 17.32a.75.75 0 01-1.03.25c-2.82-1.724-6.368-2.114-10.545-1.158a.75.75 0 01-.335-1.462c4.573-1.046 8.49-.596 11.66 1.34a.75.75 0 01.25 1.03zm1.483-3.302a.937.937 0 01-1.288.308C14.95 12.5 11.07 11.9 7.47 12.943a.937.937 0 01-.518-1.8c4.064-1.168 8.39-.602 11.782 1.587a.937.937 0 01.308 1.288zm.128-3.44a1.124 1.124 0 01-1.543.378C14.52 8.87 9.74 8.718 5.906 9.905a1.125 1.125 0 01-.65-2.153c4.396-1.33 9.7-1.15 13.554 1.29a1.125 1.125 0 01.36 1.536z"/></svg>
+      </a>
+      <a href="https://youtube.com/@aureliaiwanowpodcast?si=F8OPBfGyuJC3FWCP" target="_blank" title="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/aureliaiwanow?igsh=MXJmN2xlbG91ZW56dA==" target="_blank" title="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+    </div>
   </div>
-</div>
+
   <div class="hero-title-block">
     <div class="hero-title">BIOHACKING</div>
     <div class="hero-subtitle">Optymalizacja ciała i umysłu</div>
@@ -365,11 +307,9 @@ border-bottom:1px solid rgba(255,255,255,.07);transition:color .2s,background .2
         <span class="val pink">Psychologii</span>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ═══════════════════ SUBSCRIBE ═══════════════════ -->
 <div id="sub-page">
   <div class="sub-bg"></div>
   <div class="sub-wrap">
