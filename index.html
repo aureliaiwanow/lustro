@@ -110,6 +110,8 @@ nav{
   border-bottom:1px solid rgba(255,255,255,.07);
   transition:color .2s,background .2s;
 }
+.dropdown a.home-link{color:var(--cyan)}
+.dropdown a.home-link:hover{color:var(--gold)}
 .dropdown a:hover{color:var(--gold);background:rgba(245,197,24,.07)}
 
 .dropdown-socials{
@@ -271,8 +273,7 @@ nav{
   </nav>
 
   <div class="dropdown" id="ddmenu">
-    <a href="#" onclick="showLanding();closeMenu();return false" style="font-family:'Reenie Beanie',cursive;font-size:1.6rem;letter-spacing:0.02em;text-transform:none;">Aurelia Iwanow</a>
-    <a href="#podcast" onclick="closeMenu()">Podcast</a>
+<a href="#" class="home-link" onclick="showLanding();closeMenu();return false" style="font-family:'Reenie Beanie',cursive;font-size:1.6rem;letter-spacing:0.02em;text-transform:none;">Aurelia Iwanow</a>    <a href="#podcast" onclick="closeMenu()">Podcast</a>
     <a href="#omnie" onclick="closeMenu()">O mnie</a>
     <a href="#kontakt" onclick="closeMenu()">Kontakt</a>
     <div class="dropdown-socials">
