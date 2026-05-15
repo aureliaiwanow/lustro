@@ -10,7 +10,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"><style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{width:100%;height:100%;overflow-x:hidden}
-body{font-family:'Barlow',sans-serif;background:#0a0a0f;color:#fff}
+body{
+  font-family:"Montserrat", sans-serif;
+  font-weight:400;
+  letter-spacing:0.01em;
+  background:#0a0a0f;
+  color:#fff;
+}
 :root{--gold:#F5C518;--cyan:#00E5FF;--pink:#FF6B9D}
 
 .hero{
@@ -74,49 +80,45 @@ nav{
   left:50%;
   transform:translateX(-50%);
   display:flex;
-  gap:60px;
-  align-items:center;
+  gap:85px;
 }
 
 .desktop-nav a{
   font-family:"Montserrat", sans-serif;
   font-weight:500;
-  font-size:0.85rem;
 
-  letter-spacing:0.22em;
+  font-size:0.78rem;
+  letter-spacing:0.26em;
   text-transform:uppercase;
 
-  color:rgba(255,255,255,0.85);
+  color:rgba(255,255,255,0.75);
   text-decoration:none;
 
   position:relative;
-  padding:6px 0;
-
-  transition:color .25s ease, opacity .25s ease;
 }
 
 /* subtle hover underline (premium feel) */
 .desktop-nav a::after{
   content:"";
   position:absolute;
-  left:0;bottom:-4px;
+  left:0;
+  bottom:-6px;
   width:100%;
   height:1px;
-  background:var(--gold);
+  background:rgba(245,197,24,0.85);
+
   transform:scaleX(0);
   transform-origin:left;
   transition:transform .25s ease;
-  opacity:0.8;
-}
-
-.desktop-nav a:hover{
-  color:#fff;
 }
 
 .desktop-nav a:hover::after{
   transform:scaleX(1);
 }
 
+.desktop-nav a:hover{
+  color:#fff;
+}
 /* RIGHT SIDE */
 .nav-right{
   display:flex;
@@ -129,25 +131,23 @@ nav{
   font-family:"Montserrat", sans-serif;
   font-weight:600;
 
-  font-size:0.78rem;
-  letter-spacing:0.28em;
+  font-size:0.75rem;
+  letter-spacing:0.32em;
   text-transform:uppercase;
 
   background:transparent;
-  color:var(--gold);
+  color:rgba(245,197,24,0.9);
 
   border:1px solid rgba(245,197,24,0.6);
-  padding:10px 22px;
+  padding:10px 24px;
 
-  cursor:pointer;
   transition:all .25s ease;
 }
 
 .btn-sub:hover{
-  background:var(--gold);
+  background:rgba(245,197,24,1);
   color:#000;
   transform:translateY(-1px);
-  box-shadow:0 10px 30px rgba(245,197,24,0.15);
 }
 
 .hamburger{
@@ -205,18 +205,21 @@ nav{
   animation:fadeUp .9s ease both;
 }
 .hero-title{
-  font-family:'Barlow Condensed',sans-serif;font-weight:900;
-  font-size:clamp(5.5rem,13vw,11rem);letter-spacing:.04em;line-height:.9;
-  color:rgba(255,255,255,0.4);
-  text-shadow:0 4px 40px rgba(0,0,0,.45);
+  font-family:"Montserrat", sans-serif;
+  font-weight:700;
+
+  font-size:clamp(4.5rem,10vw,9rem);
+  letter-spacing:0.06em;
+  line-height:0.95;
 }
 .hero-subtitle{
-  font-family:'Barlow',sans-serif;font-weight:300;
-  font-size:clamp(1rem,2vw,1.5rem);letter-spacing:.15em;
-  color:rgba(255,255,255,.90);margin-top:12px;
-  text-shadow:0 2px 14px rgba(0,0,0,.55);
-}
+  font-family:"Montserrat", sans-serif;
+  font-weight:300;
 
+  font-size:1rem;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+}
 /* ═══ FOOTER ═══ */
 .hero-footer{
   position:absolute;bottom:0;left:0;right:0;z-index:6;
@@ -262,12 +265,20 @@ nav{
 }
 .sub-line{display:inline-block;width:40px;height:3px;background:var(--gold);margin-bottom:28px}
 .sub-card h1{
-  font-family:'Barlow Condensed',sans-serif;font-weight:900;
-  font-size:2.7rem;letter-spacing:.07em;line-height:1;margin-bottom:10px;
+  font-family:"Montserrat", sans-serif;
+  font-weight:700;
+
+  font-size:2.2rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
 }
 .sub-card p{
-  font-size:.93rem;font-weight:300;color:rgba(255,255,255,.58);
-  letter-spacing:.04em;margin-bottom:38px;line-height:1.65;
+  font-family:"Montserrat", sans-serif;
+  font-weight:300;
+
+  font-size:0.9rem;
+  letter-spacing:0.04em;
+  line-height:1.7;
 }
 .sub-form{display:flex;flex-direction:column;gap:14px}
 .sub-form input{
@@ -314,12 +325,11 @@ nav{
   nav{padding:14px 16px 14px 10px}
 
   .nav-logo{
-    font-family:'Reenie Beanie',cursive;
-    font-size:1.8rem;
-    font-weight:400;
-    white-space:nowrap;
-    letter-spacing:-0.08em;
-  }
+  font-family:"Montserrat", sans-serif;
+  font-weight:500;
+  font-size:1.2rem;
+  letter-spacing:0.08em;
+}
 
   .btn-sub{font-size:.92rem;padding:9px 16px}
   .hamburger span{width:24px}
@@ -346,8 +356,16 @@ nav{
   }
   .tag-group{width:100%;max-width:100%;justify-content:space-evenly;gap:0}
   .tag{align-items:center}
-  .tag .lbl{font-family:'Barlow',sans-serif;font-size:.85rem;}
-  .tag .val{font-family:'Barlow',sans-serif;font-size:.85rem;}
+ .tag .lbl{
+  font-size:0.7rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+}
+
+.tag .val{
+  font-size:0.8rem;
+  letter-spacing:0.06em;
+}
 }
 
 @media(max-width:380px){
