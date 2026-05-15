@@ -55,7 +55,25 @@ nav{
   display:flex;align-items:center;justify-content:space-between;
   padding:22px 28px 22px 36px;
 }
+.desktop-nav{
+  display:flex;gap:40px;align-items:center;
+}
+.desktop-nav a{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.1rem;font-weight:300;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:#fff;text-decoration:none;
+  transition:opacity .2s;
+}
+.desktop-nav a:hover{opacity:.6}
 
+@media(max-width:768px){
+  .desktop-nav{display:none}
+  .hamburger{display:flex}
+}
+@media(min-width:769px){
+  .hamburger{display:none}
+}
 .nav-logo{
   font-family:'Reenie Beanie',cursive;
   font-size:2.5rem;font-weight:400;
