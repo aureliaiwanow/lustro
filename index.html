@@ -31,15 +31,6 @@ body{font-family:'Barlow',sans-serif;background:#0a0a0f;color:#fff}
   display:none;
 }
 
-@media(max-width:768px){
-  .hero-bg-desktop{display:none}
-  .hero-bg-mobile{
-    display:block;
-    object-fit:cover;
-    object-position:center top;
-  }
-}
-
 .hero-overlay{
   position:absolute;inset:0;z-index:1;
   background:linear-gradient(to bottom,
@@ -50,31 +41,13 @@ body{font-family:'Barlow',sans-serif;background:#0a0a0f;color:#fff}
   );
 }
 
+/* ═══ NAV ═══ */
 nav{
   position:absolute;top:0;left:0;right:0;z-index:10;
   display:flex;align-items:center;justify-content:space-between;
   padding:22px 28px 22px 20px;
 }
-.desktop-nav a {
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:1.1rem;font-weight:300;
-  letter-spacing:0.15em;text-transform:uppercase;
-  color:#fff;text-decoration:none;
-  transition:opacity .2s;
-}
-  .desktop-nav{
-  display:flex;gap:8px !important;align-items:center;
-  position:absolute;left:50%;transform:translateX(-50%);
-}
-.desktop-nav a:hover{opacity:.6}
 
-@media(max-width:768px){
-  .desktop-nav{display:none}
-  .hamburger{display:flex}
-}
-@media(min-width:769px){
-  .hamburger{display:none !important}
-}
 .nav-logo{
   font-family:'Reenie Beanie',cursive;
   font-size:2.5rem;font-weight:400;
@@ -85,9 +58,27 @@ nav{
 }
 .nav-logo:hover{opacity:.78}
 
+/* Desktop menu – centered absolutely */
+.desktop-nav{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.desktop-nav a{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:1.1rem;font-weight:300;
+  letter-spacing:0.15em;text-transform:uppercase;
+  color:#fff;text-decoration:none;
+  padding:4px 10px;
+  transition:opacity .2s;
+}
+.desktop-nav a:hover{opacity:.6}
+
 .nav-right{
   display:flex;align-items:center;gap:14px;
-  margin-right:6px;
 }
 
 .btn-sub{
@@ -101,7 +92,8 @@ nav{
 .btn-sub:hover{filter:brightness(1.12);transform:scale(1.04)}
 
 .hamburger{
-  display:flex;flex-direction:column;gap:6px;
+  display:none;
+  flex-direction:column;gap:6px;
   cursor:pointer;padding:7px;z-index:20;
 }
 .hamburger span{
@@ -112,6 +104,7 @@ nav{
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
 
+/* ═══ DROPDOWN ═══ */
 .dropdown{
   position:absolute;top:74px;right:28px;
   background:rgba(10,10,15,.93);border:1px solid rgba(245,197,24,.3);
@@ -129,8 +122,6 @@ nav{
   border-bottom:1px solid rgba(255,255,255,.07);
   transition:color .2s,background .2s;
 }
-.dropdown a.home-link{color:#B3D6D0}
-.dropdown a.home-link:hover{color:var(--gold)}
 .dropdown a:hover{color:var(--gold);background:rgba(245,197,24,.07)}
 
 .dropdown-socials{
@@ -140,7 +131,6 @@ nav{
 .dropdown-socials a{
   display:flex;align-items:center;justify-content:center;
   width:28px;height:28px;
-  border:none;padding:0;
   background:none;
   text-decoration:none;
   transition:opacity .2s;
@@ -148,6 +138,7 @@ nav{
 .dropdown-socials a:hover{opacity:.7}
 .dropdown-socials svg{width:22px;height:22px;fill:#fff}
 
+/* ═══ TITLE ═══ */
 .hero-title-block{
   position:absolute;left:0;right:0;
   top:50%;transform:translateY(-54%);
@@ -157,7 +148,8 @@ nav{
 .hero-title{
   font-family:'Barlow Condensed',sans-serif;font-weight:900;
   font-size:clamp(5.5rem,13vw,11rem);letter-spacing:.04em;line-height:.9;
-  color:#fff;text-shadow:0 4px 40px rgba(0,0,0,.45);
+  color:rgba(255,255,255,0.4);
+  text-shadow:0 4px 40px rgba(0,0,0,.45);
 }
 .hero-subtitle{
   font-family:'Barlow',sans-serif;font-weight:300;
@@ -166,6 +158,7 @@ nav{
   text-shadow:0 2px 14px rgba(0,0,0,.55);
 }
 
+/* ═══ FOOTER ═══ */
 .hero-footer{
   position:absolute;bottom:0;left:0;right:0;z-index:6;
   background:rgba(10,10,15,.52);
@@ -176,14 +169,17 @@ nav{
 .tag-group{
   display:flex;align-items:center;
   justify-content:center;
-  gap:300px;
+  gap:120px;
   width:100%;
 }
 .tag{display:flex;flex-direction:column;align-items:center;line-height:1.3}
-.tag .lbl{font-size:.95rem;font-weight:400;letter-spacing:.08em;color:rgba(255,255,255,.68)}
-.tag .val{font-family:'Barlow',sans-serif;font-size:.95rem;font-weight:400;letter-spacing:.05em}
-.cyan{color:var(--cyan)}.gold{color:var(--gold)}.pink{color:#FF5566}
+.tag .lbl{font-size:.85rem;font-weight:300;letter-spacing:.08em;color:rgba(255,255,255,.68)}
+.tag .val{font-family:'Barlow',sans-serif;font-size:.85rem;font-weight:400;letter-spacing:.05em}
+.cyan{color:var(--cyan)}
+.gold{color:var(--gold)}
+.pink{color:#FF5566}
 
+/* ═══ SUBSCRIBE PAGE ═══ */
 #sub-page{display:none;position:fixed;inset:0;z-index:100;overflow-y:auto}
 .sub-bg{
   position:fixed;inset:0;
@@ -244,15 +240,28 @@ nav{
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 
+/* ═══ MOBILE ═══ */
 @media(max-width:768px){
+  .hero-bg-desktop{display:none}
+  .hero-bg-mobile{
+    display:block;
+    object-fit:cover;
+    object-position:center top;
+  }
+
+  .desktop-nav{display:none}
+  .hamburger{display:flex}
+
   nav{padding:14px 16px 14px 10px}
-.nav-logo{
-  font-family:'Reenie Beanie',cursive;
-  font-size:1.8rem;
-  font-weight:400;
-  white-space:nowrap;
-  letter-spacing:-0.08em;
-}
+
+  .nav-logo{
+    font-family:'Reenie Beanie',cursive;
+    font-size:1.8rem;
+    font-weight:400;
+    white-space:nowrap;
+    letter-spacing:-0.08em;
+  }
+
   .btn-sub{font-size:.92rem;padding:9px 16px}
   .hamburger span{width:24px}
   .dropdown{right:16px;top:60px}
@@ -262,7 +271,12 @@ nav{
     text-align:center;padding:0 18px;
     display:flex;flex-direction:column;align-items:center;
   }
-  .hero-title{font-size:clamp(3.4rem,17vw,5rem);text-align:center;text-shadow:0 3px 28px rgba(0,0,0,.65)}
+  .hero-title{
+    font-size:clamp(3.4rem,17vw,5rem);
+    text-align:center;
+    text-shadow:0 3px 28px rgba(0,0,0,.65);
+    color:#fff;
+  }
   .hero-subtitle{font-size:.95rem;text-align:center;letter-spacing:.09em;margin-top:6px}
 
   .hero-footer{
@@ -273,15 +287,8 @@ nav{
   }
   .tag-group{width:100%;max-width:100%;justify-content:space-evenly;gap:0}
   .tag{align-items:center}
-
-  .tag .lbl{
-  font-family:'Barlow',sans-serif;
-  font-size:.85rem;
-}
-.tag .val{
-  font-family:'Barlow',sans-serif;
-  font-size:.85rem;
-}
+  .tag .lbl{font-family:'Barlow',sans-serif;font-size:.85rem;}
+  .tag .val{font-family:'Barlow',sans-serif;font-size:.85rem;}
 }
 
 @media(max-width:380px){
@@ -299,14 +306,14 @@ nav{
 
   <nav>
     <a href="https://aureliaiwanow.pl" class="nav-logo">Aurelia Iwanow</a>
- <div class="desktop-nav">
-  <a href="#podcast">Podcast</a>
-  <a href="#omnie">O mnie</a>
-  <a href="#kontakt">Kontakt</a>
-</nav>
-<div class="nav-right">
-  <a class="btn-sub" href="#" onclick="showSub();return false">SUBSKRYBUJ</a>
-  <div class="hamburger" id="hbg" onclick="toggleMenu()">
+    <div class="desktop-nav">
+      <a href="#podcast">Podcast</a>
+      <a href="#omnie">O mnie</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+    <div class="nav-right">
+      <a class="btn-sub" href="#" onclick="showSub();return false">SUBSKRYBUJ</a>
+      <div class="hamburger" id="hbg" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </div>
     </div>
@@ -316,7 +323,6 @@ nav{
     <a href="#podcast" onclick="closeMenu()">Podcast</a>
     <a href="#omnie" onclick="closeMenu()">O mnie</a>
     <a href="#kontakt" onclick="closeMenu()">Kontakt</a>
-   
     <div class="dropdown-socials">
       <a href="https://open.spotify.com" target="_blank" id="spotify-link" title="Spotify">
         <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.559 17.32a.75.75 0 01-1.03.25c-2.82-1.724-6.368-2.114-10.545-1.158a.75.75 0 01-.335-1.462c4.573-1.046 8.49-.596 11.66 1.34a.75.75 0 01.25 1.03zm1.483-3.302a.937.937 0 01-1.288.308C14.95 12.5 11.07 11.9 7.47 12.943a.937.937 0 01-.518-1.8c4.064-1.168 8.39-.602 11.782 1.587a.937.937 0 01.308 1.288zm.128-3.44a1.124 1.124 0 01-1.543.378C14.52 8.87 9.74 8.718 5.906 9.905a1.125 1.125 0 01-.65-2.153c4.396-1.33 9.7-1.15 13.554 1.29a1.125 1.125 0 01.36 1.536z"/></svg>
@@ -393,6 +399,14 @@ function handleSub(e){
 
 /* Spotify – wklej swój link tutaj: */
 // document.getElementById('spotify-link').href = 'https://open.spotify.com/show/TWOJ_ID';
+
+document.querySelectorAll('.hero-bg').forEach(img=>{
+  if(img.complete){
+    img.classList.add('loaded');
+  } else {
+    img.addEventListener('load',()=>img.classList.add('loaded'));
+  }
+});
 </script>
 </body>
 </html>
