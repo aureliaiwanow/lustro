@@ -35,7 +35,7 @@ body{font-family:'Barlow',sans-serif;background:#0a0a0f;color:#fff}
 }
 
 .hero-overlay{
-  position:absolute;inset:0;z-index:1;
+  position:absolute;inset:0;z-index:2;
   background:linear-gradient(to bottom,
     rgba(10,10,15,.03) 0%,
     rgba(10,10,15,.00) 30%,
@@ -172,8 +172,9 @@ nav{
 .hero-title-block{
   position:absolute;left:0;right:0;
   top:40%;transform:translateY(-54%);
-  text-align:center;z-index:5;pointer-events:none;
+  text-align:center;z-index:3;pointer-events:none;
   animation:fadeUp .9s ease both;
+  isolation:auto;
 }
 .hero-title{
   font-family:'Antonio',sans-serif;
