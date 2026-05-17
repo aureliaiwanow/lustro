@@ -196,29 +196,22 @@ nav{
 }
 
 .hack{
-  background:linear-gradient(
-    90deg,
-
-    /* pełny biały */
+  background: linear-gradient(to right,
     rgba(255,255,255,1) 0%,
-    rgba(255,255,255,1) 14%,
+    rgba(255,255,255,1) 6%,
 
-    /* ostry skok */
-    rgba(255,255,255,0.18) 14%,
-    rgba(255,255,255,0.18) 86%,
+    rgba(255,255,255,0.35) 12%,
+    rgba(255,255,255,0.35) 70%,
 
-    /* ostry skok z powrotem */
-    rgba(255,255,255,1) 86%,
+    rgba(255,255,255,1) 94%,
     rgba(255,255,255,1) 100%
   );
 
   -webkit-background-clip:text;
-  background-clip:text;
-
-  color:transparent;
   -webkit-text-fill-color:transparent;
 
-  display:inline-block;
+  -webkit-font-smoothing: antialiased;
+  transform: translateZ(0);
 }
 .hero-subtitle{
   font-family:'Proxon', sans-serif;
