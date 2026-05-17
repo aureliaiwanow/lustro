@@ -191,12 +191,20 @@ nav{
 .hack{
   background: linear-gradient(to right,
     rgba(255,255,255,1) 0%,
-    rgba(255,255,255,0.45) 50%,
+    rgba(255,255,255,1) 10%,
+
+    rgba(255,255,255,0.35) 22%,
+    rgba(255,255,255,0.35) 78%,
+
+    rgba(255,255,255,1) 90%,
     rgba(255,255,255,1) 100%
   );
 
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
+
+  -webkit-font-smoothing: antialiased;
+  transform: translateZ(0);
 }
 .hero-subtitle{
   font-family:'Rajdhani',sans-serif;
