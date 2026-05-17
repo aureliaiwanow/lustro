@@ -201,18 +201,19 @@ nav{
     rgba(255,255,255,1) 6%,
 
     rgba(255,255,255,0.35) 12%,
-    rgba(255,255,255,0.35) 70%,
+    rgba(255,255,255,0.35) 68%,
 
-    /* dłuższa strefa przezroczystości na K */
-    rgba(255,255,255,0.18) 80%,
+    /* płynniejsze wejście w “K fade” */
+    rgba(255,255,255,0.28) 76%,
+    rgba(255,255,255,0.22) 84%,
     rgba(255,255,255,0.18) 92%,
 
-    /* dopiero ostatnie ~8% wraca do bieli */
-    rgba(255,255,255,1) 96%,
+    /* miękki powrót do full white */
     rgba(255,255,255,1) 100%
   );
 
   -webkit-background-clip:text;
+  background-clip:text;
   -webkit-text-fill-color:transparent;
 
   -webkit-font-smoothing: antialiased;
