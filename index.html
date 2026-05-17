@@ -184,13 +184,35 @@ nav{
 .hero-title{
   font-family:'Antonio',sans-serif;
   font-weight:700;
+
   font-size:clamp(5rem,22vw,18rem);
+
   letter-spacing:-0.055em;
   line-height:0.85;
-  color:#fff;
-  mix-blend-mode:screen;
+
   text-transform:uppercase;
+
+  mix-blend-mode:screen;
+
+  background:linear-gradient(
+    90deg,
+    rgba(255,255,255,1) 0%,
+    rgba(255,255,255,1) 36%,
+
+    rgba(255,255,255,0.22) 50%,
+
+    rgba(255,255,255,1) 64%,
+    rgba(255,255,255,1) 100%
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  opacity:0.92;
+
   text-shadow:none;
+
+  filter:drop-shadow(0 0 14px rgba(255,255,255,0.05));
 }
 .hero-subtitle{
   font-family:'Rajdhani',sans-serif;
