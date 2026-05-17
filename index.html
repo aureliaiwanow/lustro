@@ -309,17 +309,42 @@ nav{
   .hamburger span{width:24px}
   .dropdown{right:16px;top:60px}
 
-  .hero-title-block{
-    top:auto;bottom:155px;transform:none;
-    text-align:center;padding:0 18px;
-    display:flex;flex-direction:column;align-items:center;
-  }
-  .hero-title{
-    font-size:clamp(3.4rem,17vw,5rem);
-    text-align:center;
-    text-shadow:0 3px 28px rgba(0,0,0,.65);
-    color:#fff;
-  }
+.hero-title-block{
+  top:auto;
+  bottom:155px;
+  transform:none;
+
+  text-align:center;
+  padding:0 18px;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.hero-title{
+  font-size:clamp(3.4rem,17vw,5rem);
+  text-align:center;
+  text-shadow:0 3px 28px rgba(0,0,0,.65);
+  color:#fff;
+}
+
+.hero-title .bio,
+.hero-title .ing{
+  opacity:0.6;
+}
+
+.hero-title .hack{
+  background:linear-gradient(
+    to right,
+    rgba(255,255,255,1) 0%,
+    rgba(255,255,255,1) 25%,
+    rgba(255,255,255,0.45) 100%
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
   .hero-subtitle{font-size:.95rem;text-align:center;letter-spacing:.09em;margin-top:6px}
 
   .hero-footer{
@@ -382,8 +407,8 @@ nav{
   </div>
 
   <div class="hero-title-block">
-    <div class="hero-title">
-  <span class="solid">BIO</span><span class="fade">HACK</span><span class="solid">ING</span>
+   <div class="hero-title">
+  <span class="bio">BIO</span><span class="hack">HACK</span><span class="ing">ING</span>
 </div>
     <div class="hero-subtitle">Optymalizacja Ciała i Umysłu</div>
   </div>
