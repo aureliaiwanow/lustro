@@ -97,14 +97,18 @@ nav{
 }
 
 .btn-sub{
-  background:var(--gold);color:#000;
-  font-family:'Barlow Condensed',sans-serif;font-weight:700;
-  font-size:1.05rem;letter-spacing:.18em;
-  padding:9px 50px;
-  border:none;cursor:pointer;text-decoration:none;display:inline-block;
-  transition:filter .2s,transform .15s;
+  background:var(--gold);
+  color:#000;
+  border:1px solid var(--gold);
+  transition:all .25s ease;
 }
-.btn-sub:hover{filter:brightness(1.12);transform:scale(1.04)}
+
+.btn-sub:hover{
+  background:transparent;
+  color:var(--gold);
+  border:1px solid var(--gold);
+  transform:scale(1.04);
+}
 
 .hamburger{
   display:none;
