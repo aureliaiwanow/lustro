@@ -87,22 +87,6 @@ nav{
   position:relative;
   transition:color 0.25s ease, opacity 0.25s ease;
 }
-.desktop-nav a::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-6px;
-  width:100%;
-  height:1px;
-  background:rgba(245,197,24,0.85);
-
-  transform:scaleX(0);
-  transform-origin:left;
-  transition:transform .25s ease;
-}
-  .desktop-nav a:hover::after{
-  transform:scaleX(1);
-}
 
 .desktop-nav a:hover{
   color:var(--gold);
