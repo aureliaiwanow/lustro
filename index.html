@@ -103,8 +103,14 @@ nav{
   padding:9px 50px;
   border:none;cursor:pointer;text-decoration:none;display:inline-block;
   transition:filter .2s,transform .15s;
+  border:2px solid transparent;
 }
-.btn-sub:hover{filter:brightness(1.12);transform:scale(1.04)}
+.btn-sub:hover{
+  background:transparent;
+  border:2px solid var(--gold);
+  color:var(--gold);
+  transform:scale(1.04);
+}
 
 .hamburger{
   display:none;
