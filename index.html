@@ -137,6 +137,14 @@ nav{
   transform:scaleY(0);opacity:0;pointer-events:none;
   transition:transform .25s ease,opacity .2s ease;z-index:30;
 }
+.arrow{
+  color:#fff;
+  font-size:0.7em;
+  transition:none;
+}
+.desktop-nav a:hover .arrow{
+  color:#fff !important;
+}
 .dropdown.open{transform:scaleY(1);opacity:1;pointer-events:all}
 
 .dropdown a{
@@ -393,10 +401,10 @@ nav{
   <nav>
     <a href="https://aureliaiwanow.pl" class="nav-logo">Aurelia Iwanow</a>
     <div class="desktop-nav">
-      <a href="#omnie">O mnie</a>
-      <a href="#podcast">Podcast</a>
-      <a href="#omnie">Obserwuj</a>
-      <a href="#kontakt">Kontakt</a>
+     <a href="#omnie">O mnie <span class="arrow">▾</span></a>
+<a href="#podcast">Podcast <span class="arrow">▾</span></a>
+<a href="#omnie">Obserwuj <span class="arrow">▾</span></a>
+<a href="#kontakt">Kontakt <span class="arrow">▾</span></a>
     </div>
     <div class="nav-right">
       <a class="btn-sub" href="#" onclick="showSub();return false">SUBSKRYBUJ</a>
