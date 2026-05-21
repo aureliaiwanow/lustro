@@ -129,7 +129,7 @@ nav{
   border:none !important;
   border-bottom:none !important;
   background:none !important;
-  transition:opacity .2s;
+  transition:fill 0.2s ease;
 }
 .obserwuj-dropdown{
   position:absolute;
@@ -171,10 +171,17 @@ nav{
   color:#fff !important;
 }
 
-.obserwuj-dropdown a:hover svg{
-  fill:var(--gold);
+.obserwuj-dropdown svg{
+  width:22px;
+  height:22px;
+  fill:#fff;
   transition:fill 0.2s ease;
 }
+
+  .obserwuj-dropdown a:hover svg{
+  fill:var(--gold);
+}
+  
 .nav-right{
   display:flex;align-items:center;gap:14px;
   margin-right:40px;
