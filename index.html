@@ -131,26 +131,24 @@ nav{
   background:none !important;
   transition:opacity .2s;
 }
-  .obserwuj-dropdown{
-  display:block;
+ .obserwuj-dropdown{
   position:absolute;
   top:calc(100% + 10px);
-  left:0;
-  background:rgba(0,0,0,0.65);
+  left:1cm;
+  background:rgba(0,0,0,0.45);
   padding:10px 14px;
-  gap:12px;
+  display:flex;
   flex-direction:row;
   align-items:center;
+  gap:12px;
   z-index:50;
   white-space:nowrap;
-  width:80%;
   opacity:0;
   pointer-events:none;
   transition:opacity 0.3s ease 0.3s;
 }
 
 .has-dropdown:hover .obserwuj-dropdown{
-  display:flex;
   opacity:1;
   pointer-events:all;
   transition:opacity 0.3s ease 0.3s;
@@ -164,7 +162,7 @@ nav{
 .has-dropdown:not(:hover) .obserwuj-dropdown{
   opacity:0;
   pointer-events:none;
-  transition:opacity 0.7s ease 0.7s;
+  transition:opacity 0.5s ease 0.4s;
 }
 
 .obserwuj-dropdown a:hover{
