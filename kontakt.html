@@ -414,23 +414,23 @@ textarea.form-input{
   <p class="form-intro">Wypełnij formularz poniżej, a odezwę się do Ciebie jak najszybciej.</p>
 
 <form id="contactForm" action="https://formspree.io/f/xdajwdla" method="POST">
-    <input type="hidden" id="inquiryType" value="Pytanie ogólne"/>
+    <input type="hidden" name="typ_zapytania" id="inquiryType" value="Pytanie ogólne"/>
 
     <div class="form-grid">
       <div class="form-field">
-        <input type="text" class="form-input" placeholder="Imię" required autocomplete="given-name"/>
+        <input type="text" name="imie" class="form-input" placeholder="Imię" required autocomplete="given-name"/>
       </div>
       <div class="form-field">
-        <input type="text" class="form-input" placeholder="Nazwisko" autocomplete="family-name"/>
+        <input type="text" name="nazwisko" class="form-input" placeholder="Nazwisko" autocomplete="family-name"/>
       </div>
       <div class="form-field">
-        <input type="email" class="form-input" placeholder="Adres e-mail" required autocomplete="email"/>
+        <input type="email" name="email" class="form-input" placeholder="Adres e-mail" required autocomplete="email"/>
       </div>
       <div class="form-field">
-        <input type="text" class="form-input" placeholder="Temat"/>
+        <input type="text" name="temat" class="form-input" placeholder="Temat"/>
       </div>
       <div class="form-field full">
-        <textarea class="form-input" placeholder="Twoja wiadomość..." required></textarea>
+        <textarea name="wiadomosc" class="form-input" placeholder="Twoja wiadomość..." required></textarea>
       </div>
     </div>
 
@@ -438,7 +438,6 @@ textarea.form-input{
       <button type="submit" class="btn-send">WYŚLIJ WIADOMOŚĆ</button>
     </div>
   </form>
-
   <div class="success-msg" id="successMsg">
     <div class="success-icon">✅</div>
     <p class="success-title">WIADOMOŚĆ WYSŁANA!</p>
