@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Podcast – Aurelia Iwanow</title>
+<link rel="icon" type="image/png" href="favicon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Reenie+Beanie&family=Barlow+Condensed:wght@300;400;700;900&family=Barlow:wght@300;400;500&family=Montserrat:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;min-height:100%;overflow-x:hidden}
+body{font-family:'Montserrat',sans-serif;background:#0a0a0f;color:#fff}
+:root{
+  --gold:#fdb92a;
+  --gold-transparent:rgba(253,185,42,0.15);
+  --cyan:#33e4e0;
+  --dark:#0a0a0f;
+  --card-bg:rgba(255,255,255,0.04);
+}
+
+/* ═══ HERO HEADER ═══ */
+.podcast-hero{
+  position:relative;
+  width:100%;
+  height:340px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.podcast-hero-bg{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to bottom, rgba(10,10,15,0.6) 0%, rgba(10,10,15,0.85) 100%),
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(253,185,42,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(51,228,224,0.06) 0%, transparent 60%);
+  background-color:#0a0a0f;
+}
+
+.podcast-eyebrow{
+  font-family:'Montserrat',sans-serif;
+  font-weight:400;
+  font-size:12px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.5);
+  margin-bottom:12px;
+  animation:fadeUp 0.6s ease both;
+}
+
+.podcast-title{
+  font-family:'Antonio',sans-serif;
+  font-weight:700;
+  font-size:clamp(4rem,10vw,8rem);
+  letter-spacing:-0.04em;
+  line-height:0.9;
+  color:#fff;
+  text-transform:uppercase;
+  animation:fadeUp 0.6s 0.1s ease both;
+}
+
+.podcast-subtitle{
+  font-family:'Montserrat',sans-serif;
+  font-weight:300;
+  font-size:0.85rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.45);
+  margin-top:16px;
+  animation:fadeUp 0.6s 0.2s ease both;
+}
+
+/* ═══ NAV ═══ */
+nav{
+  position:absolute;
+  top:0;left:0;right:0;
+  z-index:10;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:22px 40px;
+}
+
+.nav-logo{
+  font-family:'Reenie Beanie',cursive;
+  font-size:2.2rem;font-weight:400;
+  color:#fff;text-decoration:none;
+  text-shadow:0 2px 16px rgba(0,0,0,.75);
+  letter-spacing:0.02em;
+  transition:color .2s;
+}
+.nav-logo:hover{color:var(--gold)}
+
+.nav-right{
+  display:flex;align-items:center;gap:14px;
+}
+
+.btn-sub{
+  background:var(--gold);color:#000;
+  font-family:'Montserrat',sans-serif;font-weight:700;
+  font-size:0.85rem;letter-spacing:.15em;
+  padding:9px 28px;
+  border:2px solid transparent;
+  cursor:pointer;text-decoration:none;display:inline-block;
+  text-transform:uppercase;
+  transition:background 0.4s ease, border-color 0.4s ease, color 0.4s ease;
+}
+.btn-sub:hover{
+  background:transparent;
+  border-color:var(--gold);
+  color:var(--gold);
+}
+
+.btn-back{
+  font-family:'Montserrat',sans-serif;
+  font-weight:400;
+  font-size:0.75rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.6);
+  text-decoration:none;
+  transition:color .2s;
+}
+.btn-back:hover{color:#fff}
+
+/* ═══ MAIN CONTENT ═══ */
+.podcast-main{
+  max-width:1100px;
+  margin:0 auto;
+  padding:60px 24px 100px;
+}
+
+/* ═══ FILTER BAR ═══ */
+.filter-bar{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:48px;
+  flex-wrap:wrap;
+}
+
+.filter-label{
+  font-size:0.7rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.4);
+  margin-right:8px;
+}
+
+.filter-btn{
+  font-family:'Montserrat',sans-serif;
+  font-size:0.72rem;
+  font-weight:500;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.55);
+  background:none;
+  border:1px solid rgba(255,255,255,0.12);
+  padding:7px 16px;
+  cursor:pointer;
+  transition:all .2s;
+}
+.filter-btn:hover,.filter-btn.active{
+  border-color:var(--gold);
+  color:var(--gold);
+}
+
+/* ═══ EPISODE GRID ═══ */
+.episodes-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+}
+
+@media(max-width:900px){.episodes-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.episodes-grid{grid-template-columns:1fr}}
+
+/* ═══ EPISODE CARD ═══ */
+.episode-card{
+  background:var(--card-bg);
+  border:1px solid rgba(255,255,255,0.07);
+  overflow:hidden;
+  transition:border-color .3s, transform .3s;
+  cursor:pointer;
+  position:relative;
+}
+.episode-card:hover{
+  border-color:rgba(253,185,42,0.4);
+  transform:translateY(-4px);
+}
+
+.episode-thumb{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/9;
+  background:#111;
+  overflow:hidden;
+}
+
+.episode-thumb img{
+  width:100%;height:100%;
+  object-fit:cover;
+  filter:grayscale(30%);
+  transition:filter .3s, transform .3s;
+}
+.episode-card:hover .episode-thumb img{
+  filter:grayscale(0%);
+  transform:scale(1.03);
+}
+
+.episode-thumb-placeholder{
+  width:100%;height:100%;
+  background:linear-gradient(135deg,#111 0%,#1a1a2e 100%);
+  display:flex;align-items:center;justify-content:center;
+}
+
+.episode-num-big{
+  font-family:'Antonio',sans-serif;
+  font-size:5rem;
+  font-weight:700;
+  color:rgba(255,255,255,0.06);
+  letter-spacing:-0.05em;
+}
+
+.episode-play-btn{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:48px;height:48px;
+  border-radius:50%;
+  background:rgba(253,185,42,0.9);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;
+  transition:opacity .3s;
+}
+.episode-card:hover .episode-play-btn{opacity:1}
+.episode-play-btn svg{width:18px;height:18px;fill:#000;margin-left:3px}
+
+.episode-badge{
+  position:absolute;
+  top:12px;left:12px;
+  background:var(--gold);
+  color:#000;
+  font-family:'Montserrat',sans-serif;
+  font-size:0.6rem;
+  font-weight:700;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  padding:3px 8px;
+}
+
+.episode-body{
+  padding:20px;
+}
+
+.episode-meta{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.episode-ep{
+  font-size:0.65rem;
+  font-weight:600;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+
+.episode-date{
+  font-size:0.65rem;
+  letter-spacing:1px;
+  color:rgba(255,255,255,0.3);
+}
+
+.episode-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;
+  font-size:1.15rem;
+  letter-spacing:0.02em;
+  line-height:1.3;
+  color:#fff;
+  margin-bottom:10px;
+}
+
+.episode-desc{
+  font-size:0.75rem;
+  font-weight:300;
+  color:rgba(255,255,255,0.45);
+  line-height:1.6;
+  margin-bottom:16px;
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+.episode-links{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.episode-link{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:0.65rem;
+  font-weight:600;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  text-decoration:none;
+  padding:6px 12px;
+  border:1px solid rgba(255,255,255,0.12);
+  color:rgba(255,255,255,0.6);
+  transition:all .2s;
+}
+.episode-link:hover{
+  border-color:var(--gold);
+  color:var(--gold);
+}
+.episode-link svg{width:12px;height:12px;fill:currentColor}
+
+/* ═══ FEATURED EPISODE (first/latest) ═══ */
+.episode-card.featured{
+  grid-column:1/-1;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+}
+@media(max-width:700px){
+  .episode-card.featured{grid-template-columns:1fr}
+}
+.episode-card.featured .episode-thumb{
+  aspect-ratio:auto;
+  height:100%;
+  min-height:260px;
+}
+.episode-card.featured .episode-title{
+  font-size:1.6rem;
+}
+.episode-card.featured .episode-desc{
+  -webkit-line-clamp:5;
+}
+
+/* ═══ LOAD MORE ═══ */
+.load-more-wrap{
+  text-align:center;
+  margin-top:56px;
+}
+
+.btn-load{
+  font-family:'Montserrat',sans-serif;
+  font-weight:500;
+  font-size:0.75rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.6);
+  background:none;
+  border:1px solid rgba(255,255,255,0.2);
+  padding:14px 40px;
+  cursor:pointer;
+  transition:all .25s;
+}
+.btn-load:hover{
+  border-color:var(--gold);
+  color:var(--gold);
+}
+
+/* ═══ PLATFORM STRIP ═══ */
+.platform-strip{
+  background:rgba(255,255,255,0.03);
+  border-top:1px solid rgba(255,255,255,0.06);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  padding:32px 24px;
+  text-align:center;
+  margin-bottom:56px;
+}
+
+.platform-strip p{
+  font-size:0.7rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.35);
+  margin-bottom:20px;
+}
+
+.platform-btns{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.platform-btn{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-family:'Montserrat',sans-serif;
+  font-size:0.75rem;
+  font-weight:600;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  text-decoration:none;
+  background:var(--gold);
+  color:#000;
+  padding:10px 22px;
+  transition:filter .2s, transform .15s;
+}
+.platform-btn:hover{filter:brightness(1.1);transform:scale(1.03)}
+.platform-btn svg{width:16px;height:16px;fill:#000}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<div class="podcast-hero">
+  <div class="podcast-hero-bg"></div>
+  <nav>
+    <a href="index.html" class="nav-logo">Aurelia Iwanow</a>
+    <div class="nav-right">
+      <a href="index.html" class="btn-back">← Strona główna</a>
+      <a href="#" class="btn-sub" onclick="return false">SUBSKRYBUJ</a>
+    </div>
+  </nav>
+  <p class="podcast-eyebrow">Aurelia Iwanow</p>
+  <h1 class="podcast-title">PODCAST</h1>
+  <p class="podcast-subtitle">Optymalizacja Ciała i Umysłu</p>
+</div>
+
+<!-- ═══ PLATFORM STRIP ═══ -->
+<div class="platform-strip">
+  <p>Słuchaj na</p>
+  <div class="platform-btns">
+    <a href="https://open.spotify.com" target="_blank" class="platform-btn">
+      <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.559 17.32a.75.75 0 01-1.03.25c-2.82-1.724-6.368-2.114-10.545-1.158a.75.75 0 01-.335-1.462c4.573-1.046 8.49-.596 11.66 1.34a.75.75 0 01.25 1.03zm1.483-3.302a.937.937 0 01-1.288.308C14.95 12.5 11.07 11.9 7.47 12.943a.937.937 0 01-.518-1.8c4.064-1.168 8.39-.602 11.782 1.587a.937.937 0 01.308 1.288zm.128-3.44a1.124 1.124 0 01-1.543.378C14.52 8.87 9.74 8.718 5.906 9.905a1.125 1.125 0 01-.65-2.153c4.396-1.33 9.7-1.15 13.554 1.29a1.125 1.125 0 01.36 1.536z"/></svg>
+      Spotify
+    </a>
+    <a href="https://youtube.com/@aureliaiwanowpodcast?si=F8OPBfGyuJC3FWCP" target="_blank" class="platform-btn">
+      <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      YouTube
+    </a>
+    <a href="https://tiktok.com/@aureliaiwanow" target="_blank" class="platform-btn">
+      <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg>
+      TikTok
+    </a>
+  </div>
+</div>
+
+<!-- ═══ EPISODES ═══ -->
+<div class="podcast-main">
+
+  <!-- Filter -->
+  <div class="filter-bar">
+    <span class="filter-label">Filtruj:</span>
+    <button class="filter-btn active">Wszystkie</button>
+    <button class="filter-btn">Odżywianie</button>
+    <button class="filter-btn">Sen</button>
+    <button class="filter-btn">Mózg</button>
+    <button class="filter-btn">Świadomość</button>
+    <button class="filter-btn">Długowieczność</button>
+  </div>
+
+  <div class="episodes-grid">
+
+    <!-- FEATURED – Najnowszy odcinek -->
+    <div class="episode-card featured">
+      <div class="episode-thumb">
+        <div class="episode-thumb-placeholder">
+          <span class="episode-num-big">01</span>
+        </div>
+        <div class="episode-badge">Najnowszy</div>
+        <div class="episode-play-btn">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+      <div class="episode-body">
+        <div class="episode-meta">
+          <span class="episode-ep">EP 001</span>
+          <span class="episode-date">Maj 2026</span>
+        </div>
+        <h2 class="episode-title">Tytuł Twojego pierwszego odcinka podcastu</h2>
+        <p class="episode-desc">Opis odcinka – o czym rozmawiamy, co słuchacz wyniesie z tego odcinka, jaki gość pojawi się w podcaście lub jaki temat zostanie poruszony. Możesz tu wpisać kilka zdań zachęcających do słuchania.</p>
+        <div class="episode-links">
+          <a href="https://open.spotify.com" target="_blank" class="episode-link">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.559 17.32a.75.75 0 01-1.03.25c-2.82-1.724-6.368-2.114-10.545-1.158a.75.75 0 01-.335-1.462c4.573-1.046 8.49-.596 11.66 1.34a.75.75 0 01.25 1.03zm1.483-3.302a.937.937 0 01-1.288.308C14.95 12.5 11.07 11.9 7.47 12.943a.937.937 0 01-.518-1.8c4.064-1.168 8.39-.602 11.782 1.587a.937.937 0 01.308 1.288zm.128-3.44a1.124 1.124 0 01-1.543.378C14.52 8.87 9.74 8.718 5.906 9.905a1.125 1.125 0 01-.65-2.153c4.396-1.33 9.7-1.15 13.554 1.29a1.125 1.125 0 01.36 1.536z"/></svg>
+            Spotify
+          </a>
+          <a href="https://youtube.com/@aureliaiwanowpodcast" target="_blank" class="episode-link">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            YouTube
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Odcinek 2 -->
+    <div class="episode-card">
+      <div class="episode-thumb">
+        <div class="episode-thumb-placeholder">
+          <span class="episode-num-big">02</span>
+        </div>
+        <div class="episode-play-btn">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+      <div class="episode-body">
+        <div class="episode-meta">
+          <span class="episode-ep">EP 002</span>
+          <span class="episode-date">Kwiecień 2026</span>
+        </div>
+        <h2 class="episode-title">Tytuł drugiego odcinka podcastu</h2>
+        <p class="episode-desc">Krótki opis odcinka – zachęć słuchaczy do odsłuchania. Możesz wspomnieć o gościu lub kluczowym temacie.</p>
+        <div class="episode-links">
+          <a href="https://open.spotify.com" target="_blank" class="episode-link">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.559 17.32a.75.75 0 01-1.03.25c-2.82-1.724-6.368-2.114-10.545-1.158a.75.75 0 01-.335-1.462c4.573-1.046 8.49-.596 11.66 1.34a.75.75 0 01.25 1.03zm1.483-3.302a.937.937 0 01-1.288.308C14.95 12.5 11.07 11.9 7.47 12.943a.937.937 0 01-.518-1.8c4.064-1.168 8.39-.602 11.782 1.587a.937.937 0 01.308 1.288zm.128-3.44a1.124 1.124 0 01-1.543.378C14.52 8.87 9.74 8.718 5.906 9.905a1.125 1.125 0 01-.65-2.153c4.396-1.33 9.7-1.15 13.554 1.29a1.125 1.125 0 01.36 1.536z"/></svg>
+            Spotify
+          </a>
+          <a href="https://youtube.com/@aureliaiwanowpodcast" target="_blank" class="episode-link">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            YouTube
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Odcinek 3 -->
+    <div class="episode-card">
+      <div class="episode-thumb">
+        <div class="episode-thumb-placeholder">
+          <span class="episode-num-big">03</span>
+        </div>
+        <div class="episode-play-btn">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+      <div class="episode-body">
+        <div class="episode-meta">
+          <span class="episode-ep">EP 003</span>
+          <span class="episode-date">Marzec 2026</span>
+        </div>
+        <h2 class="episode-title">Tytuł trzeciego odcinka podcastu</h2>
+        <p class="episode-desc">Krótki opis odcinka – zachęć słuchaczy do odsłuchania. Możesz wspomnieć o gościu lub kluczowym temacie.</p>
+        <div class="episode-links">
+          <a href="https://open.spotify.com" target="_blank" class="episode-link">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.559 17.32a.75.75 0 01-1.03.25c-2.82-1.724-6.368-2.114-10.545-1.158a.75.75 0 01-.335-1.462c4.573-1.046 8.49-.596 11.66 1.34a.75.75 0 01.25 1.03zm1.483-3.302a.937.937 0 01-1.288.308C14.95 12.5 11.07 11.9 7.47 12.943a.937.937 0 01-.518-1.8c4.064-1.168 8.39-.602 11.782 1.587a.937.937 0 01.308 1.288zm.128-3.44a1.124 1.124 0 01-1.543.378C14.52 8.87 9.74 8.718 5.906 9.905a1.125 1.125 0 01-.65-2.153c4.396-1.33 9.7-1.15 13.554 1.29a1.125 1.125 0 01.36 1.536z"/></svg>
+            Spotify
+          </a>
+          <a href="https://youtube.com/@aureliaiwanowpodcast" target="_blank" class="episode-link">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            YouTube
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Odcinek 4 -->
+    <div class="episode-card">
+      <div class="episode-thumb">
+        <div class="episode-thumb-placeholder">
+          <span class="episode-num-big">04</span>
+        </div>
+        <div class="episode-play-btn">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+      <div class="episode-body">
+        <div class="episode-meta">
+          <span class="episode-ep">EP 004</span>
+          <span class="episode-date">Luty 2026</span>
+        </div>
+        <h2 class="episode-title">Tytuł czwartego odcinka podcastu</h2>
+        <p class="episode-desc">Krótki opis odcinka – zachęć słuchaczy do odsłuchania. Możesz wspomnieć o gościu lub kluczowym temacie.</p>
+        <div class="episode-links">
+          <a href="https://open.spotify.com" target="_blank" class="episode-link">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.559 17.32a.75.75 0 01-1.03.25c-2.82-1.724-6.368-2.114-10.545-1.158a.75.75 0 01-.335-1.462c4.573-1.046 8.49-.596 11.66 1.34a.75.75 0 01.25 1.03zm1.483-3.302a.937.937 0 01-1.288.308C14.95 12.5 11.07 11.9 7.47 12.943a.937.937 0 01-.518-1.8c4.064-1.168 8.39-.602 11.782 1.587a.937.937 0 01.308 1.288zm.128-3.44a1.124 1.124 0 01-1.543.378C14.52 8.87 9.74 8.718 5.906 9.905a1.125 1.125 0 01-.65-2.153c4.396-1.33 9.7-1.15 13.554 1.29a1.125 1.125 0 01.36 1.536z"/></svg>
+            Spotify
+          </a>
+          <a href="https://youtube.com/@aureliaiwanowpodcast" target="_blank" class="episode-link">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            YouTube
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Odcinek 5 -->
+    <div class="episode-card">
+      <div class="episode-thumb">
+        <div class="episode-thumb-placeholder">
+          <span class="episode-num-big">05</span>
+        </div>
+        <div class="episode-play-btn">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+      <div class="episode-body">
+        <div class="episode-meta">
+          <span class="episode-ep">EP 005</span>
+          <span class="episode-date">Styczeń 2026</span>
+        </div>
+        <h2 class="episode-title">Tytuł piątego odcinka podcastu</h2>
+        <p class="episode-desc">Krótki opis odcinka – zachęć słuchaczy do odsłuchania. Możesz wspomnieć o gościu lub kluczowym temacie.</p>
+        <div class="episode-links">
+          <a href="https://open.spotify.com" target="_blank" class="episode-link">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.559 17.32a.75.75 0 01-1.03.25c-2.82-1.724-6.368-2.114-10.545-1.158a.75.75 0 01-.335-1.462c4.573-1.046 8.49-.596 11.66 1.34a.75.75 0 01.25 1.03zm1.483-3.302a.937.937 0 01-1.288.308C14.95 12.5 11.07 11.9 7.47 12.943a.937.937 0 01-.518-1.8c4.064-1.168 8.39-.602 11.782 1.587a.937.937 0 01.308 1.288zm.128-3.44a1.124 1.124 0 01-1.543.378C14.52 8.87 9.74 8.718 5.906 9.905a1.125 1.125 0 01-.65-2.153c4.396-1.33 9.7-1.15 13.554 1.29a1.125 1.125 0 01.36 1.536z"/></svg>
+            Spotify
+          </a>
+          <a href="https://youtube.com/@aureliaiwanowpodcast" target="_blank" class="episode-link">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            YouTube
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Odcinek 6 -->
+    <div class="episode-card">
+      <div class="episode-thumb">
+        <div class="episode-thumb-placeholder">
+          <span class="episode-num-big">06</span>
+        </div>
+        <div class="episode-play-btn">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+      </div>
+      <div class="episode-body">
+        <div class="episode-meta">
+          <span class="episode-ep">EP 006</span>
+          <span class="episode-date">Grudzień 2025</span>
+        </div>
+        <h2 class="episode-title">Tytuł szóstego odcinka podcastu</h2>
+        <p class="episode-desc">Krótki opis odcinka – zachęć słuchaczy do odsłuchania. Możesz wspomnieć o gościu lub kluczowym temacie.</p>
+        <div class="episode-links">
+          <a href="https://open.spotify.com" target="_blank" class="episode-link">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.559 17.32a.75.75 0 01-1.03.25c-2.82-1.724-6.368-2.114-10.545-1.158a.75.75 0 01-.335-1.462c4.573-1.046 8.49-.596 11.66 1.34a.75.75 0 01.25 1.03zm1.483-3.302a.937.937 0 01-1.288.308C14.95 12.5 11.07 11.9 7.47 12.943a.937.937 0 01-.518-1.8c4.064-1.168 8.39-.602 11.782 1.587a.937.937 0 01.308 1.288zm.128-3.44a1.124 1.124 0 01-1.543.378C14.52 8.87 9.74 8.718 5.906 9.905a1.125 1.125 0 01-.65-2.153c4.396-1.33 9.7-1.15 13.554 1.29a1.125 1.125 0 01.36 1.536z"/></svg>
+            Spotify
+          </a>
+          <a href="https://youtube.com/@aureliaiwanowpodcast" target="_blank" class="episode-link">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            YouTube
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Load More -->
+  <div class="load-more-wrap">
+    <button class="btn-load">Załaduj więcej odcinków</button>
+  </div>
+
+</div>
+
+<script>
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
