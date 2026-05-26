@@ -378,44 +378,12 @@ textarea.form-input{
   </div>
 </nav>
 
-<!-- HERO -->
-<div class="contact-hero">
-  <div class="hero-photo">
-    <div class="hero-photo-placeholder">
-      <!-- Wstaw swoje zdjecie: <img src="aurelia-kontakt.jpg" alt="Aurelia Iwanow"/> -->
-    </div>
-    <div class="hero-photo-overlay"></div>
-  </div>
-  <div class="hero-text">
-    <p class="hero-connect">Napisz do</p>
-    <h1 class="hero-name">AURELII</h1>
-    <p class="hero-desc">Jeśli masz pytania, czekam na wiadomość od Ciebie! Odpowiem w ciągu 48 godzin w dni robocze.</p>
-  </div>
-</div>
-
-<!-- INQUIRY BUTTONS -->
-<div class="inquiry-section">
-  <button class="inquiry-btn active" onclick="selectInquiry(this, 'Pytanie ogólne')">
-    Pytanie ogólne
-  </button>
-  <button class="inquiry-btn" onclick="selectInquiry(this, 'Współpraca')">
-    Współpraca
-  </button>
-  <button class="inquiry-btn" onclick="selectInquiry(this, 'Media')">
-    Zapytanie medialne
-  </button>
-  <button class="inquiry-btn" onclick="selectInquiry(this, 'Prelekcja')">
-    Prelekcja / Wydarzenie
-  </button>
-</div>
-
 <!-- FORM -->
 <div class="form-section">
-  <p class="form-intro">Wypełnij formularz poniżej, a odezwę się do Ciebie jak najszybciej.</p>
+<p class="form-intro">Jeśli masz pytania, czekam na wiadomość od Ciebie!</p>
 
 <form id="contactForm" action="https://formspree.io/f/xdajwdla" method="POST">
-    <input type="hidden" name="typ_zapytania" id="inquiryType" value="Pytanie ogólne"/>
-
+  
     <div class="form-grid">
       <div class="form-field">
         <input type="text" name="imie" class="form-input" placeholder="Imię" required autocomplete="given-name"/>
@@ -465,11 +433,7 @@ textarea.form-input{
 </div>
 
 <script>
-function selectInquiry(btn, type){
-  document.querySelectorAll('.inquiry-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('inquiryType').value = type;
-}
+
 
 </script>
 </body>
