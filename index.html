@@ -37,6 +37,17 @@ body{font-family:'Barlow',sans-serif;background:#0a0a0f;color:#fff}
   object-fit:cover;
   object-position:center center;
 }
+
+.hero-person{
+  position:absolute;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  height:100%;
+  z-index:3;
+  pointer-events:none;
+}
+  
 .hero-bg-mobile{
   display:none;
 }
@@ -554,6 +565,7 @@ nav{
 
 <section class="hero" id="hero">
   <img class="hero-bg hero-bg-desktop" src="bg-desktop.png" alt="Aurelia Iwanow"/>
+  <img class="hero-person" src="aurelia-person.png" alt="Aurelia"/>
   <img class="hero-bg hero-bg-mobile" src="bg-mobile.png" alt="Aurelia Iwanow"/>
   <div class="hero-overlay"></div>
 
