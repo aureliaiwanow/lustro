@@ -18,19 +18,19 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{width:100%;height:100%;overflow-x:hidden}
-body{font-family:'Barlow',sans-serif;background:#0a0a0f;color:#fff}
+body{
+  font-family:'Barlow',sans-serif;
+  background:#0a0a0f;
+  color:#fff;
+  overflow-x:hidden;
+}
 :root{--gold:#fdb92a;--cyan:#33e4e0;--pink:#f85368}
 @font-face {
   font-family: 'MontserratThin';
   src: url('Montserrat-Thin.ttf') format('truetype');
 }
 .hero{
-  position:relative;
-  width:100%;
-  height:100vh;
-  min-height:640px;
-  overflow:hidden;
-  isolation:auto;
+  position:relative;width:100%;height:100vh;min-height:640px;
 }
 
 .hero-bg{
