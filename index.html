@@ -633,11 +633,11 @@ nav{
       <div class="sub-line"></div>
       <h1>DOŁĄCZ DO LISTY</h1>
       <p>Otrzymuj ekskluzywne treści o biohackingu,<br>nowe odcinki podcastu i wskazówki<br>prosto na Twoją skrzynkę.</p>
-      <form class="sub-form" onsubmit="handleSub(event)">
-        <input type="text" placeholder="Twoje imię" required autocomplete="given-name"/>
-        <input type="email" placeholder="Twój adres e-mail" required autocomplete="email"/>
-        <button type="submit">SUBSKRYBUJ ✦</button>
-      </form>
+     <form class="sub-form" action="https://formspree.io/f/TWOJE_ID" method="POST">
+  <input type="text" name="imie" placeholder="Twoje imię" required/>
+  <input type="email" name="email" placeholder="Twój adres e-mail" required/>
+  <button type="submit">SUBSKRYBUJ ✦</button>
+</form>
       <div class="sub-back" onclick="showLanding()">← Wróć do strony głównej</div>
       <span class="sub-logo">Aurelia Iwanow</span>
     </div>
@@ -658,12 +658,6 @@ document.addEventListener('click',e=>{
 
 function showSub(){hero.style.display='none';subPg.style.display='block';window.scrollTo(0,0)}
 function showLanding(){subPg.style.display='none';hero.style.display='block';window.scrollTo(0,0)}
-function handleSub(e){
-  e.preventDefault();
-  const btn=e.target.querySelector('button');
-  btn.textContent='✓ Zapisano!';btn.style.background='#00E5FF';
-  setTimeout(showLanding,1800);
-}
 
 /* Spotify – wklej swój link tutaj: */
 // document.getElementById('spotify-link').href = 'https://open.spotify.com/show/6SljkXMp0CqSpYmDL0cyXZ?si=Szy2cKopQSOc_Z3jKmg0oQ%0A';
