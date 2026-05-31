@@ -38,7 +38,10 @@ body{font-family:'Barlow',sans-serif;background:#0a0a0f;color:#fff}
 }
 
 .hero-bg-desktop{ z-index:0; }  /* miasto */
-.hero-overlay{    z-index:1; }  /* przyciemnienie */
+.hero-overlay{   position:absolute;
+  inset:0;
+  background:rgba(0,0,0,.35);
+  z-index:1; }  /* przyciemnienie */
 .hero-person{     z-index:2; }  /* postać */
 .hero-title-block{ z-index:3; } /* napis BIOHACKING */
 
@@ -49,6 +52,7 @@ body{font-family:'Barlow',sans-serif;background:#0a0a0f;color:#fff}
   transform:translateX(-50%);
   height:100%;
   pointer-events:none;
+  z-index:2;
 }
   
 .hero-bg-mobile{
@@ -341,7 +345,7 @@ nav{
   top:42%;transform:translateY(-54%);
   text-align:center;pointer-events:none;
   animation:fadeUp .9s ease both;
-  isolation:auto;
+  z-index:3;
 }
 .hero-title{
   font-family:'Antonio',sans-serif;
