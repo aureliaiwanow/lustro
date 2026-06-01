@@ -377,7 +377,8 @@ nav{
   z-index:3;
   mix-blend-mode:screen;
 }
-.hero-title{
+
+  .hero-title-back{
   font-family:'Antonio',sans-serif;
   font-weight:700;
   font-size:clamp(5rem,22vw,18rem);
@@ -385,6 +386,26 @@ nav{
   line-height:0.85;
   color:#fff;
   text-transform:uppercase;
+  text-shadow:none;
+  position:absolute;
+  left:0;right:0;
+  text-align:center;
+  z-index:1;
+  opacity:1;
+}
+
+.hero-title-front{
+  font-family:'Antonio',sans-serif;
+  font-weight:700;
+  font-size:clamp(5rem,22vw,18rem);
+  letter-spacing:-0.055em;
+  line-height:0.85;
+  color:#fff;
+  text-transform:uppercase;
+  text-shadow:none;
+  position:relative;
+  z-index:4;
+  opacity:0.4;
 }
 
 .hero-subtitle{
@@ -512,19 +533,14 @@ nav{
   .dropdown{right:16px;top:60px}
 
 .hero-title-block{
-  top:20%;
-  bottom:auto;
-  transform:none;
-
+position:relative
+  left:0;right:0;
+  top:42%;
+  transform:translateY(-54%);
   text-align:center;
-  padding:0 18px;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-
+  pointer-events:none;
+  animation:fadeUp .9s ease both;
   z-index:3;
-  mix-blend-mode:screen;
 }
 
 .hero-title{
@@ -631,12 +647,11 @@ nav{
     </div>
   </div>
 
-  <div class="hero-title-block">
- <div class="hero-title">
-  BIOHACKING
+ <div class="hero-title-block">
+  <div class="hero-title-back">BIOHACKING</div>
+  <div class="hero-title-front">BIOHACKING</div>
+  <div class="hero-subtitle">Optymalizacja Ciała i Umysłu</div>
 </div>
-    <div class="hero-subtitle">Optymalizacja Ciała i Umysłu</div>
-  </div>
 
   <div class="hero-footer">
     <div class="tag-group">
