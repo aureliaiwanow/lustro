@@ -11,11 +11,31 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{width:100%;min-height:100%;overflow-x:hidden}
-body{font-family:'Montserrat',sans-serif;background:#0a0a0f;color:#fff}
-:root{
-  --gold:#fdb92a;
-  --cyan:#33e4e0;
-  --dark:#0a0a0f;
+body{
+  font-family:'Montserrat',sans-serif;
+  color:#fff;
+  background:#0a0a0f;
+  position:relative;
+}
+
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+
+  background:url('bg-desktop.png') center center / cover no-repeat;
+
+  z-index:-2;
+}
+
+body::after{
+  content:'';
+  position:fixed;
+  inset:0;
+
+  background:rgba(0,0,0,.65);
+
+  z-index:-1;
 }
 
 /* ═══ NAV ═══ */
