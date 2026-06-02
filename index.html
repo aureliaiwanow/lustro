@@ -216,12 +216,18 @@ nav{
 .obserwuj-dropdown::before{
   content:'';position:absolute;top:-10px;left:0;right:0;height:10px;
 }
+.obserwuj-dropdown a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
 
 .obserwuj-dropdown svg{
   width:18px;
   height:18px;
-  fill:#fff;
   flex-shrink:0;
+  display:block;
+  transform: translateY(-1px);
 }
 .obserwuj-dropdown a:hover{
   background:var(--gold);
