@@ -465,13 +465,13 @@ nav{
   <!-- Filter -->
   <div class="filter-bar">
     <span class="filter-label">Filtruj:</span>
-    <button class="filter-btn active">Wszystkie</button>
-    <button class="filter-btn">Odżywianie</button>
-    <button class="filter-btn">Sen</button>
-    <button class="filter-btn">Optymalizacja Mózgu</button>
-    <button class="filter-btn">Świadomość</button>
-     <button class="filter-btn">Genetyka</button>
-    <button class="filter-btn">Długowieczność</button>
+    <button class="filter-btn active" data-kategoria="">Wszystkie</button>
+   <button class="filter-btn" data-kategoria="odzywianie">Odżywianie</button>
+     <button class="filter-btn" data-kategoria="sen">Sen</button>
+     <button class="filter-btn" data-kategoria="optymalizacjamozgu">Optymalizacja Mózgu</button>
+     <button class="filter-btn" data-kategoria="swiadomosc">Świadomość</button>
+      <button class="filter-btn" data-kategoria="genetyka">Genetyka</button>
+      <button class="filter-btn" data-kategoria="dlugowiecznosc">Długowieczność</button>
    
   </div>
 
@@ -693,5 +693,29 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     </a>
   </div>
 </div>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  const params = new URLSearchParams(window.location.search);
+  const kategoria = params.get('kategoria');
+
+  const cards = document.querySelectorAll('.episode-card');
+  const buttons = document.querySelectorAll('.filter-btn');
+
+  function showCategory(cat) {
+    cards.forEach(card => {
+      const match = !cat || card.dataset.kategoria === cat;
+      card.style.display = match ? '' : 'none';
+    });
+
+    buttons.forEach(btn => {
+      btn.classList.remove('active');
+      if (btn.dataset.kategoria === cat) btn.classList.add('active');
+    });
+  }
+
+  showCategory(kategoria);
+});
+</script>
 </body>
 </html>
