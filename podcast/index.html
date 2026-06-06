@@ -465,14 +465,15 @@ nav{
   <!-- Filter -->
   <div class="filter-bar">
     <span class="filter-label">Filtruj:</span>
-    <button class="filter-btn active" data-kategoria="">Wszystkie</button>
-   <button class="filter-btn" data-kategoria="odzywianie">Odżywianie</button>
-     <button class="filter-btn" data-kategoria="sen">Sen</button>
-     <button class="filter-btn" data-kategoria="optymalizacjamozgu">Optymalizacja Mózgu</button>
-     <button class="filter-btn" data-kategoria="swiadomosc">Świadomość</button>
-      <button class="filter-btn" data-kategoria="genetyka">Genetyka</button>
-      <button class="filter-btn" data-kategoria="dlugowiecznosc">Długowieczność</button>
-   
+
+<button class="filter-btn active" data-kategoria="">Wszystkie</button>
+<button class="filter-btn" data-kategoria="odzywianie">Odżywianie</button>
+<button class="filter-btn" data-kategoria="sen">Sen i Regeneracja</button>
+<button class="filter-btn" data-kategoria="mozg">Optymalizacja Mózgu</button>
+<button class="filter-btn" data-kategoria="swiadomosc">Świadomość</button>
+<button class="filter-btn" data-kategoria="dzieci">Biohacking Dzieci</button>
+<button class="filter-btn" data-kategoria="dlugowiecznosc">Długowieczność</button>
+    
   </div>
 
   <div class="episodes-grid">
@@ -668,13 +669,20 @@ nav{
 </div>
 
 <script>
-// Filter buttons
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+
+const params = new URLSearchParams(window.location.search);
+const kategoria = params.get('kategoria');
+
+if(kategoria){
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.remove('active');
+    if(btn.dataset.kategoria === kategoria) btn.classList.add('active');
   });
-});
+  document.querySelectorAll('.episode-card').forEach(card => {
+    card.style.display = card.dataset.kategoria === kategoria ? 'block' : 'none';
+  });
+}
+  
 </script>
   <div class="social-strip">
   <p>Znajdź mnie w mediach społecznościowych</p>
