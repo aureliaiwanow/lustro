@@ -668,22 +668,7 @@ nav{
 
 </div>
 
-<script>
 
-const params = new URLSearchParams(window.location.search);
-const kategoria = params.get('kategoria');
-
-if(kategoria){
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.classList.remove('active');
-    if(btn.dataset.kategoria === kategoria) btn.classList.add('active');
-  });
-  document.querySelectorAll('.episode-card').forEach(card => {
-    card.style.display = card.dataset.kategoria === kategoria ? 'block' : 'none';
-  });
-}
-  
-</script>
   <div class="social-strip">
   <p>Znajdź mnie w mediach społecznościowych</p>
   <div class="social-icons">
@@ -702,10 +687,8 @@ if(kategoria){
   </div>
 </div>
   
+<script>
 document.addEventListener('DOMContentLoaded', () => {
-
-  const params = new URLSearchParams(window.location.search);
-  const kategoria = params.get('kategoria');
 
   const cards = document.querySelectorAll('.episode-card');
   const buttons = document.querySelectorAll('.filter-btn');
@@ -713,49 +696,26 @@ document.addEventListener('DOMContentLoaded', () => {
   function showCategory(cat) {
     cards.forEach(card => {
       const match = !cat || card.dataset.kategoria === cat;
-      card.style.display = match ? '' : 'none';
+      card.style.display = match ? 'block' : 'none';
     });
-
     buttons.forEach(btn => {
-      btn.classList.remove('active');
-      if (btn.dataset.kategoria === cat) btn.classList.add('active');
+      btn.classList.toggle('active', btn.dataset.kategoria === cat || (!cat && btn.dataset.kategoria === ''));
     });
   }
 
-  showCategory(kategoria);
-});
+  // Filtrowanie przez URL
+  const params = new URLSearchParams(window.location.search);
+  const kategoriaURL = params.get('kategoria') || '';
+  showCategory(kategoriaURL);
 
   // Filtrowanie przez przyciski
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    
-    const kategoria = btn.dataset.kategoria;
-    
-    document.querySelectorAll('.episode-card').forEach(card => {
-      if(kategoria === '' || card.dataset.kategoria === kategoria){
-        card.style.display = 'block';
-      } else {
-        card.style.display = 'none';
-      }
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      showCategory(btn.dataset.kategoria);
     });
   });
+
 });
-
-// Filtrowanie przez URL
-const params = new URLSearchParams(window.location.search);
-const kategoria = params.get('kategoria');
-
-if(kategoria){
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.classList.remove('active');
-    if(btn.dataset.kategoria === kategoria) btn.classList.add('active');
-  });
-  document.querySelectorAll('.episode-card').forEach(card => {
-    card.style.display = card.dataset.kategoria === kategoria ? 'block' : 'none';
-  });
-}
 </script>
 </body>
 </html>
