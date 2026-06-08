@@ -35,10 +35,28 @@ body{font-family:'Montserrat',sans-serif;background:#0a0a0f;color:#fff}
   inset:0;
 
   background:
-    url("podcast-hero.jpg");
+    url("podcast-hero.png");
 
   background-size:cover;
   background-position:center;
+}
+
+  .podcast-hero-overlay{
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,.45),
+      rgba(10,10,15,.75)
+    );
+}
+
+  .podcast-hero-content{
+  position:relative;
+  z-index:2;
+  text-align:center;
 }
 
 .podcast-eyebrow{
@@ -54,13 +72,9 @@ body{font-family:'Montserrat',sans-serif;background:#0a0a0f;color:#fff}
 
 .podcast-title{
   font-family:'Antonio',sans-serif;
-  font-weight:700;
-  font-size:clamp(4rem,10vw,8rem);
-  letter-spacing:-0.04em;
-  line-height:0.9;
+  font-size:clamp(6rem,14vw,12rem);
+  line-height:.9;
   color:#fff;
-  text-transform:uppercase;
-  animation:fadeUp 0.6s 0.1s ease both;
 }
 
 .podcast-subtitle{
@@ -72,6 +86,29 @@ body{font-family:'Montserrat',sans-serif;background:#0a0a0f;color:#fff}
   color:rgba(255,255,255,0.45);
   margin-top:16px;
   animation:fadeUp 0.6s 0.2s ease both;
+}
+
+  /*Searching engine*/
+  
+  .hero-search{
+  margin-top:40px;
+}
+
+.hero-search input{
+  width:420px;
+  max-width:90vw;
+
+  background:rgba(255,255,255,.08);
+
+  border:none;
+
+  padding:16px 24px;
+
+  color:white;
+
+  font-size:1rem;
+
+  backdrop-filter:blur(10px);
 }
 
 /* ═══ NAV ═══ */
@@ -198,7 +235,7 @@ nav{
 .episode-thumb{
   position:relative;
   width:100%;
-  aspect-ratio:16/9;
+aspect-ratio:3/4;
   background:#111;
   overflow:hidden;
 }
