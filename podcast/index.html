@@ -366,25 +366,6 @@ aspect-ratio:3/4;
 .episode-link svg{width:12px;height:12px;fill:currentColor}
 
 /* ═══ FEATURED EPISODE (first/latest) ═══ */
-.episode-card.featured{
-  grid-column:1/-1;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-}
-@media(max-width:700px){
-  .episode-card.featured{grid-template-columns:1fr}
-}
-.episode-card.featured .episode-thumb{
-  aspect-ratio:auto;
-  height:100%;
-  min-height:260px;
-}
-.episode-card.featured .episode-title{
-  font-size:1.6rem;
-}
-.episode-card.featured .episode-desc{
-  -webkit-line-clamp:5;
-}
 
   .social-strip{
   border-top:1px solid rgba(255,255,255,0.06);
@@ -883,7 +864,7 @@ nav{
   <div class="episodes-grid">
 
     <!-- FEATURED – Najnowszy odcinek -->
-   <div class="episode-card featured" data-kategoria="odzywianie">
+ <div class="episode-card" data-kategoria="odzywianie">
       <div class="episode-thumb">
         <div class="episode-thumb-placeholder">
           <span class="episode-num-big">01</span>
