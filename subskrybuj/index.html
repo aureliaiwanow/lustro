@@ -7,22 +7,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Open+Sans:wght@400;600&family=Reenie+Beanie&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            height: 100vh;
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Open Sans', sans-serif;
-            background-size: cover;
-            background-position: center;
-            color: #fff;
-        }
+       body {
+    height: 100vh;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: #fff;
+    position: relative;
+}
 
-        /* Responsywne tło subskrypcji */
-        @media (min-width: 1025px) { body { background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url('zdjecie3.png'); } }
-        @media (max-width: 1024px) { body { background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('zdjecie2.png'); } }
+/* BACKGROUND (TA SAMA LOGIKA CO KONTAKT) */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: url('/subskrybuj/bg-sub.png') center center / cover no-repeat;
+    z-index: -2;
+}
 
+/* OVERLAY (IDENTYCZNY MOOD) */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    z-index: -1;
+}
+
+    
         .form-container {
             background: rgba(10, 10, 10, 0.8);
             backdrop-filter: blur(15px);
