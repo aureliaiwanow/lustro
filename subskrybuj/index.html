@@ -34,60 +34,90 @@ body::after {
 }
 
     
-        .form-container {
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(15px);
-            padding: 60px;
-            border: 2px solid #fbbc05;
-            width: 90%;
-            max-width: 500px;
-            text-align: center;
-            border-radius: 4px;
-            margin-top: 250px;
-        }
+       .form-container {
+    background: rgba(10, 10, 10, 0.75);
+    backdrop-filter: blur(18px);
+    padding: 60px;
+    border: 1px solid rgba(251,188,5,0.35);
+    width: 90%;
+    max-width: 520px;
+    text-align: center;
+    border-radius: 6px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
 
         h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 900;
-            font-size: 32px;
-            letter-spacing: -1px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            color: #fff;
-        }
-        p { color: #aaa; margin-bottom: 40px; font-size: 15px; }
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 32px;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    color: #fff;
+}
 
-        input {
-            width: 100%;
-            padding: 18px;
-            margin-bottom: 20px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: white;
-            font-size: 16px;
-            border-radius: 2px;
-        }
-        input:focus { border-color: #fbbc05; outline: none; background: rgba(255,255,255,0.1); }
+p {
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 40px;
+    font-size: 15px;
+    line-height: 1.6;
+}
 
-        button {
-            width: 100%;
-            padding: 18px;
-            background: #fbbc05;
-            color: #000;
-            border: none;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-        button:hover { background: #fff; }
+       input {
+    width: 100%;
+    padding: 18px;
+    margin-bottom: 18px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: white;
+    font-size: 15px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    font-family: 'Open Sans', sans-serif;
+}
+
+input:focus {
+    outline: none;
+    border-color: #fbbc05;
+    background: rgba(255,255,255,0.08);
+    box-shadow: 0 0 0 1px rgba(251,188,5,0.25);
+}
+       button {
+    width: 100%;
+    padding: 18px;
+    background: #fbbc05;
+    color: #000;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+button:hover {
+    background: transparent;
+    border: 1px solid #fbbc05;
+    color: #fbbc05;
+}
         
-        .back-link { display: block; margin-top: 30px; color: #666; text-decoration: none; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
-        .back-link:hover { color: #fbbc05; }
+        .back-link {
+    display: block;
+    margin-top: 25px;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.back-link:hover {
+    color: #fbbc05;
+}
 
 :root { --gold: #fdb92a; }
 nav { position: fixed; top: 10px; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 22px 28px 22px 100px; }
