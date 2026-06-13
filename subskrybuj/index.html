@@ -13,6 +13,11 @@
     font-family: 'Open Sans', sans-serif;
     color: #fff;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
 }
 
 /* BACKGROUND (TA SAMA LOGIKA CO KONTAKT) */
@@ -38,12 +43,13 @@ body::after {
     background: rgba(10, 10, 10, 0.75);
     backdrop-filter: blur(18px);
     padding: 60px;
-    border: 1px solid rgba(251,188,5,0.35);
+    border: 1px solid rgba(255,255,255,0.12);
     width: 90%;
     max-width: 520px;
     text-align: center;
     border-radius: 6px;
     box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    transition: all 0.3s ease;
 }
 
         h2 {
@@ -78,9 +84,9 @@ p {
 
 input:focus {
     outline: none;
-    border-color: #fbbc05;
+    border-color: #00e5ff;
     background: rgba(255,255,255,0.08);
-    box-shadow: 0 0 0 1px rgba(251,188,5,0.25);
+    box-shadow: 0 0 0 1px rgba(0,229,255,0.25);
 }
        button {
     width: 100%;
