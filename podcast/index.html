@@ -747,7 +747,27 @@ nav{
   text-align:center;
   padding:5px 20px;
 }
-  
+ html {
+  scroll-behavior: smooth;
+}
+
+/* każda sekcja = pełny ekran + offset pod nav */
+section {
+  min-height: 100vh;
+  scroll-margin-top: 120px;
+}
+
+/* animacja wejścia (fade in przy scrollu) */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+} 
 </style>
 </head>
 <body>
@@ -1033,6 +1053,20 @@ document.addEventListener('DOMContentLoaded', () => {
     <a href="/regulamin" style="color:rgba(255,255,255,0.4);text-decoration:none;margin:0 12px;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Regulamin</a>
   </p>
 </footer>
-  
+  <script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active");
+    }
+  });
+}, {
+  threshold: 0.15
+});
+
+document.querySelectorAll(".reveal").forEach(el => {
+  observer.observe(el);
+});
+</script>
 </body>
 </html>
