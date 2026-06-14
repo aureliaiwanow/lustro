@@ -7,13 +7,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Open+Sans:wght@400;600&family=Reenie+Beanie&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-    min-height: 100vh;
+       body {
+    height: 100vh;
     margin: 0;
     font-family: 'Open Sans', sans-serif;
     color: #fff;
     position: relative;
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 
 }
 
@@ -181,23 +184,16 @@ nav { position: fixed; top: 10px; left: 0; right: 0; z-index: 10; display: flex;
     
     <div class="form-container">
         <h2>Przejmij Kontrolę</h2>
-        <p>Nowe odcinki podcastu i narzędzia do poprawy funkcjonowania ciała, umysłu i świadomości prosto na Twoją skrzynkę</p>
-
-  <script>
-    function ml_webform_success_42588484() {
-      var $ = ml_jQuery || jQuery;
-      $('.ml-subscribe-form-42588484 .row-success').show();
-      $('.ml-subscribe-form-42588484 .row-form').hide();
-    }
-      </script>
-
-<script>
-    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
-    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
-    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-    ml('account', '2443139');
-</script>
+        <p><p>Nowe odcinki podcastu i narzędzia do poprawy funkcjonowania ciała, umysłu i świadomości prosto na Twoją skrzynkę</p>
+        <form>
+            <input type="text" placeholder="Twoje Imię" required>
+            <input type="email" placeholder="Twój Adres E-mail" required>
+            <label style="font-size:0.7rem;color:rgba(255,255,255,0.5);display:flex;align-items:flex-start;gap:8px;text-align:left;">
+  <input type="checkbox" name="zgoda" required style="margin-top:3px;flex-shrink:0;"/>
+  Wyrażam zgodę na przetwarzanie moich danych osobowych w celu wysyłki newslettera zgodnie z <a href="/polityka-prywatnosci" style="color:var(--gold)">Polityką prywatności</a>
+</label>
+            <button type="submit">Dołącz Teraz</button>
+        </form>
         <a href="index.html" class="back-link">← powrót do strony głównej</a>
     </div>
 
