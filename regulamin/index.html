@@ -6,142 +6,170 @@
 
 <title>Regulamin | Aurelia Iwanow</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Reenie+Beanie&display=swap" rel="stylesheet">
 
 <style>
 
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root{
+  --gold:#fdb92a;
+}
+
+/* BACKGROUND jak w Twoich stronach */
 body{
-    max-width:900px;
-    margin:0 auto;
-    padding:80px 30px;
-    background:#0a0a0f;
-    color:white;
-    font-family:'Montserrat',sans-serif;
-    line-height:1.8;
+  min-height:100vh;
+  font-family:'Montserrat',sans-serif;
+  color:#fff;
+  background:
+    linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.85)),
+    url('/kontakt/bg-kontakt.jpg');
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+}
+
+/* NAV (IDENTYCZNY STYL) */
+nav{
+  position:fixed;
+  top:10px;
+  left:0;
+  right:0;
+  z-index:10;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:22px 28px 22px 100px;
+}
+
+.nav-logo{
+  font-family:'Reenie Beanie', cursive;
+  font-size:2.5rem;
+  color:#fff;
+  text-decoration:none;
+}
+
+.nav-logo:hover{ color:var(--gold); }
+
+.nav-right{
+  margin-right:40px;
+}
+
+.btn-sub{
+  background:var(--gold);
+  color:#000;
+  font-weight:700;
+  padding:7px 45px;
+  text-decoration:none;
+  border:2px solid transparent;
+  transition:.3s;
+}
+
+.btn-sub:hover{
+  background:transparent;
+  border-color:var(--gold);
+  color:var(--gold);
+}
+
+/* KARTA */
+.container{
+  margin-top:160px;
+  width:90%;
+  max-width:900px;
+  background:rgba(10,10,10,.75);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,.1);
+  padding:60px;
+  border-radius:4px;
 }
 
 h1{
-    font-size:48px;
-    margin-bottom:50px;
+  font-size:34px;
+  margin-bottom:10px;
 }
 
 h2{
-    margin-top:50px;
-    margin-bottom:20px;
-    font-size:24px;
+  margin-top:40px;
+  font-size:18px;
+  color:var(--gold);
+  letter-spacing:1px;
 }
 
-p, li{
-    color:rgba(255,255,255,.8);
+p{
+  margin-top:10px;
+  color:rgba(255,255,255,.75);
+  line-height:1.7;
+  font-size:14px;
 }
 
-a{
-    color:#00e5ff;
+.back{
+  display:inline-block;
+  margin-top:40px;
+  color:#aaa;
+  text-decoration:none;
+  font-size:12px;
 }
 
-.back-link{
-    display:inline-block;
-    margin-top:60px;
-    color:#00e5ff;
-    text-decoration:none;
-}
+.back:hover{ color:var(--gold); }
 
 </style>
 </head>
 
 <body>
 
-<h1>Regulamin</h1>
+<!-- NAV -->
+<nav>
+  <a href="https://aureliaiwanow.pl" class="nav-logo">Aurelia Iwanow</a>
 
+  <div class="nav-right">
+    <a class="btn-sub" href="/subskrybuj/">SUBSKRYBUJ</a>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<div class="container">
+
+<h1>Regulamin</h1>
 <p>Data aktualizacji: 14 czerwca 2026 r.</p>
 
-<h2>§1. Postanowienia ogólne</h2>
-
+<h2>1. POSTANOWIENIA OGÓLNE</h2>
 <p>
-Niniejszy regulamin określa zasady korzystania ze strony internetowej Aurelia Iwanow dostępnej pod adresem www.aureliaiwanow.pl.
+Strona Aurelia Iwanow ma charakter informacyjny i edukacyjny.
 </p>
 
+<h2>2. KORZYSTANIE ZE STRONY</h2>
 <p>
-Właścicielem i administratorem strony jest Aurelia Iwanow.
+Korzystanie ze strony jest bezpłatne i dobrowolne.
+Użytkownik zobowiązuje się do korzystania z niej zgodnie z prawem.
 </p>
 
+<h2>3. TREŚCI</h2>
 <p>
-Strona ma charakter informacyjny, edukacyjny oraz popularyzatorski.
+Treści nie stanowią porady medycznej ani indywidualnych zaleceń.
+Każdy użytkownik korzysta z informacji na własną odpowiedzialność.
 </p>
 
-<h2>§2. Korzystanie ze strony</h2>
-
+<h2>4. PRAWA AUTORSKIE</h2>
 <p>
-Korzystanie ze strony jest bezpłatne.
+Wszystkie treści są chronione prawem autorskim i nie mogą być kopiowane bez zgody.
 </p>
 
+<h2>5. NEWSLETTER</h2>
 <p>
-Użytkownik zobowiązuje się do korzystania ze strony zgodnie z obowiązującym prawem.
+Newsletter służy do informowania o nowych odcinkach podcastu i materiałach.
+Możesz się z niego wypisać w każdej chwili.
 </p>
 
-<h2>§3. Treści publikowane na stronie</h2>
-
+<h2>6. ODPOWIEDZIALNOŚĆ</h2>
 <p>
-Treści publikowane na stronie mają charakter edukacyjny i informacyjny.
+Właściciel strony nie ponosi odpowiedzialności za decyzje podjęte na podstawie treści.
 </p>
 
-<p>
-Materiały publikowane na stronie nie stanowią porady medycznej ani indywidualnych zaleceń zdrowotnych.
-</p>
+<a class="back" href="/">← Powrót do strony głównej</a>
 
-<p>
-Każdy użytkownik podejmuje decyzje dotyczące zdrowia, suplementacji, odżywiania lub stylu życia na własną odpowiedzialność.
-</p>
-
-<h2>§4. Prawa autorskie</h2>
-
-<p>
-Wszystkie treści znajdujące się na stronie są chronione prawem autorskim.
-</p>
-
-<p>
-Kopiowanie i rozpowszechnianie materiałów bez zgody autora jest zabronione.
-</p>
-
-<h2>§5. Newsletter</h2>
-
-<p>
-Newsletter służy do przekazywania informacji o nowych odcinkach podcastu oraz materiałach związanych z tematyką strony.
-</p>
-
-<p>
-Użytkownik może zrezygnować z subskrypcji w dowolnym momencie.
-</p>
-
-<h2>§6. Odpowiedzialność</h2>
-
-<p>
-Właściciel strony dokłada starań, aby publikowane treści były rzetelne i aktualne.
-</p>
-
-<p>
-Nie ponosi jednak odpowiedzialności za decyzje podejmowane na podstawie informacji dostępnych na stronie.
-</p>
-
-<h2>§7. Linki zewnętrzne</h2>
-
-<p>
-Strona może zawierać odnośniki do zewnętrznych serwisów internetowych.
-</p>
-
-<p>
-Właściciel strony nie odpowiada za ich zawartość.
-</p>
-
-<h2>§8. Zmiany regulaminu</h2>
-
-<p>
-Regulamin może być aktualizowany wraz z rozwojem strony.
-</p>
-
-<a href="/" class="back-link">
-← Powrót do strony głównej
-</a>
+</div>
 
 </body>
 </html>
