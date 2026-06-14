@@ -241,7 +241,19 @@ nav { position: fixed; top: 10px; left: 0; right: 0; z-index: 10; display: flex;
     border: 1px solid #fbbc05 !important;
     color: #fbbc05 !important;
 }
-        
+   .newsletter-consent{
+    display:block;
+    text-align:left;
+    font-size:13px;
+    color:rgba(255,255,255,.65);
+    margin:15px 0 25px;
+    line-height:1.6;
+}
+
+.newsletter-consent input{
+    width:auto;
+    margin-right:10px;
+}     
     </style>
 </head>
 <body>
@@ -276,15 +288,56 @@ nav { position: fixed; top: 10px; left: 0; right: 0; z-index: 10; display: flex;
   </div>
 </nav>
     
-    <div class="form-container">
-      <h2>Dołącz do społeczności</h2>
-    <p>Nowe odcinki podcastu i narzędzia do poprawy ciała, umysłu i świadomości.</p>
+   <div class="form-container">
 
-    <div class="ml-embedded" data-form="nLnp17"></div>
- 
-    
-        <a href="index.html" class="back-link">← powrót do strony głównej</a>
-    </div>
+    <h2>DOŁĄCZ DO SPOŁECZNOŚCI</h2>
+
+    <p>
+        Nowe odcinki podcastu oraz narzędzia do poprawy
+        funkcjonowania ciała, umysłu i świadomości.
+    </p>
+
+    <form
+        action="https://assets.mailerlite.com/jsonp/2443139/forms/190264025057068894/subscribe"
+        method="post"
+        target="_blank"
+    >
+
+        <input
+            type="email"
+            name="fields[email]"
+            placeholder="Adres e-mail"
+            required
+        >
+
+        <input
+            type="text"
+            name="fields[name]"
+            placeholder="Imię"
+        >
+
+        <label class="newsletter-consent">
+            <input type="checkbox" required>
+
+            Wyrażam zgodę na przetwarzanie danych osobowych
+            w celu otrzymywania newslettera oraz akceptuję
+            politykę prywatności.
+        </label>
+
+        <input type="hidden" name="ml-submit" value="1">
+        <input type="hidden" name="anticsrf" value="true">
+
+        <button type="submit">
+            DOŁĄCZ TERAZ
+        </button>
+
+    </form>
+
+    <a href="/" class="back-link">
+        ← powrót do strony głównej
+    </a>
+
+</div>
 
    <footer style="text-align:center;padding:30px 24px;font-family:'Montserrat',sans-serif;font-size:0.7rem;letter-spacing:1px;color:rgba(255,255,255,0.3);border-top:none;">
   <p>© 2026 Aurelia Iwanow. Wszystkie prawa zastrzeżone.</p>
