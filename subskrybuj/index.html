@@ -163,7 +163,85 @@ nav { position: fixed; top: 10px; left: 0; right: 0; z-index: 10; display: flex;
 /* lekka personalizacja jeśli MailerLite pozwala */
 .ml-embedded iframe {
     border-radius: 6px;
-}       
+}  
+
+/* =========================
+   MAILERLITE RESET (CLEAN)
+   ========================= */
+
+.ml-embedded {
+    width: 100%;
+}
+
+/* usuwa tło i boxy MailerLite */
+#mlb2-42588484,
+#mlb2-42588484 * {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* wrapper formularza */
+.ml-form-embedWrapper {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+/* usuwa wewnętrzne paddingi */
+.ml-form-embedBody {
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+/* input styling → dopasowanie do Twojego designu */
+.ml-form-embedBody input {
+    width: 100% !important;
+    padding: 18px !important;
+    margin-bottom: 12px !important;
+
+    background: rgba(255,255,255,0.08) !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+    color: #fff !important;
+
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 15px !important;
+    border-radius: 2px !important;
+}
+
+/* focus jak u Ciebie */
+.ml-form-embedBody input:focus {
+    border-color: #00e5ff !important;
+    box-shadow: 0 0 0 1px rgba(0,229,255,0.25) !important;
+    outline: none !important;
+}
+
+/* button = Twój styl (gold) */
+.ml-form-embedSubmit button {
+    width: 100% !important;
+    padding: 18px !important;
+
+    background: #fbbc05 !important;
+    color: #000 !important;
+
+    border: none !important;
+    border-radius: 2px !important;
+
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+
+    cursor: pointer !important;
+}
+
+/* hover jak u Ciebie */
+.ml-form-embedSubmit button:hover {
+    background: transparent !important;
+    border: 1px solid #fbbc05 !important;
+    color: #fbbc05 !important;
+}
+        
     </style>
 </head>
 <body>
@@ -200,7 +278,7 @@ nav { position: fixed; top: 10px; left: 0; right: 0; z-index: 10; display: flex;
     
     <div class="form-container">
       <h2>Dołącz do społeczności</h2>
-    <p>Nowe odcinki podcastu + narzędzia do poprawy ciała, umysłu i świadomości.</p>
+    <p>Nowe odcinki podcastu i narzędzia do poprawy ciała, umysłu i świadomości.</p>
 
     <div class="ml-embedded" data-form="nLnp17"></div>
  
