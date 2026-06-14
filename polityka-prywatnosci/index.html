@@ -1,85 +1,197 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Polityka Prywatności | Aurelia Iwanow</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Reenie+Beanie&display=swap" rel="stylesheet">
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  --gold:#fdb92a;
+}
+
+/* BACKGROUND spójny z resztą */
+body{
+  min-height:100vh;
+  font-family:'Montserrat',sans-serif;
+  color:#fff;
+  background:
+    linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.85)),
+    url('/kontakt/bg-kontakt.jpg');
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  top:10px;
+  left:0;
+  right:0;
+  z-index:10;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:22px 28px 22px 100px;
+}
+
+.nav-logo{
+  font-family:'Reenie Beanie', cursive;
+  font-size:2.5rem;
+  color:#fff;
+  text-decoration:none;
+}
+
+.nav-logo:hover{ color:var(--gold); }
+
+.nav-right{ margin-right:40px; }
+
+.btn-sub{
+  background:var(--gold);
+  color:#000;
+  font-weight:700;
+  padding:7px 45px;
+  text-decoration:none;
+  transition:.3s;
+  border:2px solid transparent;
+}
+
+.btn-sub:hover{
+  background:transparent;
+  border-color:var(--gold);
+  color:var(--gold);
+}
+
+/* CONTAINER */
+.container{
+  margin-top:160px;
+  width:90%;
+  max-width:900px;
+  background:rgba(10,10,10,.75);
+  backdrop-filter:blur(15px);
+  border:1px solid rgba(255,255,255,.1);
+  padding:60px;
+  border-radius:4px;
+}
+
+h1{
+  font-size:34px;
+  margin-bottom:10px;
+}
+
+h2{
+  margin-top:40px;
+  font-size:18px;
+  color:var(--gold);
+  letter-spacing:1px;
+}
+
+p, li{
+  margin-top:10px;
+  color:rgba(255,255,255,.75);
+  line-height:1.7;
+  font-size:14px;
+}
+
+ul{
+  margin-left:20px;
+  margin-top:10px;
+}
+
+.back{
+  display:inline-block;
+  margin-top:40px;
+  color:#aaa;
+  text-decoration:none;
+  font-size:12px;
+}
+
+.back:hover{ color:var(--gold); }
+
+</style>
+</head>
+
 <body>
-  <h1>Polityka Prywatności</h1>
+
+<!-- NAV -->
+<nav>
+  <a href="https://aureliaiwanow.pl" class="nav-logo">Aurelia Iwanow</a>
+
+  <div class="nav-right">
+    <a class="btn-sub" href="/subskrybuj/">SUBSKRYBUJ</a>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<div class="container">
+
+<h1>Polityka Prywatności</h1>
 
 <p>Data aktualizacji: 14 czerwca 2026 r.</p>
 
 <h2>1. Administrator danych</h2>
-
 <p>
 Administratorem danych osobowych jest Aurelia Iwanow.
-Kontakt z administratorem możliwy jest za pośrednictwem formularza kontaktowego dostępnego na stronie.
+Kontakt możliwy jest poprzez formularz kontaktowy na stronie.
 </p>
 
-<h2>2. Jakie dane są zbierane?</h2>
-
-<p>W zależności od sposobu korzystania ze strony mogą być zbierane:</p>
-
+<h2>2. Jakie dane zbieramy</h2>
 <ul>
-<li>imię i adres e-mail podane podczas zapisu do newslettera,</li>
-<li>imię, nazwisko, adres e-mail, temat wiadomości i treść wiadomości przesłane przez formularz kontaktowy,</li>
-<li>podstawowe dane techniczne związane z korzystaniem ze strony internetowej.</li>
+<li>imię, nazwisko, e-mail (formularz kontaktowy),</li>
+<li>imię i e-mail (newsletter),</li>
+<li>dane techniczne (np. przeglądarka, IP – w celach statystycznych).</li>
 </ul>
 
 <h2>3. Cel przetwarzania danych</h2>
-
-<p>Dane są przetwarzane wyłącznie w celu:</p>
-
 <ul>
-<li>udzielenia odpowiedzi na wiadomości przesłane przez formularz kontaktowy,</li>
-<li>wysyłania newslettera z informacjami o nowych odcinkach podcastu oraz materiałach związanych z tematyką strony,</li>
-<li>zapewnienia prawidłowego działania strony internetowej.</li>
+<li>odpowiedzi na wiadomości z formularza,</li>
+<li>wysyłki newslettera,</li>
+<li>analizy działania strony i jej optymalizacji.</li>
 </ul>
 
 <h2>4. Newsletter</h2>
-
 <p>
-Zapisując się do newslettera, użytkownik wyraża zgodę na otrzymywanie wiadomości e-mail związanych z działalnością strony.
+Dane są wykorzystywane do wysyłki informacji o podcastach i materiałach.
+Możesz zrezygnować w każdej chwili.
 </p>
 
-<p>
-Z subskrypcji można zrezygnować w dowolnym momencie poprzez link znajdujący się w każdej wiadomości e-mail.
-</p>
-
-<h2>5. Podmioty przetwarzające dane</h2>
-
-<p>
-Niektóre dane mogą być przetwarzane przez zewnętrznych dostawców usług technicznych wspierających funkcjonowanie strony, takich jak:
-</p>
-
+<h2>5. Podmioty zewnętrzne</h2>
 <ul>
-<li>SEOHOST – hosting strony internetowej,</li>
-<li>Formspree – obsługa formularza kontaktowego,</li>
-<li>MailerLite – obsługa newslettera (po jego uruchomieniu).</li>
+<li>SEOHOST – hosting strony,</li>
+<li>Formspree – formularz kontaktowy,</li>
+<li>MailerLite – newsletter (jeśli używany).</li>
 </ul>
 
-<h2>6. Okres przechowywania danych</h2>
-
+<h2>6. Pliki cookies</h2>
 <p>
-Dane są przechowywane przez okres niezbędny do realizacji celu, dla którego zostały przekazane, lub do momentu wycofania zgody.
+Strona może używać cookies niezbędnych do działania oraz podstawowej analityki.
 </p>
 
 <h2>7. Prawa użytkownika</h2>
-
-<p>Każdy użytkownik ma prawo do:</p>
-
 <ul>
-<li>dostępu do swoich danych,</li>
-<li>ich sprostowania,</li>
-<li>usunięcia danych,</li>
-<li>ograniczenia przetwarzania,</li>
-<li>wniesienia sprzeciwu wobec przetwarzania danych,</li>
-<li>wycofania zgody w dowolnym momencie.</li>
+<li>dostęp do danych,</li>
+<li>ich poprawa,</li>
+<li>usunięcie,</li>
+<li>ograniczenie przetwarzania.</li>
 </ul>
 
-<h2>8. Pliki cookies</h2>
-
+<h2>8. Kontakt</h2>
 <p>
-Strona może wykorzystywać pliki cookies niezbędne do prawidłowego działania oraz podstawowych statystyk odwiedzin.
+W sprawach danych osobowych możesz skontaktować się przez formularz kontaktowy na stronie.
 </p>
 
-<h2>9. Zmiany polityki prywatności</h2>
+<a class="back" href="/">← Powrót do strony głównej</a>
 
-<p>
-Polityka prywatności może być aktualizowana w przypadku zmian funkcjonalności strony lub obowiązujących przepisów prawa.
-</p>
+</div>
+
 </body>
+</html>
