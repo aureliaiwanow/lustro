@@ -53,7 +53,7 @@ body::after {
        .form-container {
     background: rgba(10, 10, 10, 0.75);
     backdrop-filter: blur(18px);
-    padding: 60px;
+    padding: 35px 40px;
     border: 1px solid rgba(255,255,255,0.12);
     width: 90%;
     max-width: 520px;
@@ -61,7 +61,8 @@ body::after {
     border-radius: 6px;
     box-shadow: 0 20px 60px rgba(0,0,0,0.6);
     transition: all 0.3s ease;
-    flex: 1;
+    max-height: fit-content;
+    display: inline-block;
 }
 
         h2 {
@@ -84,7 +85,7 @@ p {
      input {
     width: 100%;
     padding: 18px;
-    margin-bottom: 18px;
+    margin-bottom: 10px;
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.12);
     color: white;
@@ -260,8 +261,9 @@ nav { position: fixed; top: 10px; left: 0; right: 0; z-index: 10; display: flex;
     margin-right:10px;
 }   
         .form-container input {
-    width: 340px;
-    height: 48px;
+    width: 100%;
+    max-width: 340px;
+    height: 42px;
 }
 
 .form-container button {
