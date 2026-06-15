@@ -293,6 +293,67 @@ nav { position: fixed; top: 10px; left: 0; right: 0; z-index: 10; display: flex;
         .newsletter-consent input[type="checkbox"] {
     accent-color: #00e5ff;
 }
+        :root {
+  --gold: #f5c518;
+  --cyan: #33e4e0;
+}
+
+/* INPUTY (żeby wyglądały jak na stronie kontakt) */
+form input[type="email"],
+form input[type="text"] {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  outline: none;
+  margin-bottom: 12px;
+}
+
+form input:focus {
+  border-color: var(--cyan);
+  background: rgba(51,228,224,0.04);
+}
+
+/* BUTTON */
+form button {
+  background: var(--gold);
+  color: #000;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  letter-spacing: .15em;
+  padding: 16px 60px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+form button:hover {
+  background: transparent;
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* CHECKBOX (żeby był mały i równo z tekstem) */
+.newsletter-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: rgba(255,255,255,0.7);
+}
+
+.newsletter-consent input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  accent-color: var(--cyan);
+}
     </style>
 </head>
 <body>
