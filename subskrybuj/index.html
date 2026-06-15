@@ -357,27 +357,7 @@ form button:hover {
   margin-top: 2px;
   accent-color: var(--cyan);
 }
-      footer{
-  text-align:center;
-  padding:30px 24px;
-  font-family:'Montserrat',sans-serif;
-  font-size:0.7rem;
-  letter-spacing:1px;
-  color:rgba(255,255,255,0.3);
-  background:transparent;
-  border-top:none;
-}
-
-footer a{
-  color:rgba(255,255,255,0.4);
-  text-decoration:none;
-  margin:0 12px;
-  transition:color .2s;
-}
-
-footer a:hover{
-  color:#fff;
-}
+     
     </style>
 </head>
 <body>
@@ -459,11 +439,11 @@ footer a:hover{
     </a>
 
 </div>
-<footer>
+<footer style="text-align:center;padding:30px 24px;font-family:'Montserrat',sans-serif;font-size:0.7rem;letter-spacing:1px;color:rgba(255,255,255,0.3);border-top: none">
   <p>© 2026 Aurelia Iwanow. Wszystkie prawa zastrzeżone.</p>
   <p style="margin-top:8px;">
-    <a href="/polityka-prywatnosci">Polityka prywatności</a>
-    <a href="/regulamin">Regulamin</a>
+    <a href="/polityka-prywatnosci" style="color:rgba(255,255,255,0.4);text-decoration:none;margin:0 12px;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Polityka prywatności</a>
+    <a href="/regulamin" style="color:rgba(255,255,255,0.4);text-decoration:none;margin:0 12px;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Regulamin</a>
   </p>
 </footer>
 </body>
