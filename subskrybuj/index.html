@@ -24,12 +24,9 @@
     color: #fff;
     position: relative;
     display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
     flex-direction: column;
     padding-top: 80px;
-    
 }
         
   
@@ -371,6 +368,13 @@ footer p {
 footer p + p {
   margin-top: 8px;
 }
+.page-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
         
     </style>
 </head>
@@ -405,7 +409,8 @@ footer p + p {
     <a class="btn-sub" href="/subskrybuj/">SUBSKRYBUJ</a>
   </div>
 </nav>
-    
+    <main class="page-content">
+   
    <div class="form-container">
 
      <h2>DOŁĄCZ DO SPOŁECZNOŚCI BIOHACKERÓW
@@ -453,6 +458,7 @@ footer p + p {
     </a>
 
 </div>
+</main>
 <footer>
   <p>© 2026 Aurelia Iwanow. Wszystkie prawa zastrzeżone.</p>
   <p style="margin-top:8px;">
