@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<title>Aurelia Iwanow – Biohacking</title>
+
+<meta property="og:title" content="Aurelia Iwanow – Biohacking">
+<meta property="og:description" content="Optymalizacja Ciała i Umysłu">
+<meta property="og:image" content="https://aureliaiwanow.pl/bg-desktop.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://aureliaiwanow.pl/bg-desktop.png">
+
+<link rel="icon" type="image/png" href="favicon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Reenie+Beanie&family=Barlow+Condensed:wght@300;400;700;900&family=Barlow:wght@300;400;500&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+<style>
+@font-face {
+  font-family: 'Proxon';
+  src: url('Proxon-Regular.woff2') format('woff2'),
+       url('Proxon-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; overflow-x: hidden; }
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background: #0a0a0f;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+:root {
+  --gold: #fdb92a;
+  --cyan: #33e4e0;
+  --pink: #f85368;
+}
+
+/* ═══ HERO ═══ */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  min-height: 600px;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.25) 0%,
+    rgba(0,0,0,0.05) 40%,
+    rgba(0,0,0,0.45) 80%,
+    rgba(10,10,15,0.85) 100%
+  );
+  z-index: 1;
+}
+
+/* ═══ NAV ═══ */
+nav {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+}
+
+.nav-logo {
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.75);
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-sub {
+  background: var(--gold);
+  color: #000;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: .12em;
+  padding: 9px 18px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  border: 2px solid transparent;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+  white-space: nowrap;
+}
+
+.btn-sub:active {
+  background: transparent;
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* Hamburger */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  z-index: 20;
+  -webkit-tap-highlight-color: transparent;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2.5px;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: all .3s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+/* ═══ FULL-SCREEN MOBILE MENU ═══ */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 15, 0.97);
+  z-index: 9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-12px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.mobile-menu.open {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+.mobile-menu a,
+.mobile-menu .menu-toggle {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.88);
+  text-decoration: none;
+  padding: 18px 0;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  display: block;
+  transition: color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.mobile-menu a:first-child,
+.mobile-menu .menu-toggle:first-child {
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.mobile-menu a:active,
+.mobile-menu .menu-toggle:active {
+  color: var(--gold);
+}
+
+/* Submenu (Tematy) */
+.mobile-submenu {
+  width: 100%;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease;
+}
+.mobile-submenu.open {
+  max-height: 500px;
+}
+.mobile-submenu a {
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.55);
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.mobile-submenu a:first-child {
+  border-top: none;
+}
+.mobile-submenu a:active { color: var(--gold); }
+
+.arrow-icon {
+  display: inline-block;
+  transition: transform 0.3s;
+  font-size: 0.85em;
+  margin-left: 6px;
+}
+.arrow-icon.rotated { transform: rotate(180deg); }
+
+/* Social row in menu */
+.menu-socials {
+  display: flex;
+  gap: 24px;
+  padding: 28px 0 0;
+}
+.menu-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50%;
+  border-bottom: none;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.2s;
+}
+.menu-socials a:active { border-color: var(--gold); }
+.menu-socials svg { width: 18px; height: 18px; fill: rgba(255,255,255,0.7); }
+
+/* ═══ HERO CONTENT ═══ */
+.hero-content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.hero-title {
+  font-family: 'Antonio', sans-serif;
+  font-weight: 700;
+  font-size: clamp(4.5rem, 24vw, 7rem);
+  letter-spacing: -0.05em;
+  line-height: 0.85;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  pointer-events: none;
+  animation: fadeUp 0.9s ease both 0.1s;
+}
+
+.hero-subtitle {
+  margin-top: 16px;
+  font-family: 'Proxon', sans-serif;
+  font-size: clamp(0.85rem, 3.8vw, 1.1rem);
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.85);
+  text-align: center;
+  pointer-events: none;
+  animation: fadeUp 0.9s ease both 0.25s;
+}
+
+/* ═══ HERO FOOTER TAGS ═══ */
+.hero-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  background: rgba(10,10,15,0.60);
+  border-top: 1px solid rgba(255,255,255,0.10);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 20px 22px;
+}
+
+.tag-group {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 360px;
+  gap: 8px;
+}
+
+.tag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.tag .lbl {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+}
+
+.tag .val {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.cyan { color: var(--cyan); }
+.gold { color: var(--gold); }
+.pink { color: var(--pink); }
+
+/* ═══ DIVIDER between tags ═══ */
+.tag-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255,255,255,0.12);
+  align-self: center;
+  flex-shrink: 0;
+}
+
+/* ═══ SUBSCRIBE PAGE ═══ */
+#sub-page {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sub-bg {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #0A0A0F 0%, #0d1a2a 50%, #0A0A0F 100%);
+}
+
+.sub-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 50%, rgba(0,229,255,.12) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 60% at 80% 40%, rgba(255,107,157,.10) 0%, transparent 70%);
+}
+
+.sub-wrap {
+  position: relative;
+  z-index: 1;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px 40px;
+}
+
+.sub-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.10);
+  padding: 44px 28px 36px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 24px 64px rgba(0,0,0,.6), 0 0 0 1px rgba(245,197,24,.08);
+  animation: fadeUp 0.5s ease both;
+}
+
+.sub-line {
+  display: inline-block;
+  width: 36px;
+  height: 3px;
+  background: var(--gold);
+  margin-bottom: 24px;
+}
+
+.sub-card h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: 2.2rem;
+  letter-spacing: .07em;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.sub-card p {
+  font-size: .88rem;
+  font-weight: 300;
+  color: rgba(255,255,255,.55);
+  letter-spacing: .03em;
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+
+.sub-form { display: flex; flex-direction: column; gap: 12px; }
+
+.sub-form input {
+  width: 100%;
+  padding: 15px 16px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.15);
+  color: #fff;
+  font-family: 'Barlow', sans-serif;
+  font-size: 1rem;
+  letter-spacing: .03em;
+  outline: none;
+  transition: border-color .2s;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+.sub-form input::placeholder { color: rgba(255,255,255,.33); }
+.sub-form input:focus { border-color: var(--gold); }
+
+.sub-form button {
+  width: 100%;
+  padding: 16px;
+  background: var(--gold);
+  color: #000;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  margin-top: 6px;
+  -webkit-appearance: none;
+  border-radius: 0;
+  transition: filter .2s;
+}
+
+.sub-form button:active { filter: brightness(1.15); }
+
+.sub-back {
+  margin-top: 22px;
+  font-size: .82rem;
+  color: rgba(255,255,255,.36);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  display: inline-block;
+}
+
+.sub-logo {
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 1.2rem;
+  color: rgba(255,255,255,.4);
+  margin-top: 28px;
+  display: block;
+}
+
+/* Sub-page nav */
+.sub-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 110;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  background: rgba(10,10,15,0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+/* ═══ FOOTER ═══ */
+.site-footer {
+  text-align: center;
+  padding: 28px 20px 32px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.28);
+}
+
+.site-footer a {
+  color: rgba(255,255,255,0.38);
+  text-decoration: none;
+  margin: 0 10px;
+  display: inline-block;
+  transition: color .2s;
+}
+
+.site-footer a:active { color: #fff; }
+
+.site-footer .footer-links {
+  margin-top: 8px;
+}
+
+/* ═══ ANIMATIONS ═══ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ MAIN HERO ═══ -->
+<section class="hero" id="hero">
+  <img class="hero-bg" src="bg-mobile.png" alt="Aurelia Iwanow"/>
+  <div class="hero-overlay"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="https://aureliaiwanow.pl" class="nav-logo">Aurelia Iwanow</a>
+    <div class="nav-right">
+      <a class="btn-sub" href="/subskrybuj/">SUBSKRYBUJ</a>
+      <div class="hamburger" id="hbg" onclick="toggleMenu()" aria-label="Menu" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- FULL SCREEN MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="/podcast/" onclick="closeMenu()">Podcast</a>
+
+    <div class="menu-toggle" onclick="toggleSubmenu()" id="tematyToggle">
+      Tematy <span class="arrow-icon" id="tematyArrow">▾</span>
+    </div>
+    <div class="mobile-submenu" id="tematySubmenu">
+      <a href="/podcast?kategoria=odzywianie" onclick="closeMenu()">Odżywianie</a>
+      <a href="/podcast?kategoria=sen" onclick="closeMenu()">Sen i Regeneracja</a>
+      <a href="/podcast?kategoria=mozg" onclick="closeMenu()">Optymalizacja Mózgu</a>
+      <a href="/podcast?kategoria=swiadomosc" onclick="closeMenu()">Świadomość</a>
+      <a href="/podcast?kategoria=genetyka" onclick="closeMenu()">Genetyka</a>
+      <a href="/podcast?kategoria=dlugowiecznosc" onclick="closeMenu()">Długowieczność</a>
+      <a href="/podcast" onclick="closeMenu()">Wszystkie tematy</a>
+    </div>
+
+    <a href="/kontakt/" onclick="closeMenu()">Kontakt</a>
+
+    <div class="menu-socials">
+      <a href="https://open.spotify.com/show/6SljkXMp0CqSpYmDL0cyXZ?si=Szy2cKopQSOc_Z3jKmg0oQ" target="_blank" aria-label="Spotify">
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.559 17.32a.75.75 0 01-1.03.25c-2.82-1.724-6.368-2.114-10.545-1.158a.75.75 0 01-.335-1.462c4.573-1.046 8.49-.596 11.66 1.34a.75.75 0 01.25 1.03zm1.483-3.302a.937.937 0 01-1.288.308C14.95 12.5 11.07 11.9 7.47 12.943a.937.937 0 01-.518-1.8c4.064-1.168 8.39-.602 11.782 1.587a.937.937 0 01.308 1.288zm.128-3.44a1.124 1.124 0 01-1.543.378C14.52 8.87 9.74 8.718 5.906 9.905a1.125 1.125 0 01-.65-2.153c4.396-1.33 9.7-1.15 13.554 1.29a1.125 1.125 0 01.36 1.536z"/></svg>
+      </a>
+      <a href="https://youtube.com/@aureliaiwanowpodcast?si=F8OPBfGyuJC3FWCP" target="_blank" aria-label="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+      <a href="https://instagram.com/aureliaiwanow" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- HERO CONTENT -->
+  <div class="hero-content">
+    <h1 class="hero-title">BIOHACKING</h1>
+    <p class="hero-subtitle">Optymalizacja Ciała i Umysłu</p>
+  </div>
+
+  <!-- FOOTER TAGS -->
+  <div class="hero-footer">
+    <div class="tag-group">
+      <div class="tag">
+        <span class="lbl">Studentka</span>
+        <span class="val cyan">Nutrigenomiki</span>
+      </div>
+      <div class="tag-divider"></div>
+      <div class="tag">
+        <span class="val gold">Dietetyk</span>
+      </div>
+      <div class="tag-divider"></div>
+      <div class="tag">
+        <span class="lbl">Entuzjastka</span>
+        <span class="val pink">Psychologii</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SUBSCRIBE PAGE ═══ -->
+<div id="sub-page">
+  <div class="sub-bg"></div>
+
+  <nav class="sub-nav">
+    <a href="/" class="nav-logo">Aurelia Iwanow</a>
+    <a class="btn-sub" href="#" onclick="showLanding(); return false;">← WRÓĆ</a>
+  </nav>
+
+  <div class="sub-wrap">
+    <div class="sub-card">
+      <div class="sub-line"></div>
+      <h1>DOŁĄCZ DO LISTY</h1>
+      <p>Otrzymuj ekskluzywne treści o biohackingu,<br>nowe odcinki podcastu i wskazówki<br>prosto na Twoją skrzynkę.</p>
+      <form class="sub-form" action="https://formspree.io/f/meedwbkj" method="POST">
+        <input type="text" name="imie" placeholder="Twoje imię" required autocomplete="given-name"/>
+        <input type="email" name="email" placeholder="Twój adres e-mail" required autocomplete="email"/>
+        <button type="submit">SUBSKRYBUJ ✦</button>
+      </form>
+      <div class="sub-back" onclick="showLanding()">← Wróć do strony głównej</div>
+      <span class="sub-logo">Aurelia Iwanow</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="site-footer">
+  <p>© 2026 Aurelia Iwanow. Wszystkie prawa zastrzeżone.</p>
+  <div class="footer-links">
+    <a href="/polityka-prywatnosci">Polityka prywatności</a>
+    <a href="/regulamin">Regulamin</a>
+  </div>
+</footer>
+
+<script>
+  const hbg = document.getElementById('hbg');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const hero = document.getElementById('hero');
+  const subPg = document.getElementById('sub-page');
+
+  function toggleMenu() {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hbg.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  }
+
+  function closeMenu() {
+    mobileMenu.classList.remove('open');
+    hbg.classList.remove('open');
+    document.body.style.overflow = '';
+    // also close submenu
+    document.getElementById('tematySubmenu').classList.remove('open');
+    document.getElementById('tematyArrow').classList.remove('rotated');
+  }
+
+  function toggleSubmenu() {
+    const sub = document.getElementById('tematySubmenu');
+    const arrow = document.getElementById('tematyArrow');
+    sub.classList.toggle('open');
+    arrow.classList.toggle('rotated');
+  }
+
+  // Close menu on outside tap
+  document.addEventListener('click', e => {
+    if (!hbg.contains(e.target) && !mobileMenu.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  // Subscribe page
+  function showSubscribe() {
+    hero.style.display = 'none';
+    subPg.style.display = 'block';
+    window.scrollTo(0, 0);
+    document.body.style.overflow = '';
+  }
+
+  function showLanding() {
+    subPg.style.display = 'none';
+    hero.style.display = '';
+    window.scrollTo(0, 0);
+  }
+
+  // Wire subscribe button if needed
+  document.querySelectorAll('.btn-sub').forEach(btn => {
+    if (btn.getAttribute('href') === '/subskrybuj/') {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        showSubscribe();
+      });
+    }
+  });
+</script>
+</body>
+</html>
