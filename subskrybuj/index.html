@@ -380,27 +380,29 @@ footer p + p {
     align-items: center;
     flex-direction: column;
 }
-        footer,
+       footer,
 footer p,
 footer a {
     font-size: 12px !important;
     line-height: 1.4;
-    /* główny tekst stopki */
+}
+
+/* główny tekst stopki */
 footer p:first-child {
     color: rgba(255,255,255,0.1) !important;
 }
 
 /* linki */
 footer a {
-    color: rgba(255,255,255,0.2) !important;
+    color: rgba(255,255,255,0.2);
     text-decoration: none;
     margin: 0 12px;
-    transition: color .2s;
+    transition: color .2s ease;
 }
 
 /* hover */
 footer a:hover {
-    color: #fff;
+    color: rgba(255,255,255,1);
 }
     </style>
 </head>
@@ -487,10 +489,9 @@ footer a:hover {
 </main>
 <footer>
 <p>© 2026 Aurelia Iwanow. Wszystkie prawa zastrzeżone.</p>
-  <p style="margin-top:8px;">
-    <a href="/polityka-prywatnosci" style="color:rgba(255,255,255,0.3);text-decoration:none;margin:0 12px;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Polityka prywatności</a>
-    <a href="/regulamin" style="color:rgba(255,255,255,0.3);text-decoration:none;margin:0 12px;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Regulamin</a>
-  </p>
+    <a href="/polityka-prywatnosci">Polityka prywatności</a>
+<a href="/regulamin">Regulamin</a>
+</p>
 </footer>
 </body>
 </html>
