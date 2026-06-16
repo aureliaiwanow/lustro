@@ -1,496 +1,507 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <!-- MailerLite Universal -->
-<script>
+  <!-- MailerLite Universal -->
+  <script>
     (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
     .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
     n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
     (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
     ml('account', '2443139');
-</script>
-<!-- End MailerLite Universal -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dołącz do Społeczności | Aurelia Iwanow</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Open+Sans:wght@400;600&family=Reenie+Beanie&family=Montserrat:wght@400;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-       body {
-    min-height: 100vh;
-    margin: 0;
-    font-family:'Montserrat',sans-serif;
+  </script>
+  <!-- End MailerLite Universal -->
 
-    color: #fff;
-    position: relative;
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    padding-top: 80px;
-}
-        
-  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Dołącz do Społeczności | Aurelia Iwanow</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Reenie+Beanie&display=swap" rel="stylesheet">
 
-/* BACKGROUND (TA SAMA LOGIKA CO KONTAKT) */
-body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: url('/subskrybuj/bg-sub.png') center center / cover no-repeat;
-    z-index: -2;
-}
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* OVERLAY (IDENTYCZNY MOOD) */
-body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.65);
-    z-index: -1;
-}
+    :root {
+      --gold: #fdb92a;
+      --cyan: #00e5ff;
+      --overlay: rgba(0,0,0,0.68);
+    }
 
-    
-       .form-container {
-    background: rgba(10, 10, 10, 0.75);
-    backdrop-filter: blur(18px);
-    padding: 35px 40px;
-    border: 1px solid rgba(255,255,255,0.12);
-    width: 90%;
-    max-width: 520px;
-    text-align: center;
-    border-radius: 6px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-    transition: all 0.3s ease;
-    max-height: fit-content;
-    display: inline-block;
-}
+    /* ── BG ── */
+    body {
+      min-height: 100dvh;
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+    }
 
-        h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 22px;
-    letter-spacing: -1px;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    color: #fff;
-}
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: url('/subskrybuj/bg-sub.png') center center / cover no-repeat;
+      z-index: -2;
+    }
 
-p {
-    color: rgba(255,255,255,0.65);
-    margin-bottom: 40px;
-    font-size: 15px;
-    line-height: 1.6;
-}
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: var(--overlay);
+      z-index: -1;
+    }
 
-     input {
-    width: 100%;
-    padding: 18px;
-    margin-bottom: 10px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
-    color: white;
-    font-size: 15px;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
+    /* ── MOBILE NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
 
-input:focus {
-    outline: none;
-    border-color: #00e5ff;
-    background: rgba(255,255,255,0.1);
-    box-shadow: 0 0 0 1px rgba(0,229,255,0.25);
-}
-       button {
-    width: 100%;
-    padding: 18px;
-    background: #fbbc05;
-    color: #000;
-    border: none;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border-radius: 2px;
-}
+    .nav-logo {
+      font-family: 'Reenie Beanie', cursive;
+      font-size: 2rem;
+      color: #fff;
+      text-decoration: none;
+      text-shadow: 0 2px 12px rgba(0,0,0,.7);
+    }
 
-button:hover {
-    background: transparent;
-    border: 1px solid #fbbc05;
-    color: #fbbc05;
-}
-        
-        .back-link {
-    display: block;
-    margin-top: 25px;
-    color: rgba(255,255,255,0.4);
-    text-decoration: none;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    transition: color 0.3s;
-}
+    /* hamburger */
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
 
-.back-link:hover {
-    color: #fbbc05;
-}
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      transition: all 0.3s;
+    }
 
-:root { --gold: #fdb92a; }
-nav { position: fixed; top: 10px; left: 0; right: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 22px 28px 22px 100px; }
-.nav-logo { font-family: 'Reenie Beanie', cursive; font-size: 2.5rem; font-weight: 400; color: #fff; text-decoration: none; text-shadow: 0 2px 16px rgba(0,0,0,.75); transition: color .2s; }
-.nav-logo:hover { color: var(--gold); }
-.desktop-nav { position: absolute; left: 50%; transform: translateX(-50%); display: flex; gap: 40px; align-items: center; }
-.desktop-nav a, .has-dropdown span { font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 14.8px; letter-spacing: 3.536px; text-transform: uppercase; color: rgba(255,255,255,0.97); text-decoration: none; cursor: pointer; padding: 6px 0; transition: color 0.25s; }
-.desktop-nav a:hover, .has-dropdown:hover span { color: var(--gold); }
-.has-dropdown { position: relative; }
-.tematy-dropdown { position: absolute; top: calc(100% + 10px); left: -0.5cm; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; z-index: 50; opacity: 0; pointer-events: none; transition: opacity 0.3s ease 0.3s; min-width: 220px; }
-.tematy-dropdown::before { content: ''; position: absolute; top: -10px; left: 0; right: 0; height: 10px; }
-.tematy-dropdown a { font-family: 'Montserrat', sans-serif; font-size: 12px; letter-spacing: 1px; color: rgba(255,255,255,0.85); text-decoration: none; padding: 12px 20px; text-transform: uppercase; transition: background 0.2s, color 0.2s; }
-.tematy-dropdown a:hover { background: var(--gold); color: #fff; }
-.has-dropdown:hover .tematy-dropdown, .tematy-dropdown:hover { opacity: 1; pointer-events: all; }
-.obserwuj-dropdown { position: absolute; top: calc(100% + 10px); left: 0; background: rgba(0,0,0,0.75); border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; z-index: 50; opacity: 0; pointer-events: none; transition: opacity 0.3s ease 0.3s; min-width: 180px; }
-.obserwuj-dropdown::before { content: ''; position: absolute; top: -10px; left: 0; right: 0; height: 10px; }
-.obserwuj-dropdown a { display: flex; align-items: center; gap: 10px; font-family: 'Montserrat', sans-serif; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.85); text-decoration: none; padding: 12px 20px; transition: background 0.2s, color 0.2s; }
-.obserwuj-dropdown a:hover { background: var(--gold); color: #fff; }
-.obserwuj-dropdown svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
-.has-dropdown:hover .obserwuj-dropdown, .obserwuj-dropdown:hover { opacity: 1; pointer-events: all; }
-.nav-right { display: flex; align-items: center; gap: 14px; margin-right: 40px; }
-.btn-sub { background: var(--gold); color: #000; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.95rem; letter-spacing: .15em; padding: 7px 45px; cursor: pointer; text-decoration: none; display: inline-block; border: 2px solid transparent; transition: all 0.4s; }
-.btn-sub:hover { background: transparent; border-color: var(--gold); color: var(--gold); }
- .ml-embedded {
-    margin-top: 20px;
-}
+    /* mobile menu drawer */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 300px;
+      height: 100dvh;
+      background: rgba(5,5,5,0.97);
+      backdrop-filter: blur(20px);
+      border-left: 1px solid rgba(255,255,255,0.1);
+      z-index: 200;
+      transition: right 0.35s cubic-bezier(.4,0,.2,1);
+      display: flex;
+      flex-direction: column;
+      padding: 60px 28px 40px;
+      gap: 0;
+    }
 
-/* lekka personalizacja jeśli MailerLite pozwala */
-.ml-embedded iframe {
-    border-radius: 6px;
-}  
+    .mobile-menu.open { right: 0; }
 
-/* =========================
-   MAILERLITE RESET (CLEAN)
-   ========================= */
+    .mobile-menu-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.6);
+      font-size: 24px;
+      cursor: pointer;
+      line-height: 1;
+    }
 
-.ml-embedded {
-    width: 100%;
-}
+    .mobile-menu a {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: color 0.2s;
+    }
 
-/* usuwa tło i boxy MailerLite */
-#mlb2-42588484,
-#mlb2-42588484 * {
-    background: transparent !important;
-    box-shadow: none !important;
-}
+    .mobile-menu a:hover { color: var(--gold); }
 
-/* wrapper formularza */
-.ml-form-embedWrapper {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-}
+    .mobile-menu .menu-section-label {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-top: 20px;
+      margin-bottom: 4px;
+    }
 
-/* usuwa wewnętrzne paddingi */
-.ml-form-embedBody {
-    background: transparent !important;
-    padding: 0 !important;
-}
+    .mobile-menu .btn-sub-menu {
+      margin-top: 28px;
+      display: block;
+      text-align: center;
+      background: var(--gold);
+      color: #000;
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 3px;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
 
-/* input styling → dopasowanie do Twojego designu */
-.ml-form-embedBody input {
-    width: 100% !important;
-    padding: 18px !important;
-    margin-bottom: 12px !important;
+    /* overlay za menu */
+    .menu-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 150;
+    }
 
-    background: rgba(255,255,255,0.08) !important;
-    border: 1px solid rgba(255,255,255,0.12) !important;
-    color: #fff !important;
+    .menu-overlay.open { display: block; }
 
-    font-family: 'Open Sans', sans-serif !important;
-    font-size: 15px !important;
-    border-radius: 2px !important;
-}
+    /* ── MAIN CONTENT ── */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px 24px;
+    }
 
-/* focus jak u Ciebie */
-.ml-form-embedBody input:focus {
-    border-color: #00e5ff !important;
-    box-shadow: 0 0 0 1px rgba(0,229,255,0.25) !important;
-    outline: none !important;
-}
+    /* ── KARTA FORMULARZA ── */
+    .form-card {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(8,8,8,0.78);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 28px 24px 32px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.65);
+    }
 
-/* button = Twój styl (gold) */
-.ml-form-embedSubmit button {
-    width: 100% !important;
-    padding: 18px !important;
+    /* złota linia dekoracyjna u góry */
+    .form-card::before {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0 auto 20px;
+      border-radius: 2px;
+    }
 
-    background: #fbbc05 !important;
-    color: #000 !important;
+    .form-card h2 {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.35;
+      margin-bottom: 10px;
+      color: #fff;
+    }
 
-    border: none !important;
-    border-radius: 2px !important;
+    .form-card p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.58);
+      text-align: center;
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
 
-    font-family: 'Montserrat', sans-serif !important;
-    font-weight: 800 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 2px !important;
+    /* ── INPUTS ── */
+    form input[type="email"],
+    form input[type="text"] {
+      display: block;
+      width: 100%;
+      padding: 15px 16px;
+      margin-bottom: 12px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 3px;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      outline: none;
+      transition: border-color 0.25s, background 0.25s;
+      -webkit-appearance: none;
+    }
 
-    cursor: pointer !important;
-}
+    form input[type="email"]::placeholder,
+    form input[type="text"]::placeholder {
+      color: rgba(255,255,255,0.35);
+    }
 
-/* hover jak u Ciebie */
-.ml-form-embedSubmit button:hover {
-    background: transparent !important;
-    border: 1px solid #fbbc05 !important;
-    color: #fbbc05 !important;
-}
-   .newsletter-consent{
-    display:block;
-    text-align:left;
-    font-size:13px;
-    color:rgba(255,255,255,.65);
-    margin:15px 0 25px;
-    line-height:1.6;
-}
+    form input[type="email"]:focus,
+    form input[type="text"]:focus {
+      border-color: var(--cyan);
+      background: rgba(0,229,255,0.04);
+      box-shadow: 0 0 0 1px rgba(0,229,255,0.2);
+    }
 
-.newsletter-consent input{
-    width:auto;
-    margin-right:10px;
-}   
-        .form-container input {
-    width: 100%;
-    max-width: 340px;
-    height: 42px;
-}
+    /* ── CHECKBOX ── */
+    .newsletter-consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 6px 0 22px;
+    }
 
-.form-container button {
-    width: 340px;
-    height: 52px;
-}
+    .newsletter-consent input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      margin-top: 2px;
+      accent-color: var(--cyan);
+      cursor: pointer;
+    }
 
-        .newsletter-consent input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-    margin-right: 10px;
-    transform: scale(1);
-    flex-shrink: 0;
-    vertical-align: middle;
-}
-        .newsletter-consent {
-    display: flex;
-    gap: 10px;
-    font-size: 12px;
-    line-height: 1.4;
-    align-items: center;
-}
+    .newsletter-consent span {
+      font-size: 11px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.55);
+    }
 
-.newsletter-consent input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-    margin-top: 3px;
-    flex-shrink: 0;
-}
-        .newsletter-consent input[type="checkbox"] {
-    accent-color: #00e5ff;
-}
-        :root {
-  --gold: #f5c518;
-  --cyan: #33e4e0;
-}
+    /* ── BUTTON ── */
+    form button[type="submit"] {
+      display: block;
+      width: 100%;
+      padding: 17px 20px;
+      background: var(--gold);
+      color: #000;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border: 2px solid transparent;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-/* INPUTY (żeby wyglądały jak na stronie kontakt) */
-form input[type="email"],
-form input[type="text"] {
-  width: 100%;
-  padding: 14px 16px;
-  background: rgba(255,255,255,0.2);
-  border: 1px solid rgba(255,255,255,0.12);
-  color: #fff;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 2px;
-  outline: none;
-  margin-bottom: 12px;
-}
+    form button[type="submit"]:active {
+      background: transparent;
+      border-color: var(--gold);
+      color: var(--gold);
+    }
 
-form input:focus {
-  border-color: var(--cyan);
-  background: rgba(51,228,224,0.04);
-}
+    /* ── BACK LINK ── */
+    .back-link {
+      display: block;
+      margin-top: 22px;
+      text-align: center;
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      transition: color 0.25s;
+    }
 
-/* BUTTON */
-form button {
-  background: var(--gold);
-  color: #000;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  letter-spacing: .15em;
-  padding: 16px 60px;
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: all .3s ease;
-}
+    .back-link:active { color: var(--gold); }
 
-form button:hover {
-  background: transparent;
-  border-color: var(--gold);
-  color: var(--gold);
-}
+    /* ── SOCIAL ICONS (mały rząd pod linkiem) ── */
+    .social-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 28px;
+    }
 
-/* CHECKBOX (żeby był mały i równo z tekstem) */
-.newsletter-consent {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 0.75rem;
-  line-height: 1.4;
-  color: rgba(255,255,255,0.7);
-}
+    .social-row a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      transition: border-color 0.25s, background 0.25s;
+    }
 
-.newsletter-consent input[type="checkbox"] {
-  width: 16px;
-  height: 16px;
-  margin-top: 2px;
-  accent-color: var(--cyan);
-}
+    .social-row a:active {
+      border-color: var(--gold);
+      background: rgba(253,185,42,0.12);
+    }
 
-footer {
- font-size: 12px;
- line-height: 1.4;
-  width: 100%;
-  text-align: center;
-    padding: 20px 0 10px;
-}
+    .social-row svg {
+      width: 15px;
+      height: 15px;
+      fill: rgba(255,255,255,0.7);
+    }
 
-footer p {
-  margin: 0;
-}
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 18px 20px 24px;
+    }
 
-footer p + p {
-  margin-top: 8px;
-}
-.page-content {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-        footer,
-footer p,
-footer a {
-    font-size: 12px !important;
-    line-height: 1.4;
-    /* główny tekst stopki */
-footer p:first-child {
-    color: rgba(255,255,255,0.3) !important;
-}
+    footer p {
+      font-size: 10px;
+      color: rgba(255,255,255,0.28);
+      line-height: 1.5;
+    }
 
-/* linki */
-footer a {
-    color: rgba(255,255,255,0.4) !important;
-    text-decoration: none;
-    margin: 0 12px;
-    transition: color .2s;
-}
+    footer a {
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      margin: 0 8px;
+      font-size: 10px;
+    }
 
-/* hover */
-footer a:hover {
-    color: #fff;
-}
-    </style>
+    /* ── ONLY SHOW ON MOBILE ── */
+    @media (min-width: 769px) {
+      /* On larger screens, redirect to desktop version */
+      .mobile-hint {
+        display: block;
+        margin-bottom: 16px;
+        font-size: 11px;
+        letter-spacing: 2px;
+        color: rgba(255,255,255,0.3);
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-hint { display: none; }
+    }
+  </style>
 </head>
 <body>
-<nav>
-  <a href="https://aureliaiwanow.pl" class="nav-logo">Aurelia Iwanow</a>
-  <div class="desktop-nav">
+
+  <!-- NAV -->
+  <nav>
+    <a href="https://aureliaiwanow.pl" class="nav-logo">Aurelia Iwanow</a>
+    <button class="hamburger" id="menuBtn" aria-label="Otwórz menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE DRAWER -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="menuClose">✕</button>
+
     <a href="/podcast/">Podcast</a>
-    <div class="has-dropdown">
-      <span>Tematy ▾</span>
-      <div class="tematy-dropdown">
-        <a href="/podcast?kategoria=odzywianie">Odżywianie</a>
-        <a href="/podcast?kategoria=sen">Sen i Regeneracja</a>
-        <a href="/podcast?kategoria=mozg">Optymalizacja Mózgu</a>
-        <a href="/podcast?kategoria=swiadomosc">Świadomość</a>
-        <a href="/podcast?kategoria=genetyka">Genetyka</a>
-        <a href="/podcast?kategoria=dlugowiecznosc">Długowieczność</a>
-        <a href="/podcast">Wszystkie tematy</a>
-      </div>
-    </div>
-    <div class="has-dropdown">
-      <span>Obserwuj ▾</span>
-      <div class="tematy-dropdown obserwuj-dropdown">
-        <a href="https://open.spotify.com/show/6SljkXMp0CqSpYmDL0cyXZ" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.559 17.32a.75.75 0 01-1.03.25c-2.82-1.724-6.368-2.114-10.545-1.158a.75.75 0 01-.335-1.462c4.573-1.046 8.49-.596 11.66 1.34a.75.75 0 01.25 1.03zm1.483-3.302a.937.937 0 01-1.288.308C14.95 12.5 11.07 11.9 7.47 12.943a.937.937 0 01-.518-1.8c4.064-1.168 8.39-.602 11.782 1.587a.937.937 0 01.308 1.288zm.128-3.44a1.124 1.124 0 01-1.543.378C14.52 8.87 9.74 8.718 5.906 9.905a1.125 1.125 0 01-.65-2.153c4.396-1.33 9.7-1.15 13.554 1.29a1.125 1.125 0 01.36 1.536z"/></svg>Spotify</a>
-        <a href="https://youtube.com/@aureliaiwanowpodcast" target="_blank"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>YouTube</a>
-        <a href="https://instagram.com/aureliaiwanow" target="_blank"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>Instagram</a>
-      </div>
-    </div>
+
+    <span class="menu-section-label">Tematy</span>
+    <a href="/podcast?kategoria=odzywianie">Odżywianie</a>
+    <a href="/podcast?kategoria=sen">Sen i Regeneracja</a>
+    <a href="/podcast?kategoria=mozg">Optymalizacja Mózgu</a>
+    <a href="/podcast?kategoria=swiadomosc">Świadomość</a>
+    <a href="/podcast?kategoria=genetyka">Genetyka</a>
+    <a href="/podcast?kategoria=dlugowiecznosc">Długowieczność</a>
+
+    <span class="menu-section-label">Obserwuj</span>
+    <a href="https://open.spotify.com/show/6SljkXMp0CqSpYmDL0cyXZ" target="_blank">Spotify</a>
+    <a href="https://youtube.com/@aureliaiwanowpodcast" target="_blank">YouTube</a>
+    <a href="https://instagram.com/aureliaiwanow" target="_blank">Instagram</a>
+
     <a href="/kontakt/">Kontakt</a>
-  </div>
-  <div class="nav-right">
-    <a class="btn-sub" href="/subskrybuj/">SUBSKRYBUJ</a>
-  </div>
-</nav>
-    <main class="page-content">
-   
-   <div class="form-container">
 
-     <h2>DOŁĄCZ DO SPOŁECZNOŚCI BIOHACKERÓW
-</h2>
-        <p>Odbieraj nowe odcinki oraz strategie zwiekszające energię, wydajność i świadomość.</p>
+    <a href="/subskrybuj/" class="btn-sub-menu">SUBSKRYBUJ</a>
+  </div>
 
-    <form
+  <!-- MAIN -->
+  <main>
+    <div class="form-card">
+      <h2>Dołącz do Społeczności Biohackerów</h2>
+      <p>Odbieraj nowe odcinki oraz strategie zwiększające energię, wydajność i świadomość.</p>
+
+      <form
         action="https://assets.mailerlite.com/jsonp/2443139/forms/190264025057068894/subscribe"
         method="post"
         target="_blank"
-    >
-
+      >
         <input
-            type="email"
-            name="fields[email]"
-            placeholder="Adres e-mail"
-            required
+          type="email"
+          name="fields[email]"
+          placeholder="Adres e-mail"
+          required
+          autocomplete="email"
         >
 
         <input
-            type="text"
-            name="fields[name]"
-            placeholder="Imię"
+          type="text"
+          name="fields[name]"
+          placeholder="Imię"
+          autocomplete="given-name"
         >
 
         <label class="newsletter-consent">
-            <input type="checkbox" required>
-
+          <input type="checkbox" required>
+          <span>
             Wyrażam zgodę na przetwarzanie danych osobowych
             w celu otrzymywania newslettera oraz akceptuję
             politykę prywatności.
+          </span>
         </label>
 
         <input type="hidden" name="ml-submit" value="1">
         <input type="hidden" name="anticsrf" value="true">
 
-        <button type="submit">
-            DOŁĄCZ TERAZ
-        </button>
+        <button type="submit">DOŁĄCZ TERAZ</button>
+      </form>
 
-    </form>
+      <a href="/" class="back-link">← powrót do strony głównej</a>
+    </div>
 
-    <a href="/" class="back-link">
-        ← powrót do strony głównej
-    </a>
+    <!-- social icons -->
+    <div class="social-row">
+      <a href="https://open.spotify.com/show/6SljkXMp0CqSpYmDL0cyXZ" target="_blank" aria-label="Spotify">
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.559 17.32a.75.75 0 01-1.03.25c-2.82-1.724-6.368-2.114-10.545-1.158a.75.75 0 01-.335-1.462c4.573-1.046 8.49-.596 11.66 1.34a.75.75 0 01.25 1.03zm1.483-3.302a.937.937 0 01-1.288.308C14.95 12.5 11.07 11.9 7.47 12.943a.937.937 0 01-.518-1.8c4.064-1.168 8.39-.602 11.782 1.587a.937.937 0 01.308 1.288zm.128-3.44a1.124 1.124 0 01-1.543.378C14.52 8.87 9.74 8.718 5.906 9.905a1.125 1.125 0 01-.65-2.153c4.396-1.33 9.7-1.15 13.554 1.29a1.125 1.125 0 01.36 1.536z"/></svg>
+      </a>
+      <a href="https://youtube.com/@aureliaiwanowpodcast" target="_blank" aria-label="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+      <a href="https://instagram.com/aureliaiwanow" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+    </div>
+  </main>
 
-</div>
-</main>
-<footer>
-  <p>© 2026 Aurelia Iwanow. Wszystkie prawa zastrzeżone.</p>
-  <p style="margin-top:8px;">
-    <a href="/polityka-prywatnosci" style="color:rgba(255,255,255,0.4);text-decoration:none;margin:0 12px;">Polityka prywatności</a>
-    <a href="/regulamin" style="color:rgba(255,255,255,0.4);text-decoration:none;margin:0 12px;">Regulamin</a>
-  </p>
-</footer>
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Aurelia Iwanow. Wszystkie prawa zastrzeżone.</p>
+    <p style="margin-top:6px;">
+      <a href="/polityka-prywatnosci">Polityka prywatności</a>
+      <a href="/regulamin">Regulamin</a>
+    </p>
+  </footer>
+
+  <script>
+    const menuBtn    = document.getElementById('menuBtn');
+    const menuClose  = document.getElementById('menuClose');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const overlay    = document.getElementById('menuOverlay');
+
+    function openMenu()  { mobileMenu.classList.add('open'); overlay.classList.add('open'); }
+    function closeMenu() { mobileMenu.classList.remove('open'); overlay.classList.remove('open'); }
+
+    menuBtn.addEventListener('click', openMenu);
+    menuClose.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
+  </script>
 </body>
 </html>
