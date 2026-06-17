@@ -106,33 +106,30 @@ nav{
 .has-dropdown:hover span .arrow{color:var(--gold)}
 
 /* Wspólne style dla obu dropdownów */
-.tematy-dropdown,
-.obserwuj-dropdown{
+.tematy-dropdown {
   position:absolute;
-  top:calc(100% + 10px);
-  left:-0.5cm;
-  background:rgba(0,0,0,0.75);
+  top:100%;
+  left: 0;
+  background:rgba(0,0,0,0.9); /* zmieniłem na ciemniejszy, żeby napisy były widoczne */
   border:1px solid rgba(255,255,255,0.1);
   display:flex;
   flex-direction:column;
   z-index:50;
   opacity:0;
   pointer-events:none;
-  transition:opacity 0.3s ease 0.3s;
+  transition:opacity 0.3s ease;
   min-width:220px;
 }
 
 /* Niewidoczny mostek – zapobiega "znikaniu" przy przesuwaniu myszy */
-.tematy-dropdown::before,
-.obserwuj-dropdown::before{
+.tematy-dropdown::before {
   content:'';
   position:absolute;
-  top:-10px;left:0;right:0;
-  height:10px;
+  top:-20px;left:0;right:0;
+  height:20px;
 }
 
-.tematy-dropdown a,
-.obserwuj-dropdown a{
+.tematy-dropdown a {
   display:flex;
   align-items:center;
   gap:10px;
@@ -141,42 +138,31 @@ nav{
   font-size:12px;
   letter-spacing:1px;
   text-transform:uppercase;
-  color:rgba(255,255,255,0.85);
-  text-decoration:none;
+  color:rgba(255,255,255,0.85) !important; /* Wymuszenie koloru */
+  text-decoration:none !important; /* Usunięcie podkreślenia */
   padding:12px 20px;
   transition:background 0.2s, color 0.2s;
 }
-.tematy-dropdown a:hover,
-.obserwuj-dropdown a:hover{
+.tematy-dropdown a:hover {
   background:var(--gold);
-  color:#fff;
+  color:#000 !important;
 }
 
 /* SVG w obserwuj-dropdown */
-.obserwuj-dropdown svg{
+.obserwuj-dropdown svg {
   width:18px;height:18px;
   fill:#fff;
   flex-shrink:0;
   display:block;
   transform:translateY(-1px);
 }
-.obserwuj-dropdown a:hover svg{fill:#fff}
+.obserwuj-dropdown a:hover svg{fill:#000}
 
-/* Otwieranie dropdownów */
-.has-dropdown:hover .tematy-dropdown,
-.has-dropdown:hover .obserwuj-dropdown,
-.tematy-dropdown:hover,
-.obserwuj-dropdown:hover{
+/* Proste i niezawodne otwieranie dropdownów */
+.has-dropdown:hover .tematy-dropdown {
   opacity:1;
   pointer-events:all;
 }
-.has-dropdown:not(:hover) .tematy-dropdown:not(:hover),
-.has-dropdown:not(:hover) .obserwuj-dropdown:not(:hover){
-  opacity:0;
-  pointer-events:none;
-  transition:opacity 0.5s ease 0.4s;
-}
-
 /* ═══ NAV RIGHT ═══ */
 .nav-right{
   display:flex;align-items:center;gap:14px;
