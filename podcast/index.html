@@ -771,13 +771,11 @@ section {
 </style>
 </head>
 <body>
+  <body>
   <script>
-function checkMobile() {
-    if (window.innerWidth <= 768) {
-        window.location.replace("/mobile/index.html");
-    }
-}
-checkMobile();
+  if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+    window.location.replace('/mobile/');
+  }
 </script>
 
   <!-- NAV -->
