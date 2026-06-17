@@ -768,14 +768,125 @@ section {
   opacity: 1;
   transform: translateY(0);
 } 
+
+?*=========================MOBILE===============================*/
+  @media (max-width:768px){
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+
+    padding:13px 18px;
+
+    background:rgba(10,10,15,.92);
+
+    backdrop-filter:blur(16px);
+
+    border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.desktop-nav{
+    display:none;
+}
+
+.btn-sub{
+    display:none;
+}
+
+.hamburger{
+    display:flex;
+}
+
+.nav-logo{
+    font-size:2rem;
+}
+
+  .podcast-hero{
+    height:100svh;
+    align-items:flex-end;
+    padding-bottom:44px;
+}
+
+.podcast-hero-content{
+    transform:none;
+}
+
+.podcast-title{
+    font-size:clamp(4rem,23vw,6.5rem);
+}
+
+.hero-search{
+    margin-top:24px;
+}
+
+.hero-search input{
+    width:100%;
+}
+.podcast-main{
+    top:0;
+    padding:30px 16px 80px;
+}
+  .episodes-grid{
+    grid-template-columns:1fr;
+    gap:18px;
+}
+    .episode-body{
+    padding:18px;
+}
+
+.episode-title{
+    font-size:1.35rem;
+}
+
+.episode-desc{
+    font-size:.72rem;
+}
+.mobile-menu{
+  position:fixed;
+  inset:0;
+
+  background:rgba(10,10,15,.97);
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  opacity:0;
+  pointer-events:none;
+
+  transition:opacity .3s ease;
+
+  z-index:90;
+}
+
+.mobile-menu.open{
+  opacity:1;
+  pointer-events:all;
+}
+
+.mobile-menu a{
+  font-family:'Montserrat',sans-serif;
+  font-size:.8rem;
+
+  letter-spacing:4px;
+
+  text-transform:uppercase;
+
+  color:rgba(255,255,255,.7);
+
+  text-decoration:none;
+
+  padding:18px 0;
+}  
+}
+
+  
 </style>
 </head>
 <body>
-  <script>
-  if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
-    window.location.replace('podcast/mobile/');
-  }
-</script>
 
   <!-- NAV -->
  <nav>
@@ -826,7 +937,46 @@ section {
       </div>
     </div>
   </nav>
+<div class="mobile-menu" id="mobileMenu">
 
+  <a href="/podcast/" onclick="closeMenu()">Podcast</a>
+
+  <a href="/podcast?kategoria=odzywianie"
+     onclick="closeMenu()">
+     Odżywianie
+  </a>
+
+  <a href="/podcast?kategoria=sen"
+     onclick="closeMenu()">
+     Sen i Regeneracja
+  </a>
+
+  <a href="/podcast?kategoria=mozg"
+     onclick="closeMenu()">
+     Optymalizacja Mózgu
+  </a>
+
+  <a href="/podcast?kategoria=swiadomosc"
+     onclick="closeMenu()">
+     Świadomość
+  </a>
+
+  <a href="/podcast?kategoria=genetyka"
+     onclick="closeMenu()">
+     Genetyka
+  </a>
+
+  <a href="/podcast?kategoria=dlugowiecznosc"
+     onclick="closeMenu()">
+     Długowieczność
+  </a>
+
+  <a href="/kontakt/"
+     onclick="closeMenu()">
+     Kontakt
+  </a>
+
+</div>
   <section class="podcast-hero">
 
   <div class="podcast-hero-bg"></div>
@@ -840,7 +990,12 @@ section {
     </h1>
 
     <div class="hero-search">
-      <input type="text" placeholder="Szukaj odcinków..." />
+      <input 
+        id="searchInput"
+        type="text" 
+        placeholder="Szukaj odcinków..." 
+        autocomplete="off"
+        />
     </div>
 
   </div>
@@ -885,7 +1040,9 @@ section {
   <div class="episodes-grid">
 
     <!-- FEATURED – Najnowszy odcinek -->
- <div class="episode-card" data-kategoria="odzywianie">
+ <div class="episode-card" 
+   data-kategoria="odzywianie"
+   data-search="pierwszy odcinek odzywianie zdrowie maj 2026">
       <div class="episode-thumb">
         <div class="episode-thumb-placeholder">
           <span class="episode-num-big">01</span>
@@ -907,7 +1064,9 @@ section {
     </div>
 
     <!-- Odcinek 2 -->
-   <div class="episode-card" data-kategoria="sen">
+   <div class="episode-card" 
+     data-kategoria="sen"
+     data-search="drugi odcinek sen regeneracja kwiecien 2026">
       <div class="episode-thumb">
         <div class="episode-thumb-placeholder">
           <span class="episode-num-big">02</span>
@@ -1047,7 +1206,24 @@ document.addEventListener('DOMContentLoaded', () => {
       showCategory(btn.dataset.kategoria);
     });
   });
+document.getElementById('searchInput').addEventListener('input', function(){
 
+  const q = this.value.toLowerCase().trim();
+
+  cards.forEach(card => {
+
+    const txt =
+      (card.dataset.search || '') +
+      (card.querySelector('.episode-title')?.textContent || '');
+
+    card.style.display =
+      txt.toLowerCase().includes(q)
+        ? 'block'
+        : 'none';
+
+  });
+
+});
 });
 </script>
 
@@ -1072,6 +1248,27 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll(".reveal").forEach(el => {
   observer.observe(el);
 });
+</script>
+  <script>
+
+function toggleMenu(){
+
+  document.getElementById('hbg')
+          .classList.toggle('open');
+
+  document.getElementById('mobileMenu')
+          .classList.toggle('open');
+}
+
+function closeMenu(){
+
+  document.getElementById('hbg')
+          .classList.remove('open');
+
+  document.getElementById('mobileMenu')
+          .classList.remove('open');
+}
+
 </script>
 </body>
 </html>
