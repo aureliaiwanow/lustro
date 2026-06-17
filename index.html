@@ -549,6 +549,11 @@ nav{
 </style>
 </head>
 <body>
+  <script>
+  if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+    window.location.replace('/mobile/');
+  }
+</script>
 
 <section class="hero" id="hero">
   <img class="hero-bg hero-bg-desktop" src="bg-desktop.png" alt="Aurelia Iwanow"/>
@@ -671,9 +676,7 @@ nav{
 </div>
 
 <script>
-if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
-  window.location.replace('/mobile/');
-}
+
 const hbg=document.getElementById('hbg');
 const ddmenu=document.getElementById('ddmenu');
 const hero=document.getElementById('hero');
