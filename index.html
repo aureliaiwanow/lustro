@@ -671,6 +671,9 @@ nav{
 </div>
 
 <script>
+if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+  window.location.replace('/mobile/');
+}
 const hbg=document.getElementById('hbg');
 const ddmenu=document.getElementById('ddmenu');
 const hero=document.getElementById('hero');
