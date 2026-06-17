@@ -549,7 +549,32 @@ nav{
 </style>
 </head>
 <body>
+<script>
+if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+  window.location.replace('/mobile/');
+}
+const hbg=document.getElementById('hbg');
+const ddmenu=document.getElementById('ddmenu');
+const hero=document.getElementById('hero');
+const subPg=document.getElementById('sub-page');
 
+function toggleMenu(){hbg.classList.toggle('open');ddmenu.classList.toggle('open')}
+function closeMenu(){hbg.classList.remove('open');ddmenu.classList.remove('open')}
+document.addEventListener('click',e=>{
+  if(!hbg.contains(e.target)&&!ddmenu.contains(e.target))closeMenu();
+});
+
+/* Spotify – wklej swój link tutaj: */
+// document.getElementById('spotify-link').href = 'https://open.spotify.com/show/6SljkXMp0CqSpYmDL0cyXZ?si=Szy2cKopQSOc_Z3jKmg0oQ%0A';
+
+document.querySelectorAll('.hero-bg').forEach(img=>{
+  if(img.complete){
+    img.classList.add('loaded');
+  } else {
+    img.addEventListener('load',()=>img.classList.add('loaded'));
+  }
+});
+</script>
 <section class="hero" id="hero">
   <img class="hero-bg hero-bg-desktop" src="bg-desktop.png" alt="Aurelia Iwanow"/>
   <img class="hero-bg hero-bg-mobile" src="bg-mobile.png" alt="Aurelia Iwanow"/>
@@ -670,32 +695,7 @@ nav{
   </div>
 </div>
 
-<script>
-if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
-  window.location.replace('/mobile/');
-}
-const hbg=document.getElementById('hbg');
-const ddmenu=document.getElementById('ddmenu');
-const hero=document.getElementById('hero');
-const subPg=document.getElementById('sub-page');
 
-function toggleMenu(){hbg.classList.toggle('open');ddmenu.classList.toggle('open')}
-function closeMenu(){hbg.classList.remove('open');ddmenu.classList.remove('open')}
-document.addEventListener('click',e=>{
-  if(!hbg.contains(e.target)&&!ddmenu.contains(e.target))closeMenu();
-});
-
-/* Spotify – wklej swój link tutaj: */
-// document.getElementById('spotify-link').href = 'https://open.spotify.com/show/6SljkXMp0CqSpYmDL0cyXZ?si=Szy2cKopQSOc_Z3jKmg0oQ%0A';
-
-document.querySelectorAll('.hero-bg').forEach(img=>{
-  if(img.complete){
-    img.classList.add('loaded');
-  } else {
-    img.addEventListener('load',()=>img.classList.add('loaded'));
-  }
-});
-</script>
 
 <footer style="text-align:center;padding:30px 24px;font-family:'Montserrat',sans-serif;font-size:0.7rem;letter-spacing:1px;color:rgba(255,255,255,0.3);none;">
   <p>© 2026 Aurelia Iwanow. Wszystkie prawa zastrzeżone.</p>
