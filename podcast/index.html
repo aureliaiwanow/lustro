@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" href="favicon.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Antonio:wght=700&family=Reenie+Beanie&family=Barlow+Condensed:wght=300;400;700;900&family=Barlow:wght=300;400;500&family=Montserrat:wght=100;300;400;500;700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Reenie+Beanie&family=Barlow+Condensed:wght@300;400;700;900&family=Barlow:wght@300;400;500&family=Montserrat:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"/>
 <style>
 /* ═══ RESET ═══ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -37,7 +37,7 @@ section{min-height:100vh;scroll-margin-top:120px}
 
 /* ═══ NAV ═══ */
 nav{
-  position:absolute;top:10px;left:0;right:0;z-index:999;
+  position:absolute;top:10px;left:0;right:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
   padding:22px 28px 22px 100px;
 }
@@ -45,12 +45,12 @@ nav{
 .nav-logo{
   font-family:'Reenie Beanie',cursive;
   font-size:2.5rem;font-weight:400;
-  color:#fff !important;text-decoration:none !important;
+  color:#fff;text-decoration:none;
   text-shadow:0 2px 16px rgba(0,0,0,.75);
   letter-spacing:0.02em;
   transition:color .2s;
 }
-.nav-logo:hover{color:var(--gold) !important}
+.nav-logo:hover{color:var(--gold)}
 
 /* ═══ DESKTOP NAV ═══ */
 .desktop-nav{
@@ -62,7 +62,7 @@ nav{
   align-items:center;
 }
 
-.desktop-nav a{
+.desktop-nav a, .has-dropdown > span{
   display:inline-block;
   position:relative;
   font-family:'Montserrat',sans-serif;
@@ -70,12 +70,12 @@ nav{
   font-size:14.8px;
   letter-spacing:3.536px;
   text-transform:uppercase;
-  color:rgba(255,255,255,0.97) !important;
-  text-decoration:none !important;
+  color:rgba(255,255,255,0.97);
+  text-decoration:none;
   padding:6px 0;
   transition:color 0.25s ease;
 }
-.desktop-nav a:hover{color:var(--gold) !important}
+.desktop-nav a:hover, .has-dropdown:hover > span{color:var(--gold); cursor:pointer;}
 
 .desktop-nav a::after{
   content:'';
@@ -89,78 +89,67 @@ nav{
 
 /* ═══ DROPDOWN (has-dropdown) ═══ */
 .has-dropdown{position:relative}
-
-.has-dropdown span{
-  font-family:'Montserrat',sans-serif;
-  font-weight:400;
-  font-size:14.3px;
-  letter-spacing:3.536px;
-  text-transform:uppercase;
-  color:rgba(255,255,255,0.97);
-  cursor:pointer;
-  padding:6px 0;
-}
-.has-dropdown:hover span {color:var(--gold)}
-
-.arrow{color:#fff;font-size:1.2em;transition:none}
+.arrow{color:#fff;font-size:1.2em;transition:none;margin-left:5px;}
 .has-dropdown:hover span .arrow{color:var(--gold)}
 
-/* Wspólne style dla dropdownów */
-.tematy-dropdown {
+/* Wspólne style dla obu dropdownów */
+.dropdown-menu {
   position:absolute;
-  top:100%;
+  top:calc(100% + 10px);
   left:-20px;
-  background:rgba(10,10,15,0.98);
+  background:rgba(10,10,15,0.95);
   border:1px solid rgba(255,255,255,0.1);
   display:flex;
   flex-direction:column;
-  z-index:9999;
+  z-index:150;
   opacity:0;
   pointer-events:none;
   transition:opacity 0.3s ease;
-  min-width:220px;
-  padding:10px 0;
+  min-width:240px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-/* Mostek zapobiegający znikaniu */
-.tematy-dropdown::before{
+/* Niewidoczny mostek – zapobiega "znikaniu" przy przesuwaniu myszy */
+.dropdown-menu::before{
   content:'';
   position:absolute;
-  top:-20px;left:0;right:0;
-  height:20px;
+  top:-15px;left:0;right:0;
+  height:15px;
 }
 
-.tematy-dropdown a{
+.dropdown-menu a{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
   font-family:'Montserrat',sans-serif;
   font-weight:400;
   font-size:12px;
   letter-spacing:1px;
   text-transform:uppercase;
-  color:rgba(255,255,255,0.85) !important;
-  text-decoration:none !important;
-  padding:12px 20px;
+  color:rgba(255,255,255,0.85);
+  text-decoration:none;
+  padding:14px 20px;
   transition:background 0.2s, color 0.2s;
 }
-.tematy-dropdown a:hover{
+.dropdown-menu a::after { display:none; } /* Usuwa podkreślenie z linków w dropdownie */
+
+.dropdown-menu a:hover{
   background:var(--gold);
-  color:#000 !important;
+  color:#000;
 }
 
 /* SVG w obserwuj-dropdown */
-.obserwuj-dropdown svg{
+.dropdown-menu svg{
   width:18px;height:18px;
   fill:#fff;
   flex-shrink:0;
   display:block;
-  transform:translateY(-1px);
+  transition: fill 0.2s;
 }
-.obserwuj-dropdown a:hover svg{fill:#000}
+.dropdown-menu a:hover svg{fill:#000}
 
 /* Otwieranie dropdownów */
-.has-dropdown:hover .tematy-dropdown{
+.has-dropdown:hover .dropdown-menu{
   opacity:1;
   pointer-events:all;
 }
@@ -174,7 +163,7 @@ nav{
 /* ═══ BTN SUB ═══ */
 .btn-sub{
   background:var(--gold);
-  color:#000 !important;
+  color:#000;
   font-family:'Montserrat',sans-serif;
   font-weight:700;
   font-size:0.95rem;
@@ -183,21 +172,21 @@ nav{
   padding:7px 45px;
   border:2px solid transparent;
   cursor:pointer;
-  text-decoration:none !important;
+  text-decoration:none;
   display:inline-block;
   transition:background 0.4s ease, border-color 0.4s ease, color 0.4s ease, transform 0.15s;
 }
 .btn-sub:hover{
   background:transparent;
   border-color:var(--gold);
-  color:var(--gold) !important;
+  color:var(--gold);
 }
 
 /* ═══ HAMBURGER ═══ */
 .hamburger{
   display:none;
   flex-direction:column;gap:6px;
-  cursor:pointer;padding:7px;z-index:1000;
+  cursor:pointer;padding:7px;z-index:200;
 }
 .hamburger span{
   display:block;width:30px;height:3px;
@@ -207,65 +196,67 @@ nav{
 .hamburger.open span:nth-child(2){opacity:0}
 .hamburger.open span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
 
-/* Ukrycie menu mobilnego na desktopie */
-.mobile-menu {
-  display: none;
-}
-
 /* ═══ HERO ═══ */
 .podcast-hero{
   position:relative;
-  height:80vh;
+  height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
   overflow:hidden;
-  z-index:1;
 }
 
 .podcast-hero-bg{
   position:absolute;inset:0;
-  background:url("podcast-hero.png") center center / cover no-repeat;
+  background: linear-gradient(rgba(10,10,15,0.4), rgba(10,10,15,0.4)), url("podcast-hero.png") center center / cover no-repeat;
 }
 
 .podcast-hero-overlay{
   position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(0,0,0,.4),rgba(10,10,15,1));
+  background:linear-gradient(to bottom,rgba(0,0,0,.15),rgba(10,10,15,.6));
 }
 
 .podcast-hero-content{
   position:relative;z-index:2;
   text-align:center;
+  transform:translateY(-50px);
 }
 
 .podcast-title{
   font-family:'Antonio',sans-serif;
   font-size:clamp(4.8rem,11.2vw,9.6rem);
   line-height:.9;color:#fff;
+  letter-spacing: 2px;
 }
 
 .hero-search{margin-top:40px}
 .hero-search input{
   width:420px;max-width:90vw;
   background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,0.2);
+  border:1px solid rgba(255,255,255,0.15);
   padding:16px 24px;
   color:white;font-size:1rem;
   backdrop-filter:blur(10px);
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+.hero-search input:focus {
+  outline: none;
+  border-color: var(--gold);
 }
 
 /* ═══ MAIN ═══ */
 .podcast-main{
   max-width:1100px;
   margin:0 auto;
-  padding:0 24px 100px;
+  padding:20px 24px 100px;
   position:relative;
-  z-index:5;
+  top:-120px;
 }
 
 /* ═══ FILTER BAR ═══ */
 .filter-bar{
-  display:none; 
+  display:flex; 
   align-items:center;
   gap:12px;
   margin-bottom:48px;
@@ -290,6 +281,7 @@ nav{
 }
 .filter-btn:hover,.filter-btn.active{
   border-color:var(--gold);color:var(--gold);
+  background: rgba(253,185,42,0.05);
 }
 
 /* ═══ EPISODES GRID ═══ */
@@ -322,15 +314,6 @@ nav{
   position:relative;
   width:100%;aspect-ratio:1/1;
   background:#111;overflow:hidden;
-}
-.episode-thumb img{
-  width:100%;height:100%;
-  object-fit:cover;
-  filter:grayscale(30%);
-  transition:filter .3s, transform .3s;
-}
-.episode-card:hover .episode-thumb img{
-  filter:grayscale(0%);transform:scale(1.03);
 }
 
 .episode-thumb-placeholder{
@@ -410,7 +393,6 @@ nav{
 
 /* ═══ LOAD MORE ═══ */
 .load-more-wrap{text-align:center;margin-top:56px}
-
 .btn-load{
   font-family:'Montserrat',sans-serif;
   font-weight:500;font-size:0.75rem;
@@ -422,52 +404,55 @@ nav{
 }
 .btn-load:hover{border-color:var(--gold);color:var(--gold)}
 
-/* ═══ MOBILE RESPONSIVENESS ═══ */
+/* ═══ MOBILE MENU ═══ */
+.mobile-menu{
+  position:fixed;inset:0;
+  background:rgba(10,10,15,.98);
+  display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s ease;
+  z-index:190;
+}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu a{
+  font-family:'Montserrat',sans-serif;
+  font-size:1.1rem;letter-spacing:4px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.8);
+  text-decoration:none;
+  padding:14px 0;
+  width: 100%;
+  text-align: center;
+  transition: color 0.2s;
+}
+.mobile-menu a:hover { color: var(--gold); }
+
+/* ═══ RESPONSyWNOŚĆ ═══ */
 @media(max-width:900px){.episodes-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.episodes-grid{grid-template-columns:1fr}}
 
 @media(max-width:768px){
   nav{
     position:fixed;top:0;left:0;right:0;
-    padding:13px 18px;
-    background:rgba(10,10,15,.92);
+    padding:15px 20px;
+    background:rgba(10,10,15,.95);
     backdrop-filter:blur(16px);
     border-bottom:1px solid rgba(255,255,255,.07);
-    padding-left: 20px;
   }
-  .desktop-nav{display:none}
-  .btn-sub{display:none}
+  .desktop-nav, .btn-sub{display:none}
   .hamburger{display:flex}
   .nav-logo{font-size:2rem}
 
   .podcast-hero{
-    height:100vh;
-    align-items:center;
-    padding-bottom:0;
+    height:70svh;
   }
-  .podcast-hero-bg{
-    background:url("podcast-mobile.png") center/cover no-repeat;
-  }
-  .podcast-main{padding:30px 16px 80px}
+  .podcast-hero-content{transform:none}
+  .podcast-title{font-size:clamp(3.5rem,15vw,6rem)}
+  .hero-search{margin-top:24px}
 
-  .mobile-menu{
-    position:fixed;inset:0;
-    background:rgba(10,10,15,.97);
-    display:flex;flex-direction:column;
-    justify-content:center;align-items:center;
-    opacity:0;pointer-events:none;
-    transition:opacity .3s ease;
-    z-index:90;
-  }
-  .mobile-menu.open{opacity:1;pointer-events:all}
-  .mobile-menu a{
-    font-family:'Montserrat',sans-serif;
-    font-size:1.1rem;letter-spacing:4px;
-    text-transform:uppercase;
-    color:rgba(255,255,255,.7) !important;
-    text-decoration:none !important;
-    padding:14px 0;
-  }
+  .podcast-main{top:0;padding:50px 16px 80px}
+  .episodes-grid{grid-template-columns:1fr;gap:20px}
+  .filter-bar { justify-content: center; margin-bottom: 30px;}
 }
 </style>
 </head>
@@ -482,7 +467,7 @@ nav{
 
     <div class="has-dropdown">
       <span>Tematy <span class="arrow">▾</span></span>
-      <div class="tematy-dropdown">
+      <div class="dropdown-menu">
         <a href="/podcast?kategoria=odzywianie">Odżywianie</a>
         <a href="/podcast?kategoria=sen">Sen i Regeneracja</a>
         <a href="/podcast?kategoria=mozg">Optymalizacja Mózgu</a>
@@ -495,16 +480,16 @@ nav{
 
     <div class="has-dropdown">
       <span>Obserwuj <span class="arrow">▾</span></span>
-      <div class="tematy-dropdown obserwuj-dropdown">
-        <a href="https://open.spotify.com/show/6SljkXMp0CqSpYmDL0cyXZ?si=Szy2cKopQSOc_Z3jKmg0oQ%0A" target="_blank">
+      <div class="dropdown-menu">
+        <a href="https://open.spotify.com" target="_blank">
           <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.559 17.32a.75.75 0 01-1.03.25c-2.82-1.724-6.368-2.114-10.545-1.158a.75.75 0 01-.335-1.462c4.573-1.046 8.49-.596 11.66 1.34a.75.75 0 01.25 1.03zm1.483-3.302a.937.937 0 01-1.288.308C14.95 12.5 11.07 11.9 7.47 12.943a.937.937 0 01-.518-1.8c4.064-1.168 8.39-.602 11.782 1.587a.937.937 0 01.308 1.288zm.128-3.44a1.124 1.124 0 01-1.543.378C14.52 8.87 9.74 8.718 5.906 9.905a1.125 1.125 0 01-.65-2.153c4.396-1.33 9.7-1.15 13.554 1.29a1.125 1.125 0 01.36 1.536z"/></svg>
           Spotify
         </a>
-        <a href="https://youtube.com/@aureliaiwanowpodcast?si=F8OPBfGyuJC3FWCP" target="_blank">
+        <a href="https://youtube.com" target="_blank">
           <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
           YouTube
         </a>
-        <a href="https://instagram.com/aureliaiwanow" target="_blank">
+        <a href="https://instagram.com" target="_blank">
           <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           Instagram
         </a>
@@ -574,8 +559,8 @@ nav{
           <span class="episode-ep">EP 001</span>
           <span class="episode-date">Maj 2026</span>
         </div>
-        <h2 class="episode-title">Tytuł Twojego pierwszego odcinka podcastu</h2>
-        <p class="episode-desc">Opis odcinka – o czym rozmawiamy, co słuchacz wyniesie z tego odcinka, jaki gość pojawi się w podcaście lub jaki temat zostanie poruszony. Możesz tu wpisać kilka zdań zachęcających do słuchania.</p>
+        <h2 class="episode-title">Jak mądrze programować odżywianie w 2026 roku</h2>
+        <p class="episode-desc">Opis odcinka – o czym rozmawiamy, co słuchacz wyniesie z tego odcinka, jaki gość pojawi się w podcaście lub jaki temat zostanie poruszony.</p>
         <a href="#" class="read-more">CZYTAJ WIĘCEJ</a>
       </div>
     </div>
@@ -591,14 +576,14 @@ nav{
           <span class="episode-ep">EP 002</span>
           <span class="episode-date">Kwiecień 2026</span>
         </div>
-        <h2 class="episode-title">Tytuł drugiego odcinka podcastu</h2>
-        <p class="episode-desc">Krótki opis odcinka – zachęć słuchaczy do odsłuchania. Możesz wspomnieć o gościu lub kluczowym temacie.</p>
+        <h2 class="episode-title">Fazy snu, które całkowicie zmieniają regenerację mózgu</h2>
+        <p class="episode-desc">Krótki opis odcinka – zachęć słuchaczy do odsłuchania. Dowiedz się jak zoptymalizować głęboką fazę snu.</p>
         <a href="#" class="read-more">CZYTAJ WIĘCEJ</a>
       </div>
     </div>
 
     <!-- EP 003 -->
-    <div class="episode-card">
+    <div class="episode-card" data-kategoria="mozg" data-search="trzeci odcinek mozg skupienie koncentracja marzec 2026">
       <div class="episode-thumb">
         <div class="episode-thumb-placeholder"><span class="episode-num-big">03</span></div>
         <div class="episode-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
@@ -608,8 +593,59 @@ nav{
           <span class="episode-ep">EP 003</span>
           <span class="episode-date">Marzec 2026</span>
         </div>
-        <h2 class="episode-title">Tytuł trzeciego odcinka podcastu</h2>
-        <p class="episode-desc">Krótki opis odcinka – zachęć słuchaczy do odsłuchania. Możesz wspomnieć o gościu lub kluczowym temacie.</p>
+        <h2 class="episode-title">Neuroplastyczność i biohacking koncentracji</h2>
+        <p class="episode-desc">Jak wejść w stan głębokiej pracy (deep work) na żądanie i utrzymać ostrość umysłu przez cały dzień.</p>
+        <a href="#" class="read-more">CZYTAJ WIĘCEJ</a>
+      </div>
+    </div>
+
+    <!-- EP 004 -->
+    <div class="episode-card" data-kategoria="swiadomosc" data-search="czwarty odcinek swiadomosc medytacja luty 2026">
+      <div class="episode-thumb">
+        <div class="episode-thumb-placeholder"><span class="episode-num-big">04</span></div>
+        <div class="episode-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="episode-body">
+        <div class="episode-meta">
+          <span class="episode-ep">EP 004</span>
+          <span class="episode-date">Luty 2026</span>
+        </div>
+        <h2 class="episode-title">Zrozumieć swoje Ego – psychologia świadomości</h2>
+        <p class="episode-desc">Rozmowa o uważności, mechanizmach obronnych naszego umysłu oraz o tym, jak medytacja wpływa na strukturę mózgu.</p>
+        <a href="#" class="read-more">CZYTAJ WIĘCEJ</a>
+      </div>
+    </div>
+
+    <!-- EP 005 -->
+    <div class="episode-card" data-kategoria="genetyka" data-search="piaty odcinek genetyka dna epigenetyka styczen 2026">
+      <div class="episode-thumb">
+        <div class="episode-thumb-placeholder"><span class="episode-num-big">05</span></div>
+        <div class="episode-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="episode-body">
+        <div class="episode-meta">
+          <span class="episode-ep">EP 005</span>
+          <span class="episode-date">Styczeń 2026</span>
+        </div>
+        <h2 class="episode-title">Geny to nie wyrok. Czym jest nowoczesna epigenetyka?</h2>
+        <p class="episode-desc">Jak Twoje codzienne wybory, środowisko i dieta wpływają na ekspresję genów odpowiedzialnych za zdrowie.</p>
+        <a href="#" class="read-more">CZYTAJ WIĘCEJ</a>
+      </div>
+    </div>
+
+    <!-- EP 006 -->
+    <div class="episode-card" data-kategoria="dlugowiecznosc" data-search="szosty odcinek dlugowiecznosc longevity grudzien 2025">
+      <div class="episode-thumb">
+        <div class="episode-thumb-placeholder"><span class="episode-num-big">06</span></div>
+        <div class="episode-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="episode-body">
+        <div class="episode-meta">
+          <span class="episode-ep">EP 006</span>
+          <span class="episode-date">Grudzień 2025</span>
+        </div>
+        <h2 class="episode-title">Protokół Longevity – jak spowolnić zegar biologiczny</h2>
+        <p class="episode-desc">Przegląd najnowszych badań naukowych nad długowiecznością. Od restrykcji kalorycznych po wsparcie mitochondriów.</p>
         <a href="#" class="read-more">CZYTAJ WIĘCEJ</a>
       </div>
     </div>
@@ -623,7 +659,7 @@ nav{
 </div>
 
 <!-- FOOTER -->
-<footer style="text-align:center;padding:30px 24px;font-family:'Montserrat',sans-serif;font-size:0.7rem;letter-spacing:1px;color:rgba(255,255,255,0.3);border-top:none;">
+<footer style="text-align:center;padding:30px 24px;font-family:'Montserrat',sans-serif;font-size:0.7rem;letter-spacing:1px;color:rgba(255,255,255,0.3);">
   <p>© 2026 Aurelia Iwanow. Wszystkie prawa zastrzeżone.</p>
   <p style="margin-top:8px;">
     <a href="/polityka-prywatnosci" style="color:rgba(255,255,255,0.4);text-decoration:none;margin:0 12px;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Polityka prywatności</a>
@@ -635,33 +671,62 @@ nav{
 document.addEventListener('DOMContentLoaded', () => {
   const cards = document.querySelectorAll('.episode-card');
   const buttons = document.querySelectorAll('.filter-btn');
+  const searchInput = document.getElementById('searchInput');
+  
+  let aktualnaKategoria = '';
 
-  function showCategory(cat) {
+  // Główna funkcja filtrująca łącząca wyszukiwarkę i przyciski kategorii
+  function filtrujOdcinki() {
+    const fraza = searchInput.value.toLowerCase().trim();
+
     cards.forEach(card => {
-      const match = !cat || card.dataset.kategoria === cat;
-      card.style.display = match ? 'block' : 'none';
-    });
-    buttons.forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.kategoria === cat || (!cat && btn.dataset.kategoria === ''));
+      const kategoriaKarty = card.dataset.kategoria || '';
+      const tytulKarty = card.querySelector('.episode-title')?.textContent.toLowerCase() || '';
+      const opisKarty = card.querySelector('.episode-desc')?.textContent.toLowerCase() || '';
+      const tagiKarty = card.dataset.search?.toLowerCase() || '';
+      
+      const pelnyTekst = tytulKarty + " " + opisKarty + " " + tagiKarty;
+
+      // Sprawdzamy zgodność z kategorią i frazą w wyszukiwarce
+      const zgodnaKategoria = !aktualnaKategoria || kategoriaKarty === aktualnaKategoria;
+      const zgodnaFraza = pelnyTekst.includes(fraza);
+
+      if (zgodnaKategoria && zgodnaFraza) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
     });
   }
 
-  const params = new URLSearchParams(window.location.search);
-  showCategory(params.get('kategoria') || '');
-
+  // Obsługa przycisków kategorii
   buttons.forEach(btn => {
-    btn.addEventListener('click', () => showCategory(btn.dataset.kategoria));
-  });
-
-  document.getElementById('searchInput').addEventListener('input', function() {
-    const q = this.value.toLowerCase().trim();
-    cards.forEach(card => {
-      const txt = (card.dataset.search || '') + (card.querySelector('.episode-title')?.textContent || '');
-      card.style.display = txt.toLowerCase().includes(q) ? 'block' : 'none';
+    btn.addEventListener('click', () => {
+      aktualnaKategoria = btn.dataset.kategoria || '';
+      
+      buttons.forEach(b => b.classList.toggle('active', b === btn));
+      filtrujOdcinki();
     });
   });
+
+  // Obsługa wpisywania tekstu w wyszukiwarkę
+  searchInput.addEventListener('input', filtrujOdcinki);
+
+  // Czytanie parametru kategoria z URL na starcie (np. ?kategoria=sen)
+  const params = new URLSearchParams(window.location.search);
+  const katZUrl = params.get('kategoria');
+  if (katZUrl) {
+    aktualnaKategoria = katZUrl;
+    const aktywnyPrzycisk = document.querySelector(`.filter-btn[data-kategoria="${katZUrl}"]`);
+    if (aktywnyPrzycisk) {
+      buttons.forEach(b => b.classList.remove('active'));
+      aktywnyPrzycisk.classList.add('active');
+    }
+  }
+  filtrujOdcinki();
 });
 
+// Mobilne menu (Toggle)
 function toggleMenu() {
   document.getElementById('hbg').classList.toggle('open');
   document.getElementById('mobileMenu').classList.toggle('open');
