@@ -34,7 +34,7 @@ body{font-family:'Montserrat',sans-serif;background:#0a0a0f;color:#fff}
   .podcast-hero-bg{
   position:absolute;
   inset:0;
-  background:url("podcast-hero.png");
+  background:url("podcast-hero.png") center center / cover no-repeat;
   background-size: cover;
 background-repeat: no-repeat;
 background-position: center;
@@ -113,15 +113,8 @@ background-position: center;
 }
 
 /* ═══ NAV ═══ */
-nav{
-  position:absolute;
-  top:0;left:0;right:0;
-  z-index:10;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:22px 40px;
-}
+
+  
 
 .nav-logo{
   font-family:'Reenie Beanie',cursive;
@@ -807,6 +800,7 @@ nav{
     height:100svh;
     align-items:flex-end;
     padding-bottom:44px;
+    margin-top:0;
 }
 
 .podcast-hero-content{
