@@ -881,12 +881,25 @@ nav{
     background: url("podcast-mobile.png") center/cover no-repeat;
   }
 }
-  .desktop-nav a,
-.desktop-nav a:visited,
-.desktop-nav a:active,
-.desktop-nav a:link {
-  color: rgba(255,255,255,0.97);
+  .desktop-nav a {
+  display: inline-block;
+  position: relative;
   text-decoration: none;
+}
+
+.desktop-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+
+.desktop-nav a:hover::after {
+  width: 100%;
 }
 </style>
 </head>
