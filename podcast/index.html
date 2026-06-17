@@ -2,620 +2,266 @@
 <html lang="pl">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
 <title>Podcast – Aurelia Iwanow</title>
 <link rel="icon" type="image/png" href="favicon.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Reenie+Beanie&family=Barlow+Condensed:wght@300;400;700;900&family=Barlow:wght@300;400;500&family=Montserrat:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Reenie+Beanie&family=Barlow+Condensed:wght@300;400;700;900&family=Montserrat:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"/>
 <style>
-/* ═══ RESET ═══ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{width:100%;min-height:100%;overflow-x:hidden}
 body{font-family:'Montserrat',sans-serif;background:#0a0a0f;color:#fff}
+:root{--gold:#fdb92a;--cyan:#33e4e0;--dark:#0a0a0f}
 
-/* ═══ ZMIENNE ═══ */
-:root{
-  --gold:#fdb92a;
-  --gold-transparent:rgba(253,185,42,0.15);
-  --cyan:#33e4e0;
-  --dark:#0a0a0f;
-  --card-bg:rgba(255,255,255,0.04);
-}
-
-/* ═══ GLOBALS ═══ */
-html{scroll-behavior:smooth}
-section{min-height:100vh;scroll-margin-top:120px}
-
-.reveal{opacity:0;transform:translateY(40px);transition:all 0.8s ease}
-.reveal.active{opacity:1;transform:translateY(0)}
-
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-/* ═══ NAV ═══ */
+/* ── NAV ── */
 nav{
-  position:absolute;top:10px;left:0;right:0;z-index:10;
+  position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
-  padding:22px 28px 22px 100px;
+  padding:13px 18px;
+  background:rgba(10,10,15,0.93);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,0.07);
 }
-
-.nav-logo{
-  font-family:'Reenie Beanie',cursive;
-  font-size:2.5rem;font-weight:400;
-  color:#fff;text-decoration:none;
-  text-shadow:0 2px 16px rgba(0,0,0,.75);
-  letter-spacing:0.02em;
-  transition:color .2s;
+.nav-logo{font-family:'Reenie Beanie',cursive;font-size:2rem;color:#fff;text-decoration:none;letter-spacing:.02em}
+.nav-right{display:flex;align-items:center;gap:10px}
+.btn-sub{
+  font-family:'Montserrat',sans-serif;font-weight:700;font-size:.72rem;
+  letter-spacing:.12em;text-transform:uppercase;text-decoration:none;
+  background:var(--gold);color:#000;padding:8px 18px;border:2px solid transparent;
+  display:inline-block;transition:all .2s;
 }
-.nav-logo:hover{color:var(--gold)}
+.btn-sub:active{background:transparent;border-color:var(--gold);color:var(--gold)}
+.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none}
+.hamburger span{display:block;width:26px;height:2px;background:var(--gold);border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-/* ═══ DESKTOP NAV ═══ */
-.desktop-nav{
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  gap:40px;
-  align-items:center;
+/* ── OVERLAY MENU ── */
+.mobile-menu{
+  position:fixed;inset:0;background:rgba(10,10,15,.97);z-index:90;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .3s ease;
 }
-
-.desktop-nav a{
-  display:inline-block;
-  position:relative;
-  font-family:'Montserrat',sans-serif;
-  font-weight:400;
-  font-size:14.8px;
-  letter-spacing:3.536px;
-  text-transform:uppercase;
-  color:rgba(255,255,255,0.97);
-  text-decoration:none;
-  padding:6px 0;
-  transition:color 0.25s ease;
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu a{
+  font-family:'Montserrat',sans-serif;font-size:.75rem;font-weight:400;
+  letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.7);
+  text-decoration:none;padding:16px 0;width:100%;text-align:center;
+  border-bottom:1px solid rgba(255,255,255,.06);transition:color .2s;
 }
-.desktop-nav a:hover{color:var(--gold)}
+.mobile-menu a:first-child{border-top:1px solid rgba(255,255,255,.06)}
+.mobile-menu a:active{color:var(--gold)}
+.mobile-menu .menu-sub{color:var(--gold);font-weight:700}
+.menu-socials{display:flex;gap:18px;margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);justify-content:center}
+.menu-socials a{width:38px;height:38px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.15);text-decoration:none}
+.menu-socials svg{width:17px;height:17px;fill:#fff}
 
-.desktop-nav a::after{
-  content:'';
-  position:absolute;
-  left:0;bottom:-4px;
-  width:0%;height:1px;
-  background:var(--gold);
-  transition:width 0.3s ease;
+/* ── HERO ── */
+.podcast-hero{
+  position:relative;height:100svh;
+  display:flex;align-items:flex-end;justify-content:center;
+  overflow:hidden;padding-bottom:44px;
 }
-.desktop-nav a:hover::after{width:100%}
-
-/* ═══ DROPDOWN (has-dropdown) ═══ */
-.has-dropdown{position:relative}
-
-.has-dropdown span{
-  font-family:'Montserrat',sans-serif;
-  font-weight:400;
-  font-size:14.3px;
-  letter-spacing:3.536px;
-  text-transform:uppercase;
-  color:rgba(255,255,255,0.97);
-  cursor:pointer;
-  padding:6px 0;
+.hero-bg{position:absolute;inset:0;background:url("podcast-hero.png") center/cover no-repeat}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,
+    rgba(10,10,15,.35) 0%,rgba(10,10,15,.05) 30%,
+    rgba(10,10,15,.8) 72%,#0a0a0f 100%)
 }
-.has-dropdown:hover span{color:var(--gold)}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 22px;width:100%}
+.hero-eyebrow{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px}
+.hero-title{font-family:'Antonio',sans-serif;font-size:clamp(4rem,23vw,6.5rem);line-height:.88;color:#fff}
+.hero-sub{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:10px;font-weight:300}
+.hero-search{
+  margin-top:24px;display:flex;align-items:center;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);
+  padding:0 16px;max-width:360px;margin-left:auto;margin-right:auto;
+}
+.hero-search svg{width:16px;height:16px;flex-shrink:0;fill:none;stroke:rgba(255,255,255,.4);stroke-width:2}
+.hero-search input{
+  flex:1;background:none;border:none;padding:13px 12px;
+  color:#fff;font-family:'Montserrat',sans-serif;font-size:.78rem;letter-spacing:.5px;
+  outline:none;-webkit-appearance:none;
+}
+.hero-search input::placeholder{color:rgba(255,255,255,.3)}
+.scroll-hint{
+  position:absolute;bottom:14px;left:50%;transform:translateX(-50%);z-index:3;
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  opacity:.35;animation:bob 2s infinite;
+}
+.scroll-hint span{font-size:.5rem;letter-spacing:3px;text-transform:uppercase}
+.scroll-hint svg{width:15px;height:15px;fill:none;stroke:#fff;stroke-width:2}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(5px)}}
 
-.arrow{color:#fff;font-size:1.2em;transition:none}
-.has-dropdown:hover span .arrow{color:var(--gold)}
+/* ── FILTER CHIPS ── */
+.filter-wrap{
+  display:flex;overflow-x:auto;padding:14px 12px 0;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.filter-wrap::-webkit-scrollbar{display:none}
+.chip{
+  flex-shrink:0;font-family:'Montserrat',sans-serif;font-size:.56rem;font-weight:600;
+  letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.45);
+  background:none;border:none;border-bottom:2px solid transparent;
+  padding:8px 12px 10px;cursor:pointer;white-space:nowrap;
+  -webkit-tap-highlight-color:transparent;transition:all .2s;
+}
+.chip.active{color:var(--gold);border-bottom-color:var(--gold)}
 
-/* Wspólne style dla obu dropdownów */
-.tematy-dropdown,
-.obserwuj-dropdown{
-  position:absolute;
-  top:calc(100% + 10px);
-  left:-0.5cm;
-  background:rgba(0,0,0,0.75);
-  border:1px solid rgba(255,255,255,0.1);
+/* ══════════════════════════════════════════════
+   EPISODE CARD – Dave Asprey style
+   • zdjęcie gościa pełna szerokość (proporcja 3:4 portret)
+   • pod spodem ciemny box z tytułem + READ MORE
+   • cyjan border lewy+prawy+dolny (nie górny – tam zdjęcie)
+   • złote deski u góry zdjęcia
+══════════════════════════════════════════════ */
+.episodes{
+  padding:20px 12px 8px;
   display:flex;
   flex-direction:column;
-  z-index:50;
-  opacity:0;
-  pointer-events:none;
-  transition:opacity 0.3s ease 0.3s;
-  min-width:220px;
-}
-
-/* Niewidoczny mostek – zapobiega "znikaniu" przy przesuwaniu myszy */
-.tematy-dropdown::before,
-.obserwuj-dropdown::before{
-  content:'';
-  position:absolute;
-  top:-10px;left:0;right:0;
-  height:10px;
-}
-
-.tematy-dropdown a,
-.obserwuj-dropdown a{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-family:'Montserrat',sans-serif;
-  font-weight:400;
-  font-size:12px;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  color:rgba(255,255,255,0.85);
-  text-decoration:none;
-  padding:12px 20px;
-  transition:background 0.2s, color 0.2s;
-}
-.tematy-dropdown a:hover,
-.obserwuj-dropdown a:hover{
-  background:var(--gold);
-  color:#fff;
-}
-
-/* SVG w obserwuj-dropdown */
-.obserwuj-dropdown svg{
-  width:18px;height:18px;
-  fill:#fff;
-  flex-shrink:0;
-  display:block;
-  transform:translateY(-1px);
-}
-.obserwuj-dropdown a:hover svg{fill:#fff}
-
-/* Otwieranie dropdownów */
-.has-dropdown:hover .tematy-dropdown,
-.has-dropdown:hover .obserwuj-dropdown,
-.tematy-dropdown:hover,
-.obserwuj-dropdown:hover{
-  opacity:1;
-  pointer-events:all;
-}
-.has-dropdown:not(:hover) .tematy-dropdown:not(:hover),
-.has-dropdown:not(:hover) .obserwuj-dropdown:not(:hover){
-  opacity:0;
-  pointer-events:none;
-  transition:opacity 0.5s ease 0.4s;
-}
-
-/* ═══ NAV RIGHT ═══ */
-.nav-right{
-  display:flex;align-items:center;gap:14px;
-  margin-right:40px;
-}
-
-/* ═══ BTN SUB ═══ */
-.btn-sub{
-  background:var(--gold);
-  color:#000;
-  font-family:'Montserrat',sans-serif;
-  font-weight:700;
-  font-size:0.95rem;
-  letter-spacing:.15em;
-  text-transform:uppercase;
-  padding:7px 45px;
-  border:2px solid transparent;
-  cursor:pointer;
-  text-decoration:none;
-  display:inline-block;
-  transition:background 0.4s ease, border-color 0.4s ease, color 0.4s ease, transform 0.15s;
-}
-.btn-sub:hover{
-  background:transparent;
-  border-color:var(--gold);
-  color:var(--gold);
-}
-
-/* ═══ BTN BACK ═══ */
-.btn-back{
-  font-family:'Montserrat',sans-serif;
-  font-weight:400;
-  font-size:0.75rem;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:rgba(255,255,255,0.6);
-  text-decoration:none;
-  transition:color .2s;
-}
-.btn-back:hover{color:#fff}
-
-/* ═══ HAMBURGER ═══ */
-.hamburger{
-  display:none;
-  flex-direction:column;gap:6px;
-  cursor:pointer;padding:7px;z-index:20;
-}
-.hamburger span{
-  display:block;width:30px;height:3px;
-  background:var(--gold);border-radius:2px;transition:all .3s;
-}
-.hamburger.open span:nth-child(1){transform:translateY(9px) rotate(45deg)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
-
-/* ═══ DROPDOWN (mobilny) ═══ */
-.dropdown{
-  position:absolute;top:74px;right:28px;
-  background:rgba(10,10,15,.93);border:1px solid rgba(245,197,24,.3);
-  min-width:220px;transform-origin:top right;
-  transform:scaleY(0);opacity:0;pointer-events:none;
-  transition:transform .25s ease,opacity .2s ease;z-index:30;
-}
-.dropdown.open{transform:scaleY(1);opacity:1;pointer-events:all}
-
-.dropdown a{
-  display:block;
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:1.1rem;letter-spacing:.07em;text-transform:uppercase;
-  color:#fff;text-decoration:none;padding:15px 24px;
-  border-bottom:1px solid rgba(255,255,255,.07);
-  transition:color .2s,background .2s;
-}
-.dropdown a:hover{color:var(--gold);background:rgba(245,197,24,.07)}
-
-.dropdown-socials{
-  display:flex;gap:16px;padding:14px 24px;
-  border-top:1px solid rgba(255,255,255,.07);
-}
-.dropdown-socials a{
-  display:flex;align-items:center;justify-content:center;
-  width:28px;height:28px;
-  background:none;
-  text-decoration:none;
-  transition:opacity .2s;
-}
-.dropdown-socials a:hover{opacity:.7}
-.dropdown-socials svg{width:22px;height:22px;fill:#fff}
-
-/* ═══ HERO ═══ */
-.podcast-hero{
-  position:relative;
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-}
-
-.podcast-hero-bg{
-  position:absolute;inset:0;
-  background:url("podcast-hero.png") center center / cover no-repeat;
-}
-
-.podcast-hero-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(0,0,0,.15),rgba(10,10,15,.25));
-}
-
-.podcast-hero-content{
-  position:relative;z-index:2;
-  text-align:center;
-  transform:translateY(-90px);
-}
-
-.podcast-eyebrow{
-  font-family:'Montserrat',sans-serif;
-  font-weight:400;font-size:12px;
-  letter-spacing:4px;text-transform:uppercase;
-  color:rgba(255,255,255,0.5);
-  margin-bottom:12px;
-  animation:fadeUp 0.6s ease both;
-}
-
-.podcast-title{
-  font-family:'Antonio',sans-serif;
-  font-size:clamp(4.8rem,11.2vw,9.6rem);
-  line-height:.9;color:#fff;
-}
-
-.podcast-subtitle{
-  font-family:'Montserrat',sans-serif;
-  font-weight:300;font-size:0.85rem;
-  letter-spacing:3px;text-transform:uppercase;
-  color:rgba(255,255,255,0.45);
-  margin-top:16px;
-  animation:fadeUp 0.6s 0.2s ease both;
-}
-
-.hero-search{margin-top:40px}
-
-.hero-search input{
-  width:420px;max-width:90vw;
-  background:rgba(255,255,255,.08);
-  border:none;
-  padding:16px 24px;
-  color:white;font-size:1rem;
-  backdrop-filter:blur(10px);
-}
-
-/* ═══ MAIN ═══ */
-.podcast-main{
-  max-width:1100px;
-  margin:0 auto;
-  padding:20px 24px 100px;
-  position:relative;
-  top:-250px;
-}
-
-/* ═══ FILTER BAR ═══ */
-.filter-bar{
-  display:none; /* ukryty – włącz zmieniając na flex gdy potrzebne */
-  align-items:center;
-  gap:12px;
-  margin-bottom:48px;
-  flex-wrap:wrap;
-}
-
-.filter-label{
-  font-size:0.7rem;letter-spacing:3px;
-  text-transform:uppercase;color:rgba(255,255,255,0.4);
-  margin-right:8px;
-}
-
-.filter-btn{
-  font-family:'Montserrat',sans-serif;
-  font-size:0.72rem;font-weight:500;
-  letter-spacing:2px;text-transform:uppercase;
-  color:rgba(255,255,255,0.55);
-  background:none;
-  border:1px solid rgba(255,255,255,0.12);
-  padding:7px 16px;cursor:pointer;
-  transition:all .2s;
-}
-.filter-btn:hover,.filter-btn.active{
-  border-color:var(--gold);color:var(--gold);
-}
-
-/* ═══ EPISODES GRID ═══ */
-.episodes-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
   gap:24px;
 }
 
-/* ═══ EPISODE CARD ═══ */
-.episode-card{
-  background:var(--card-bg);
-  border:1px solid rgba(255,255,255,0.07);
-  border-radius:4px;
-  overflow:hidden;
-  transition:border-color .3s, transform .3s;
-  cursor:pointer;
+.ep-card{
   position:relative;
+  width:100%;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  /* cyjan border dookoła CAŁEJ karty */
+  border:1px solid rgba(51,228,224,0.35);
+  border-radius:2px;
+  overflow:hidden;
+  transition:border-color .25s;
 }
-.episode-card::before{
-  content:'';display:block;
-  height:3px;background:var(--cyan);
-}
-.episode-card:hover{
-  border-color:rgba(253,185,42,0.4);
-  transform:translateY(-4px);
+.ep-card:active{border-color:var(--cyan)}
+
+/* złote kreseczki na górze zdjęcia – jak w referencji */
+.ep-card::before{
+  content:'';
+  position:absolute;top:0;left:0;
+  width:72px;height:4px;
+  background:repeating-linear-gradient(
+    90deg,
+    var(--cyan) 0px,var(--cyan) 11px,
+    transparent 11px,transparent 16px
+  );
+  z-index:4;
 }
 
-.episode-thumb{
+/* PHOTO SECTION */
+.ep-photo{
   position:relative;
-  width:100%;aspect-ratio:1/1;
-  background:#111;overflow:hidden;
+  width:100%;
+  /* portret jak Dave Asprey – ~3:4 ale trochę szerzej */
+  aspect-ratio:3/2.5;
+  background:linear-gradient(180deg,#1a1a22 0%,#0d0d14 100%);
+  overflow:hidden;
 }
-.episode-thumb img{
+.ep-photo img{
   width:100%;height:100%;
   object-fit:cover;
-  filter:grayscale(30%);
-  transition:filter .3s, transform .3s;
+  object-position:top center;
+  display:block;
+  filter:grayscale(20%);
 }
-.episode-card:hover .episode-thumb img{
-  filter:grayscale(0%);transform:scale(1.03);
-}
-
-.episode-thumb-placeholder{
+/* placeholder bez foto */
+.ep-photo-placeholder{
   width:100%;height:100%;
-  background:linear-gradient(135deg,#0d0d0d 0%,#111 100%);
   display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(160deg,#10101a 0%,#1c1c28 100%);
 }
-.episode-num-big{
+.ep-ph-num{
   font-family:'Antonio',sans-serif;
-  font-size:5rem;font-weight:700;
-  color:rgba(255,255,255,0.06);letter-spacing:-0.05em;
+  font-size:clamp(5rem,25vw,9rem);
+  color:rgba(255,255,255,.05);
+  line-height:1;
+  letter-spacing:-0.04em;
 }
 
-.episode-play-btn{
-  position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%);
-  width:48px;height:48px;border-radius:50%;
-  background:rgba(253,185,42,0.9);
-  display:flex;align-items:center;justify-content:center;
-  opacity:0;transition:opacity .3s;
+/* overlay podcast logo / brand na zdjęciu jak w referencji */
+.ep-brand{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  padding:12px 16px 10px;
+  background:linear-gradient(to top,rgba(10,10,15,.9) 0%,transparent 100%);
+  font-family:'Antonio',sans-serif;
+  font-size:clamp(.9rem,5vw,1.3rem);
+  letter-spacing:.18em;
+  color:rgba(51,228,224,.6);
+  text-transform:uppercase;
+  line-height:1.1;
 }
-.episode-card:hover .episode-play-btn{opacity:1}
-.episode-play-btn svg{width:18px;height:18px;fill:#000;margin-left:3px}
+.ep-brand span{display:block;font-size:.55em;letter-spacing:.22em;color:rgba(51,228,224,.4)}
 
-.episode-badge{
-  position:absolute;top:12px;left:12px;
+/* BADGE */
+.ep-badge{
+  position:absolute;top:10px;right:10px;z-index:5;
   background:var(--gold);color:#000;
-  font-family:'Montserrat',sans-serif;
-  font-size:0.6rem;font-weight:700;
-  letter-spacing:2px;text-transform:uppercase;
-  padding:3px 8px;
+  font-family:'Montserrat',sans-serif;font-size:.48rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;padding:4px 9px;
 }
 
-.episode-body{padding:20px}
+/* TEXT SECTION – poniżej zdjęcia */
+.ep-body{
+  background:#0d0d14;
+  padding:18px 18px 20px;
+  border-top:1px solid rgba(51,228,224,.15);
+}
+.ep-meta{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.ep-num{
+  font-family:'Montserrat',sans-serif;font-size:.55rem;font-weight:700;
+  letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.35);
+}
+.ep-date{font-size:.55rem;letter-spacing:1px;color:rgba(255,255,255,.25)}
 
-.episode-meta{
-  display:flex;align-items:center;gap:10px;
-  margin-bottom:10px;
-}
-.episode-ep{
-  font-size:0.65rem;font-weight:600;
-  letter-spacing:2px;text-transform:uppercase;
-  color:var(--gold);
-}
-.episode-date{
-  font-size:0.65rem;letter-spacing:1px;
-  color:rgba(255,255,255,0.3);
-}
-
-.episode-title{
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:700;font-size:1.15rem;
-  letter-spacing:0.02em;line-height:1.3;
-  color:#fff;margin-bottom:10px;
+.ep-title{
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+  font-size:1.3rem;line-height:1.22;letter-spacing:.01em;
+  color:#fff;margin-bottom:16px;
 }
 
-.episode-desc{
-  font-size:0.75rem;font-weight:300;
-  color:rgba(255,255,255,0.45);
-  line-height:1.6;margin-bottom:16px;
-  display:-webkit-box;
-  -webkit-line-clamp:3;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
+.ep-read{
+  display:inline-flex;align-items:center;gap:5px;
+  font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:700;
+  letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;
+  -webkit-tap-highlight-color:transparent;
 }
+.ep-read:active{opacity:.7}
 
-.episode-links{display:flex;gap:8px;flex-wrap:wrap}
-
-.episode-link{
-  display:flex;align-items:center;gap:6px;
-  font-size:0.65rem;font-weight:600;
-  letter-spacing:1.5px;text-transform:uppercase;
-  text-decoration:none;
-  padding:6px 12px;
-  border:1px solid rgba(255,255,255,0.12);
-  color:rgba(255,255,255,0.6);
-  transition:all .2s;
-}
-.episode-link:hover{border-color:var(--gold);color:var(--gold)}
-.episode-link svg{width:12px;height:12px;fill:currentColor}
-
-.read-more{
-  color:var(--cyan);
-  font-family:'Montserrat',sans-serif;
-  font-size:0.65rem;font-weight:700;
-  letter-spacing:2px;text-transform:uppercase;
-  text-decoration:none;
-  display:inline-block;margin-top:8px;
-  transition:opacity .2s;
-}
-.read-more:hover{opacity:0.7}
-
-/* ═══ SOCIAL ICONS ═══ */
-.social-icons{
-  display:flex;align-items:center;justify-content:center;gap:16px;
-}
-.social-icon{
-  display:flex;align-items:center;justify-content:center;
-  width:40px;height:40px;
-  border:1px solid rgba(255,255,255,0.12);
-  text-decoration:none;
-  transition:border-color .2s, transform .2s;
-}
-.social-icon:hover{border-color:var(--gold);transform:scale(1.1)}
-.social-icon svg{width:18px;height:18px;fill:#fff}
-
-/* ═══ LOAD MORE ═══ */
-.load-more-wrap{text-align:center;margin-top:56px}
-
+/* ── LOAD MORE ── */
+.load-more-wrap{padding:8px 12px 40px}
 .btn-load{
-  font-family:'Montserrat',sans-serif;
-  font-weight:500;font-size:0.75rem;
+  font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:500;
   letter-spacing:3px;text-transform:uppercase;
-  color:rgba(255,255,255,0.6);
-  background:none;border:1px solid rgba(255,255,255,0.2);
-  padding:14px 40px;cursor:pointer;
-  transition:all .25s;
+  color:rgba(255,255,255,.45);background:none;
+  border:1px solid rgba(255,255,255,.14);padding:13px 0;
+  width:100%;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:all .2s;
 }
-.btn-load:hover{border-color:var(--gold);color:var(--gold)}
+.btn-load:active{border-color:var(--gold);color:var(--gold)}
 
-/* ═══ PLATFORM STRIP ═══ */
-.platform-strip{
-  background:rgba(255,255,255,0.03);
-  border-top:1px solid rgba(255,255,255,0.06);
-  border-bottom:1px solid rgba(255,255,255,0.06);
-  padding:32px 24px;text-align:center;
-  margin-bottom:56px;
+/* ── FOOTER ── */
+footer{
+  text-align:center;padding:22px 20px 48px;
+  font-size:.56rem;letter-spacing:1px;color:rgba(255,255,255,.2);
+  border-top:1px solid rgba(255,255,255,.05);
 }
-.platform-strip p{
-  font-size:0.7rem;letter-spacing:3px;
-  text-transform:uppercase;color:rgba(255,255,255,0.35);
-  margin-bottom:20px;
-}
-.platform-btns{
-  display:flex;align-items:center;justify-content:center;
-  gap:12px;flex-wrap:wrap;
-}
-.platform-btn{
-  display:flex;align-items:center;gap:8px;
-  font-family:'Montserrat',sans-serif;
-  font-size:0.75rem;font-weight:600;
-  letter-spacing:1.5px;text-transform:uppercase;
-  text-decoration:none;
-  background:var(--gold);color:#000;
-  padding:10px 22px;
-  transition:filter .2s, transform .15s;
-}
-.platform-btn:hover{filter:brightness(1.1);transform:scale(1.03)}
-.platform-btn svg{width:16px;height:16px;fill:#000}
+footer a{color:rgba(255,255,255,.3);text-decoration:none;margin:0 10px;display:inline-block;margin-top:6px}
 
-.podcast-tagline{
-  font-family:'Montserrat',sans-serif;
-  font-size:0.75rem;letter-spacing:4px;
-  text-transform:uppercase;color:rgba(255,255,255,0.5);
-  text-align:center;padding:5px 20px;
-}
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp .5s ease both}
 
-/* ═══ MOBILE ═══ */
-@media(max-width:900px){.episodes-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.episodes-grid{grid-template-columns:1fr}}
-
-@media(max-width:768px){
-  nav{
-    position:fixed;top:0;left:0;right:0;
-    padding:13px 18px;
-    background:rgba(10,10,15,.92);
-    backdrop-filter:blur(16px);
-    border-bottom:1px solid rgba(255,255,255,.07);
-  }
-  .desktop-nav{display:none}
-  .btn-sub{display:none}
-  .hamburger{display:flex}
-  .nav-logo{font-size:2rem}
-
-  .podcast-hero{
-    height:100svh;
-    align-items:flex-end;
-    padding-bottom:44px;
-    margin-top:0;
-  }
-  .podcast-hero-bg{
-    background:url("podcast-mobile.png") center/cover no-repeat;
-  }
-  .podcast-hero-content{transform:none}
-  .podcast-title{font-size:clamp(4rem,23vw,6.5rem)}
-  .hero-search{margin-top:24px}
-  .hero-search input{width:100%}
-
-  .podcast-main{top:0;padding:30px 16px 80px}
-  .episodes-grid{grid-template-columns:1fr;gap:18px}
-  .episode-body{padding:18px}
-  .episode-title{font-size:1.35rem}
-  .episode-desc{font-size:.72rem}
-
-  .mobile-menu{
-    position:fixed;inset:0;
-    background:rgba(10,10,15,.97);
-    display:flex;flex-direction:column;
-    justify-content:center;align-items:center;
-    opacity:0;pointer-events:none;
-    transition:opacity .3s ease;
-    z-index:90;
-  }
-  .mobile-menu.open{opacity:1;pointer-events:all}
-  .mobile-menu a{
-    font-family:'Montserrat',sans-serif;
-    font-size:.8rem;letter-spacing:4px;
-    text-transform:uppercase;
-    color:rgba(255,255,255,.7);
-    text-decoration:none;
-    padding:18px 0;
-  }
+@supports(padding:max(0px)){
+  nav{padding-top:max(13px,env(safe-area-inset-top))}
+  footer{padding-bottom:max(48px,env(safe-area-inset-bottom))}
 }
 </style>
 </head>
@@ -624,53 +270,15 @@ nav{
 <!-- NAV -->
 <nav>
   <a href="https://aureliaiwanow.pl" class="nav-logo">Aurelia Iwanow</a>
-
-  <div class="desktop-nav">
-    <a href="/podcast/">Podcast</a>
-
-    <div class="has-dropdown">
-      <span>Tematy <span class="arrow">▾</span></span>
-      <div class="tematy-dropdown">
-        <a href="/podcast?kategoria=odzywianie">Odżywianie</a>
-        <a href="/podcast?kategoria=sen">Sen i Regeneracja</a>
-        <a href="/podcast?kategoria=mozg">Optymalizacja Mózgu</a>
-        <a href="/podcast?kategoria=swiadomosc">Świadomość</a>
-        <a href="/podcast?kategoria=genetyka">Genetyka</a>
-        <a href="/podcast?kategoria=dlugowiecznosc">Długowieczność</a>
-        <a href="/podcast">Wszystkie tematy</a>
-      </div>
-    </div>
-
-    <div class="has-dropdown">
-      <span>Obserwuj <span class="arrow">▾</span></span>
-      <div class="tematy-dropdown obserwuj-dropdown">
-        <a href="https://open.spotify.com/show/6SljkXMp0CqSpYmDL0cyXZ?si=Szy2cKopQSOc_Z3jKmg0oQ%0A" target="_blank">
-          <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.559 17.32a.75.75 0 01-1.03.25c-2.82-1.724-6.368-2.114-10.545-1.158a.75.75 0 01-.335-1.462c4.573-1.046 8.49-.596 11.66 1.34a.75.75 0 01.25 1.03zm1.483-3.302a.937.937 0 01-1.288.308C14.95 12.5 11.07 11.9 7.47 12.943a.937.937 0 01-.518-1.8c4.064-1.168 8.39-.602 11.782 1.587a.937.937 0 01.308 1.288zm.128-3.44a1.124 1.124 0 01-1.543.378C14.52 8.87 9.74 8.718 5.906 9.905a1.125 1.125 0 01-.65-2.153c4.396-1.33 9.7-1.15 13.554 1.29a1.125 1.125 0 01.36 1.536z"/></svg>
-          Spotify
-        </a>
-        <a href="https://youtube.com/@aureliaiwanowpodcast?si=F8OPBfGyuJC3FWCP" target="_blank">
-          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          YouTube
-        </a>
-        <a href="https://instagram.com/aureliaiwanow" target="_blank">
-          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          Instagram
-        </a>
-      </div>
-    </div>
-
-    <a href="/kontakt/">Kontakt</a>
-  </div>
-
   <div class="nav-right">
     <a class="btn-sub" href="/subskrybuj/">SUBSKRYBUJ</a>
-    <div class="hamburger" id="hbg" onclick="toggleMenu()">
+    <button class="hamburger" id="hbg" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
-    </div>
+    </button>
   </div>
 </nav>
 
-<!-- MOBILE MENU -->
+<!-- OVERLAY MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="/podcast/" onclick="closeMenu()">Podcast</a>
   <a href="/podcast?kategoria=odzywianie" onclick="closeMenu()">Odżywianie</a>
@@ -680,225 +288,201 @@ nav{
   <a href="/podcast?kategoria=genetyka" onclick="closeMenu()">Genetyka</a>
   <a href="/podcast?kategoria=dlugowiecznosc" onclick="closeMenu()">Długowieczność</a>
   <a href="/kontakt/" onclick="closeMenu()">Kontakt</a>
-</div>
-
-<!-- HERO -->
-<section class="podcast-hero">
-  <div class="podcast-hero-bg"></div>
-  <div class="podcast-hero-overlay"></div>
-  <div class="podcast-hero-content">
-    <h1 class="podcast-title">PODCAST</h1>
-    <div class="hero-search">
-      <input id="searchInput" type="text" placeholder="Szukaj odcinków..." autocomplete="off"/>
-    </div>
-  </div>
-</section>
-
-<!-- DROPDOWN (mobilny) -->
-<div class="dropdown" id="ddmenu">
-  <a href="#podcast" onclick="closeMenu()">Podcast</a>
-  <a href="#obserwuj" onclick="closeMenu()">Obserwuj</a>
-  <a href="#omnie" onclick="closeMenu()">O mnie</a>
-  <a href="#kontakt" onclick="closeMenu()">Kontakt</a>
-  <div class="dropdown-socials">
-    <a href="https://open.spotify.com/show/6SljkXMp0CqSpYmDL0cyXZ?si=Szy2cKopQSOc_Z3jKmg0oQ%0A" target="_blank" title="Spotify">
+  <a href="/subskrybuj/" class="menu-sub" onclick="closeMenu()">Subskrybuj</a>
+  <div class="menu-socials">
+    <a href="https://open.spotify.com/show/6SljkXMp0CqSpYmDL0cyXZ" target="_blank">
       <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.559 17.32a.75.75 0 01-1.03.25c-2.82-1.724-6.368-2.114-10.545-1.158a.75.75 0 01-.335-1.462c4.573-1.046 8.49-.596 11.66 1.34a.75.75 0 01.25 1.03zm1.483-3.302a.937.937 0 01-1.288.308C14.95 12.5 11.07 11.9 7.47 12.943a.937.937 0 01-.518-1.8c4.064-1.168 8.39-.602 11.782 1.587a.937.937 0 01.308 1.288zm.128-3.44a1.124 1.124 0 01-1.543.378C14.52 8.87 9.74 8.718 5.906 9.905a1.125 1.125 0 01-.65-2.153c4.396-1.33 9.7-1.15 13.554 1.29a1.125 1.125 0 01.36 1.536z"/></svg>
     </a>
-    <a href="https://youtube.com/@aureliaiwanowpodcast?si=F8OPBfGyuJC3FWCP" target="_blank" title="YouTube">
+    <a href="https://youtube.com/@aureliaiwanowpodcast" target="_blank">
       <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
     </a>
-    <a href="https://www.instagram.com/aureliaiwanow?igsh=MXJmN2xlbG91ZW56dA==" target="_blank" title="Instagram">
+    <a href="https://instagram.com/aureliaiwanow" target="_blank">
       <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
     </a>
   </div>
 </div>
 
-<!-- EPISODES -->
-<div class="podcast-main">
+<!-- HERO -->
+<section class="podcast-hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content fade-up">
+    <p class="hero-eyebrow">Aurelia Iwanow</p>
+    <h1 class="hero-title">PODCAST</h1>
+    <p class="hero-sub">Nauka · Zdrowie · Świadomość</p>
+    <div class="hero-search">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="searchInput" placeholder="Szukaj odcinków..." autocomplete="off"/>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    <span>Odcinki</span>
+  </div>
+</section>
 
-  <div class="filter-bar">
-    <span class="filter-label">Filtruj:</span>
-    <button class="filter-btn active" data-kategoria="">Wszystkie</button>
-    <button class="filter-btn" data-kategoria="odzywianie">Odżywianie</button>
-    <button class="filter-btn" data-kategoria="sen">Sen i Regeneracja</button>
-    <button class="filter-btn" data-kategoria="mozg">Optymalizacja Mózgu</button>
-    <button class="filter-btn" data-kategoria="swiadomosc">Świadomość</button>
-    <button class="filter-btn" data-kategoria="genetyka">Genetyka</button>
-    <button class="filter-btn" data-kategoria="dlugowiecznosc">Długowieczność</button>
+<!-- FILTER CHIPS -->
+<div class="filter-wrap" id="filterBar">
+  <button class="chip active" data-k="">Wszystkie</button>
+  <button class="chip" data-k="odzywianie">Odżywianie</button>
+  <button class="chip" data-k="sen">Sen i Regeneracja</button>
+  <button class="chip" data-k="mozg">Mózg</button>
+  <button class="chip" data-k="swiadomosc">Świadomość</button>
+  <button class="chip" data-k="genetyka">Genetyka</button>
+  <button class="chip" data-k="dlugowiecznosc">Długowieczność</button>
+</div>
+
+<!-- ══ EPISODES ══ -->
+<div class="episodes" id="episodesList">
+
+  <!-- EP 001 -->
+  <div class="ep-card reveal episode-item" data-k="odzywianie" data-s="pierwszy odcinek odżywianie maj 2026">
+    <div class="ep-photo">
+      <!-- Zamień na: <img src="ep001-guest.jpg" alt="Gość EP 001"/> -->
+      <div class="ep-photo-placeholder"><span class="ep-ph-num">01</span></div>
+      <div class="ep-brand">Aurelia Iwanow<span>Podcast</span></div>
+    </div>
+    <div class="ep-badge">Najnowszy</div>
+    <div class="ep-body">
+      <div class="ep-meta">
+        <span class="ep-num">EP 001</span>
+        <span class="ep-date">Maj 2026</span>
+      </div>
+      <h2 class="ep-title">Tytuł Twojego pierwszego odcinka podcastu</h2>
+      <a href="#" class="ep-read">CZYTAJ WIĘCEJ</a>
+    </div>
   </div>
 
-  <div class="episodes-grid">
-
-    <!-- EP 001 -->
-    <div class="episode-card" data-kategoria="odzywianie" data-search="pierwszy odcinek odzywianie zdrowie maj 2026">
-      <div class="episode-thumb">
-        <div class="episode-thumb-placeholder"><span class="episode-num-big">01</span></div>
-        <div class="episode-badge">Najnowszy</div>
-        <div class="episode-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      </div>
-      <div class="episode-body">
-        <div class="episode-meta">
-          <span class="episode-ep">EP 001</span>
-          <span class="episode-date">Maj 2026</span>
-        </div>
-        <h2 class="episode-title">Tytuł Twojego pierwszego odcinka podcastu</h2>
-        <p class="episode-desc">Opis odcinka – o czym rozmawiamy, co słuchacz wyniesie z tego odcinka, jaki gość pojawi się w podcaście lub jaki temat zostanie poruszony. Możesz tu wpisać kilka zdań zachęcających do słuchania.</p>
-        <a href="#" class="read-more">CZYTAJ WIĘCEJ</a>
-      </div>
+  <!-- EP 002 -->
+  <div class="ep-card reveal episode-item" data-k="sen" data-s="drugi odcinek sen kwiecień 2026">
+    <div class="ep-photo">
+      <div class="ep-photo-placeholder"><span class="ep-ph-num">02</span></div>
+      <div class="ep-brand">Aurelia Iwanow<span>Podcast</span></div>
     </div>
-
-    <!-- EP 002 -->
-    <div class="episode-card" data-kategoria="sen" data-search="drugi odcinek sen regeneracja kwiecien 2026">
-      <div class="episode-thumb">
-        <div class="episode-thumb-placeholder"><span class="episode-num-big">02</span></div>
-        <div class="episode-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+    <div class="ep-body">
+      <div class="ep-meta">
+        <span class="ep-num">EP 002</span>
+        <span class="ep-date">Kwiecień 2026</span>
       </div>
-      <div class="episode-body">
-        <div class="episode-meta">
-          <span class="episode-ep">EP 002</span>
-          <span class="episode-date">Kwiecień 2026</span>
-        </div>
-        <h2 class="episode-title">Tytuł drugiego odcinka podcastu</h2>
-        <p class="episode-desc">Krótki opis odcinka – zachęć słuchaczy do odsłuchania. Możesz wspomnieć o gościu lub kluczowym temacie.</p>
-        <a href="#" class="read-more">CZYTAJ WIĘCEJ</a>
-      </div>
+      <h2 class="ep-title">Tytuł drugiego odcinka podcastu</h2>
+      <a href="#" class="ep-read">CZYTAJ WIĘCEJ</a>
     </div>
-
-    <!-- EP 003 -->
-    <div class="episode-card">
-      <div class="episode-thumb">
-        <div class="episode-thumb-placeholder"><span class="episode-num-big">03</span></div>
-        <div class="episode-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      </div>
-      <div class="episode-body">
-        <div class="episode-meta">
-          <span class="episode-ep">EP 003</span>
-          <span class="episode-date">Marzec 2026</span>
-        </div>
-        <h2 class="episode-title">Tytuł trzeciego odcinka podcastu</h2>
-        <p class="episode-desc">Krótki opis odcinka – zachęć słuchaczy do odsłuchania. Możesz wspomnieć o gościu lub kluczowym temacie.</p>
-        <a href="#" class="read-more">CZYTAJ WIĘCEJ</a>
-      </div>
-    </div>
-
-    <!-- EP 004 -->
-    <div class="episode-card">
-      <div class="episode-thumb">
-        <div class="episode-thumb-placeholder"><span class="episode-num-big">04</span></div>
-        <div class="episode-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      </div>
-      <div class="episode-body">
-        <div class="episode-meta">
-          <span class="episode-ep">EP 004</span>
-          <span class="episode-date">Luty 2026</span>
-        </div>
-        <h2 class="episode-title">Tytuł czwartego odcinka podcastu</h2>
-        <p class="episode-desc">Krótki opis odcinka – zachęć słuchaczy do odsłuchania. Możesz wspomnieć o gościu lub kluczowym temacie.</p>
-        <a href="#" class="read-more">CZYTAJ WIĘCEJ</a>
-      </div>
-    </div>
-
-    <!-- EP 005 -->
-    <div class="episode-card">
-      <div class="episode-thumb">
-        <div class="episode-thumb-placeholder"><span class="episode-num-big">05</span></div>
-        <div class="episode-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      </div>
-      <div class="episode-body">
-        <div class="episode-meta">
-          <span class="episode-ep">EP 005</span>
-          <span class="episode-date">Styczeń 2026</span>
-        </div>
-        <h2 class="episode-title">Tytuł piątego odcinka podcastu</h2>
-        <p class="episode-desc">Krótki opis odcinka – zachęć słuchaczy do odsłuchania. Możesz wspomnieć o gościu lub kluczowym temacie.</p>
-        <a href="#" class="read-more">CZYTAJ WIĘCEJ</a>
-      </div>
-    </div>
-
-    <!-- EP 006 -->
-    <div class="episode-card">
-      <div class="episode-thumb">
-        <div class="episode-thumb-placeholder"><span class="episode-num-big">06</span></div>
-        <div class="episode-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      </div>
-      <div class="episode-body">
-        <div class="episode-meta">
-          <span class="episode-ep">EP 006</span>
-          <span class="episode-date">Grudzień 2025</span>
-        </div>
-        <h2 class="episode-title">Tytuł szóstego odcinka podcastu</h2>
-        <p class="episode-desc">Krótki opis odcinka – zachęć słuchaczy do odsłuchania. Możesz wspomnieć o gościu lub kluczowym temacie.</p>
-        <a href="#" class="read-more">CZYTAJ WIĘCEJ</a>
-      </div>
-    </div>
-
   </div>
 
-  <div class="load-more-wrap">
-    <button class="btn-load">Załaduj więcej odcinków</button>
+  <!-- EP 003 -->
+  <div class="ep-card reveal episode-item" data-k="" data-s="trzeci odcinek marzec 2026">
+    <div class="ep-photo">
+      <div class="ep-photo-placeholder"><span class="ep-ph-num">03</span></div>
+      <div class="ep-brand">Aurelia Iwanow<span>Podcast</span></div>
+    </div>
+    <div class="ep-body">
+      <div class="ep-meta">
+        <span class="ep-num">EP 003</span>
+        <span class="ep-date">Marzec 2026</span>
+      </div>
+      <h2 class="ep-title">Tytuł trzeciego odcinka podcastu</h2>
+      <a href="#" class="ep-read">CZYTAJ WIĘCEJ</a>
+    </div>
+  </div>
+
+  <!-- EP 004 -->
+  <div class="ep-card reveal episode-item" data-k="" data-s="czwarty odcinek luty 2026">
+    <div class="ep-photo">
+      <div class="ep-photo-placeholder"><span class="ep-ph-num">04</span></div>
+      <div class="ep-brand">Aurelia Iwanow<span>Podcast</span></div>
+    </div>
+    <div class="ep-body">
+      <div class="ep-meta">
+        <span class="ep-num">EP 004</span>
+        <span class="ep-date">Luty 2026</span>
+      </div>
+      <h2 class="ep-title">Tytuł czwartego odcinka podcastu</h2>
+      <a href="#" class="ep-read">CZYTAJ WIĘCEJ</a>
+    </div>
+  </div>
+
+  <!-- EP 005 -->
+  <div class="ep-card reveal episode-item" data-k="" data-s="piąty odcinek styczeń 2026">
+    <div class="ep-photo">
+      <div class="ep-photo-placeholder"><span class="ep-ph-num">05</span></div>
+      <div class="ep-brand">Aurelia Iwanow<span>Podcast</span></div>
+    </div>
+    <div class="ep-body">
+      <div class="ep-meta">
+        <span class="ep-num">EP 005</span>
+        <span class="ep-date">Styczeń 2026</span>
+      </div>
+      <h2 class="ep-title">Tytuł piątego odcinka podcastu</h2>
+      <a href="#" class="ep-read">CZYTAJ WIĘCEJ</a>
+    </div>
+  </div>
+
+  <!-- EP 006 -->
+  <div class="ep-card reveal episode-item" data-k="" data-s="szósty odcinek grudzień 2025">
+    <div class="ep-photo">
+      <div class="ep-photo-placeholder"><span class="ep-ph-num">06</span></div>
+      <div class="ep-brand">Aurelia Iwanow<span>Podcast</span></div>
+    </div>
+    <div class="ep-body">
+      <div class="ep-meta">
+        <span class="ep-num">EP 006</span>
+        <span class="ep-date">Grudzień 2025</span>
+      </div>
+      <h2 class="ep-title">Tytuł szóstego odcinka podcastu</h2>
+      <a href="#" class="ep-read">CZYTAJ WIĘCEJ</a>
+    </div>
   </div>
 
 </div>
 
-<!-- FOOTER -->
-<footer style="text-align:center;padding:30px 24px;font-family:'Montserrat',sans-serif;font-size:0.7rem;letter-spacing:1px;color:rgba(255,255,255,0.3);border-top:none;">
+<div class="load-more-wrap reveal">
+  <button class="btn-load">Załaduj więcej odcinków</button>
+</div>
+
+<footer>
   <p>© 2026 Aurelia Iwanow. Wszystkie prawa zastrzeżone.</p>
-  <p style="margin-top:8px;">
-    <a href="/polityka-prywatnosci" style="color:rgba(255,255,255,0.4);text-decoration:none;margin:0 12px;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Polityka prywatności</a>
-    <a href="/regulamin" style="color:rgba(255,255,255,0.4);text-decoration:none;margin:0 12px;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Regulamin</a>
-  </p>
+  <p><a href="/polityka-prywatnosci">Polityka prywatności</a><a href="/regulamin">Regulamin</a></p>
 </footer>
 
 <script>
-// Filtrowanie + wyszukiwanie
-document.addEventListener('DOMContentLoaded', () => {
-  const cards = document.querySelectorAll('.episode-card');
-  const buttons = document.querySelectorAll('.filter-btn');
-
-  function showCategory(cat) {
-    cards.forEach(card => {
-      const match = !cat || card.dataset.kategoria === cat;
-      card.style.display = match ? 'block' : 'none';
-    });
-    buttons.forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.kategoria === cat || (!cat && btn.dataset.kategoria === ''));
-    });
-  }
-
-  const params = new URLSearchParams(window.location.search);
-  showCategory(params.get('kategoria') || '');
-
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => showCategory(btn.dataset.kategoria));
-  });
-
-  document.getElementById('searchInput').addEventListener('input', function() {
-    const q = this.value.toLowerCase().trim();
-    cards.forEach(card => {
-      const txt = (card.dataset.search || '') + (card.querySelector('.episode-title')?.textContent || '');
-      card.style.display = txt.toLowerCase().includes(q) ? 'block' : 'none';
-    });
-  });
-});
-
-// Reveal on scroll
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('active');
-  });
-}, { threshold: 0.15 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// Mobile menu
-function toggleMenu() {
+function toggleMenu(){
   document.getElementById('hbg').classList.toggle('open');
-  document.getElementById('mobileMenu').classList.toggle('open');
+  const m=document.getElementById('mobileMenu');
+  m.classList.toggle('open');
+  document.body.style.overflow=m.classList.contains('open')?'hidden':'';
 }
-function closeMenu() {
+function closeMenu(){
   document.getElementById('hbg').classList.remove('open');
   document.getElementById('mobileMenu').classList.remove('open');
+  document.body.style.overflow='';
 }
-</script>
 
+const obs=new IntersectionObserver(e=>{
+  e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('active')})
+},{threshold:0.06});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+const chips=document.querySelectorAll('.chip');
+const items=document.querySelectorAll('.episode-item');
+
+function showCat(k){
+  items.forEach(el=>{el.style.display=(!k||el.dataset.k===k)?'':'none'});
+  chips.forEach(c=>c.classList.toggle('active',c.dataset.k===k||(!k&&c.dataset.k==='')));
+}
+
+const p=new URLSearchParams(window.location.search);
+showCat(p.get('kategoria')||'');
+chips.forEach(c=>c.addEventListener('click',()=>showCat(c.dataset.k)));
+
+document.getElementById('searchInput').addEventListener('input',function(){
+  const q=this.value.toLowerCase().trim();
+  if(!q){showCat('');return}
+  items.forEach(el=>{
+    const txt=(el.dataset.s||'')+(el.querySelector('.ep-title')?.textContent||'');
+    el.style.display=txt.toLowerCase().includes(q)?'':'none';
+  });
+  chips.forEach(c=>c.classList.remove('active'));
+});
+</script>
 </body>
 </html>
