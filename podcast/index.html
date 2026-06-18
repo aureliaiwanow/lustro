@@ -452,16 +452,44 @@ nav{
 @media(max-width:900px){.episodes-grid{grid-template-columns:repeat(2,1fr)}}
 
 @media(max-width:768px){
+
   nav{
-    position:fixed;top:0;left:0;right:0;
-    padding:15px 20px;
-    background:rgba(10,10,15,.95);
-    backdrop-filter:blur(16px);
-    border-bottom:1px solid rgba(255,255,255,.07);
+    position:absolute;
+    top:10px;
+    left:0;
+    right:0;
+    padding:14px 16px 14px 10px;
+    background:none;
+    backdrop-filter:none;
+    border-bottom:none;
   }
-  .desktop-nav, .btn-sub{display:none}
-  .hamburger{display:flex}
-  .nav-logo{font-size:2rem}
+
+  .desktop-nav{
+    display:none;
+  }
+
+  .hamburger{
+    display:flex;
+  }
+
+  .nav-logo{
+    font-family:'Reenie Beanie',cursive;
+    font-size:1.8rem;
+    font-weight:400;
+    white-space:nowrap;
+    letter-spacing:-0.08em;
+  }
+
+  .btn-sub{
+    display:inline-block;
+    font-size:.92rem;
+    padding:9px 16px;
+  }
+
+  .hamburger span{
+    width:24px;
+  }
+}
 
   .podcast-hero{height:70svh}
   .podcast-hero-content{transform:none}
