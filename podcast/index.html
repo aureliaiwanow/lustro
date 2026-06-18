@@ -75,7 +75,7 @@ nav{
   padding:6px 0;
   transition:color 0.25s ease;
 }
-.desktop-nav a:hover, .has-dropdown:hover > span{color:var(--gold); cursor:pointer;}
+.desktop-nav a:hover, .has-dropdown:hover span{color:var(--gold) cursor:pointer;}
 
 .desktop-nav a::after{
   content:'';
@@ -87,73 +87,67 @@ nav{
 }
 .desktop-nav a:hover::after{width:100%}
 
-/* ═══ DROPDOWN (has-dropdown) ═══ */
-.has-dropdown{position:relative}
-.arrow{color:#fff;font-size:1.2em;transition:none;margin-left:5px;}
-.has-dropdown:hover span .arrow{color:var(--gold)}
+  /* ═══ TEMATY DROPDOWN ═══ */
 
-/* Wspólne style dla obu dropdownów */
-.dropdown-menu {
+
+.tematy-dropdown{
   position:absolute;
   top:calc(100% + 10px);
-  left:-20px;
-  background:rgba(10,10,15,0.95);
+  left:-0.5cm;
+  background:rgba(0,0,0,0.75);
   border:1px solid rgba(255,255,255,0.1);
   display:flex;
   flex-direction:column;
-  z-index:150;
+  z-index:50;
   opacity:0;
   pointer-events:none;
-  transition:opacity 0.3s ease;
-  min-width:240px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  transition:opacity 0.3s ease 0.3s;
+  min-width:220px;
 }
 
-/* Niewidoczny mostek – zapobiega "znikaniu" przy przesuwaniu myszy */
-.dropdown-menu::before{
-  content:'';
-  position:absolute;
-  top:-15px;left:0;right:0;
-  height:15px;
-}
-
-.dropdown-menu a{
-  display:flex;
-  align-items:center;
-  gap:12px;
+.tematy-dropdown a{
   font-family:'Montserrat',sans-serif;
   font-weight:400;
   font-size:12px;
   letter-spacing:1px;
-  text-transform:uppercase;
   color:rgba(255,255,255,0.85);
   text-decoration:none;
-  padding:14px 20px;
+  padding:12px 20px;
+  text-transform:uppercase;
   transition:background 0.2s, color 0.2s;
 }
-.dropdown-menu a::after { display:none; } /* Usuwa podkreślenie z linków w dropdownie */
 
-.dropdown-menu a:hover{
+.tematy-dropdown a:hover{
   background:var(--gold);
-  color:#000;
+  color:#fff;
 }
 
-/* SVG w obserwuj-dropdown */
-.dropdown-menu svg{
-  width:18px;height:18px;
-  fill:#fff;
-  flex-shrink:0;
-  display:block;
-  transition: fill 0.2s;
+.tematy-dropdown::before{
+  content:'';
+  position:absolute;
+  top:-10px;
+  left:0;
+  right:0;
+  height:10px;
 }
-.dropdown-menu a:hover svg{fill:#000}
 
-/* Otwieranie dropdownów */
-.has-dropdown:hover .dropdown-menu{
+.has-dropdown:hover .tematy-dropdown,
+.tematy-dropdown:hover{
   opacity:1;
   pointer-events:all;
 }
 
+.has-dropdown:not(:hover) .tematy-dropdown:not(:hover){
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.5s ease 0.4s;
+}
+
+  .obserwuj-dropdown{
+  left:0;
+  min-width:180px;
+}
+  
 /* ═══ NAV RIGHT ═══ */
 .nav-right{
   display:flex;align-items:center;gap:14px;
@@ -467,7 +461,7 @@ nav{
 
     <div class="has-dropdown">
       <span>Tematy <span class="arrow">▾</span></span>
-      <div class="dropdown-menu">
+      <div class="tematy-dropdown">
         <a href="/podcast?kategoria=odzywianie">Odżywianie</a>
         <a href="/podcast?kategoria=sen">Sen i Regeneracja</a>
         <a href="/podcast?kategoria=mozg">Optymalizacja Mózgu</a>
@@ -480,8 +474,8 @@ nav{
 
     <div class="has-dropdown">
       <span>Obserwuj <span class="arrow">▾</span></span>
-      <div class="dropdown-menu">
-        <a href="https://open.spotify.com" target="_blank">
+<div class="tematy-dropdown obserwuj-dropdown">      
+  <a href="https://open.spotify.com" target="_blank">
           <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.559 17.32a.75.75 0 01-1.03.25c-2.82-1.724-6.368-2.114-10.545-1.158a.75.75 0 01-.335-1.462c4.573-1.046 8.49-.596 11.66 1.34a.75.75 0 01.25 1.03zm1.483-3.302a.937.937 0 01-1.288.308C14.95 12.5 11.07 11.9 7.47 12.943a.937.937 0 01-.518-1.8c4.064-1.168 8.39-.602 11.782 1.587a.937.937 0 01.308 1.288zm.128-3.44a1.124 1.124 0 01-1.543.378C14.52 8.87 9.74 8.718 5.906 9.905a1.125 1.125 0 01-.65-2.153c4.396-1.33 9.7-1.15 13.554 1.29a1.125 1.125 0 01.36 1.536z"/></svg>
           Spotify
         </a>
