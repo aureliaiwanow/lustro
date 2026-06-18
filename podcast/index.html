@@ -453,14 +453,14 @@ nav{
 
 @media(max-width:768px){
   nav{
-    position:fixed;top:20px;left:0;right:0;
-    padding:0 18px;
-    background:none;
-    backdrop-filter:none;
-    border:none;
-    align-items:flex-start;
+    position:fixed;top:0;left:0;right:0;
+    padding:15px 20px;
+    background:rgba(10,10,15,.95);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid rgba(255,255,255,.07);
   }
-  .desktop-nav, {display:none}
+  .desktop-nav, .btn-sub{display:none}
+  .hamburger{display:flex}
   .nav-logo{font-size:2rem}
 
   .podcast-hero{height:70svh}
@@ -471,13 +471,6 @@ nav{
   .podcast-main{top:0;padding:50px 16px 80px}
   .episodes-grid{grid-template-columns:1fr;gap:20px}
   .filter-bar{justify-content:center;margin-bottom:30px}
-
- .btn-sub{display:flex; align-items:center; justify-content:center; height:50px; padding:0 28px; font-size:0.95rem; font-weight:700; background:var(--gold); color:black; position:relative;}
-
-.btn-sub::before{content:''; position:absolute; top:5px;left:-5px; right:5px; bottom:-5px; border:1.5px solid rgba(253,185,42,.45); z-index:-1;}
-.hamburger{display:flex; width:50px; height:50px; justify-content:center; align-items:center;flex-direction:column; gap:6px; background:var(--gold); padding:0;}
-.hamburger span{width:24px; height:3px; background:#1b1b1b; border-radius:3px;}
-.nav-right{ gap:10px; margin-right:0;}
 }
 </style>
 </head>
