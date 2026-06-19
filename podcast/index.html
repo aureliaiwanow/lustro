@@ -353,24 +353,22 @@ nav{
         0 100%
     );
 
-    /* 👇 GRADIENT RAMKI */
+    /* RAMKA: góra ciemna → dół cyjan */
     background: linear-gradient(
         to bottom,
-        rgba(51, 228, 224, 0.8) 0%,      /* cyjan góra */
-        rgba(51, 228, 224, 0.6) 35%,     /* nadal cyjan */
-        rgba(51, 228, 224, 0.25) 55%,    /* zanikanie */
-        rgba(0, 0, 0, 0.15) 80%,         /* przejście w ciemne */
-        rgba(0, 0, 0, 0.35) 100%         /* dół */
+        rgba(17, 22, 29, 0.95) 0%,   /* góra = kolor kafelka */
+        rgba(17, 22, 29, 0.6) 40%,    /* przejście */
+        rgba(51, 228, 224, 0.25) 75%, /* cyjan zaczyna się pojawiać */
+        rgba(51, 228, 224, 0.8) 100%  /* dół = mocny cyjan */
     );
 
-    padding: 1px; /* udaje "ramkę" */
+    padding: 1px;
     -webkit-mask:
       linear-gradient(#000 0 0) content-box,
       linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
             mask-composite: exclude;
 }
-
 /* Efekt hover - rozświetlenie turkusowej ramki i uniesienie karty */
 .episode-card:hover {
     transform: none;
