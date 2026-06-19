@@ -582,8 +582,78 @@ nav{
   .podcast-title{font-size:clamp(3.5rem,15vw,6rem)}
   .hero-search{margin-top:24px}
   .podcast-main{top:0;padding:50px 16px 80px}
-  .episodes-grid{grid-template-columns:1fr;gap:20px}
   .filter-bar{justify-content:center;margin-bottom:30px}
+  /* ═══ MOBILE EPISODE CARD ═══ */
+  .episodes-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .episode-card {
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    background: transparent;
+    transform: none !important;
+  }
+
+  .episode-card::before {
+    display: none;
+  }
+
+  .episode-thumb {
+    aspect-ratio: 16/11;
+    border-radius: 0;
+  }
+
+  .episode-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 30%,
+      rgba(0,0,0,0.55) 60%,
+      rgba(0,0,0,0.92) 100%
+    );
+    pointer-events: none;
+  }
+
+  .episode-card .episode-body {
+    padding: 0 20px 20px;
+    background: rgba(10,10,15,0.95);
+  }
+
+  .episode-card .episode-title {
+    font-size: 1.35rem;
+    line-height: 1.25;
+    margin-bottom: 0;
+  }
+
+  .episode-card .episode-meta {
+    margin-bottom: 8px;
+    padding-top: 16px;
+  }
+
+  .episode-card .episode-desc {
+    -webkit-line-clamp: 2;
+    margin-bottom: 12px;
+    margin-top: 8px;
+  }
+
+  .episode-card .read-more {
+    color: var(--gold);
+    font-size: 0.7rem;
+    letter-spacing: 2.5px;
+    margin-top: 4px;
+  }
+
+  .episode-play-btn {
+    opacity: 0.85;
+    width: 52px;
+    height: 52px;
+    z-index: 2;
+  }
 }
 </style>
 </head>
