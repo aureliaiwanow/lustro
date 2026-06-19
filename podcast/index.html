@@ -370,47 +370,28 @@ nav{
 
 .episode-body{padding:20px}
 
-.episode-meta{
-  display:flex;align-items:center;gap:10px;
-  margin-bottom:10px;
-}
-.episode-ep{
-  font-size:0.65rem;font-weight:600;
-  letter-spacing:2px;text-transform:uppercase;
-  color:var(--gold);
-}
-.episode-date{
-  font-size:0.65rem;letter-spacing:1px;
-  color:rgba(255,255,255,0.3);
+.episode-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+  color: #fff;
+  margin-bottom: 16px;
 }
 
-.episode-title{
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:700;font-size:1.15rem;
-  letter-spacing:0.02em;line-height:1.3;
-  color:#fff;margin-bottom:10px;
+.read-more {
+  color: var(--gold);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 0.65rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  transition: opacity .2s;
 }
-
-.episode-desc{
-  font-size:0.75rem;font-weight:300;
-  color:rgba(255,255,255,0.45);
-  line-height:1.6;margin-bottom:16px;
-  display:-webkit-box;
-  -webkit-line-clamp:3;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
-}
-
-.read-more{
-  color:var(--cyan);
-  font-family:'Montserrat',sans-serif;
-  font-size:0.65rem;font-weight:700;
-  letter-spacing:2px;text-transform:uppercase;
-  text-decoration:none;
-  display:inline-block;margin-top:8px;
-  transition:opacity .2s;
-}
-.read-more:hover{opacity:0.7}
+.read-more:hover { opacity: 0.7; }
 
 /* ═══ LOAD MORE ═══ */
 .load-more-wrap{text-align:center;margin-top:56px}
@@ -770,107 +751,39 @@ nav{
   <div class="episodes-grid">
 
     <!-- EP 001 -->
-    <div class="episode-card" data-kategoria="odzywianie" data-search="pierwszy odcinek odzywianie zdrowie maj 2026">
-      <div class="episode-thumb">
-        <div class="episode-thumb-placeholder"><span class="episode-num-big">01</span></div>
-        <div class="episode-badge">Najnowszy</div>
-        <div class="episode-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      </div>
-      <div class="episode-body">
-        <div class="episode-meta">
-          <span class="episode-ep">EP 001</span>
-          <span class="episode-date">Maj 2026</span>
-        </div>
-        <h2 class="episode-title">Jak mądrze programować odżywianie w 2026 roku</h2>
-        <p class="episode-desc">Opis odcinka – o czym rozmawiamy, co słuchacz wyniesie z tego odcinka, jaki gość pojawi się w podcaście lub jaki temat zostanie poruszony.</p>
-        <a href="#" class="read-more">CZYTAJ WIĘCEJ</a>
-      </div>
-    </div>
+    <div class="episode-body">
+  <h2 class="episode-title">01. Jak mądrze programować odżywianie w 2026 roku</h2>
+  <a href="#" class="read-more">Czytaj więcej</a>
+</div>
 
     <!-- EP 002 -->
-    <div class="episode-card" data-kategoria="sen" data-search="drugi odcinek sen regeneracja kwiecien 2026">
-      <div class="episode-thumb">
-        <div class="episode-thumb-placeholder"><span class="episode-num-big">02</span></div>
-        <div class="episode-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      </div>
-      <div class="episode-body">
-        <div class="episode-meta">
-          <span class="episode-ep">EP 002</span>
-          <span class="episode-date">Kwiecień 2026</span>
-        </div>
-        <h2 class="episode-title">Fazy snu, które całkowicie zmieniają regenerację mózgu</h2>
-        <p class="episode-desc">Krótki opis odcinka – zachęć słuchaczy do odsłuchania. Dowiedz się jak zoptymalizować głęboką fazę snu.</p>
-        <a href="#" class="read-more">CZYTAJ WIĘCEJ</a>
-      </div>
-    </div>
+    <div class="episode-body">
+  <h2 class="episode-title">01. Jak mądrze programować odżywianie w 2026 roku</h2>
+  <a href="#" class="read-more">Czytaj więcej</a>
+</div>
 
     <!-- EP 003 -->
-    <div class="episode-card" data-kategoria="mozg" data-search="trzeci odcinek mozg skupienie koncentracja marzec 2026">
-      <div class="episode-thumb">
-        <div class="episode-thumb-placeholder"><span class="episode-num-big">03</span></div>
-        <div class="episode-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      </div>
-      <div class="episode-body">
-        <div class="episode-meta">
-          <span class="episode-ep">EP 003</span>
-          <span class="episode-date">Marzec 2026</span>
-        </div>
-        <h2 class="episode-title">Neuroplastyczność i biohacking koncentracji</h2>
-        <p class="episode-desc">Jak wejść w stan głębokiej pracy (deep work) na żądanie i utrzymać ostrość umysłu przez cały dzień.</p>
-        <a href="#" class="read-more">CZYTAJ WIĘCEJ</a>
-      </div>
-    </div>
-
+    <div class="episode-body">
+  <h2 class="episode-title">01. Jak mądrze programować odżywianie w 2026 roku</h2>
+  <a href="#" class="read-more">Czytaj więcej</a>
+</div>
     <!-- EP 004 -->
-    <div class="episode-card" data-kategoria="swiadomosc" data-search="czwarty odcinek swiadomosc medytacja luty 2026">
-      <div class="episode-thumb">
-        <div class="episode-thumb-placeholder"><span class="episode-num-big">04</span></div>
-        <div class="episode-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      </div>
-      <div class="episode-body">
-        <div class="episode-meta">
-          <span class="episode-ep">EP 004</span>
-          <span class="episode-date">Luty 2026</span>
-        </div>
-        <h2 class="episode-title">Zrozumieć swoje Ego – psychologia świadomości</h2>
-        <p class="episode-desc">Rozmowa o uważności, mechanizmach obronnych naszego umysłu oraz o tym, jak medytacja wpływa na strukturę mózgu.</p>
-        <a href="#" class="read-more">CZYTAJ WIĘCEJ</a>
-      </div>
-    </div>
+    <div class="episode-body">
+  <h2 class="episode-title">01. Jak mądrze programować odżywianie w 2026 roku</h2>
+  <a href="#" class="read-more">Czytaj więcej</a>
+</div>
 
     <!-- EP 005 -->
-    <div class="episode-card" data-kategoria="genetyka" data-search="piaty odcinek genetyka dna epigenetyka styczen 2026">
-      <div class="episode-thumb">
-        <div class="episode-thumb-placeholder"><span class="episode-num-big">05</span></div>
-        <div class="episode-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      </div>
-      <div class="episode-body">
-        <div class="episode-meta">
-          <span class="episode-ep">EP 005</span>
-          <span class="episode-date">Styczeń 2026</span>
-        </div>
-        <h2 class="episode-title">Geny to nie wyrok. Czym jest nowoczesna epigenetyka?</h2>
-        <p class="episode-desc">Jak Twoje codzienne wybory, środowisko i dieta wpływają na ekspresję genów odpowiedzialnych za zdrowie.</p>
-        <a href="#" class="read-more">CZYTAJ WIĘCEJ</a>
-      </div>
-    </div>
+   <div class="episode-body">
+  <h2 class="episode-title">01. Jak mądrze programować odżywianie w 2026 roku</h2>
+  <a href="#" class="read-more">Czytaj więcej</a>
+</div>
 
     <!-- EP 006 -->
-    <div class="episode-card" data-kategoria="dlugowiecznosc" data-search="szosty odcinek dlugowiecznosc longevity grudzien 2025">
-      <div class="episode-thumb">
-        <div class="episode-thumb-placeholder"><span class="episode-num-big">06</span></div>
-        <div class="episode-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      </div>
-      <div class="episode-body">
-        <div class="episode-meta">
-          <span class="episode-ep">EP 006</span>
-          <span class="episode-date">Grudzień 2025</span>
-        </div>
-        <h2 class="episode-title">Protokół Longevity – jak spowolnić zegar biologiczny</h2>
-        <p class="episode-desc">Przegląd najnowszych badań naukowych nad długowiecznością. Od restrykcji kalorycznych po wsparcie mitochondriów.</p>
-        <a href="#" class="read-more">CZYTAJ WIĘCEJ</a>
-      </div>
-    </div>
+ <div class="episode-body">
+  <h2 class="episode-title">01. Jak mądrze programować odżywianie w 2026 roku</h2>
+  <a href="#" class="read-more">Czytaj więcej</a>
+</div>
 
   </div>
 
