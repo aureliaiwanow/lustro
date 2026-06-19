@@ -314,17 +314,24 @@ nav{
 
 /* ═══ EPISODE CARD ═══ */
 .episode-card{
-  background:var(--card-bg);
-  border:1px solid rgba(255,255,255,0.07);
-  border-radius:4px;
-  overflow:hidden;
-  transition:border-color .3s, transform .3s;
-  cursor:pointer;
-  position:relative;
+    background:#11161d;
+    border:1px solid rgba(51,228,224,.55);
+    border-radius:0;
+    overflow:hidden;
+    margin-bottom:28px;
+    position:relative;
 }
-.episode-card::before{
-  content:'';display:block;
-  height:3px;background:var(--cyan);
+
+.episode-card::after{
+    content:'';
+    position:absolute;
+    right:0;
+    bottom:0;
+    width:18px;
+    height:18px;
+    border-right:1px solid rgba(51,228,224,.55);
+    border-bottom:1px solid rgba(51,228,224,.55);
+    transform:skew(-45deg);
 }
 .episode-card:hover{
   border-color:rgba(253,185,42,0.4);
@@ -368,6 +375,13 @@ nav{
   padding:3px 8px;
 }
 
+  .episode-play-btn,
+  .episode-badge,
+  .episode-meta,
+  .episode-desc{
+    display:none;
+  }
+
 .episode-body{padding:20px}
 
 .episode-meta{
@@ -404,8 +418,8 @@ nav{
 .read-more{
   color:var(--gold);
   font-family:'Montserrat',sans-serif;
-  font-size:0.65rem;font-weight:700;
-  letter-spacing:2px;text-transform:uppercase;
+  font-size:1rem;font-weight:700;
+  letter-spacing:3px;text-transform:uppercase;
   text-decoration:none;
   display:inline-block;margin-top:8px;
   transition:opacity .2s;
@@ -585,7 +599,7 @@ nav{
   /* ═══ MOBILE EPISODE CARD ═══ */
   .episodes-grid {
     grid-template-columns: 1fr;
-    gap: 0;
+    gap: 30px;
   }
 
   .episode-card {
@@ -619,14 +633,15 @@ nav{
   }
 
   .episode-card .episode-body {
-    padding: 0 20px 20px;
-    background: rgba(10,10,15,0.95);
+    padding: 22px 26px 30px;
+    background: #11161d;
   }
 
   .episode-card .episode-title {
-    font-size: 1.35rem;
-    line-height: 1.25;
-    margin-bottom: 0;
+    font-size: 1.05rem;
+    line-height: 1.22;
+    font weight: 700
+    margin-bottom: 28px∂;
   }
 
   .episode-card .episode-meta {
