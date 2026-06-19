@@ -312,17 +312,17 @@ nav{
   gap:24px;
 }
 
-/* ═══ EPISODE CARD ═══ */
+* ═══ EPISODE CARD ═══ */
 .episode-card {
     background: #11161d;
     margin-bottom: 28px;
     position: relative;
-    padding: 12px; /* Dystans od zewnętrznej ramki do zawartości */
+    padding: 14px; /* Odstęp od zewnętrznej krawędzi do zawartości */
     box-sizing: border-box;
     transition: transform 0.3s ease;
     
-    /* Wycięcie prawego dolnego rogu karty (całej struktury) */
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+    /* Główne ścięcie całej karty w prawym dolnym rogu (16px) */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
 }
 
 /* Zewnętrzna, subtelna szara ramka */
@@ -330,33 +330,78 @@ nav{
     content: '';
     position: absolute;
     inset: 0;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     pointer-events: none;
-    /* Dopasowanie ramki zewnętrznej do ściętego kształtu */
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
     z-index: 5;
 }
 
-/* Wewnętrzna, turkusowa ramka z zaokrąglonymi górnymi rogami i ścięciem na dole */
+/* Wewnętrzna ramka cyjanowa (ciągła, załamująca się na ścięciu) */
 .episode-card::after {
     content: '';
     position: absolute;
-    inset: 4px; /* Odstęp między zewnętrzną a wewnętrzną ramką */
-    border: 1px solid rgba(51, 228, 224, 0.4);
-    border-radius: 12px 12px 0 0; /* Zaokrąglenie górnych rogów linii do środka */
+    inset: 5px; /* Odstęp między szarą a cyjanową linią */
     pointer-events: none;
-    /* Ścięcie prawego dolnego rogu dla wewnętrznej linii */
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 13px), calc(100% - 13px) 100%, 0 100%);
     z-index: 5;
-    transition: border-color 0.3s ease;
+    
+    /* Zaokrąglenie górnych rogów linii do środka */
+    border-radius: 12px 12px 0 0; 
+    
+    /* Magia: rysujemy obramowanie za pomocą gradientu, który "skręca" w prawym dolnym rogu pod kątem 45 stopni */
+    --border-width: 1px;
+    --border-color: rgba(51, 228, 224, 0.45);
+    
+    background: linear-gradient(to right, var(--border-color) var(--border-width), transparent var(--border-width)) 0 100%,
+                linear-gradient(to left, var(--border-color) var(--border-width), transparent var(--border-width)) 100% 0,
+                linear-gradient(to bottom, var(--border-color) var(--border-width), transparent var(--border-width)) 100% 0,
+                linear-gradient(to top, var(--border-color) var(--border-width), transparent var(--border-width)) 0 100%;
+    background-size: 100% calc(100% - 14px), calc(100% - 14px) 100%, 100% calc(100% - 14px), calc(100% - 14px) 100%;
+    background-repeat: no-repeat;
+    
+    /* Dodatkowy element rysujący brakującą, skośną linię łączącą */
+    border-bottom: var(--border-width) solid transparent;
 }
 
-/* Efekt hover - rozświetlenie turkusowej ramki i uniesienie karty */
-.episode-card:hover {
-    transform: translateY(-50px);
+/* Generujemy samą skośną linię łączącą w rogu */
+.episode-body::before {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    /* Linia pod kątem 135 stopni tworzy idealny łącznik */
+    background: linear-gradient(135deg, transparent calc(50% - 0.5px), rgba(51, 228, 224, 0.45) calc(50% - 0.5px), rgba(51, 228, 224, 0.45) calc(50% + 0.5px), transparent calc(50% + 0.5px));
+    pointer-events: none;
+    z-index: 6;
+    transition: opacity 0.3s ease;
 }
+
+/* Efekt hover - podświetlenie wszystkich elementów cyjanowych */
+.episode-card:hover {
+    transform: translateY(-4px);
+}
+
 .episode-card:hover::after {
-    border-color: rgba(51, 228, 224, 0.9); /* Rozjaśnienie turkusu przy najechaniu */
+    --border-color: rgba(51, 228, 224, 0.95);
+}
+
+.episode-card:hover .episode-body::before {
+    background: linear-gradient(135deg, transparent calc(50% - 0.5px), rgba(51, 228, 224, 0.95) calc(50% - 0.5px), rgba(51, 228, 224, 0.95) calc(50% + 0.5px), transparent calc(50% + 0.5px));
+}
+
+/* Dopasowanie elementów wewnętrznych */
+.episode-thumb {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #111;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0; /* Górne zaokrąglenie zdjęcia pasujące do ramki */
+}
+
+.episode-body {
+    padding: 24px 12px 12px 12px;
 }
 
 /* Korekta dopasowania zdjęcia i zawartości wewnątrz nowej struktury ramki */
