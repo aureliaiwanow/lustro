@@ -359,13 +359,43 @@ nav{
 }
 
 /* Korekta dopasowania zdjęcia i zawartości wewnątrz nowej struktury ramki */
-.episode-thumb {
-    position: relative;
-    width: calc(100% + 8px);
-    margin: -4px -4px 0 -4px;
-    aspect-ratio: 1 / 1;
-    background: #111;
-    overflow: hidden;
+.episode-thumb{
+  position:relative;
+  width:100%;
+  aspect-ratio:1/1;
+  overflow:hidden;
+  background-size:cover;
+  background-position:center;
+}
+
+/* UKRYWAMY PLACEHOLDER */
+.episode-thumb-placeholder {
+  display:none;
+}
+
+/* ZDJĘCIA PER KAFEL */
+.episode-card:nth-child(1) .episode-thumb {
+  background: url("ep1.png") center/cover no-repeat;
+}
+
+.episode-card:nth-child(2) .episode-thumb {
+  background: url("ep1.png") center/cover no-repeat;
+}
+
+.episode-card:nth-child(3) .episode-thumb {
+  background: url("ep1.png") center/cover no-repeat;
+}
+
+.episode-card:nth-child(4) .episode-thumb {
+  background: url("ep1.png") center/cover no-repeat;
+}
+
+.episode-card:nth-child(5) .episode-thumb {
+  background: url("ep1.png") center/cover no-repeat;
+}
+
+.episode-card:nth-child(6) .episode-thumb {
+  background: url("ep1.png") center/cover no-repeat;
 }
 
   .episode-thumb::after {
@@ -393,11 +423,6 @@ nav{
   background:#111;overflow:hidden;
 }
 
-.episode-thumb-placeholder{
-  width:100%;height:100%;
-  background:linear-gradient(135deg,#0d0d0d 0%,#111 100%);
-  display:flex;align-items:center;justify-content:center;
-}
 .episode-num-big{
   font-family:'Antonio',sans-serif;
   font-size:5rem;font-weight:700;
