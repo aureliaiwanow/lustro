@@ -363,13 +363,14 @@ nav{
 /* Korekta dopasowania zdjęcia i zawartości wewnątrz nowej struktury ramki */
 .episode-thumb{
   position:relative;
-  width:100%;
+  width:calc(100% + 20px);
+  margin-left:-10px;
+  margin-right:-10px;
+  margin-top:-10px;
+
   aspect-ratio:1/1;
   overflow:hidden;
-  background-size:cover;
-  background-position:center;
 }
-
 /* UKRYWAMY PLACEHOLDER */
 .episode-thumb-placeholder {
   display:none;
