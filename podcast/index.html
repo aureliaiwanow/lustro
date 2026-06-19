@@ -313,31 +313,65 @@ nav{
 }
 
 /* ═══ EPISODE CARD ═══ */
-.episode-card{
-    background:#11161d;
-    border:1px solid rgba(51,228,224,.55);
-    border-radius:0;
-    overflow:hidden;
-    margin-bottom:28px;
-    position:relative;
+.episode-card {
+    background: #11161d;
+    margin-bottom: 28px;
+    position: relative;
+    padding: 12px; /* Dystans od zewnętrznej ramki do zawartości */
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+    
+    /* Wycięcie prawego dolnego rogu karty (całej struktury) */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
 }
 
-.episode-card::after{
-    content:'';
-    position:absolute;
-    right:0;
-    bottom:0;
-    width:18px;
-    height:18px;
-    border-right:1px solid rgba(51,228,224,.55);
-    border-bottom:1px solid rgba(51,228,224,.55);
-    transform:skew(-45deg);
-}
-.episode-card:hover{
-  border-color:rgba(51,228,224,.55);
-  transform:translateY(-4px);
+/* Zewnętrzna, subtelna szara ramka */
+.episode-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    pointer-events: none;
+    /* Dopasowanie ramki zewnętrznej do ściętego kształtu */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+    z-index: 5;
 }
 
+/* Wewnętrzna, turkusowa ramka z zaokrąglonymi górnymi rogami i ścięciem na dole */
+.episode-card::after {
+    content: '';
+    position: absolute;
+    inset: 4px; /* Odstęp między zewnętrzną a wewnętrzną ramką */
+    border: 1px solid rgba(51, 228, 224, 0.4);
+    border-radius: 12px 12px 0 0; /* Zaokrąglenie górnych rogów linii do środka */
+    pointer-events: none;
+    /* Ścięcie prawego dolnego rogu dla wewnętrznej linii */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 13px), calc(100% - 13px) 100%, 0 100%);
+    z-index: 5;
+    transition: border-color 0.3s ease;
+}
+
+/* Efekt hover - rozświetlenie turkusowej ramki i uniesienie karty */
+.episode-card:hover {
+    transform: translateY(-50px);
+}
+.episode-card:hover::after {
+    border-color: rgba(51, 228, 224, 0.9); /* Rozjaśnienie turkusu przy najechaniu */
+}
+
+/* Korekta dopasowania zdjęcia i zawartości wewnątrz nowej struktury ramki */
+.episode-thumb {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #111;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0; /* Delikatne zaokrąglenie samego zdjęcia u góry */
+}
+
+.episode-body {
+    padding: 24px 12px 12px 12px; /* Odpowiednie odstępy dla tekstów */
+}
 .episode-thumb{
   position:relative;
   width:100%;aspect-ratio:1/1;
@@ -602,14 +636,13 @@ nav{
     gap: 30px;
   }
 
-  .episode-card {
-    border-radius: 0;
-    border: none;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    background: transparent;
-    transform: none !important;
+   .episode-card {
+    /* border-radius: 0; */ /* USUŃ LUB ZAKOMENTUJ TO */
+    /* border: none; */ /* USUŃ LUB ZAKOMENTUJ TO */
+    /* background: transparent; *//* USUŃ LUB ZAKOMENTUJ TO */
+    /* transform: none !important; */
+    margin-bottom: 30px; /* zostawiamy tylko margines dla odstępu */
   }
-
   .episode-card::before {
     display: none;
   }
