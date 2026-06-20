@@ -330,24 +330,12 @@ nav{
 .episode-card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
+    inset: 0;
+    border: none
     pointer-events: none;
-    z-index: 6;
-
-    background: linear-gradient(
-        to right,
-        rgba(51, 228, 224, 0.8) 0%,
-        rgba(51, 228, 224, 0.8) 35%,
-
-        transparent 35%,
-        transparent 65%,
-
-        rgba(51, 228, 224, 0.8) 65%,
-        rgba(51, 228, 224, 0.8) 100%
-    );
+    /* Dopasowanie ramki zewnętrznej do ściętego kształtu */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
+    z-index: 5;
 }
 
 /* Wewnętrzna, turkusowa ramka z zaokrąglonymi górnymi rogami i ścięciem na dole */
