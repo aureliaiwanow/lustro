@@ -380,6 +380,7 @@ nav{
 /* Korekta dopasowania zdjęcia i zawartości wewnątrz nowej struktury ramki */
 .episode-thumb{
   position:relative;
+  overflow: visible;
   width:calc(100% + 20px);
   margin-left:-10px;
   margin-right:-10px;
@@ -759,13 +760,13 @@ nav{
 }
   .episode-person {
   position: absolute;
-  top: -15px;       /* wysokość nad dolną krawędzią karty */
+  bottom:0;       /* wysokość nad dolną krawędzią karty */
   left: 50%;       /* wysunięcie poza prawą krawędź */
   transform: translateX(-50%);
 
   width: auto;      /* większa od szerokości kontenera */
-  height: 85%;
-  z-index: 10;        /* nad zdjęciem i ramką */
+  height: 110%;
+  z-index: 20;        /* nad zdjęciem i ramką */
   pointer-events: none;
 }
 
@@ -889,8 +890,8 @@ nav{
         <div class="episode-thumb-placeholder"><span class="episode-num-big">01</span></div>
         <div class="episode-badge">Najnowszy</div>
         <div class="episode-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+         <img class="episode-person" src="/images/person1.png" alt="">
       </div>
-      <img class="episode-person" src="/images/person1.png" alt="">
       <div class="episode-body">
         <h2 class="episode-title">1. Jak mądrze programować odżywianie w 2026 roku</h2>
         <a href="#" class="read-more">CZYTAJ WIĘCEJ</a>
