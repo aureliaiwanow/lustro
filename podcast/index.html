@@ -769,7 +769,36 @@ nav{
   z-index: 20;        /* nad zdjęciem i ramką */
   pointer-events: none;
 }
+.episode-overlay-text {
+  position: absolute;
+  bottom: 90px;        /* nad dolną krawędzią zdjęcia */
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 11;
+  pointer-events: none;
+}
 
+.eot-name {
+  font-family: 'Antonio', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  color: var(--cyan);          /* #33e4e0 */
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(51,228,224,0.4);
+}
+
+.eot-sub {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(0.55rem, 1.1vw, 0.75rem);
+  font-weight: 300;
+  color: #fff;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
 </style>
 </head>
 <body>
@@ -892,6 +921,10 @@ nav{
         <div class="episode-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
          <img class="episode-person" src="/images/person1.png" alt="">
       </div>
+      <div class="episode-overlay-text">
+  <div class="eot-name">AURELIA<br>IWANOW</div>
+  <div class="eot-sub">PODCAST</div>
+</div>
       <div class="episode-body">
         <h2 class="episode-title">1. Jak mądrze programować odżywianie w 2026 roku</h2>
         <a href="#" class="read-more">CZYTAJ WIĘCEJ</a>
