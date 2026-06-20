@@ -331,25 +331,10 @@ nav{
     content: '';
     position: absolute;
     inset: 0;
-    border: none;
+    border: none
     pointer-events: none;
-
-    clip-path: polygon(
-        0 0,
-        100% 0,
-        100% calc(100% - 15px),
-        calc(100% - 15px) 100%,
-        0 100%
-    );
-
-    background: linear-gradient(
-        to bottom,
-        rgba(17, 22, 29, 1) 0%,
-        rgba(17, 22, 29, 0.85) 10%,
-        rgba(17, 22, 29, 0.4) 18%,
-        rgba(17, 22, 29, 0) 28%
-    );
-
+    /* Dopasowanie ramki zewnętrznej do ściętego kształtu */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
     z-index: 5;
 }
 
