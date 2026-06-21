@@ -713,9 +713,14 @@ nav{
   }
 
   .episode-thumb {
-    aspect-ratio: 16/11;
-    border-radius: 0;
-  }
+     position: relative;
+    width: calc(100% + 20px);
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: -10px;
+
+    height: 50%;   /* <-- KLUCZ */
+    overflow: hidden;
 
   .episode-thumb::after {
     content: '';
@@ -731,7 +736,10 @@ nav{
   }
 
   .episode-card .episode-body {
-    padding: 22px 26px 30px;
+   flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 12px 12px;
     background: #11161d;
   }
 
