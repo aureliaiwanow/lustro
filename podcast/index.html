@@ -321,6 +321,8 @@ nav{
     padding: 12px; /* Dystans od zewnętrznej ramki do zawartości */
     box-sizing: border-box;
     transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
     
     /* Wycięcie prawego dolnego rogu karty (całej struktury) */
     clip-path: polygon(0 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%);
@@ -441,6 +443,9 @@ nav{
 
 .episode-body {
     padding: 24px 12px 12px 12px; /* Odpowiednie odstępy dla tekstów */
+  display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .episode-num-big{
