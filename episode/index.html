@@ -1,296 +1,334 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Podcast Episode</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Reenie+Beanie&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+
 <style>
+
+/* ================= ROOT ================= */
 :root{
-  --bg:#0b0b0b;
-  --card:#141414;
-  --text:#111;
-  --muted:#666;
-  --accent:#f97316;
-  --light:#f5f5f5;
+  --gold:#fdb92a;
+  --dark:#0a0a0f;
 }
 
-*{box-sizing:border-box;}
-
+/* ================= RESET ================= */
+*{box-sizing:border-box;margin:0;padding:0}
 body{
-  margin:0;
-  font-family: Arial, Helvetica, sans-serif;
-  color:#111;
-  background:#fff;
-  line-height:1.6;
+  font-family:'Montserrat',sans-serif;
+  background:#0a0a0f;
+  color:#fff;
+  padding-top:90px; /* IMPORTANT for fixed nav */
 }
 
-/* HERO */
+/* ================= NAV ================= */
+.top-nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:1000;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:18px 28px;
+
+  background:rgba(10,10,15,0.45);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+/* LOGO */
+.nav-logo{
+  font-family:'Reenie Beanie',cursive;
+  font-size:2.2rem;
+  color:#fff;
+  text-decoration:none;
+}
+.nav-logo:hover{color:var(--gold)}
+
+/* CENTER MENU */
+.desktop-nav{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:34px;
+}
+
+.desktop-nav a,
+.desktop-nav span{
+  font-size:13px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.9);
+  text-decoration:none;
+  cursor:pointer;
+}
+
+.desktop-nav a:hover,
+.desktop-nav span:hover{
+  color:var(--gold);
+}
+
+/* DROPDOWN */
+.has-dropdown{position:relative;}
+
+.tematy-dropdown{
+  position:absolute;
+  top:42px;
+  left:0;
+
+  background:rgba(0,0,0,0.9);
+  border:1px solid rgba(255,255,255,0.08);
+
+  min-width:200px;
+
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(-10px);
+  transition:.25s ease;
+
+  box-shadow:0 10px 40px rgba(0,0,0,0.6);
+}
+
+.has-dropdown:hover .tematy-dropdown{
+  opacity:1;
+  pointer-events:all;
+  transform:translateY(0);
+}
+
+.tematy-dropdown a{
+  display:block;
+  padding:12px 14px;
+  font-size:11px;
+  letter-spacing:2px;
+  color:rgba(255,255,255,0.8);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  text-decoration:none;
+}
+
+.tematy-dropdown a:hover{
+  background:var(--gold);
+  color:#000;
+}
+
+/* RIGHT */
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+/* SUB BUTTON */
+.btn-sub{
+  background:var(--gold);
+  color:#000;
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  padding:10px 24px;
+  text-decoration:none;
+}
+
+.btn-sub:hover{
+  background:transparent;
+  color:var(--gold);
+  border:1px solid var(--gold);
+}
+
+/* ================= HERO ================= */
 .hero{
-  background:linear-gradient(120deg,#000,#1a1a1a);
-  color:white;
+  background:linear-gradient(to bottom,#000,#111);
   padding:90px 20px;
 }
 
 .container{
-  max-width:1200px;
+  max-width:1100px;
   margin:auto;
 }
 
-.badge{
-  color:var(--accent);
-  text-transform:uppercase;
+.episode{
+  color:var(--gold);
   letter-spacing:2px;
+  text-transform:uppercase;
   font-size:13px;
 }
 
 h1{
-  font-size:54px;
-  line-height:1.1;
+  font-size:52px;
   margin:20px 0;
-  max-width:900px;
+  line-height:1.1;
 }
 
-.subtitle{
+.sub{
   color:#bbb;
-  font-size:18px;
   max-width:700px;
 }
 
-.actions{
-  margin-top:30px;
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
-
+/* BUTTON */
 .btn{
-  background:var(--accent);
-  color:white;
+  display:inline-block;
+  margin-top:25px;
+  background:var(--gold);
+  color:#000;
   padding:12px 22px;
-  border-radius:30px;
   text-decoration:none;
-  font-weight:bold;
+  font-weight:700;
 }
 
-.btn.secondary{
-  background:#222;
-}
-
-/* PLATFORM BAR */
-.platforms{
-  background:#111;
-  padding:18px 20px;
-  color:#aaa;
-  font-size:14px;
-}
-
-.platforms span{
-  margin-right:15px;
-}
-
-/* LAYOUT */
+/* ================= CONTENT ================= */
 section{
   padding:60px 20px;
 }
 
 .grid{
   display:grid;
-  grid-template-columns:2.2fr 1fr;
-  gap:50px;
+  grid-template-columns:2fr 1fr;
+  gap:40px;
 }
 
 @media(max-width:900px){
   .grid{grid-template-columns:1fr;}
 }
 
-/* CONTENT */
 h2{
-  font-size:30px;
-  margin-top:40px;
+  margin:40px 0 15px;
+  font-size:26px;
 }
 
-p{color:#333;}
-
-.card{
-  background:#f6f6f6;
-  padding:20px;
-  border-radius:14px;
-  margin-bottom:20px;
-}
+p{color:#ccc;line-height:1.6}
 
 /* TIMESTAMPS */
 .time{
   display:flex;
   justify-content:space-between;
   padding:10px 0;
-  border-bottom:1px solid #e5e5e5;
-  font-size:15px;
+  border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
 /* SIDEBAR */
 .sidebar{
   position:sticky;
-  top:20px;
+  top:100px;
 }
 
-.sidebar h3{
-  margin-top:0;
-}
-
-.link{
-  display:block;
-  margin:8px 0;
-  color:var(--accent);
-  text-decoration:none;
+.box{
+  background:#141414;
+  padding:20px;
+  margin-bottom:20px;
 }
 
 /* CTA */
 .cta{
-  background:linear-gradient(120deg,#f97316,#ff8c3a);
-  color:white;
-  padding:30px;
-  border-radius:16px;
-  margin-top:20px;
+  background:var(--gold);
+  color:#000;
+  padding:20px;
 }
 
 .cta input{
   width:100%;
-  padding:12px;
+  padding:10px;
   margin-top:10px;
-  border:none;
-  border-radius:8px;
 }
 
 .cta button{
   width:100%;
+  padding:10px;
   margin-top:10px;
-  padding:12px;
-  border:none;
   background:#000;
-  color:white;
-  border-radius:8px;
-  font-weight:bold;
+  color:#fff;
+  border:none;
 }
 
-/* AUDIO */
-audio{
-  width:100%;
-  margin-top:20px;
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:50px 20px;
-  background:#f3f3f3;
-  color:#666;
-}
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
+<!-- ================= NAV ================= -->
+<nav class="top-nav">
+
+  <a href="/" class="nav-logo">Aurelia Iwanow</a>
+
+  <div class="desktop-nav">
+    <a href="/">Home</a>
+
+    <div class="has-dropdown">
+      <span>Menu</span>
+      <div class="tematy-dropdown">
+        <a href="/podcast">Podcast</a>
+        <a href="/podcast?kategoria=odzywianie">Odżywianie</a>
+        <a href="/podcast?kategoria=sen">Sen</a>
+        <a href="/podcast?kategoria=mozg">Mózg</a>
+        <a href="/kontakt">Kontakt</a>
+      </div>
+    </div>
+
+    <a href="/podcast">Odcinki</a>
+  </div>
+
+  <div class="nav-right">
+    <a class="btn-sub" href="/subskrybuj/">SUBSKRYBUJ</a>
+  </div>
+
+</nav>
+
+<!-- ================= HERO ================= -->
 <div class="hero">
   <div class="container">
 
-    <div class="badge">Episode 1412</div>
+    <div class="episode">Episode 1412</div>
 
-    <h1>The Skin Mistakes That Age You Fast and Kill You Slow</h1>
+    <h1>The Skin Mistakes That Age You Fast</h1>
 
-    <div class="subtitle">
-      Deep dive into skin cancer prevention, anti-aging science, and modern dermatology insights.
-    </div>
+    <p class="sub">
+      Skin cancer prevention, anti-aging science and modern dermatology insights.
+    </p>
 
-    <div class="actions">
-      <a class="btn" href="#listen">▶ Listen Now</a>
-      <a class="btn secondary" href="#transcript">Read Transcript</a>
-    </div>
+    <a class="btn" href="#listen">Listen</a>
 
   </div>
 </div>
 
-<!-- PLATFORM BAR -->
-<div class="platforms">
-  <div class="container">
-    <span>🎧 Spotify</span>
-    <span>🍎 Apple Podcasts</span>
-    <span>▶ YouTube</span>
-  </div>
-</div>
-
-<!-- AUDIO -->
-<section id="listen">
-  <div class="container">
-    <h2>Listen</h2>
-    <audio controls>
-      <source src="your-audio.mp3" type="audio/mpeg">
-    </audio>
-  </div>
-</section>
-
-<!-- MAIN -->
+<!-- ================= CONTENT ================= -->
 <section>
   <div class="container grid">
 
-    <!-- LEFT -->
     <div>
 
-      <h2>Episode Summary</h2>
-      <p>
-        This episode explores early melanoma detection, sunscreen myths,
-        retinoids, and strategies for long-term skin health.
-      </p>
+      <h2>Summary</h2>
+      <p>Deep dive into skin health, melanoma detection and prevention strategies.</p>
 
       <h2>Key Takeaways</h2>
-      <div class="card">
-        <ul>
-          <li>Melanoma is often missed in early stages</li>
-          <li>Dermoscopy significantly improves detection</li>
-          <li>Not all sun exposure is equally harmful</li>
-          <li>Retinoids support skin longevity</li>
-        </ul>
-      </div>
+      <p>• Early detection matters<br>• Sunscreen myths<br>• Retinoids benefits</p>
 
       <h2>Timestamps</h2>
-      <div class="card">
-        <div class="time"><span>00:00</span><span>Intro</span></div>
-        <div class="time"><span>01:45</span><span>Guest Introduction</span></div>
-        <div class="time"><span>10:20</span><span>Skin Cancer Basics</span></div>
-        <div class="time"><span>24:10</span><span>Detection Methods</span></div>
-        <div class="time"><span>38:00</span><span>Anti-Aging Protocols</span></div>
-      </div>
+      <div class="time"><span>00:00</span><span>Intro</span></div>
+      <div class="time"><span>05:10</span><span>Skin basics</span></div>
+      <div class="time"><span>20:00</span><span>Prevention</span></div>
 
-      <h2 id="transcript">Transcript</h2>
-      <div class="card">
-        <p><b>Host:</b> Welcome to the show...</p>
-        <p><b>Guest:</b> Thanks for having me...</p>
-      </div>
+      <h2>Transcript</h2>
+      <p>Host: Welcome... Guest: Thank you...</p>
 
     </div>
 
-    <!-- RIGHT -->
     <div class="sidebar">
 
-      <div class="card">
+      <div class="box">
         <h3>Resources</h3>
-        <a class="link" href="#">Guest Website</a>
-        <a class="link" href="#">Research Papers</a>
-        <a class="link" href="#">Book Mentioned</a>
+        <p>Links, studies, books</p>
       </div>
 
-      <div class="card">
-        <h3>About Guest</h3>
-        <p>
-          Dermatology specialist focused on early cancer detection and skin health optimization.
-        </p>
-      </div>
-
-      <div class="cta">
-        <h3>Get Updates</h3>
-        <p>Join the newsletter</p>
-        <input type="email" placeholder="Your email">
+      <div class="box cta">
+        <h3>Newsletter</h3>
+        <input placeholder="Email"/>
         <button>Subscribe</button>
       </div>
 
@@ -298,10 +336,6 @@ footer{
 
   </div>
 </section>
-
-<footer>
-  © Podcast Page Template — GitHub Pages Ready
-</footer>
 
 </body>
 </html>
