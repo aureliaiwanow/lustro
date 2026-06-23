@@ -549,7 +549,90 @@ nav{
 .site-footer a:hover{
   color:#00e5ff;
 }
-  
+  /* ===== NOWY HERO ===== */
+
+.hero-content{
+  position:absolute;
+  left:90px;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:5;
+  max-width:600px;
+}
+
+.hero-content h1{
+  font-family:'Barlow',sans-serif;
+  font-size:4rem;
+  line-height:1.08;
+  font-weight:700;
+  color:white;
+  margin-bottom:28px;
+}
+
+.hero-content h1 span{
+  color:var(--cyan);
+}
+
+.hero-content p{
+  font-size:1.15rem;
+  line-height:1.7;
+  color:rgba(255,255,255,0.85);
+  max-width:520px;
+  margin-bottom:35px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.btn-primary{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+
+  background:var(--gold);
+  color:#111;
+  text-decoration:none;
+
+  font-weight:700;
+  font-size:0.9rem;
+  letter-spacing:1px;
+
+  padding:16px 28px;
+  border-radius:4px;
+
+  transition:.25s;
+}
+
+.btn-primary:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.05);
+}
+
+.btn-secondary{
+  display:inline-flex;
+  align-items:center;
+
+  border:1px solid rgba(255,255,255,0.35);
+  color:white;
+  text-decoration:none;
+
+  font-weight:600;
+  font-size:0.9rem;
+  letter-spacing:1px;
+
+  padding:16px 28px;
+  border-radius:4px;
+
+  transition:.25s;
+}
+
+.btn-secondary:hover{
+  border-color:white;
+  background:rgba(255,255,255,0.08);
+}
 </style>
 </head>
 <body>
@@ -563,6 +646,30 @@ nav{
   <img class="hero-bg hero-bg-desktop" src="bg-desktop.png" alt="Aurelia Iwanow"/>
   <img class="hero-bg hero-bg-mobile" src="bg-mobile.png" alt="Aurelia Iwanow"/>
   <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+  <h1>
+    Nauka, psychologia<br>
+    i biohacking<br>
+    <span>bez pseudonauki.</span>
+  </h1>
+
+  <p>
+    Pomagam lepiej rozumieć mózg, zdrowie, sen,
+    produktywność i rozwój osobisty w oparciu
+    o badania naukowe i praktykę.
+  </p>
+
+  <div class="hero-buttons">
+    <a href="/podcast/" class="btn-primary">
+      ▶ POSŁUCHAJ PODCASTU
+    </a>
+
+    <a href="/materialy/" class="btn-secondary">
+      POZNAJ MOJE MATERIAŁY
+    </a>
+  </div>
+</div>
 
   <!-- Subtitle -->
   <div class="hero-subtitle">Optymalizacja Ciała i Umysłu</div>
