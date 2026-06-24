@@ -394,6 +394,7 @@ nav{
   clip-path:polygon(15% 0%, 85% 0%, 90% 50%, 85% 100%, 15% 100%, 10% 50%);
   display:flex;align-items:center;justify-content:center;
   padding:20px 52px;gap:12px;
+  display:none;
 }
 .tag-group{
   display:flex;align-items:center;
@@ -635,6 +636,26 @@ nav{
   border-color:white;
   background:rgba(255,255,255,0.08);
 }
+
+  .hero-tags{
+  font-size:1.15rem;
+  line-height:1.7;
+  max-width:520px;
+  margin-bottom:35px;
+  color:rgba(255,255,255,0.85);
+}
+
+.hero-tags .gold{
+  color:var(--gold);
+}
+
+.hero-tags .cyan{
+  color:var(--cyan);
+}
+
+.hero-tags .pink{
+  color:#FF5566;
+}
 </style>
 </head>
 <body>
@@ -655,9 +676,11 @@ nav{
     <span> Optymalizacja ciała <br> i umysłu </span>
   </h1>
 
-  <p>
-   Dietetyk | Studentka nutrigenomiki | Pasjonatka psychologii
-  </p>
+    <p class="hero-tags">
+  <span class="gold">Dietetyk</span> |
+  <span class="cyan">Studentka nutrigenomiki</span> |
+  <span class="pink">Pasjonatka psychologii</span>
+</p>
 
   <div class="hero-buttons">
     <a href="/podcast/" class="btn-primary">
@@ -671,21 +694,7 @@ nav{
 </div>
 
   <!--Hexagon -->
-<div class="hero-footer">
-  <div class="tag-group">
-    <div class="tag">
-      <span class="lbl">Studentka</span>
-      <span class="val cyan">Nutrigenomiki</span>
-    </div>
-    <div class="tag">
-      <span class="val gold">Dietetyk</span>
-    </div>
-    <div class="tag">
-      <span class="lbl">Entuzjastka</span>
-      <span class="val pink">Psychologii</span>
-    </div>
-  </div>
-</div>
+
   <!-- Subtitle -->
   <div class="hero-subtitle">Optymalizacja Ciała i Umysłu</div>
 
