@@ -733,6 +733,50 @@ font-family:'Montserrat',sans-serif;
     font-weight: 700;
     line-height: 1;
 }
+  .platform-bar{
+    width:100%;
+    background:#050505;
+    border-top:1px solid rgba(255,255,255,.08);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    padding:22px 0;
+}
+
+.platform-inner{
+    max-width:1200px;
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:30px;
+}
+
+.platform-title{
+    color:var(--gold);
+    font-family:'Montserrat',sans-serif;
+    font-size:14px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+}
+
+.platform-inner a{
+    color:white;
+    text-decoration:none;
+    font-family:'Montserrat',sans-serif;
+    font-size:15px;
+    opacity:.85;
+    transition:.25s;
+}
+
+.platform-inner a:hover{
+    color:var(--gold);
+}
+
+.divider{
+    width:1px;
+    height:22px;
+    background:rgba(255,255,255,.2);
+}
 </style>
 </head>
 <body>
@@ -851,7 +895,29 @@ font-family:'Montserrat',sans-serif;
 
 
 </section>
+<div class="platform-bar">
+  <div class="platform-inner">
 
+    <span class="platform-title">ZNAJDŹ MNIE W:</span>
+
+    <a href="https://open.spotify.com/show/6SljkXMp0CqSpYmDL0cyXZ" target="_blank">
+      Spotify
+    </a>
+
+    <span class="divider"></span>
+
+    <a href="https://youtube.com/@aureliaiwanowpodcast" target="_blank">
+      YouTube
+    </a>
+
+    <span class="divider"></span>
+
+    <a href="https://instagram.com/aureliaiwanow" target="_blank">
+      Instagram
+    </a>
+
+  </div>
+</div>
 <div id="sub-page">
   <div class="sub-bg"></div>
   <nav style="position:fixed;top:0;left:0;right:0;z-index:110;display:flex;align-items:center;justify-content:space-between;padding:22px 28px 22px 100px;">
