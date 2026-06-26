@@ -733,29 +733,35 @@ font-family:'Montserrat',sans-serif;
     font-weight: 700;
     line-height: 1;
 }
-  .platform-bar{
-    background:#070707;
-    border-top:1px solid rgba(255,255,255,.05);
-    border-bottom:1px solid rgba(255,255,255,.05);
-    padding:24px 0;
-}
+ .platform-bar{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
 
-.platform-inner{
-    max-width:1200px;
-    margin:auto;
+    z-index:15;
+
+    background:rgba(5,5,5,.92);
+    border-top:1px solid rgba(255,255,255,.08);
+
+    padding:22px 0;
+}
+  .platform-inner{
+    max-width:1300px;
+    margin:0 auto;
 
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
+
     gap:55px;
 }
+  .platform-link svg{
+    width:24px;
+    height:24px;
+    fill:#fff;
 
-.platform-title{
-    color:var(--gold);
-    font-family:'Montserrat',sans-serif;
-    font-size:14px;
-    letter-spacing:3px;
-    text-transform:uppercase;
+    transition:.25s;
 }
 
 .platform-link{
@@ -763,23 +769,15 @@ font-family:'Montserrat',sans-serif;
     align-items:center;
     gap:10px;
 
-    color:#f2f2f2;
+    color:#fff;
     text-decoration:none;
 
-    font-family:'Montserrat',sans-serif;
-    font-size:17px;
-    font-weight:500;
-
+    opacity:.88;
     transition:.25s;
 }
 
-.platform-link svg{
-    width:28px;
-    height:28px;
-    fill:#f2f2f2;
-}
-
 .platform-link:hover{
+    opacity:1;
     color:var(--gold);
 }
 
@@ -902,8 +900,6 @@ font-family:'Montserrat',sans-serif;
     </div>
   </div>
 
-
-</section>
 <div class="platform-bar">
   <div class="platform-inner">
 
@@ -926,6 +922,8 @@ font-family:'Montserrat',sans-serif;
 
   </div>
 </div>
+</section>
+
 <div id="sub-page">
   <div class="sub-bg"></div>
   <nav style="position:fixed;top:0;left:0;right:0;z-index:110;display:flex;align-items:center;justify-content:space-between;padding:22px 28px 22px 100px;">
