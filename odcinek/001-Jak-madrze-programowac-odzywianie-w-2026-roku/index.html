@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Twój Podcast — Odcinek 001</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #F5A623;
+    --gold-dark: #D4891A;
+    --bg: #0e0e0e;
+    --bg2: #161616;
+    --bg3: #1e1e1e;
+    --text: #f0f0f0;
+    --muted: #888;
+    --cyan: #00C8FF;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 3rem;
+    border-bottom: 1px solid #222;
+    position: sticky;
+    top: 0;
+    background: rgba(14,14,14,0.95);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-subscribe {
+    background: var(--gold);
+    color: #000;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 0.6rem 1.4rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .nav-subscribe:hover { background: var(--gold-dark); }
+
+  /* HERO */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 70px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(0,200,255,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* DNA decoration */
+  .dna-decoration {
+    position: absolute;
+    right: -30px;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    opacity: 0.15;
+    pointer-events: none;
+  }
+
+  .hero-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 3rem;
+    position: relative;
+  }
+
+  .cover-card {
+    position: relative;
+    width: 420px;
+    max-width: 100%;
+    aspect-ratio: 1;
+    border-radius: 16px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 2rem;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.05);
+  }
+
+  .cover-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(30%) contrast(1.1);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0.2) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0.2) 100%);
+  }
+
+  /* Placeholder dla zdjęcia */
+  .cover-photo-placeholder {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #1a2a4a 0%, #0d1a2e 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cover-photo-placeholder svg {
+    width: 140px;
+    height: 140px;
+    opacity: 0.15;
+  }
+
+  .cover-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 100%);
+    z-index: 2;
+  }
+
+  .cover-show-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 3px;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .cover-show-name span {
+    color: var(--cyan);
+  }
+
+  .cover-guest-line {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 0.4rem;
+  }
+
+  /* HERO RIGHT */
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 4rem 4rem 3rem;
+    border-left: 1px solid #1e1e1e;
+  }
+
+  .ep-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .ep-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    line-height: 1.05;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+  }
+
+  .ep-subtitle {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    letter-spacing: 1.5px;
+  }
+
+  .ep-desc {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #aaa;
+    margin-bottom: 2rem;
+    max-width: 520px;
+  }
+
+  /* PLAYER */
+  .player-embed {
+    background: var(--bg3);
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .player-thumb {
+    width: 72px;
+    height: 72px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #1a2a4a, #0d1a2e);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.55rem;
+    letter-spacing: 1px;
+    color: var(--cyan);
+    text-align: center;
+    line-height: 1.3;
+    padding: 0.4rem;
+  }
+
+  .player-info { flex: 1; min-width: 0; }
+
+  .player-show {
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.2rem;
+  }
+
+  .player-ep-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0.6rem;
+  }
+
+  .player-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .play-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--cyan);
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+
+  .play-btn:hover { background: rgba(0,200,255,0.1); }
+
+  .play-btn svg { fill: var(--cyan); width: 14px; height: 14px; margin-left: 2px; }
+
+  .waveform {
+    flex: 1;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .waveform-bar {
+    background: #333;
+    border-radius: 2px;
+    width: 3px;
+    flex-shrink: 0;
+  }
+
+  .duration {
+    font-size: 0.75rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  /* PLATFORM BUTTONS */
+  .section-subscribe {
+    margin-bottom: 0;
+  }
+
+  .section-subscribe h3 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .platform-buttons {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  .platform-btn {
+    background: var(--gold);
+    color: #000;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 0.65rem 1.3rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .platform-btn:hover {
+    background: var(--gold-dark);
+    transform: translateY(-1px);
+  }
+
+  .platform-btn svg { width: 16px; height: 16px; }
+
+  /* EPISODE BODY */
+  .ep-body {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 5rem 3rem;
+  }
+
+  .ep-body-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem;
+    letter-spacing: 2px;
+    color: #fff;
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+
+  .ep-body-subtitle {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .ep-body-subtitle-val {
+    font-size: 1rem;
+    color: var(--text);
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+
+  .ep-body p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: #bbb;
+    margin-bottom: 1.5rem;
+  }
+
+  .ep-topics {
+    background: var(--bg2);
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    margin: 3rem 0;
+  }
+
+  .ep-topics h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    color: var(--cyan);
+    margin-bottom: 1.2rem;
+  }
+
+  .ep-topics ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .ep-topics li {
+    font-size: 0.95rem;
+    color: #bbb;
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .ep-topics li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .timestamps {
+    margin: 3rem 0;
+  }
+
+  .timestamps h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    color: #fff;
+    margin-bottom: 1.2rem;
+  }
+
+  .ts-item {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #1e1e1e;
+    align-items: baseline;
+  }
+
+  .ts-time {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--cyan);
+    min-width: 52px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .ts-label {
+    font-size: 0.9rem;
+    color: #aaa;
+  }
+
+  /* SPONSOR */
+  .sponsor-bar {
+    background: var(--bg2);
+    border: 1px solid #222;
+    border-left: 3px solid var(--gold);
+    border-radius: 0 12px 12px 0;
+    padding: 1.5rem 2rem;
+    margin: 3rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .sponsor-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+
+  .sponsor-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+
+  .sponsor-desc {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .sponsor-link {
+    background: var(--gold);
+    color: #000;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+    white-space: nowrap;
+    margin-left: auto;
+    transition: background 0.2s;
+  }
+
+  .sponsor-link:hover { background: var(--gold-dark); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid #1e1e1e;
+    padding: 2.5rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg);
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: #444;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 860px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 3rem 1.5rem 1.5rem; }
+    .cover-card { width: 300px; }
+    .hero-right { padding: 2rem 1.5rem 3rem; border-left: none; border-top: 1px solid #1e1e1e; }
+    .ep-body { padding: 3rem 1.5rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+    .sponsor-bar { flex-direction: column; align-items: flex-start; }
+    .sponsor-link { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Twój Podcast</a>
+  <ul class="nav-links">
+    <li><a href="#">O podcaście</a></li>
+    <li><a href="#">Odcinki</a></li>
+    <li><a href="#">Goście</a></li>
+    <li><a href="#">Kontakt</a></li>
+  </ul>
+  <a href="#" class="nav-subscribe">Subskrybuj</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+  <!-- LEWA — cover art -->
+  <div class="hero-left">
+    <div class="cover-card">
+      <!-- PODMIEŃ: zamień div.cover-photo-placeholder na: <img class="cover-photo" src="twoje-zdjecie.jpg" alt="Twoje imię"> -->
+      <div class="cover-photo-placeholder">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="38" r="22" fill="white"/>
+          <ellipse cx="50" cy="85" rx="36" ry="22" fill="white"/>
+        </svg>
+      </div>
+      <div class="cover-overlay">
+        <div class="cover-show-name">TWÓJ <span>PODCAST</span></div>
+        <!-- Dla odcinku solo usuń poniższą linię -->
+        <!-- <div class="cover-guest-line">FT. Imię Gościa</div> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- PRAWA — info o odcinku -->
+  <div class="hero-right">
+    <div class="ep-label">EP 001</div>
+    <h1 class="ep-title">Jak mądrze programować odżywianie w 2026 roku</h1>
+
+    <!-- PODMIEŃ: wpisz swój podtytuł -->
+    <div class="ep-subtitle">Przewodnik po nowoczesnym podejściu do diety</div>
+
+    <!-- PODMIEŃ: wpisz swój opis -->
+    <p class="ep-desc">
+      W pierwszym odcinku podcastu rozmawiamy o tym, jak w 2026 roku mądrze podejść do planowania odżywiania. Omawiam najnowsze badania, praktyczne strategie i błędy, których warto unikać — niezależnie od tego, czy dopiero zaczynasz, czy jesteś już doświadczoną osobą na tej drodze.
+    </p>
+
+    <!-- PLAYER (podmień na embed ze Spotify/ART19 gdy będzie gotowy) -->
+    <div class="player-embed">
+      <div class="player-thumb">TWÓJ<br>PODCAST</div>
+      <div class="player-info">
+        <div class="player-show">Twój Podcast</div>
+        <div class="player-ep-title">001. Jak mądrze programować odżywianie w 2026 roku</div>
+        <div class="player-controls">
+          <button class="play-btn" aria-label="Odtwórz">
+            <svg viewBox="0 0 10 12"><polygon points="0,0 10,6 0,12"/></svg>
+          </button>
+          <div class="waveform" id="waveform"></div>
+          <span class="duration">00:00 / 00:00</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLATFORMY -->
+    <div class="section-subscribe">
+      <h3>Słuchaj na</h3>
+      <div class="platform-buttons">
+        <!-- PODMIEŃ: wstaw swoje linki -->
+        <a href="#" class="platform-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-5h2v2h-2zm0-8h2v6h-2z"/></svg>
+          Apple Podcasts
+        </a>
+        <a href="#" class="platform-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          Spotify
+        </a>
+        <a href="#" class="platform-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+          YouTube
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TREŚĆ ODCINKA -->
+<div class="ep-body">
+  <h2 class="ep-body-title">W tym odcinku podcastu...</h2>
+
+  <!-- PODMIEŃ: podtytuł odcinka -->
+  <div class="ep-body-subtitle">Podtytuł</div>
+  <div class="ep-body-subtitle-val">Przewodnik po nowoczesnym podejściu do diety i odżywiania w 2026 roku</div>
+
+  <!-- PODMIEŃ: link sponsora jeśli masz, lub usuń całą sekcję sponsor-bar -->
+  <div class="sponsor-bar">
+    <div>
+      <div class="sponsor-label">Sponsor odcinka</div>
+      <div class="sponsor-name">Nazwa Sponsora</div>
+      <div class="sponsor-desc">Krótki opis oferty sponsora dla słuchaczy</div>
+    </div>
+    <a href="#" class="sponsor-link">Skorzystaj z oferty</a>
+  </div>
+
+  <!-- PODMIEŃ: opis odcinka -->
+  <p>
+    W pierwszym odcinku podcastu zagłębiamy się w temat świadomego programowania odżywiania w 2026 roku. Omawiamy, dlaczego większość popularnych diet zawodzi na dłuższą metę i jak podejść do żywienia w sposób oparty na aktualnych badaniach naukowych.
+  </p>
+
+  <p>
+    Dowiesz się, jak dostosować plan żywieniowy do swojego trybu życia, chronotypu i celów — bez skrajności i bez rezygnowania z przyjemności jedzenia. Rozmawiamy też o tym, jak monitorować efekty i kiedy wprowadzać korekty.
+  </p>
+
+  <!-- W TYM ODCINKU -->
+  <div class="ep-topics">
+    <h3>Główne tematy</h3>
+    <ul>
+      <!-- PODMIEŃ: twoje tematy -->
+      <li>Dlaczego popularne diety zawodzą po kilku miesiącach</li>
+      <li>Jak ustalić swoje realne zapotrzebowanie kaloryczne w 2026</li>
+      <li>Rola snu i stresu w programowaniu odżywiania</li>
+      <li>Narzędzia i aplikacje które warto znać</li>
+      <li>Jak zacząć bez przytłoczenia informacjami</li>
+    </ul>
+  </div>
+
+  <!-- TIMESTAMPS -->
+  <div class="timestamps">
+    <h3>Timestamps</h3>
+    <!-- PODMIEŃ: swoje timestamps po nagraniu -->
+    <div class="ts-item"><span class="ts-time">00:00</span><span class="ts-label">Intro</span></div>
+    <div class="ts-item"><span class="ts-time">00:00</span><span class="ts-label">Temat 1</span></div>
+    <div class="ts-item"><span class="ts-time">00:00</span><span class="ts-label">Temat 2</span></div>
+    <div class="ts-item"><span class="ts-time">00:00</span><span class="ts-label">Podsumowanie</span></div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">Twój Podcast</a>
+  <div class="footer-copy">© 2026 Twój Podcast. Wszelkie prawa zastrzeżone.</div>
+</footer>
+
+<script>
+  // Generuj waveform
+  const wf = document.getElementById('waveform');
+  const heights = [6,10,16,22,28,20,14,18,26,30,24,18,12,20,28,24,16,10,14,22,28,20,16,10,8,12,18,24,28,22,16,12,18,24,20,14,10,16,22,26,20];
+  heights.forEach(h => {
+    const bar = document.createElement('div');
+    bar.className = 'waveform-bar';
+    bar.style.height = h + 'px';
+    wf.appendChild(bar);
+  });
+</script>
+
+</body>
+</html>
