@@ -812,6 +812,13 @@ nav{
   pointer-events: none;
  
 }
+  .episode-card{
+    display:flex;
+    flex-direction:column;
+    text-decoration:none;
+    color:inherit;
+    cursor:pointer;
+}
 </style>
 </head>
 <body>
@@ -927,8 +934,8 @@ nav{
   <div class="episodes-grid">
 
     <!-- EP 001 -->
-    <div class="episode-card" data-kategoria="odzywianie" data-search="pierwszy odcinek odzywianie zdrowie maj 2026">
-      <div class="episode-thumb">
+<a href="/episode/1-jak-madrze-programowac-odzywianie-w-2026" class="episode-card" data-kategoria="odzywianie">
+    <div class="episode-thumb">
         <div class="episode-badge">Najnowszy</div>
         <div class="episode-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
          <img class="episode-person" src="/images/person1.png" alt="">
@@ -937,7 +944,7 @@ nav{
         <h2 class="episode-title">1. Jak mądrze programować odżywianie w 2026 roku</h2>
         <a href="#" class="read-more">CZYTAJ WIĘCEJ</a>
       </div>
-    </div>
+    </a>
 
     <!-- EP 002 -->
     <div class="episode-card" data-kategoria="sen" data-search="drugi odcinek sen regeneracja kwiecien 2026">
