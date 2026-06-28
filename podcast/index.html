@@ -768,7 +768,7 @@ nav{
   .episode-card .episode-title {
     font-size: 1.05rem;
     line-height: 1.22;
-    font weight: 700;
+    font weight:700;
     margin-bottom: 28px;
   }
 
@@ -1036,7 +1036,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const zgodnaKategoria = !aktualnaKategoria || kategoriaKarty === aktualnaKategoria;
       const zgodnaFraza = pelnyTekst.includes(fraza);
 
-      card.style.display = (zgodnaKategoria && zgodnaFraza) ? 'block' : 'none';
+      card.style.display = zgodnaKategoria && zgodnaFraza ? '' : 'none';
     });
   }
 
