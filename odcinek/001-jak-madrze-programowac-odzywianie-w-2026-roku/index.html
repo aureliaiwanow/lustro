@@ -1176,6 +1176,80 @@ nav{
     wf.appendChild(bar);
   });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.episode-card');
+  const buttons = document.querySelectorAll('.filter-btn');
+  const searchInput = document.getElementById('searchInput');
+  
+  let aktualnaKategoria = '';
 
+  function filtrujOdcinki() {
+    const fraza = searchInput.value.toLowerCase().trim();
+
+    cards.forEach(card => {
+      const kategoriaKarty = card.dataset.kategoria || '';
+      const tytulKarty = card.querySelector('.episode-title')?.textContent.toLowerCase() || '';
+      const opisKarty = card.querySelector('.episode-desc')?.textContent.toLowerCase() || '';
+      const tagiKarty = card.dataset.search?.toLowerCase() || '';
+      
+      const pelnyTekst = tytulKarty + " " + opisKarty + " " + tagiKarty;
+
+      const zgodnaKategoria = !aktualnaKategoria || kategoriaKarty === aktualnaKategoria;
+      const zgodnaFraza = pelnyTekst.includes(fraza);
+
+      card.style.display = zgodnaKategoria && zgodnaFraza ? '' : 'none';
+    });
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      aktualnaKategoria = btn.dataset.kategoria || '';
+      buttons.forEach(b => b.classList.toggle('active', b === btn));
+      filtrujOdcinki();
+    });
+  });
+
+  searchInput.addEventListener('input', filtrujOdcinki);
+
+  const params = new URLSearchParams(window.location.search);
+  const katZUrl = params.get('kategoria');
+  if (katZUrl) {
+    aktualnaKategoria = katZUrl;
+    const aktywnyPrzycisk = document.querySelector(`.filter-btn[data-kategoria="${katZUrl}"]`);
+    if (aktywnyPrzycisk) {
+      buttons.forEach(b => b.classList.remove('active'));
+      aktywnyPrzycisk.classList.add('active');
+    }
+  }
+  filtrujOdcinki();
+});
+
+const hbg = document.getElementById('hbg');
+const mobileMenu = document.getElementById('mobileMenu');
+
+function toggleMenu() {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hbg.classList.toggle('open', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+
+function closeMenu() {
+  mobileMenu.classList.remove('open');
+  hbg.classList.remove('open');
+  document.body.style.overflow = '';
+  document.getElementById('tematySubmenu').classList.remove('open');
+  document.getElementById('tematyArrow').classList.remove('rotated');
+}
+
+function toggleSubmenu() {
+  document.getElementById('tematySubmenu').classList.toggle('open');
+  document.getElementById('tematyArrow').classList.toggle('rotated');
+}
+
+document.addEventListener('click', e => {
+  if (!hbg.contains(e.target) && !mobileMenu.contains(e.target)) closeMenu();
+});
+</script>
 </body>
 </html>
