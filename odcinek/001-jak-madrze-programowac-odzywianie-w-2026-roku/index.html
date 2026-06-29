@@ -337,7 +337,16 @@ nav{
     z-index:0;
 }
 
-.cover-cover{
+.cover-photo{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:1;
+}
+
+ .cover-cover{
     position:absolute;
     inset:0;
     width:100%;
@@ -1100,13 +1109,11 @@ nav{
 
   <!-- LEWA — cover art -->
   <div class="hero-left">
-    <div class="cover-card">
-      <!-- PODMIEŃ: zamień div.cover-photo-placeholder na: <img class="cover-photo" src="twoje-zdjecie.jpg" alt="Twoje imię"> -->
-      <img class="cover-photo" src="/images/podcast-card-aurelia.png" alt="Twój Podcast">
-      <img class="cover-background" src="/images/bg-odcinek.png" alt="">
+   <div class="cover-card">
+    <img class="cover-background" src="/images/ep-background.png" alt="">
+    <img class="cover-photo" src="/images/podcast-card-aurelia.png" alt="Twój Podcast">
     <img class="cover-cover" src="/images/cover-aurelia.png" alt="Odcinek 001">
-    
-    </div>
+</div>
   </div>
 
   <!-- PRAWA — info o odcinku -->
