@@ -272,6 +272,20 @@ nav{
     position: relative;
     overflow: hidden;
   }
+ .hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to left,
+        rgba(10,10,15,0.9) 0%,
+        rgba(10,10,15,0.7) 30%,
+        rgba(10,10,15,0.35) 60%,
+        transparent 100%
+    );
+    pointer-events:none;
+    z-index:0;
+}
 
   .hero::before {
     content: '';
@@ -299,6 +313,7 @@ nav{
     padding: 4rem 3rem;
     margin-left:30px;
     position: relative;
+   z-index: 1;
   }
 
   .cover-card {
@@ -409,6 +424,8 @@ nav{
     padding: 4rem 4rem 4rem 3rem;
 
     padding-top: 10rem;
+    position: relative;
+    z-index: 1;
 }
   .ep-label {
     font-family:'Montserrat',sans-serif;
