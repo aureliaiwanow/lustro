@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O mnie — Aurelia Iwanow</title>
+<style>
+  :root{
+    --bg: #0b0a09;
+    --bg-soft: #121110;
+    --gold: #d39a3c;
+    --gold-light: #e8b860;
+    --text: #f3f1ec;
+    --text-dim: #b9b5ad;
+    --line: rgba(243,241,236,0.12);
+  }
+
+  * { box-sizing: border-box; margin:0; padding:0; }
+
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.5;
+  }
+
+  img{ max-width:100%; display:block; }
+
+  .wrap{ max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+
+  /* ============ HERO: O MNIE ============ */
+  .hero{
+    padding: 90px 0 70px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .hero-title{
+    font-size: 6.5rem;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+  .hero-title .dot{ color: var(--gold); }
+
+  .rule{
+    width: 70px;
+    height: 2px;
+    background: var(--gold);
+    margin: 32px 0 28px;
+  }
+
+  .hero-sub{
+    font-size: 1.65rem;
+    font-weight: 300;
+    line-height: 1.35;
+    margin-bottom: 26px;
+  }
+  .hero-sub .accent{ color: var(--gold-light); }
+
+  .hero-text{
+    color: var(--text-dim);
+    font-size: 1rem;
+    max-width: 420px;
+    line-height: 1.7;
+  }
+
+  .hero-photo{
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .hero-photo img{
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+  }
+
+  /* ============ FEATURE ICONS ROW ============ */
+  .features{
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .features .wrap{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .feature{
+    text-align:center;
+    padding: 48px 20px;
+    border-left: 1px solid var(--line);
+  }
+  .feature:first-child{ border-left: none; }
+  .feature .icon{
+    font-size: 2.4rem;
+    color: var(--gold);
+    margin-bottom: 18px;
+    line-height: 1;
+  }
+  .feature p{
+    font-size: 0.95rem;
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  /* ============ PODCAST SECTION ============ */
+  .podcast{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 560px;
+  }
+  .podcast-image{
+    overflow:hidden;
+  }
+  .podcast-image img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+  }
+  .podcast-content{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding: 60px 80px;
+  }
+  .eyebrow{
+    color: var(--gold);
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .podcast-content h2{
+    font-size: 2.6rem;
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+  .podcast-content p{
+    color: var(--text-dim);
+    margin-bottom: 14px;
+    max-width: 420px;
+  }
+  .btn-outline{
+    margin-top: 20px;
+    display:inline-flex;
+    align-items:center;
+    gap: 10px;
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    text-decoration:none;
+    padding: 14px 28px;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    width: fit-content;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .btn-outline:hover{
+    background: var(--gold);
+    color: #0b0a09;
+  }
+
+  /* ============ QUOTE SECTION ============ */
+  .quote-section{
+    padding: 90px 0;
+    text-align:center;
+  }
+  .quote-section .wrap{ max-width: 820px; }
+  .quote-mark{
+    font-size: 4rem;
+    color: var(--gold);
+    font-family: Georgia, serif;
+    line-height: 0.5;
+    display:block;
+  }
+  .quote-mark.right{
+    text-align:right;
+  }
+  .quote-text{
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  .quote-text .highlight{
+    color: var(--gold-light);
+    font-weight: 400;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px){
+    .hero-grid{ grid-template-columns: 1fr; }
+    .hero-title{ font-size: 4rem; }
+    .features .wrap{ grid-template-columns: repeat(2,1fr); }
+    .feature:nth-child(3){ border-left:none; }
+    .podcast{ grid-template-columns: 1fr; }
+    .podcast-content{ padding: 50px 30px; }
+    .wrap{ padding: 0 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ====== TU WSTAW SWÓJ GOTOWY NAV (komponent z logo, menu, przyciskiem SUBSKRYBUJ) ====== -->
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1 class="hero-title">O mnie<span class="dot">.</span></h1>
+      <div class="rule"></div>
+      <p class="hero-sub">Szukam sposobów,<br>by żyć <span class="accent">lepiej, dłużej</span> i <span class="accent">pełniej</span>.</p>
+      <p class="hero-text">Biohacking to dla mnie narzędzia do optymalizacji energii, ciała, umysłu i świadomości — w oparciu o naukę, technologię i własne doświadczenie.</p>
+    </div>
+    <div class="hero-photo">
+      <img src="https://via.placeholder.com/800x900/1a1816/d39a3c?text=Zdj%C4%99cie" alt="Aurelia Iwanow">
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURE ICONS ============ -->
+<section class="features">
+  <div class="wrap">
+    <div class="feature">
+      <div class="icon">🧬</div>
+      <p>Dietetyk kliniczny</p>
+    </div>
+    <div class="feature">
+      <div class="icon">🧬</div>
+      <p>Studentka nutrigenomiki</p>
+    </div>
+    <div class="feature">
+      <div class="icon">🧠</div>
+      <p>Entuzjastka psychologii</p>
+    </div>
+    <div class="feature">
+      <div class="icon">⛰️</div>
+      <p>Miłośniczka nart</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PODCAST ============ -->
+<section class="podcast">
+  <div class="podcast-image">
+    <img src="https://via.placeholder.com/800x900/2a2a2a/ffffff?text=Narciarz" alt="Narciarz w górach">
+  </div>
+  <div class="podcast-content">
+    <span class="eyebrow">PODCAST</span>
+    <h2>Biohacking<br>w praktyce.</h2>
+    <div class="rule"></div>
+    <p>Analizuję najnowsze odkrycia nauki i biohackingu, by dać Ci konkretne narzędzia do optymalizacji ciała, umysłu i świadomości.</p>
+    <p>Bez mitów. Bez zbędnego szumu.<br>Tylko to, co naprawdę działa.</p>
+    <a href="#" class="btn-outline">▶ POSŁUCHAJ PODCASTU</a>
+  </div>
+</section>
+
+<!-- ============ QUOTE ============ -->
+<section class="quote-section">
+  <div class="wrap">
+    <span class="quote-mark">“</span>
+    <p class="quote-text">
+      Pełnia życia wymaga paliwa: energii, sprawnego ciała, szybkiej regeneracji i jasności umysłu.<br>
+      Ale najważniejsze jest wiedzieć, kim jesteśmy i dokąd zmierzamy.<br>
+      Bo o to chodzi, żeby na końcu swojej drogi móc powiedzieć:<br>
+      <span class="highlight">Wycisnęłam to życie. Mogę iść. Bye!</span>
+    </p>
+    <span class="quote-mark right">”</span>
+  </div>
+</section>
+
+</body>
+</html>
