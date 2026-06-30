@@ -94,11 +94,16 @@
     border-left: 1px solid var(--line);
   }
   .feature:first-child{ border-left: none; }
-  .feature .icon{
-    font-size: 2.4rem;
+ .feature .icon{
     color: var(--gold);
     margin-bottom: 18px;
-    line-height: 1;
+    display: flex;
+    justify-content: center;
+  }
+  .feature .icon svg{
+    width: 42px;
+    height: 42px;
+  }
   }
   .feature p{
     font-size: 0.95rem;
@@ -543,22 +548,45 @@ nav{
 <!-- ============ FEATURE ICONS ============ -->
 <section class="features">
   <div class="wrap">
-    <div class="feature">
-      <div class="icon">🧬</div>
+     <div class="feature">
+      <div class="icon">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22 6c0 10 20 10 20 26s-20 16-20 26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M42 6c0 10-20 10-20 26s20 16 20 26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M24 14h16M23 22h18M22 32h20M23 42h18M24 50h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
       <p>Dietetyk kliniczny</p>
     </div>
     <div class="feature">
-      <div class="icon">🧬</div>
+      <div class="icon">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22 6c0 10 20 10 20 26s-20 16-20 26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M42 6c0 10-20 10-20 26s20 16 20 26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M24 14h16M23 22h18M22 32h20M23 42h18M24 50h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
       <p>Studentka nutrigenomiki</p>
     </div>
     <div class="feature">
-      <div class="icon">🧠</div>
+      <div class="icon">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M28 8c-7 0-12 5-12 11 0 3 1 5 3 7-3 2-5 5-5 9 0 5 4 9 9 9 1 4 4 7 9 7V8c0 0 -2 0 -4 0z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M36 8c7 0 12 5 12 11 0 3-1 5-3 7 3 2 5 5 5 9 0 5-4 9-9 9-1 4-4 7-9 7V8c0 0 2 0 4 0z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M32 14v36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
       <p>Entuzjastka psychologii</p>
     </div>
     <div class="feature">
-      <div class="icon">⛰️</div>
+      <div class="icon">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 46l16-24 9 12 5-7 22 19" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M6 46l16-24 6 8M58 46L36 19l-5 7" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M27 38l4-5 4 5" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+        </svg>
+      </div>
       <p>Miłośniczka nart</p>
-    </div>
   </div>
 </section>
 
