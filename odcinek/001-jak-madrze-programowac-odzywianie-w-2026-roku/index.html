@@ -769,28 +769,93 @@ transform: translate(30px, -80px);
   .sponsor-link:hover { background: var(--gold-dark); }
 
   /* FOOTER */
-  footer {
-    border-top: 1px solid #1e1e1e;
-    padding: 2.5rem 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: var(--bg);
-  }
+ .site-footer{
+    border-top:1px solid rgba(255,255,255,.08);
+    padding:32px 70px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#0a0a0f;
+    font-family:'Montserrat',sans-serif;
+    font-size:.72rem;
+    letter-spacing:1px;
+}
 
-  .footer-logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem;
-    letter-spacing: 2px;
-    color: var(--muted);
-    text-decoration: none;
-  }
+.footer-left{
+    display:flex;
+    gap:26px;
+}
 
-  .footer-copy {
-    font-size: 0.78rem;
-    color: #444;
-  }
+.footer-left a,
+.footer-copy{
+    color:rgba(255,255,255,.35);
+    text-decoration:none;
+    transition:.25s;
+}
 
+.footer-left a:hover{
+    color:#fff;
+}
+
+.footer-socials{
+    display:flex;
+    gap:18px;
+}
+
+.footer-socials a{
+    width:38px;
+    height:38px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:50%;
+    transition:.25s;
+}
+
+.footer-socials svg{
+    width:17px;
+    height:17px;
+    fill:rgba(255,255,255,.55);
+    transition:.25s;
+}
+
+.footer-socials a:hover{
+    border-color:var(--gold);
+}
+
+.footer-socials a:hover svg{
+    fill:var(--gold);
+}
+
+.footer-copy{
+    font-size:.72rem;
+}
+
+@media(max-width:768px){
+
+.site-footer{
+    flex-direction:column;
+    gap:24px;
+    padding:34px 20px;
+}
+
+.footer-left{
+    order:2;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.footer-socials{
+    order:1;
+}
+
+.footer-copy{
+    order:3;
+}
+
+}
   /* RESPONSIVE */
  /* ═══ RESPONSYWNOŚĆ ═══ */
 @media(max-width:900px){.episodes-grid{grid-template-columns:repeat(2,1fr)}}
@@ -1234,12 +1299,33 @@ transform: translate(30px, -80px);
 </div>
 
 <!-- FOOTER -->
-<footer style="text-align:center;padding:30px 24px;font-family:'Montserrat',sans-serif;font-size:0.7rem;letter-spacing:1px;color:rgba(255,255,255,0.3);">
-  <p>© 2026 Aurelia Iwanow. Wszystkie prawa zastrzeżone.</p>
-  <p style="margin-top:8px;">
-    <a href="/polityka-prywatnosci" style="color:rgba(255,255,255,0.4);text-decoration:none;margin:0 12px;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Polityka prywatności</a>
-    <a href="/regulamin" style="color:rgba(255,255,255,0.4);text-decoration:none;margin:0 12px;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Regulamin</a>
-  </p>
+<footer class="site-footer">
+
+  <div class="footer-left">
+    <a href="/polityka-prywatnosci">Polityka prywatności</a>
+    <a href="/regulamin">Regulamin</a>
+  </div>
+
+  <div class="footer-socials">
+
+    <a href="https://spotify.com" target="_blank" aria-label="Spotify">
+      <!-- SVG Spotify -->
+    </a>
+
+    <a href="https://youtube.com" target="_blank" aria-label="YouTube">
+      <!-- SVG YouTube -->
+    </a>
+
+    <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+      <!-- SVG Instagram -->
+    </a>
+
+  </div>
+
+  <div class="footer-copy">
+    © 2026 Aurelia Iwanow
+  </div>
+
 </footer>
 <script>
   // Generuj waveform
