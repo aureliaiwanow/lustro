@@ -18,17 +18,18 @@
 
 /* BACKGROUND spójny z resztą */
 body{
-  min-height:100vh;
-  font-family:'Montserrat',sans-serif;
-  color:#fff;
-  background:
-    linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.85)),
-    url('/kontakt/bg-kontakt.jpg');
-  background-size:cover;
-  background-position:center;
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
+    min-height:100vh;
+    font-family:'Montserrat',sans-serif;
+    color:#fff;
+    background:
+        linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.85)),
+        url('/kontakt/bg-kontakt.jpg');
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;   /* zamiast center */
 }
 
 /* NAV */
@@ -73,7 +74,7 @@ nav{
 
 /* CONTAINER */
 .container{
-  margin-top:160px;
+  margin:160px auto 80px;
   width:90%;
   max-width:900px;
   background:rgba(10,10,10,.75);
@@ -127,6 +128,7 @@ ul{
     font-family:'Montserrat',sans-serif;
     font-size:.72rem;
     letter-spacing:1px;
+    width:100%;
 }
 
 .footer-left{
