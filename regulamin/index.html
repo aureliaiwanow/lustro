@@ -18,18 +18,18 @@
 
 /* BACKGROUND jak w Twoich stronach */
 body{
-  min-height:100vh;
-  font-family:'Montserrat',sans-serif;
-  color:#fff;
-  background:
-    linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.85)),
-    url('/kontakt/bg-kontakt.jpg');
-  background-size:cover;
-  background-position:center;
+    min-height:100vh;
+    font-family:'Montserrat',sans-serif;
+    color:#fff;
+    background:
+        linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.85)),
+        url('/kontakt/bg-kontakt.jpg');
+    background-size:cover;
+    background-position:center;
 
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;   /* zamiast center */
 }
 
 /* ═══ NAV ═══ */
@@ -246,8 +246,7 @@ nav{
 .hamburger.open span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
 /* KARTA */
 .container{
-  margin-top:160px;
-  margin-bottom:80px;
+  margin:160px auto 80px;
   width:90%;
   max-width:900px;
   background:rgba(10,10,10,.75);
@@ -297,6 +296,7 @@ p{
     font-family:'Montserrat',sans-serif;
     font-size:.72rem;
     letter-spacing:1px;
+    width:100%;
 }
 
 .footer-left{
