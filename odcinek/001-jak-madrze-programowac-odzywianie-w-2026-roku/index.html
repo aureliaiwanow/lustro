@@ -19,7 +19,6 @@
     --bg3: #1e1e1e;
     --text: #f0f0f0;
     --muted: #888;
-    --cyan: #00C8FF;
   }
 
 body{
@@ -291,7 +290,7 @@ nav{
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 70% 50%, rgba(0,200,255,0.04) 0%, transparent 60%);
+    background: radial-gradient(ellipse at 70% 50%, rgba(51,228,224,0.04) 0%, transparent 60%);
     pointer-events: none;
   }
 
@@ -552,7 +551,7 @@ padding: 4rem 4rem 4rem 0;
     transition: background 0.2s;
   }
 
-  .play-btn:hover { background: rgba(0,200,255,0.1); }
+  .play-btn:hover { background: rgba(51,228,224,0.1); }
 
   .play-btn svg { fill: var(--cyan); width: 14px; height: 14px; margin-left: 2px; }
 
@@ -1277,14 +1276,16 @@ padding: 4rem 4rem 4rem 0;
   <div class="ep-body-subtitle-val">Przewodnik po nowoczesnym podejściu do diety i odżywiania w 2026 roku</div>
 
   <!-- PODMIEŃ: link sponsora jeśli masz, lub usuń całą sekcję sponsor-bar -->
-  <div class="sponsor-bar">
-    <div>
-      <div class="sponsor-label">Sponsor odcinka</div>
-      <div class="sponsor-name">Nazwa Sponsora</div>
-      <div class="sponsor-desc">Krótki opis oferty sponsora dla słuchaczy</div>
+ <div class="sponsor-bar">
+  <div>
+    <div class="sponsor-label">Cytat z odcinka</div>
+    <div class="sponsor-name">
+      „Największą przeszkodą nie jest świat zewnętrzny, lecz historia,
+      którą każdego dnia opowiadamy sami sobie.”
     </div>
-    <a href="#" class="sponsor-link">Skorzystaj z oferty</a>
+    <div class="sponsor-desc">— Aurelia Iwanow • odcinek #12</div>
   </div>
+</div>
 
   <!-- PODMIEŃ: opis odcinka -->
   <p>
