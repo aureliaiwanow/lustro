@@ -422,8 +422,9 @@ transform: translate(30px, 50px);
  .hero-right {
     display: flex;
     flex-direction: column;
+   align-items:flex-start;
     justify-content: center;
- padding: 4rem 4rem 4rem -10rem;
+padding: 4rem 4rem 4rem 0;
 
     padding-top: 10rem;
     position: relative;
@@ -470,6 +471,14 @@ transform: translate(30px, 50px);
     max-width: 520px;
   }
 
+ .ep-title,
+.ep-subtitle,
+.ep-desc,
+.player-embed{
+    width:520px;
+    max-width:100%;
+}
+
   /* PLAYER */
   .player-embed {
     background: var(--bg3);
@@ -480,7 +489,8 @@ transform: translate(30px, 50px);
     align-items: center;
     gap: 1.2rem;
     margin-bottom: 2rem;
-   width: 450px;      /* np. 380px, 420px lub 450px */
+  width:520px;
+    max-width:100%;      /* np. 380px, 420px lub 450px */
   
   }
 
