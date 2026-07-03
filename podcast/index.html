@@ -236,18 +236,17 @@ nav{
 }
 
 .hamburger{
-    display:flex;
-    flex-direction:column;
-    gap:5px;
-    padding:6px;
+  display:none;
+  flex-direction:column;gap:6px;
+  cursor:pointer;padding:7px;z-index:20;
 }
 .hamburger span{
-  display:block;width:24px;height:2.5px;
+  display:block;width:30px;height:3px;
   background:var(--gold);border-radius:2px;transition:all .3s;
 }
-.hamburger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.hamburger.open span:nth-child(1){transform:translateY(9px) rotate(45deg)}
 .hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+.hamburger.open span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
 
 /* ═══ HERO ═══ */
 .podcast-hero{
@@ -610,21 +609,19 @@ nav{
     top:0;
     left:0;
     right:0;
-    z-index:10;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+
     padding:18px 20px;
-}
-  .desktop-nav { display:none; }
+
+    background:transparent;
+    border-bottom:none;
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+  }
+  .desktop-nav, .btn-sub { display:none; }
   .nav-logo { font-size: 2rem; }
 
   /* pokazuj mobile btn-sub i hamburger */
-  .nav-right{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
+  .nav-right { display: flex; align-items: center; gap: 12px; margin-right:-10px; }
   .mobile-btn-sub {
     display: none;
     background: var(--gold);
