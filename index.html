@@ -20,6 +20,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Reenie+Beanie&family=Barlow+Condensed:wght@300;400;700;900&family=Barlow:wght@300;400;500&family=Montserrat:wght@100;300;400;500;700;900&display=swap" rel="stylesheet"/>
   <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- WSPÓLNY CSS: nav, footer, resety -->
+  <link rel="stylesheet" href="/css/common.css"/>
+
   <style>
 @font-face {
   font-family: 'Proxon';
@@ -36,7 +40,7 @@ body{
   color:#fff;
   overflow-x:hidden;
 }
-:root{--gold:#fdb92a;--cyan:#33e4e0;--pink:#f85368}
+:root{--pink:#f85368}
 @font-face {
   font-family: 'MontserratThin';
   src: url('Montserrat-Thin.ttf') format('truetype');
@@ -77,264 +81,6 @@ body{
 .hero-bg-mobile{
   display:none;
 }
-
-
-/* ═══ NAV ═══ */
-nav{
-  position:absolute;top:20px;left:0;right:0;z-index:10;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:22px 28px 22px 100px;
-}
-
-.nav-logo{
-  font-family:'Reenie Beanie',cursive;
-  font-size:2.5rem;font-weight:400;
-  color:#fff;text-decoration:none;
-  text-shadow:0 2px 16px rgba(0,0,0,.75);
-  letter-spacing:0.02em;
-  transition:opacity .2s;
-}
-/* Desktop menu – centered absolutely */
-.desktop-nav{
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  gap:28px;
-  align-items:center;
-}
-.desktop-nav a{
-  font-family:'Montserrat',sans-serif;
-  font-weight:400;
-  font-size:14.8px;
-  letter-spacing:3.536px;
-  text-transform:uppercase;
-  color:rgba(255,255,255,0.97);
-  text-decoration:none;
-  padding:6px 0;
-  position:relative;
-  transition:color 0.25s ease, opacity 0.25s ease;
-}
-
-
-  .desktop-nav a:hover{
-  color:var(--gold);
-}
-
-  .desktop-nav a{
-  position:relative;
-}
-
-.has-dropdown{
-  position:relative;
-}
-
-
-
-.has-dropdown span{
-  font-family:'Montserrat',sans-serif;
-  font-weight:400;
-  font-size:14.8px;
-  letter-spacing:3.536px;
-  text-transform:uppercase;
-  color:rgba(255,255,255,0.97);
-  cursor:pointer;
-  padding:6px 0;
-}
-
-.has-dropdown:hover span{
-  color:var(--gold);
-}
-
-.tematy-dropdown{
-  position:absolute;
-  top:calc(100% + 10px);
-  left:-0.5cm;
-  background:rgba(0,0,0,0.85);
-  border:1px solid rgba(255,255,255,0.2);
-  display:flex;
-  flex-direction:column;
-  z-index:50;
-  opacity:0;
-  pointer-events:none;
-  transition:opacity 0.3s ease 0.3s;
-  min-width:220px;
-}
-
-.tematy-dropdown a{
-  font-family:'Montserrat',sans-serif;
-  font-weight:400;
-  font-size:12px;
-  letter-spacing:1px;
-  color:rgba(255,255,255,0.85);
-  text-decoration:none;
-  padding:12px 20px;
-  text-transform:uppercase;
-  transition:background 0.2s, color 0.2s;
-}
-.tematy-dropdown a:hover{
-  background:var(--gold);
-  color:#fff;
-}
-
-.tematy-dropdown a:last-child{
-  border-bottom:none;
-}
-
-.has-dropdown:hover .tematy-dropdown,
-.tematy-dropdown:hover{
-  opacity:1;
-  pointer-events:all;
-}
-
-.has-dropdown:not(:hover) .tematy-dropdown:not(:hover){
-  opacity:0;
-  pointer-events:none;
-  transition:opacity 0.5s ease 0.4s;
-}
-
-.tematy-dropdown::before{
-  content:'';
-  position:absolute;
-  top:-10px;
-  left:0;
-  right:0;
-  height:10px;
-}
-  
-
-.obserwuj-dropdown{
-  position:absolute;
-  top:calc(100% + 10px);
-  left:0;
-  background:rgba(0,0,0,0.85);
-  border:1px solid rgba(255,255,255,0.2);
-  display:flex;
-  flex-direction:column;
-  z-index:50;
-  opacity:0;
-  pointer-events:none;
-  transition:opacity 0.3s ease 0.3s;
-  min-width:180px;
-}
-
-.obserwuj-dropdown::before{
-  content:'';position:absolute;top:-10px;left:0;right:0;height:10px;
-}
-.obserwuj-dropdown a{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.obserwuj-dropdown svg{
-  width:18px;
-  height:18px;
-  flex-shrink:0;
-  display:block;
-  transform: translateY(-1px);
-}
-.obserwuj-dropdown a:hover{
-  background:var(--gold);
-  color:#fff;
-}
-
-.obserwuj-dropdown svg{
-  width:18px;height:18px;fill:#fff;flex-shrink:0;
-}
-
-.obserwuj-dropdown a:hover svg{
-  fill:#fff;
-}
-
-.has-dropdown:hover .obserwuj-dropdown,
-.obserwuj-dropdown:hover{opacity:1;pointer-events:all}
-
-.has-dropdown:not(:hover) .obserwuj-dropdown:not(:hover){
-  opacity:0;pointer-events:none;transition:opacity 0.5s ease 0.4s;
-}
-  
-.nav-right{
-  display:flex;align-items:center;gap:14px;
-  margin-right:70px;
-}
-
-.btn-sub{
-  background:var(--gold);
-  color:#000;
-  font-family:'Montserrat',sans-serif;
-  font-weight:700;
-  font-size:0.95rem;
-  letter-spacing:.15em;
-  padding:7px 45px;
-  cursor:pointer;
-  text-decoration:none;
-  display:inline-block;
-  border:2px solid transparent;
-  transition:background 0.4s ease, border-color 0.4s ease, color 0.4s ease, transform 0.15s;
-}
-.btn-sub:hover{
-  background:transparent;
-  border:2px solid var(--gold);
-  color:var(--gold);
-}
-
-.hamburger{
-  display:none;
-  flex-direction:column;gap:6px;
-  cursor:pointer;padding:7px;z-index:20;
-}
-.hamburger span{
-  display:block;width:30px;height:3px;
-  background:var(--gold);border-radius:2px;transition:all .3s;
-}
-.hamburger.open span:nth-child(1){transform:translateY(9px) rotate(45deg)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:translateY(-9px) rotate(-45deg)}
-
-/* ═══ DROPDOWN ═══ */
-.dropdown{
-  position:absolute;top:74px;right:28px;
-  background:rgba(10,10,15,.93);border:1px solid rgba(245,197,24,.3);
-  min-width:220px;transform-origin:top right;
-  transform:scaleY(0);opacity:0;pointer-events:none;
-  transition:transform .25s ease,opacity .2s ease;z-index:30;
-}
-.arrow{
-  display:inline;
-  color:#fff;
-  font-size:1.2em;
-  transition:none;
-}
-
-.desktop-nav a:hover .arrow{
-  color:#fff !important;
-}
-.dropdown.open{transform:scaleY(1);opacity:1;pointer-events:all}
-
-.dropdown a{
-  display:block;
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:1.1rem;letter-spacing:.07em;text-transform:uppercase;
-  color:#fff;text-decoration:none;padding:15px 24px;
-  border-bottom:1px solid rgba(255,255,255,.07);
-  transition:color .2s,background .2s;
-}
-.dropdown a:hover{color:var(--gold);background:rgba(245,197,24,.07)}
-
-.dropdown-socials{
-  display:flex;gap:16px;padding:14px 24px;
-  border-top:1px solid rgba(255,255,255,.07);
-}
-.dropdown-socials a{
-  display:flex;align-items:center;justify-content:center;
-  width:28px;height:28px;
-  background:none;
-  text-decoration:none;
-  transition:opacity .2s;
-}
-.dropdown-socials a:hover{opacity:.7}
-.dropdown-socials svg{width:22px;height:22px;fill:#fff}
 
 /* ═══ TITLE ═══ */
 .hero-title-block{
@@ -383,7 +129,7 @@ nav{
   pointer-events:none;
   display:none;
 }
-/* ═══ FOOTER ═══ */
+/* ═══ FOOTER (tagi w hero) ═══ */
 .hero-footer{
   position:absolute;bottom:50px;left:50%;
   transform:translateX(-50%);
@@ -407,7 +153,7 @@ nav{
 .cyan{color:var(--cyan)}
 .gold{color:var(--gold)}
 .pink{color:#FF5566}
-/* ═══ SUBSCRIBE PAGE ═══ */
+/* ═══ SUBSCRIBE PAGE (nakładka — patrz notatka: `showLanding()` nie jest nigdzie zdefiniowana) ═══ */
 #sub-page{display:none;position:fixed;inset:0;z-index:100;overflow-y:auto}
 .sub-bg{
   position:fixed;inset:0;
@@ -468,7 +214,7 @@ nav{
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 
-/* ═══ MOBILE ═══ */
+/* ═══ MOBILE — TYLKO elementy specyficzne dla tej strony (nav jest w common.css) ═══ */
 @media(max-width:768px){
   .hero-bg-desktop{display:none}
   .hero-bg-mobile{
@@ -476,23 +222,6 @@ nav{
     object-fit:cover;
     object-position:center top;
   }
-
-  .desktop-nav{display:none}
-  .hamburger{display:flex}
-
-  nav{padding:14px 16px 14px 10px}
-
-  .nav-logo{
-    font-family:'Reenie Beanie',cursive;
-    font-size:1.8rem;
-    font-weight:400;
-    white-space:nowrap;
-    letter-spacing:-0.08em;
-  }
-
-  .btn-sub{font-size:.92rem;padding:9px 16px}
-  .hamburger span{width:24px}
-  .dropdown{right:16px;top:60px}
 
 .hero-title-block{
   position:absolute;
@@ -530,7 +259,6 @@ nav{
 
 @media(max-width:380px){
   .hero-title{font-size:3rem}
-  .nav-logo{font-size:1rem}
 }
 
   
@@ -853,101 +581,6 @@ margin-top:5px;
     .benefit-item:first-child .benefit-icon{
     background:rgba(253,185,42,.14);
 }
-    /* FOOTER */
-
-.site-footer{
-    border-top:1px solid rgba(255,255,255,.08);
-    padding:32px 70px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:transparent;
-    font-family:'Montserrat',sans-serif;
-    font-size:.72rem;
-    letter-spacing:1px;
-   position:relative;
-    z-index:20;
-  
-}
-
-.footer-left{
-    display:flex;
-    gap:26px;
-}
-
-.footer-left a,
-.footer-copy{
-    color:rgba(255,255,255,.65);
-    text-decoration:none;
-    transition:.25s;
-}
-
-.footer-left a:hover{
-    color:#fff;
-}
-
-.footer-socials{
-    display:flex;
-    justify-content:flex-start;
-    align-items:center;
-    gap:14px;
-    transform:translateX(-40px);
-}
-
-.footer-socials a{
-    width:42px;
-    height:42px;
-    border:1px solid rgba(255,255,255,.35);
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:.25s;
-}
-
-.footer-socials svg{
-    width:18px;
-    height:18px;
-    fill:rgba(255,255,255,.85);
-}
-
-.footer-socials a:hover{
-    border-color:var(--gold);
-}
-
-.footer-socials a:hover svg{
-    fill:var(--gold);
-}
-
-.footer-copy{
-    font-size:.72rem;
-}
-
-@media(max-width:768px){
-
-.site-footer{
-    flex-direction:column;
-    gap:24px;
-    padding:34px 20px;
-}
-
-.footer-left{
-    order:2;
-    gap:20px;
-    flex-wrap:wrap;
-    justify-content:center;
-}
-
-.footer-socials{
-    order:1;
-    transform:none;
-}
-
-.footer-copy{
-    order:3;
-}
-
-}
 </style>
 </head>
 <body>
@@ -1052,59 +685,14 @@ margin-top:5px;
   <!-- Subtitle -->
   <div class="hero-subtitle">Optymalizacja Ciała i Umysłu</div>
 
-  <nav>
-    <a href="https://aureliaiwanow.pl" class="nav-logo">Aurelia Iwanow</a>
-   <div class="desktop-nav">
-<a href="/podcast/">Podcast</a>
- <div class="has-dropdown">
-  <span>Tematy <span class="arrow">▾</span></span>
-  <div class="tematy-dropdown">
-
-   <a href="/podcast?kategoria=odzywianie">Odżywianie</a>
-<a href="/podcast?kategoria=sen">Sen i Regeneracja</a>
-<a href="/podcast?kategoria=mozg">Optymalizacja Mózgu</a>
-<a href="/podcast?kategoria=swiadomosc">Świadomość</a>
-<a href="/podcast?kategoria=genetyka">Genetyka</a>
-<a href="/podcast?kategoria=dlugowiecznosc">Długowieczność</a>
-<a href="/podcast">Wszystkie tematy</a>
-    
-  </div>
-</div>
- 
-    <a href="/o-mnie/">O mnie</a>
- <a href="/kontakt/">Kontakt</a>
-</div>
-    <div class="nav-right">
-     <a class="btn-sub" href="/subskrybuj/">SUBSKRYBUJ</a>
-      <div class="hamburger" id="hbg" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </nav>
-  
-  <div class="dropdown" id="ddmenu">
-    <a href="#podcast" onclick="closeMenu()">Podcast</a>
-    <a href="#obserwuj" onclick="closeMenu()">Obserwuj</a>
-    <a href="#omnie" onclick="closeMenu()">O mnie</a>
-    <a href="#kontakt" onclick="closeMenu()">Kontakt</a>
-    <div class="dropdown-socials">
-      <a href="https://open.spotify.com/show/6SljkXMp0CqSpYmDL0cyXZ?si=Szy2cKopQSOc_Z3jKmg0oQ%0A" target="_blank" id="spotify-link" title="Spotify">
-        <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.559 17.32a.75.75 0 01-1.03.25c-2.82-1.724-6.368-2.114-10.545-1.158a.75.75 0 01-.335-1.462c4.573-1.046 8.49-.596 11.66 1.34a.75.75 0 01.25 1.03zm1.483-3.302a.937.937 0 01-1.288.308C14.95 12.5 11.07 11.9 7.47 12.943a.937.937 0 01-.518-1.8c4.064-1.168 8.39-.602 11.782 1.587a.937.937 0 01.308 1.288zm.128-3.44a1.124 1.124 0 01-1.543.378C14.52 8.87 9.74 8.718 5.906 9.905a1.125 1.125 0 01-.65-2.153c4.396-1.33 9.7-1.15 13.554 1.29a1.125 1.125 0 01.36 1.536z"/></svg>
-      </a>
-      <a href="https://podcasts.apple.com/your-show-link" target="_blank" aria-label="Apple Podcasts">
-      <svg viewBox="0 0 24 24"><path d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.224 1.272 1.912 2.619 2.264 4.392.12.59.12 2.2.007 2.864a8.506 8.506 0 01-3.24 5.296c-.608.46-2.096 1.261-2.336 1.261-.088 0-.096-.091-.056-.46.072-.592.144-.715.48-.856.536-.224 1.448-.874 2.008-1.435a7.644 7.644 0 002.008-3.536c.208-.824.184-2.656-.048-3.504-.728-2.696-2.928-4.792-5.624-5.352-.784-.16-2.208-.16-3 0-2.728.56-4.984 2.76-5.672 5.528-.184.752-.184 2.584 0 3.336.456 1.832 1.64 3.512 3.192 4.512.304.2.672.408.824.472.336.144.408.264.472.856.04.36.03.464-.056.464-.056 0-.464-.176-.896-.384l-.04-.03c-2.472-1.216-4.056-3.274-4.632-6.012-.144-.706-.168-2.392-.03-3.04.36-1.74 1.048-3.1 2.192-4.304 1.648-1.737 3.768-2.656 6.128-2.656zm.134 2.81c.409.004.803.04 1.106.106 2.784.62 4.76 3.408 4.376 6.174-.152 1.114-.536 2.03-1.216 2.88-.336.43-1.152 1.15-1.296 1.15-.023 0-.048-.272-.048-.603v-.605l.416-.496c1.568-1.878 1.456-4.502-.256-6.224-.664-.67-1.432-1.064-2.424-1.246-.64-.118-.776-.118-1.448-.008-1.02.167-1.81.562-2.512 1.256-1.72 1.704-1.832 4.342-.264 6.222l.413.496v.608c0 .336-.027.608-.06.608-.03 0-.264-.16-.512-.36l-.034-.011c-.832-.664-1.568-1.842-1.872-2.997-.184-.698-.184-2.024.008-2.72.504-1.878 1.888-3.335 3.808-4.019.41-.145 1.133-.22 1.814-.211zm-.13 2.99c.31 0 .62.06.844.178.488.253.888.745 1.04 1.259.464 1.578-1.208 2.96-2.72 2.254h-.015c-.712-.331-1.096-.956-1.104-1.77 0-.733.408-1.371 1.112-1.745.224-.117.534-.176.844-.176zm-.011 4.728c.988-.004 1.706.349 1.97.97.198.464.124 1.932-.218 4.302-.232 1.656-.36 2.074-.68 2.356-.44.39-1.064.498-1.656.288h-.003c-.716-.257-.87-.605-1.164-2.644-.341-2.37-.416-3.838-.218-4.302.262-.616.974-.966 1.97-.97z"/></svg>
-   </a>
-      <a href="https://youtube.com/@aureliaiwanowpodcast?si=F8OPBfGyuJC3FWCP" target="_blank" title="YouTube">
-        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-      </a>
-      <a href="https://www.instagram.com/aureliaiwanow?igsh=MXJmN2xlbG91ZW56dA==" target="_blank" title="Instagram">
-        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-      </a>
-    </div>
-  </div>
+  <!-- NAV zostanie wstrzyknięty tutaj przez common.js -->
+  <div id="nav-placeholder"></div>
 
 </section>
 
+<!-- UWAGA: poniższa nakładka wygląda na martwy kod — przyciski wywołują showLanding(),
+     której nigdzie nie zdefiniowano, i nic w kodzie jej nie otwiera. Zostawione bez zmian
+     do Twojej decyzji (usunąć / dokończyć), skoro masz już osobną, działającą stronę /subskrybuj/. -->
 <div id="sub-page">
   <div class="sub-bg"></div>
   <nav style="position:fixed;top:0;left:0;right:0;z-index:110;display:flex;align-items:center;justify-content:space-between;padding:22px 28px 22px 100px;">
@@ -1134,21 +722,7 @@ margin-top:5px;
 </div>
 
 <script>
-
-const hbg=document.getElementById('hbg');
-const ddmenu=document.getElementById('ddmenu');
-const hero=document.getElementById('hero');
-const subPg=document.getElementById('sub-page');
-
-function toggleMenu(){hbg.classList.toggle('open');ddmenu.classList.toggle('open')}
-function closeMenu(){hbg.classList.remove('open');ddmenu.classList.remove('open')}
-document.addEventListener('click',e=>{
-  if(!hbg.contains(e.target)&&!ddmenu.contains(e.target))closeMenu();
-});
-
-/* Spotify – wklej swój link tutaj: */
-// document.getElementById('spotify-link').href = 'https://open.spotify.com/show/6SljkXMp0CqSpYmDL0cyXZ?si=Szy2cKopQSOc_Z3jKmg0oQ%0A';
-
+/* Ładowanie tła hero — funkcjonalność specyficzna dla tej strony */
 document.querySelectorAll('.hero-bg').forEach(img=>{
   if(img.complete){
     img.classList.add('loaded');
@@ -1157,56 +731,16 @@ document.querySelectorAll('.hero-bg').forEach(img=>{
   }
 });
 </script>
-<!-- FOOTER -->
-<footer class="site-footer">
 
-  <div class="footer-left">
-    <a href="/polityka-prywatnosci">Polityka prywatności</a>
-    <a href="/regulamin">Regulamin</a>
-  </div>
+<!-- FOOTER zostanie wstrzyknięty tutaj przez common.js -->
+<div id="footer-placeholder"></div>
 
- <div class="footer-socials">
-
-  <a href="https://open.spotify.com/show/6SljkXMp0CqSpYmDL0cyXZ?si=Szy2cKopQSOc_Z3jKmg0oQ"
-     target="_blank"
-     rel="noopener"
-     aria-label="Spotify">
-    <svg viewBox="0 0 24 24">
-      <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.559 17.32a.75.75 0 01-1.03.25c-2.82-1.724-6.368-2.114-10.545-1.158a.75.75 0 01-.335-1.462c4.573-1.046 8.49-.596 11.66 1.34a.75.75 0 01.25 1.03zm1.483-3.302a.937.937 0 01-1.288.308C14.95 12.5 11.07 11.9 7.47 12.943a.937.937 0 01-.518-1.8c4.064-1.168 8.39-.602 11.782 1.587a.937.937 0 01.308 1.288zm.128-3.44a1.124 1.124 0 01-1.543.378C14.52 8.87 9.74 8.718 5.906 9.905a1.125 1.125 0 01-.65-2.153c4.396-1.33 9.7-1.15 13.554 1.29a1.125 1.125 0 01.36 1.536z"/>
-    </svg>
-  </a>
-<a href="https://podcasts.apple.com/your-show-link"
-   target="_blank"
-   rel="noopener"
-   aria-label="Apple Podcasts">
-<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Apple Podcasts</title><path d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0zm6.525 2.568c2.336 0 4.448.902 6.056 2.587 1.224 1.272 1.912 2.619 2.264 4.392.12.59.12 2.2.007 2.864a8.506 8.506 0 01-3.24 5.296c-.608.46-2.096 1.261-2.336 1.261-.088 0-.096-.091-.056-.46.072-.592.144-.715.48-.856.536-.224 1.448-.874 2.008-1.435a7.644 7.644 0 002.008-3.536c.208-.824.184-2.656-.048-3.504-.728-2.696-2.928-4.792-5.624-5.352-.784-.16-2.208-.16-3 0-2.728.56-4.984 2.76-5.672 5.528-.184.752-.184 2.584 0 3.336.456 1.832 1.64 3.512 3.192 4.512.304.2.672.408.824.472.336.144.408.264.472.856.04.36.03.464-.056.464-.056 0-.464-.176-.896-.384l-.04-.03c-2.472-1.216-4.056-3.274-4.632-6.012-.144-.706-.168-2.392-.03-3.04.36-1.74 1.048-3.1 2.192-4.304 1.648-1.737 3.768-2.656 6.128-2.656zm.134 2.81c.409.004.803.04 1.106.106 2.784.62 4.76 3.408 4.376 6.174-.152 1.114-.536 2.03-1.216 2.88-.336.43-1.152 1.15-1.296 1.15-.023 0-.048-.272-.048-.603v-.605l.416-.496c1.568-1.878 1.456-4.502-.256-6.224-.664-.67-1.432-1.064-2.424-1.246-.64-.118-.776-.118-1.448-.008-1.02.167-1.81.562-2.512 1.256-1.72 1.704-1.832 4.342-.264 6.222l.413.496v.608c0 .336-.027.608-.06.608-.03 0-.264-.16-.512-.36l-.034-.011c-.832-.664-1.568-1.842-1.872-2.997-.184-.698-.184-2.024.008-2.72.504-1.878 1.888-3.335 3.808-4.019.41-.145 1.133-.22 1.814-.211zm-.13 2.99c.31 0 .62.06.844.178.488.253.888.745 1.04 1.259.464 1.578-1.208 2.96-2.72 2.254h-.015c-.712-.331-1.096-.956-1.104-1.77 0-.733.408-1.371 1.112-1.745.224-.117.534-.176.844-.176zm-.011 4.728c.988-.004 1.706.349 1.97.97.198.464.124 1.932-.218 4.302-.232 1.656-.36 2.074-.68 2.356-.44.39-1.064.498-1.656.288h-.003c-.716-.257-.87-.605-1.164-2.644-.341-2.37-.416-3.838-.218-4.302.262-.616.974-.966 1.97-.97z"/></svg>
-</a>
-  <a href="https://youtube.com/@aureliaiwanowpodcast?si=F8OPBfGyuJC3FWCP"
-     target="_blank"
-     rel="noopener"
-     aria-label="YouTube">
-    <svg viewBox="0 0 24 24">
-      <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-    </svg>
-  </a>
-
-  <a href="https://instagram.com/aureliaiwanow"
-     target="_blank"
-     rel="noopener"
-     aria-label="Instagram">
-    <svg viewBox="0 0 24 24">
-      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-    </svg>
-  </a>
-
-</div>
-  <div class="footer-copy">
-    © 2026 Aurelia Iwanow
-  </div>
-
-</footer>
-  <script>
+<script>
 lucide.createIcons();
 </script>
+
+<!-- WSPÓLNY JS: wczytuje nav/footer i obsługuje hamburger/menu mobilne -->
+<script src="/js/common.js"></script>
+
 </body>
 </html>
