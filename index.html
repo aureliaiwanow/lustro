@@ -230,6 +230,98 @@ body{
         background-repeat:no-repeat;
     }
 
+  /* ukryj eyebrow, nie ma go w mobilnym widoku */
+  .hero-eyebrow{ display:none; }
+
+  /* reset pozycjonowania hero-content */
+  .hero-content{
+    position:absolute;
+    left:0;
+    right:0;
+    top:110px;           /* odstęp pod navbarem */
+    transform:none;
+    max-width:100%;
+    padding:0 22px;
+    text-align:left;
+  }
+
+  .hero-content h1{
+    margin-left:0;
+    font-size:clamp(4rem,18vw,6rem);
+    line-height:0.88;
+    letter-spacing:-0.02em;
+  }
+
+  /* złota kreska pod tytułem */
+  .hero-line{
+    display:block;
+    width:70px;
+    height:3px;
+    background:var(--gold);
+    opacity:1;
+    margin:14px 0 16px;
+  }
+
+  .hero-content p{
+    font-size:1.15rem;
+    line-height:1.3;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    max-width:100%;
+    margin:0;
+  }
+
+  /* pasek benefitów przyklejony do dołu hero */
+  .benefits{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:70px;
+    margin:0;
+    padding:0 14px;
+    justify-content:space-between;
+    gap:0;
+  }
+
+  .benefit-item{
+    flex:1;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    position:relative;
+    text-align:center;
+  }
+
+  /* pionowe separatory między itemami */
+  .benefit-item:not(:last-child)::after{
+    content:'';
+    position:absolute;
+    right:-8px;
+    top:50%;
+    transform:translateY(-50%);
+    width:1px;
+    height:56px;
+    background:rgba(255,255,255,.25);
+  }
+
+  .benefit-icon{
+    width:56px;
+    height:56px;
+  }
+
+  .benefit-text{
+    align-items:center;
+    min-width:0;
+  }
+
+  .benefit-text strong,
+  .benefit-text span{
+    white-space:normal;
+    font-size:12px;
+    text-align:center;
+  }
+
 }
 
 .hero-title-block{
