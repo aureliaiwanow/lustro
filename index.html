@@ -553,21 +553,23 @@ margin-top:5px;
   position:absolute;
   left:0;
   right:0;
-  top:110px;
+  top:82px;
   bottom:24px;        /* rozciąga do dołu hero */
   display:flex;
   flex-direction:column;
   transform:none;
   max-width:100%;
-  padding:0 22px;
+ padding:0 14px;
   text-align:left;
 }
 
   .hero-content h1{
     margin-left:0;
-    font-size:clamp(4rem,18vw,6rem);
-    line-height:0.88;
-    letter-spacing:-0.02em;
+    font-size:22vw;
+    line-height:0.84;
+    letter-spacing:-0.055em;
+    width:100%;
+    margin-bottom:18px;
   }
 
   .hero-line{
@@ -580,20 +582,19 @@ margin-top:5px;
   }
 
   .hero-content p{
-    font-size:1.15rem;
-    line-height:1.3;
+    font-size:1.55rem;
+    line-height:1.18;
     font-weight:700;
-    text-transform:uppercase;
     letter-spacing:0.01em;
+    text-transform:uppercase;
     max-width:100%;
     margin:0;
   }
 
   .benefits{
   position:static;     /* usuń absolute */
-  margin-top:auto;     /* wypycha na sam dół flex-containera */
-  margin-bottom:0;
-  padding:0 6px;
+ margin-top:auto;
+padding-bottom:22px;
   justify-content:space-between;
   gap:0;
 }
