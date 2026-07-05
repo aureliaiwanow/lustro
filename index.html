@@ -77,9 +77,7 @@ body{
 
 
   
-.hero-bg-mobile{
-  display:none;
-}
+
 
 /* ═══ TITLE ═══ */
 .hero-title-block{
@@ -215,12 +213,24 @@ body{
 
 /* ═══ MOBILE — TYLKO elementy specyficzne dla hero (nav jest w common.css) ═══ */
 @media(max-width:768px){
-  .hero-bg-desktop{display:none}
-  .hero-bg-mobile{
-    display:block;
-    object-fit:cover;
-    object-position:center top;
-  }
+.hero{
+    background-repeat:no-repeat;
+}
+
+@media (max-width:768px){
+
+    .hero-bg-desktop{
+        display:none;
+    }
+
+    .hero{
+        background-image:url("images/bg-mobile.png");
+        background-size:cover;
+        background-position:center top;
+        background-repeat:no-repeat;
+    }
+
+}
 
 .hero-title-block{
   position:absolute;
@@ -589,7 +599,6 @@ margin-top:5px;
 
 <section class="hero" id="hero">
   <img class="hero-bg hero-bg-desktop" src="images/bg-desktop.png" alt="Aurelia Iwanow"/>
-  <img class="hero-bg hero-bg-mobile" src="images/bg-mobile.png" alt="Aurelia Iwanow"/>
   <div class="hero-overlay"></div>
 
   <div class="hero-content">
@@ -712,15 +721,6 @@ margin-top:5px;
   </div>
 </div>
 
-<script>
-document.querySelectorAll('.hero-bg').forEach(img=>{
-  if(img.complete){
-    img.classList.add('loaded');
-  } else {
-    img.addEventListener('load',()=>img.classList.add('loaded'));
-  }
-});
-</script>
 
 <!-- FOOTER zostanie wstrzyknięty tutaj przez common.js -->
 <div id="footer-placeholder"></div>
