@@ -532,6 +532,11 @@ nav{
 }
 
 @media (max-width:768px){
+  .hero{
+    margin-top:-[wysokość-navbara]px; /* np. -70px */
+    padding-top:[wysokość-navbara]px; /* żeby content nie chował się pod nav */
+  }
+
   .site-footer{
       flex-direction:column;
       gap:24px;
