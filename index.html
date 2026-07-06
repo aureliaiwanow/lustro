@@ -667,43 +667,42 @@ padding-bottom:56px;
     }
 }
 
-    /* Domyślnie ukryta */
-.quote-section-mobile{
+   /* Domyślnie ukryty */
+.hero-quote{
     display:none;
 }
 
+/* Tylko mobile */
 @media (max-width:768px){
 
-.quote-section-mobile{
-    display:block;
-    text-align:center;
-    padding:100px 24px 90px;
-    background:#0a0a0f;
+.hero-quote{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin:42px 0 36px;
 }
 
-.quote-mark{
+.hero-quote .quote-top,
+.hero-quote .quote-bottom{
     font-family:Georgia, serif;
-    font-size:58px;
+    font-size:56px;
     color:var(--gold);
     line-height:1;
 }
 
-.quote-mark.bottom{
-    margin-top:14px;
+.hero-quote .quote-bottom{
+    margin-top:8px;
 }
 
-.quote-section-mobile h2{
-    margin:18px 0;
-
-    font-family:'MontserratThin', sans-serif;
+.hero-quote .quote-text{
+    font-family:'MontserratThin',sans-serif;
+    font-size:1.9rem;
     font-weight:300;
-    font-size:2rem;
-    line-height:1.35;
-
+    line-height:1.4;
     letter-spacing:.12em;
     text-transform:uppercase;
-
     color:var(--gold);
+    text-align:center;
 }
 
 }
@@ -730,7 +729,22 @@ padding-bottom:56px;
     Optymalizacja ciała, <br class="mobile-br">
     umysłu i świadomości.
   </p>
+  <div class="hero-quote">
+  <div class="quote-top">"</div>
 
+    <div class="quote-text">
+      PEŁNIA ŻYCIA<br>
+      WYMAGA PALIWA.
+    </div>
+    <div class="quote-bottom">"</div>
+  </div>
+  <h2>
+    PEŁNIA ŻYCIA<br>
+    WYMAGA PALIWA.
+  </h2>
+
+  <div class="quote-mark bottom">"</div>
+</section>
  <div class="benefits">
 
     <div class="benefit-item">
@@ -810,16 +824,6 @@ padding-bottom:56px;
   <!-- Subtitle -->
   <div class="hero-subtitle">Optymalizacja Ciała i Umysłu</div>
   
-</section>
-
-  <section class="quote-section-mobile">
-  <div class="quote-mark">"</div>
-  <h2>
-    PEŁNIA ŻYCIA<br>
-    WYMAGA PALIWA.
-  </h2>
-
-  <div class="quote-mark bottom">"</div>
 </section>
 
 <div id="sub-page">
