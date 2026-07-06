@@ -213,53 +213,6 @@ body{
 
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 
-/* ═══ MOBILE — TYLKO elementy specyficzne dla hero (nav jest w common.css) ═══ */
-@media(max-width:768px){
-  .hero-bg-desktop{display:none}
-  .hero-bg-mobile{
-    display:block;
-    object-fit:cover;
-    object-position:center top;
-  }
-
-.hero-title-block{
-  position:absolute;
-  left:0;right:0;
-  top:55%;
-  transform:translateY(-54%);
-  text-align:center;
-  pointer-events:none;
-  animation:fadeUp .9s ease both;
-  z-index:3;
-}
-
-.hero-title{
-  font-size:clamp(3.4rem,17vw,5rem);
-  text-align:center;
-  text-shadow:0 3px 28px rgba(0,0,0,.65);
-  color:#fff;
-  mix-blend-mode:overlay;
-}
-
-  .hero-subtitle{font-size:.95rem;text-align:center;letter-spacing:.09em;margin-top:6px}
-
-  .hero-footer{
-    position:absolute;bottom:0;left:0;right:0;
-    background:rgba(10,10,15,.52);
-    flex-direction:column;align-items:center;justify-content:center;
-    padding:14px 20px 18px;gap:10px;
-  }
-  .tag-group{width:100%;max-width:100%;justify-content:center;gap:140px}
-  .tag{align-items:center}
-  
-  .tag .lbl{font-family:'Barlow',sans-serif;font-size:.85rem;}
-  .tag .val{font-family:'Barlow',sans-serif;font-size:.85rem;}
-}
-
-@media(max-width:380px){
-  .hero-title{font-size:3rem}
-}
-
   
   /* ===== NOWY HERO ===== */
 
@@ -580,14 +533,113 @@ margin-top:5px;
     .benefit-item:first-child .benefit-icon{
     background:rgba(253,185,42,.14);
 }
+    /* ═══ MOBILE — na samym końcu pliku, po wszystkich stylach desktopowych ═══ */
+@media (max-width:768px){
+
+  .hero-bg-desktop{ display:none; }
+
+ .hero{
+  background-image:url("images/bg-mobile.png");
+  background-size:cover;
+  background-position:top center;
+  background-repeat:no-repeat;
+}
+
+  .hero-eyebrow{
+  margin-bottom:8px;
+}
+.hero-eyebrow span{
+  font-size:13px;
+}
+
+  .hero-content{
+  position:absolute;
+  left:0;
+  right:0;
+  top:82px;
+  bottom:24px;        /* rozciąga do dołu hero */
+  display:flex;
+  flex-direction:column;
+  transform:none;
+  max-width:100%;
+ padding:0 14px;
+  text-align:left;
+}
+
+  .hero-content h1{
+    margin-left:0;
+    font-size:21vw;
+    line-height:0.84;
+    letter-spacing:0.01em;
+    width:100%;
+    margin-bottom:18px;
+    transform-origin: left center;
+  }
+
+  .hero-line{
+    display:block;
+    width:70px;
+    height:3px;
+    background:var(--gold);
+    opacity:1;
+    margin:14px 0 16px;
+  }
+
+  .hero-content p{
+    font-size:.9rem;
+    line-height:1.18;
+    font-weight:700;
+    letter-spacing:0.02em;
+    text-transform:uppercase;
+    max-width:100%;
+    margin:0;
+  }
+
+  .benefits{
+  position:static;     /* usuń absolute */
+ margin-top:auto;
+padding-bottom:22px;
+  justify-content:space-between;
+  gap:0;
+}
+  .benefit-item{
+    flex:1;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    position:relative;
+    text-align:center;
+  }
+
+  .benefit-item:not(:last-child)::after{
+    content:'';
+    position:absolute;
+    right:-8px;
+    top:50%;
+    transform:translateY(-50%);
+    width:1px;
+    height:56px;
+    background:rgba(255,255,255,.25);
+  }
+
+  .benefit-icon{ width:56px; height:56px; }
+
+  .benefit-text{ align-items:center; min-width:0; }
+
+  .benefit-text strong,
+  .benefit-text span{
+    white-space:normal;
+    font-size:12px;
+    text-align:center;
+  }
+}
+
+@media(max-width:380px){
+  .hero-content h1{ font-size:3.2rem; }
+}
 </style>
 </head>
 <body>
-  <script>
-  if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
-    window.location.replace('/mobile/');
-  }
-</script>
 
 <!-- NAV zostanie wstrzyknięty tutaj przez common.js -->
 <div id="nav-placeholder"></div>
@@ -716,16 +768,6 @@ margin-top:5px;
     </div>
   </div>
 </div>
-
-<script>
-document.querySelectorAll('.hero-bg').forEach(img=>{
-  if(img.complete){
-    img.classList.add('loaded');
-  } else {
-    img.addEventListener('load',()=>img.classList.add('loaded'));
-  }
-});
-</script>
 
 <!-- FOOTER zostanie wstrzyknięty tutaj przez common.js -->
 <div id="footer-placeholder"></div>
