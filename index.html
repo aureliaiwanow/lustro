@@ -629,17 +629,18 @@ padding-bottom:25px;
     text-align:center;
   }
 
-  .benefit-item:not(:last-child)::after{
+ .benefit-item:not(:last-child)::after{
     content:'';
     position:absolute;
     right:-8px;
-    top:50%;
+
+    top:28px;              /* środek ikony 56px */
     transform:translateY(-50%);
+
     width:1px;
     height:56px;
     background:rgba(255,255,255,.25);
-  }
-
+}
   .benefit-icon{ width:56px; height:56px; }
 
   .benefit-text{ align-items:center; min-width:0; }
