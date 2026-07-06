@@ -677,9 +677,11 @@ padding-bottom:56px;
 .hero-quote{
     display:flex;
     flex-direction:column;
-    align-items:center;
+    align-items:flex-start;
+    width:100%;
+    padding-left:38px;
 
-    margin:28px 0 32px;
+    margin:32px 0 40px;
 }
 
 .quote-top,
@@ -691,23 +693,25 @@ padding-bottom:56px;
 }
 
 .quote-top{
-    margin-bottom:4px;
+    margin-left:150px;
+  align-self:flex-start;
 }
 
 .quote-bottom{
-    margin-top:4px;
+    margin-left:150px;
+  align-self:flex-start;
 }
 
 .quote-text{
     font-family:'MontserratThin',sans-serif;
     font-weight:300;
 
-    font-size:1rem; /* zamiast 2rem */
-    line-height:1.75;
+    font-size:1.15rem; /* zamiast 2rem */
+    line-height:1.7;
 
-    letter-spacing:.22em;
+    letter-spacing:.12em;
     text-transform:uppercase;
-    text-align:center;
+    text-align:left;
 
     color:var(--gold);
 }
