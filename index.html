@@ -545,6 +545,23 @@ margin-top:5px;
   background-position:top center;
   background-repeat:no-repeat;
 }
+  .hero::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+
+    height:180px;   /* możesz zmieniać */
+
+    background:linear-gradient(
+        to bottom,
+        transparent 0%,
+        #0a0a0f 100%
+    );
+
+    pointer-events:none;
+}
 
   .hero-eyebrow{
   margin-bottom:8px;
