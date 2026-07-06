@@ -672,39 +672,45 @@ padding-bottom:56px;
     display:none;
 }
 
-/* Tylko mobile */
 @media (max-width:768px){
 
 .hero-quote{
     display:flex;
     flex-direction:column;
     align-items:center;
-    margin:42px 0 36px;
+
+    margin:28px 0 32px;
 }
 
-.hero-quote .quote-top,
-.hero-quote .quote-bottom{
-    font-family:Georgia, serif;
-    font-size:56px;
-    color:var(--gold);
+.quote-top,
+.quote-bottom{
+    font-size:42px;
     line-height:1;
-}
-
-.hero-quote .quote-bottom{
-    margin-top:8px;
-}
-
-.hero-quote .quote-text{
-    font-family:'MontserratThin',sans-serif;
-    font-size:1.9rem;
-    font-weight:300;
-    line-height:1.4;
-    letter-spacing:.12em;
-    text-transform:uppercase;
     color:var(--gold);
-    text-align:center;
+    font-family:Georgia,serif;
 }
 
+.quote-top{
+    margin-bottom:4px;
+}
+
+.quote-bottom{
+    margin-top:4px;
+}
+
+.quote-text{
+    font-family:'MontserratThin',sans-serif;
+    font-weight:300;
+
+    font-size:1rem; /* zamiast 2rem */
+    line-height:1.75;
+
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    text-align:center;
+
+    color:var(--gold);
+}
 }
 </style>
 </head>
