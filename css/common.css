@@ -380,18 +380,21 @@ nav{
       order:3;
   }
 
-  nav{
+ nav{
+    position:absolute;     /* albo absolute, jeśli nie ma być przyklejony przy scrollu */
     top:0;
     left:0;
     right:0;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:18px 20px;
-    position:relative;
-    z-index:1000;
-  }
 
+    padding:18px 20px;
+
+    z-index:1000;
+    background:transparent;
+}
   .desktop-nav{
     display:none;
   }
