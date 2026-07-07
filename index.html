@@ -614,58 +614,66 @@ text-align:center;
     margin:0;
   }
 
-  .benefits{
-    padding:0 8px; /* mały margines wewnętrzny, żeby nic nie wychodziło poza ekran */
-    gap:4px; /* mniejszy odstęp między elementami */
-  }
+ .benefits{
+    position:static;
+    padding:0 8px;
+    gap:4px;
+    margin-top:auto;
+    padding-bottom:56px;
+    justify-content:space-between;
+}
 
-  .benefit-item{
+.benefit-item{
     flex:1;
-    min-width:0; /* pozwala kolumnom się kurczyć zamiast rozpychać */
-  }
+    min-width:0;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    position:relative;
+    text-align:center;
+}
 
- .benefit-item:not(:last-child)::after{
+.benefit-item:not(:last-child)::after{
     content:'';
     position:absolute;
-    right:0px;
-
-    top:28px;              /* środek ikony 56px */
+    right:0;
+    top:22px;
     transform:translateY(-50%);
-
     width:1px;
-    height:56px;
+    height:44px;
     background:rgba(255,255,255,.25);
 }
 
-  .benefit-icon{
+.benefit-icon{
     width:44px;
     height:44px;
     border-width:1px;
-    background:transparent;
-  }
-
-  
-
-     .benefit-icon{
     background:transparent !important;
-  }
-  .benefit-item:hover .benefit-icon,
-  .benefit-item:first-child .benefit-icon{
-    background:transparent !important;  /* na mobile bez podświetlenia tła */
-  }
+}
 
-  .benefit-icon svg{
+.benefit-item:hover .benefit-icon,
+.benefit-item:first-child .benefit-icon{
+    background:transparent !important;
+}
+
+.benefit-icon svg{
     width:18px;
     height:18px;
-  }
-    .benefit-text strong,
-  .benefit-text span{
-    white-space:normal; /* tekst może się łamać na 2 linie */
-    font-size:10px; /* trochę mniejszy, żeby zmieścić się w węższej kolumnie */
+}
+
+.benefit-text{
+    align-items:center;
+    min-width:0;
+}
+
+.benefit-text strong,
+.benefit-text span{
+    white-space:normal;
+    font-size:10px;
     line-height:1.25;
     word-break:break-word;
-  }
-
+    text-align:center;
+}
   .benefit-item:not(:last-child)::after{
     top:22px;
     height:44px;
