@@ -614,13 +614,12 @@ background-position: top center;
   text-align:left;
 }
 
- .benefits{
+.benefits{
     position:static;
     padding:0 8px;
     gap:4px;
-    margin-top:auto;
-    padding-bottom:56px;
     justify-content:space-between;
+    align-items:flex-start;   /* zamiast center — wszystkie ikony zaczynają na tej samej wysokości */
 }
 
 .benefit-item{
@@ -751,7 +750,8 @@ background-position: top center;
   <h1>BIOHACKING</h1>
 
   <p>
-    Optymalizacja ciała, umysłu i świadomości.
+     Optymalizacja ciała, <br class="mobile-br">
+    umysłu i świadomości.
   </p>
 <div class="hero-quote">
   <svg class="quote-icon quote-top" viewBox="0 0 24 24">
