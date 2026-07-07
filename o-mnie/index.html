@@ -211,15 +211,101 @@
     font-weight: 400;
   }
 
-  /* ============ RESPONSIVE (layout tej strony, nie nav) ============ */
+  /* ======================================================
+     MOBILE / SMALL-SCREEN REBUILD
+     Two stages: tablet (≤900px) and phone (≤600px),
+     tuned separately rather than one squeezed layout.
+     ====================================================== */
+
+  /* ---------- Tablet & below ---------- */
   @media (max-width: 900px){
-    .hero-grid{ grid-template-columns: 1fr; }
-    .hero-title{ font-size: 4rem; }
-    .features .wrap{ grid-template-columns: repeat(2,1fr); }
-    .feature:nth-child(3){ border-left:none; }
-    .podcast{ grid-template-columns: 1fr; }
-    .podcast-content{ padding: 50px 30px; }
-    .wrap{ padding: 0 24px; }
+    .wrap{ padding: 0 28px; }
+
+    /* Hero: photo leads, text follows — the face is the
+       most characteristic thing on this page, so it goes first. */
+    .hero{ padding: 64px 0 48px; }
+    .hero-grid{
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .hero-photo{
+      order: -1;
+      aspect-ratio: 4 / 3;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    .hero-title{ font-size: clamp(3rem, 11vw, 4.2rem); text-align:center; }
+    .rule{ margin: 24px auto 22px; }
+    .hero-sub{ font-size: 1.3rem; text-align:center; }
+    .hero-text{ font-size: 0.95rem; max-width: 480px; margin: 0 auto; text-align:center; }
+
+    /* Features: horizontal rows (icon + label side by side)
+       read faster on a narrow column than stacked centered blocks. */
+    .features .wrap{
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .feature{
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      gap: 14px;
+      text-align:left;
+      padding: 24px 16px;
+      border-left: none;
+      border-top: 1px solid var(--line);
+    }
+    .feature:nth-child(-n+2){ border-top:none; }
+    .feature .icon{ margin-bottom:0; flex-shrink:0; }
+    .feature .icon svg{ width: 30px; height: 30px; }
+    .feature p{ font-size: 0.88rem; line-height:1.3; }
+
+    /* Podcast: image becomes a wide banner, not a forced square half */
+    .podcast{ grid-template-columns: 1fr; min-height:0; }
+    .podcast-image{ aspect-ratio: 16 / 10; }
+    .podcast-content{ padding: 44px 28px; align-items:center; text-align:center; }
+    .podcast-content h2{ font-size: 2rem; }
+    .podcast-content p{ max-width: 480px; margin-left:auto; margin-right:auto; }
+    .btn-outline{ margin-left:auto; margin-right:auto; }
+
+    .quote-section{ padding: 64px 0; }
+    .quote-text{ font-size: 1.15rem; }
+  }
+
+  /* ---------- Phone ---------- */
+  @media (max-width: 600px){
+    .wrap{ padding: 0 20px; }
+
+    .hero{ padding: 48px 0 40px; }
+    .hero-photo{ aspect-ratio: 1 / 1; max-width: 320px; border-radius: 6px; }
+    .hero-title{ font-size: 3rem; letter-spacing: -0.5px; }
+    .hero-sub{ font-size: 1.15rem; }
+    .hero-text{ font-size: 0.92rem; }
+
+    /* At this width, side-by-side rows get cramped —
+       drop to a single column so icon rows keep breathing room. */
+    .features .wrap{ grid-template-columns: 1fr; }
+    .feature{ border-top: 1px solid var(--line); padding: 18px 4px; }
+    .feature:first-child{ border-top:none; }
+
+    .eyebrow{ font-size: 0.72rem; }
+    .podcast-content{ padding: 36px 20px; }
+    .podcast-content h2{ font-size: 1.7rem; }
+    .podcast-content p{ font-size: 0.92rem; }
+    .btn-outline{
+      width: 100%;
+      justify-content:center;
+      padding: 15px 20px;
+    }
+
+    .quote-section{ padding: 48px 0; }
+    .quote-mark{ font-size: 3rem; }
+    .quote-text{ font-size: 1.02rem; }
+  }
+
+  @media (max-width: 380px){
+    .hero-title{ font-size: 2.5rem; }
+    .podcast-content h2{ font-size: 1.5rem; }
   }
 </style>
 </head>
