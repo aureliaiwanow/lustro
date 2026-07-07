@@ -570,30 +570,29 @@ background-position: top center;
   font-size:13px;
 }
 
-  .hero-content{
+.hero-content{
   position:absolute;
   left:0;
   right:0;
   top:90px;
-  bottom:24px;        /* rozciąga do dołu hero */
+  bottom:24px;
   display:flex;
   flex-direction:column;
   transform:none;
   max-width:100%;
- padding:0 14px;
-  text-align:left;
+  padding:0 14px;
+  text-align:left;          /* zostaje left */
 }
 
-  .hero-content h1{
-    margin-left:0;
-    font-size:20vw;
-    line-height:0.84;
-    letter-spacing:0.01em;
-    width:100%;
-  margin:0 auto 18px;
-text-align:center;
-    transform-origin: left center;
-  }
+ .hero-content h1{
+  margin-left:0;
+  font-size:15vw;            /* było 20vw — mniejszy, jak na wzorze */
+  line-height:0.9;
+  letter-spacing:0.01em;
+  width:auto;                /* nie na całą szerokość */
+  margin:0 0 10px;           /* usunięte auto/center */
+  text-align:left;           /* wyrównanie do lewej, nie na środku */
+}
 
   .hero-line{
     display:block;
@@ -604,15 +603,16 @@ text-align:center;
     margin:14px 0 16px;
   }
 
-  .hero-content p{
-    font-size:.9rem;
-    line-height:1.18;
-    font-weight:700;
-    letter-spacing:0.02em;
-    text-transform:uppercase;
-    max-width:100%;
-    margin:0;
-  }
+ .hero-content p{
+  font-size:.85rem;
+  line-height:1.25;
+  font-weight:700;
+  letter-spacing:0.02em;
+  text-transform:uppercase;
+  max-width:100%;
+  margin:0 0 4px;
+  text-align:left;
+}
 
  .benefits{
     position:static;
