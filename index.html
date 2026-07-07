@@ -677,43 +677,34 @@ padding-bottom:56px;
 .hero-quote{
     display:flex;
     flex-direction:column;
-    align-items:flex-start;
+    align-items:center;        /* wyśrodkowanie cudzysłowu względem tekstu */
     width:100%;
     padding-left:38px;
-    margin:32px 0 40px;
-}
-
-.quote-top,
-.quote-bottom{
-    font-family:Georgia, 'Times New Roman', serif;
-    font-weight:700;
-    font-size:52px;
-    line-height:1;
-    color:var(--gold);
+    margin:12px 0 24px;        /* mniejszy odstęp = wyżej, bliżej podtytułu */
 }
 
 .quote-icon{
-    width:38px;
-    height:38px;
+    width:24px;                /* mniejsze cudzysłowy */
+    height:24px;
     fill:var(--gold);
 }
 
 .quote-top{
-    margin-bottom:6px;
+    margin-bottom:4px;
 }
 
 .quote-bottom{
-    margin-top:6px; /* dolny cudzysłów bardziej w prawo, jak na wzorze */
+    margin-top:4px;
 }
 
 .quote-text{
     font-family:'MontserratThin',sans-serif;
     font-weight:300;
-    font-size:1.15rem;
-    line-height:1.5;      /* trochę ciaśniej niż 1.7 */
-    letter-spacing:.1em;
+    font-size:0.95rem;         /* mniejszy tekst cytatu */
+    line-height:1.4;
+    letter-spacing:.08em;
     text-transform:uppercase;
-    text-align:left;
+    text-align:center;         /* tekst też wyśrodkowany pod cudzysłowem */
     color:var(--gold);
 }
 }
