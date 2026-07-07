@@ -615,19 +615,13 @@ text-align:center;
   }
 
   .benefits{
-  position:static;     /* usuń absolute */
- margin-top:auto;
-padding-bottom:56px;
-  justify-content:space-between;
-  gap:0;
-}
+    padding:0 8px; /* mały margines wewnętrzny, żeby nic nie wychodziło poza ekran */
+    gap:4px; /* mniejszy odstęp między elementami */
+  }
+
   .benefit-item{
     flex:1;
-    flex-direction:column;
-    align-items:center;
-    gap:8px;
-    position:relative;
-    text-align:center;
+    min-width:0; /* pozwala kolumnom się kurczyć zamiast rozpychać */
   }
 
  .benefit-item:not(:last-child)::after{
@@ -642,14 +636,16 @@ padding-bottom:56px;
     height:56px;
     background:rgba(255,255,255,.25);
 }
-  @media (max-width:768px){
 
   .benefit-icon{
-    width:44px;              /* było 56px — mniejsze koło */
+    width:44px;
     height:44px;
-    border-width:1px;        /* cieńsza obwódka */
-    background:transparent;  /* puste w środku, bez wypełnienia */
+    border-width:1px;
+    background:transparent;
   }
+
+  
+
      .benefit-icon{
     background:transparent !important;
   }
@@ -657,20 +653,21 @@ padding-bottom:56px;
   .benefit-item:first-child .benefit-icon{
     background:transparent !important;  /* na mobile bez podświetlenia tła */
   }
-}
 
   .benefit-icon svg{
-    width:18px;               /* mniejsza ikona wewnątrz */
+    width:18px;
     height:18px;
   }
-
-  .benefit-text strong,
+    .benefit-text strong,
   .benefit-text span{
-    font-size:10.5px;        /* mniejszy tekst pod ikonami */
+    white-space:normal; /* tekst może się łamać na 2 linie */
+    font-size:10px; /* trochę mniejszy, żeby zmieścić się w węższej kolumnie */
+    line-height:1.25;
+    word-break:break-word;
   }
 
   .benefit-item:not(:last-child)::after{
-    top:22px;                /* dopasowanie separatora do mniejszej ikony 44px */
+    top:22px;
     height:44px;
   }
 }
