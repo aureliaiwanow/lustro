@@ -642,15 +642,36 @@ padding-bottom:56px;
     height:56px;
     background:rgba(255,255,255,.25);
 }
-  .benefit-icon{ width:56px; height:56px; }
+  @media (max-width:768px){
 
-  .benefit-text{ align-items:center; min-width:0; }
+  .benefit-icon{
+    width:44px;              /* było 56px — mniejsze koło */
+    height:44px;
+    border-width:1px;        /* cieńsza obwódka */
+    background:transparent;  /* puste w środku, bez wypełnienia */
+  }
+     .benefit-icon{
+    background:transparent !important;
+  }
+  .benefit-item:hover .benefit-icon,
+  .benefit-item:first-child .benefit-icon{
+    background:transparent !important;  /* na mobile bez podświetlenia tła */
+  }
+}
+
+  .benefit-icon svg{
+    width:18px;               /* mniejsza ikona wewnątrz */
+    height:18px;
+  }
 
   .benefit-text strong,
   .benefit-text span{
-    white-space:normal;
-    font-size:12px;
-    text-align:center;
+    font-size:10.5px;        /* mniejszy tekst pod ikonami */
+  }
+
+  .benefit-item:not(:last-child)::after{
+    top:22px;                /* dopasowanie separatora do mniejszej ikony 44px */
+    height:44px;
   }
 }
 
