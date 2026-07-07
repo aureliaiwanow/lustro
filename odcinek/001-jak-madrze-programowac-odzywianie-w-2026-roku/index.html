@@ -577,80 +577,155 @@ padding: 4rem 4rem 4rem 0;
 
   .sponsor-link:hover { background: var(--gold-dark); }
 
-  /* RESPONSIVE — TYLKO elementy specyficzne dla tej strony (nav/footer są w common.css) */
-  @media(max-width:900px){.episodes-grid{grid-template-columns:repeat(2,1fr)}}
+  /* ============================================================ */
+  /* MOBILE — wersja dla ekranów do 768px                          */
+  /* (nav i footer są wstrzykiwane i stylowane przez common.css /   */
+  /*  common.js — NIE dotykamy ich w tym pliku)                    */
+  /* ============================================================ */
+  @media (max-width: 768px) {
 
-  @media(max-width:768px){
-    .podcast-hero{height:70svh}
-    .podcast-hero-content{transform:none}
-    .podcast-title{font-size:clamp(3.5rem,15vw,6rem)}
-    .hero-search{margin-top:24px}
-    .podcast-main{top:0;padding:50px 16px 80px}
-    .filter-bar{justify-content:center;margin-bottom:30px}
-
-    /* ═══ MOBILE EPISODE CARD ═══ */
-    .episodes-grid {
-      grid-template-columns: 1fr;
-      gap: 30px;
+    /* HERO — z układu dwukolumnowego robimy jednokolumnowy,       */
+    /* dokładnie w kolejności: kafel odcinka -> informacje          */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      min-height: auto;
+      overflow: visible;
+      padding: 40px 20px 8px;
     }
 
-    .episode-card::before {
+    .hero::after,
+    .hero::before {
       display: none;
     }
 
-    .episode-thumb {
-      aspect-ratio: 16/11;
-      border-radius: 0;
+    /* KAFEL ODCINKA — dokładnie ten sam styl co na desktopie,      */
+    /* tylko wyśrodkowany i przeskalowany do szerokości ekranu      */
+    .hero-left {
+      padding: 0;
+      margin: 0;
+      transform: none;
+      justify-content: center;
     }
 
-    .episode-thumb::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        transparent 30%,
-        rgba(0,0,0,0.55) 60%,
-        rgba(0,0,0,0.92) 100%
-      );
-      pointer-events: none;
+    .cover-card {
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      transform: none;
     }
 
-    .episode-card .episode-body {
-      padding: 22px 26px 30px;
-      background: #11161d;
+    /* INFO O ODCINKU — wyśrodkowany nagłówek jak na referencyjnym  */
+    /* zrzucie ekranu, opis odcinka zostaje w naturalnym, czytelnym */
+    /* układzie tekstu wyrównanego do lewej                         */
+    .hero-right {
+      width: 100%;
+      padding: 32px 0 0;
+      align-items: center;
+      text-align: center;
+      transform: none;
     }
 
-    .episode-card .episode-title {
-      font-size: 1.05rem;
-      line-height: 1.22;
-      font-weight:700;
-      margin-bottom: 28px;
+    .ep-label {
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      margin-bottom: 0.9rem;
     }
 
-    .episode-card .episode-meta {
-      margin-bottom: 8px;
-      padding-top: 16px;
+    .ep-title {
+      font-size: 1.65rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      text-align: center;
+      margin-bottom: 1.1rem;
     }
 
-    .episode-card .episode-desc {
-      -webkit-line-clamp: 2;
-      margin-bottom: 12px;
-      margin-top: 8px;
+    .ep-subtitle {
+      font-size: 0.82rem;
+      text-align: center;
     }
 
-    .episode-card .read-more {
-      color: var(--gold);
-      font-size: 0.7rem;
-      letter-spacing: 2.5px;
-      margin-top: auto;
+    .ep-desc {
+      font-size: 1rem;
+      line-height: 1.6;
+      text-align: left;
+      margin-bottom: 1.8rem;
     }
 
-    .episode-play-btn {
-      opacity: 0.85;
-      width: 52px;
-      height: 52px;
-      z-index: 2;
+    .ep-title,
+    .ep-subtitle,
+    .ep-desc,
+    .player-embed {
+      width: 100%;
+    }
+
+    /* ODTWARZACZ */
+    .player-embed {
+      padding: 0.6rem 0.9rem;
+      gap: 0.8rem;
+    }
+
+    .player-thumb {
+      width: 68px;
+      height: 68px;
+    }
+
+    .player-ep-title {
+      font-size: 0.75rem;
+    }
+
+    .player-controls {
+      gap: 0.5rem;
+    }
+
+    .waveform {
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    /* PLATFORMY — pełna szerokość, wygodniejsze dotykanie */
+    .section-subscribe {
+      width: 100%;
+    }
+
+    .section-subscribe h3 {
+      text-align: center;
+    }
+
+    .platform-buttons {
+      flex-direction: column;
+      flex-wrap: nowrap;
+    }
+
+    .platform-btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* TREŚĆ ODCINKA */
+    .ep-body {
+      padding: 3rem 20px;
+    }
+
+    .ep-body-title {
+      font-size: 1.7rem;
+    }
+
+    .sponsor-bar {
+      padding: 1.3rem 1.5rem;
+    }
+
+    .ep-topics {
+      padding: 1.6rem 1.5rem;
+      margin: 2.2rem 0;
+    }
+
+    .timestamps {
+      margin: 2.2rem 0;
+    }
+
+    .ts-item {
+      gap: 1rem;
     }
   }
 
