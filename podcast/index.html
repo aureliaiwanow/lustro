@@ -415,112 +415,98 @@ section{min-height:100vh;scroll-margin-top:120px}
     flex:0 0 auto;
   }
 
-  /* --- GRID: pojedyncza kolumna, karty "poziome" --- */
+  /* --- GRID: pojedyncza kolumna, karty jedna pod drugą (jak desktop, pełna szerokość) --- */
   .episodes-grid{
     grid-template-columns:1fr;
-    row-gap:18px;
+    row-gap:32px;
     column-gap:0;
   }
 
   .episode-card{
-    flex-direction:row;
-    align-items:stretch;
+    flex-direction:column;
     height:auto;
-    min-height:132px;
-    padding:0;
+    padding:10px;
     background:#11161d;
-    border-radius:14px;
-    clip-path:none;
-    overflow:hidden;
+    /* to samo ścięcie rogu co na desktopie, tylko delikatniejsze */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 13px), calc(100% - 13px) 100%, 0 100%);
   }
 
-  .episode-card::before{display:none}
+  .episode-card::before{
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 13px), calc(100% - 13px) 100%, 0 100%);
+  }
 
   .episode-card::after{
-    inset:0;
-    border-radius:14px;
-    clip-path:none;
-    background:linear-gradient(
-      120deg,
-      rgba(51,228,224,0.45) 0%,
-      rgba(51,228,224,0.08) 35%,
-      rgba(255,255,255,0.06) 100%
+    inset:10px;
+    border-radius:10px 10px 0 0;
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% calc(100% - 11px),
+      calc(100% - 11px) 100%,
+      0 100%
     );
-    padding:1px;
-    opacity:0.9;
   }
 
-  /* miniatura po lewej, stała szerokość zamiast pełnej góry karty */
+  /* miniatura na całą szerokość, na górze — jak na desktopie */
   .episode-thumb{
     position:relative;
-    width:112px;
+    width:calc(100% + 16px);
+    margin-left:-8px;
+    margin-right:-8px;
+    margin-top:-8px;
     height:auto;
-    min-height:100%;
-    margin:0;
-    flex:0 0 112px;
+    aspect-ratio:16/12;
+    flex:0 0 auto;
     overflow:hidden;
   }
 
   .episode-thumb::after{
-    /* delikatny cień od dołu miniatury do treści, zamiast pełnego przyciemnienia */
     content:'';
     position:absolute;
-    inset:0;
+    left:0;right:0;bottom:0;
+    height:60%;
     background:linear-gradient(
-      to right,
-      rgba(17,22,29,0) 55%,
-      rgba(17,22,29,0.9) 100%
+      to bottom,
+      rgba(17,22,29,0) 0%,
+      rgba(17,22,29,0.3) 45%,
+      rgba(17,22,29,0.92) 100%
     );
   }
 
   .episode-person{
-    height:120%;
-    left:38%;
+    height:105%;
   }
 
   .episode-badge{
-    top:8px;left:8px;
-    font-size:0.52rem;
-    padding:2px 6px;
+    top:10px;left:10px;
+    font-size:0.58rem;
+    padding:3px 8px;
   }
 
   /* przycisk odtwarzania: zawsze widoczny, bo brak hover na mobile */
   .episode-play-btn{
     display:flex;
     opacity:1;
-    width:34px;height:34px;
-    top:auto;left:auto;
-    bottom:8px;right:8px;
-    transform:none;
-    box-shadow:0 2px 8px rgba(0,0,0,0.4);
+    width:44px;height:44px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.4);
   }
-  .episode-play-btn svg{width:13px;height:13px}
+  .episode-play-btn svg{width:16px;height:16px}
 
   /* --- treść karty --- */
   .episode-body{
-    padding:14px 16px 14px 14px;
-    justify-content:center;
-    gap:6px;
-    flex:1;
-    min-width:0;
+    padding:18px 14px 14px;
   }
 
   .episode-title{
-    font-size:0.95rem;
-    line-height:1.3;
+    font-size:1.15rem;
+    line-height:1.32;
     font-weight:700;
-    margin-bottom:0;
-    display:-webkit-box;
-    -webkit-line-clamp:2;
-    -webkit-box-orient:vertical;
-    overflow:hidden;
+    margin-bottom:20px;
   }
 
   .read-more{
-    font-size:0.6rem;
-    letter-spacing:2px;
-    margin-top:6px;
-    opacity:0.85;
+    font-size:0.75rem;
+    letter-spacing:2.5px;
   }
 
   /* --- load more --- */
