@@ -20,324 +20,260 @@
     <link rel="stylesheet" href="/css/common.css"/>
 
     <style>
+        :root {
+            --gold: #fbbc05;
+            --cyan: #00e5ff;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-       body {
-    min-height: 100vh;
-    margin: 0;
-    font-family:'Montserrat',sans-serif;
 
-    color: #fff;
-    position: relative;
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    padding-top: 80px;
-}
-        
-  
+        body {
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding-top: 80px;
+        }
 
-/* BACKGROUND (TA SAMA LOGIKA CO KONTAKT) */
-body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: url('/images/bg-kontakt.png') center center / cover no-repeat;
-    z-index: -2;
-}
+        /* BACKGROUND */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: url('/images/bg-kontakt.png') center center / cover no-repeat;
+            z-index: -2;
+        }
 
-/* OVERLAY (IDENTYCZNY MOOD) */
+        .page-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px 16px 80px;
+        }
 
-    
-       .form-container {
-    background: rgba(10, 10, 10, 0.75);
-    backdrop-filter: blur(18px);
-    padding: 35px 40px;
-    border: 1px solid rgba(255,255,255,0.12);
-    width: 90%;
-    max-width: 520px;
-    text-align: center;
-    border-radius: 6px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-    transition: all 0.3s ease;
-    max-height: fit-content;
-    display: inline-block;
-    margin-top:60px;
-}
+        .form-container {
+            background: rgba(10, 10, 10, 0.75);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            padding: 40px 40px;
+            border: 1px solid rgba(255,255,255,0.12);
+            width: 100%;
+            max-width: 480px;
+            text-align: center;
+            border-radius: 6px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            margin-top: 40px;
+        }
 
         h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    font-size: 22px;
-    letter-spacing: -1px;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    color: #fff;
-}
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: -0.5px;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            color: #fff;
+            line-height: 1.3;
+        }
 
-p {
-    color: rgba(255,255,255,0.65);
-    margin-bottom: 40px;
-    font-size: 15px;
-    line-height: 1.6;
-}
+        h2 .gold { color: var(--gold); }
 
-     input {
-    width: 100%;
-    padding: 18px;
-    margin-bottom: 10px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
-    color: white;
-    font-size: 15px;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
+        p {
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 32px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
 
-input:focus {
-    outline: none;
-    border-color: #00e5ff;
-    background: rgba(255,255,255,0.1);
-    box-shadow: 0 0 0 1px rgba(0,229,255,0.25);
-}
-       button {
-    width: 100%;
-    padding: 18px;
-    background: #fbbc05;
-    color: #000;
-    border: none;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border-radius: 2px;
-}
+        form {
+            display: flex;
+            flex-direction: column;
+        }
 
-button:hover {
-    background: transparent;
-    border: 1px solid #fbbc05;
-    color: #fbbc05;
-}
-        
-        .back-link {
-    display: block;
-    margin-top: 25px;
-    color: rgba(255,255,255,0.4);
-    text-decoration: none;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    transition: color 0.3s;
-}
+        form input[type="text"],
+        form input[type="email"] {
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 12px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-radius: 2px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
 
-.back-link:hover {
-    color: #fbbc05;
-}
+        form input::placeholder {
+            color: rgba(255,255,255,0.4);
+        }
 
-.ml-embedded {margin-top: 20px;
-}
+        form input:focus {
+            border-color: var(--cyan);
+            background: rgba(255,255,255,0.1);
+            box-shadow: 0 0 0 1px rgba(0,229,255,0.25);
+        }
 
-/* lekka personalizacja jeśli MailerLite pozwala */
-.ml-embedded iframe {
-    border-radius: 6px;
-}  
-
-/* =========================
-   MAILERLITE RESET (CLEAN)
-   ========================= */
-
-.ml-embedded {
-    width: 100%;
-}
-
-/* usuwa tło i boxy MailerLite */
-#mlb2-42588484,
-#mlb2-42588484 * {
-    background: transparent !important;
-    box-shadow: none !important;
-}
-
-/* wrapper formularza */
-.ml-form-embedWrapper {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-}
-
-/* usuwa wewnętrzne paddingi */
-.ml-form-embedBody {
-    background: transparent !important;
-    padding: 0 !important;
-}
-
-/* input styling → dopasowanie do Twojego designu */
-.ml-form-embedBody input {
-    width: 100% !important;
-    padding: 18px !important;
-    margin-bottom: 12px !important;
-
-    background: rgba(255,255,255,0.08) !important;
-    border: 1px solid rgba(255,255,255,0.12) !important;
-    color: #fff !important;
-
-    font-family: 'Open Sans', sans-serif !important;
-    font-size: 15px !important;
-    border-radius: 2px !important;
-}
-
-/* focus jak u Ciebie */
-.ml-form-embedBody input:focus {
-    border-color: #00e5ff !important;
-    box-shadow: 0 0 0 1px rgba(0,229,255,0.25) !important;
-    outline: none !important;
-}
-
-/* button = Twój styl (gold) */
-.ml-form-embedSubmit button {
-    width: 100% !important;
-    padding: 18px !important;
-
-    background: #fbbc05 !important;
-    color: #000 !important;
-
-    border: none !important;
-    border-radius: 2px !important;
-
-    font-family: 'Montserrat', sans-serif !important;
-    font-weight: 800 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 2px !important;
-
-    cursor: pointer !important;
-}
-
-/* hover jak u Ciebie */
-.ml-form-embedSubmit button:hover {
-    background: transparent !important;
-    border: 1px solid #fbbc05 !important;
-    color: #fbbc05 !important;
-}
-   .newsletter-consent{
-    display:block;
-    text-align:left;
-    font-size:13px;
-    color:rgba(255,255,255,.65);
-    margin:15px 0 25px;
-    line-height:1.6;
-}
-
-.newsletter-consent input{
-    width:auto;
-    margin-right:10px;
-}   
-        .form-container input {
-    width: 100%;
-    max-width: 340px;
-    height: 42px;
-}
-
-.form-container button {
-    width: 340px;
-    height: 52px;
-}
-
-        .newsletter-consent input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-    margin-right: 10px;
-    transform: scale(1);
-    flex-shrink: 0;
-    vertical-align: middle;
-}
         .newsletter-consent {
-    display: flex;
-    gap: 10px;
-    font-size: 12px;
-    line-height: 1.4;
-    align-items: center;
-}
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            text-align: left;
+            font-size: 12px;
+            line-height: 1.5;
+            color: rgba(255,255,255,0.65);
+            margin: 6px 0 24px;
+        }
 
-.newsletter-consent input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-    margin-top: 3px;
-    flex-shrink: 0;
-}
         .newsletter-consent input[type="checkbox"] {
-    accent-color: #00e5ff;
-}
+            width: 16px;
+            height: 16px;
+            min-width: 16px;
+            margin-top: 2px;
+            accent-color: var(--cyan);
+        }
 
-/* INPUTY (żeby wyglądały jak na stronie kontakt) */
-form input[type="email"],
-form input[type="text"] {
-  width: 100%;
-  padding: 14px 16px;
-  background: rgba(255,255,255,0.2);
-  border: 1px solid rgba(255,255,255,0.12);
-  color: #fff;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 2px;
-  outline: none;
-  margin-bottom: 12px;
-}
+        form button {
+            width: 100%;
+            padding: 18px;
+            background: var(--gold);
+            color: #000;
+            border: 1px solid var(--gold);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
 
-form input:focus {
-  border-color: var(--cyan);
-  background: rgba(51,228,224,0.04);
-}
+        form button:hover {
+            background: transparent;
+            color: var(--gold);
+        }
 
-/* BUTTON */
-form button {
-  background: var(--gold);
-  color: #000;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  letter-spacing: .15em;
-  padding: 16px 60px;
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: all .3s ease;
-}
+        .back-link {
+            display: block;
+            margin-top: 25px;
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
 
-form button:hover {
-  background: transparent;
-  border-color: var(--gold);
-  color: var(--gold);
-}
+        .back-link:hover {
+            color: var(--gold);
+        }
 
-/* CHECKBOX (żeby był mały i równo z tekstem) */
-.newsletter-consent {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 0.75rem;
-  line-height: 1.4;
-  color: rgba(255,255,255,0.7);
-}
+        /* =========================
+           MAILERLITE RESET (CLEAN)
+           ========================= */
+        .ml-embedded { width: 100%; margin-top: 20px; }
 
-.newsletter-consent input[type="checkbox"] {
-  width: 16px;
-  height: 16px;
-  margin-top: 2px;
-  accent-color: var(--cyan);
-}
+        #mlb2-42588484,
+        #mlb2-42588484 * {
+            background: transparent !important;
+            box-shadow: none !important;
+        }
 
-.page-content {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-bottom: 100px; /* dodatkowa przestrzeń */
-}
+        .ml-form-embedWrapper {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .ml-form-embedBody { background: transparent !important; padding: 0 !important; }
+
+        .ml-form-embedBody input {
+            width: 100% !important;
+            padding: 16px !important;
+            margin-bottom: 12px !important;
+            background: rgba(255,255,255,0.08) !important;
+            border: 1px solid rgba(255,255,255,0.12) !important;
+            color: #fff !important;
+            font-family: 'Open Sans', sans-serif !important;
+            font-size: 15px !important;
+            border-radius: 2px !important;
+        }
+
+        .ml-form-embedBody input:focus {
+            border-color: var(--cyan) !important;
+            box-shadow: 0 0 0 1px rgba(0,229,255,0.25) !important;
+            outline: none !important;
+        }
+
+        .ml-form-embedSubmit button {
+            width: 100% !important;
+            padding: 18px !important;
+            background: var(--gold) !important;
+            color: #000 !important;
+            border: none !important;
+            border-radius: 2px !important;
+            font-family: 'Montserrat', sans-serif !important;
+            font-weight: 800 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 2px !important;
+            cursor: pointer !important;
+        }
+
+        .ml-form-embedSubmit button:hover {
+            background: transparent !important;
+            border: 1px solid var(--gold) !important;
+            color: var(--gold) !important;
+        }
+
+        /* =========================
+           RESPONSIVE / MOBILE
+           ========================= */
+
+        @media (max-width: 600px) {
+            body { padding-top: 64px; }
+
+            .page-content { padding: 12px 12px 60px; }
+
+            .form-container {
+                padding: 32px 22px;
+                border-radius: 8px;
+                margin-top: 20px;
+            }
+
+            h2 { font-size: 19px; letter-spacing: -0.3px; }
+
+            p { font-size: 13.5px; margin-bottom: 26px; }
+
+            form input[type="text"],
+            form input[type="email"] {
+                padding: 15px 14px;
+                font-size: 12px;
+                letter-spacing: 1px;
+            }
+
+            form button { padding: 16px; font-size: 12px; letter-spacing: 1.5px; }
+
+            .newsletter-consent { font-size: 11.5px; }
+        }
+
+        @media (max-width: 360px) {
+            .form-container { padding: 26px 16px; }
+            h2 { font-size: 17px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; }
+        }
     </style>
 </head>
 <body>
@@ -346,57 +282,54 @@ form button:hover {
 <div id="nav-placeholder"></div>
 
     <main class="page-content">
-   
-   <div class="form-container">
 
-     <h2>
-  COTYGODNIOWA <span class="gold">DAWKA PALIWA.</span>
-</h2>
-<p>
-Nowe odcinki podcastu oraz praktyczna wiedza<br>
-o biohackingu, zdrowiu i świadomym życiu.
-</p>
-    <form
-        action="https://assets.mailerlite.com/jsonp/2443139/forms/190264025057068894/subscribe"
-        method="post"
-        target="_blank"
-    >
-  <input
-            type="text"
-            name="fields[name]"
-            placeholder="Imię"
+    <div class="form-container">
+
+        <h2>
+            COTYGODNIOWA <span class="gold">DAWKA PALIWA.</span>
+        </h2>
+        <p>
+            Nowe odcinki podcastu oraz praktyczna wiedza<br>
+            o biohackingu, zdrowiu i świadomym życiu.
+        </p>
+
+        <form
+            action="https://assets.mailerlite.com/jsonp/2443139/forms/190264025057068894/subscribe"
+            method="post"
+            target="_blank"
         >
-        <input
-            type="email"
-            name="fields[email]"
-            placeholder="Adres e-mail"
-            required
-        >
+            <input
+                type="text"
+                name="fields[name]"
+                placeholder="Imię"
+            >
+            <input
+                type="email"
+                name="fields[email]"
+                placeholder="Adres e-mail"
+                required
+            >
 
-      
+            <label class="newsletter-consent">
+                <input type="checkbox" required>
+                Wyrażam zgodę na przetwarzanie danych osobowych
+                w celu otrzymywania newslettera oraz akceptuję
+                politykę prywatności.
+            </label>
 
-        <label class="newsletter-consent">
-            <input type="checkbox" required>
+            <input type="hidden" name="ml-submit" value="1">
+            <input type="hidden" name="anticsrf" value="true">
 
-            Wyrażam zgodę na przetwarzanie danych osobowych
-            w celu otrzymywania newslettera oraz akceptuję
-            politykę prywatności.
-        </label>
+            <button type="submit">
+                DOŁĄCZ TERAZ
+            </button>
+        </form>
 
-        <input type="hidden" name="ml-submit" value="1">
-        <input type="hidden" name="anticsrf" value="true">
+        <a href="/" class="back-link">
+            ← powrót do strony głównej
+        </a>
 
-        <button type="submit">
-            DOŁĄCZ TERAZ
-        </button>
-
-    </form>
-
-    <a href="/" class="back-link">
-        ← powrót do strony głównej
-    </a>
-
-</div>
+    </div>
 </main>
 
 <!-- FOOTER zostanie wstrzyknięty tutaj przez common.js -->
