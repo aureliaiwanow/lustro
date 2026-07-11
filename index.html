@@ -591,9 +591,21 @@ background-position: top center;
   font-size:15vw;
   font-weight:300;
   letter-spacing:0.02em;
-  color:#d7be94;
   line-height:0.95;
-  text-shadow:0 0 10px rgba(215,190,148,.15);
+
+  background:linear-gradient(
+    180deg,
+    #f4e7c6 0%,
+    #d7be94 30%,
+    #b7925c 55%,
+    #f0d9aa 75%,
+    #8e6b3c 100%
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  color:transparent;
 }
 
   .hero-line{
