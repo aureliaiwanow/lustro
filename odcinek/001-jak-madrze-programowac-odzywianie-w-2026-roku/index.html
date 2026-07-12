@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -776,8 +778,7 @@ padding: 4rem 4rem 4rem 0;
 <div class="hero-overlay"></div>
 
 <!-- NAV zostanie wstrzyknięty tutaj przez common.js -->
-<div id="nav-placeholder"></div>
-
+{% include nav.html %}
 <!-- HERO -->
 <section class="hero">
 
@@ -923,7 +924,8 @@ padding: 4rem 4rem 4rem 0;
 </div>
 
 <!-- FOOTER zostanie wstrzyknięty tutaj przez common.js -->
-<div id="footer-placeholder"></div>
+  {% include footer.html %}
+
 
 <script>
   // Generuj waveform (funkcjonalność specyficzna dla tej strony)
