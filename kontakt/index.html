@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -433,8 +435,7 @@ textarea.form-input{
 <body>
 
 <!-- NAV zostanie wstrzyknięty tutaj przez common.js -->
-<div id="nav-placeholder"></div>
-
+ {% include nav.html %}
 <!-- FORM -->
 <div class="form-section">
 <p class="form-intro">Jeśli masz pytania, czekam na wiadomość od Ciebie!</p>
@@ -471,8 +472,7 @@ textarea.form-input{
 </div>
 
 <!-- FOOTER zostanie wstrzyknięty tutaj przez common.js -->
-<div id="footer-placeholder"></div>
-
+{% include footer.html %}
 <!-- WSPÓLNY JS: wczytuje nav/footer i obsługuje menu -->
 <script src="/js/common.js"></script>
 
