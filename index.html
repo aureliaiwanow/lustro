@@ -1,3 +1,5 @@
+---
+  ---
 <!DOCTYPE html>
 <html lang="pl">
   
@@ -764,8 +766,7 @@ background-position: top center;
 <body>
 
 <!-- NAV zostanie wstrzyknięty tutaj przez common.js -->
-<div id="nav-placeholder"></div>
-
+ {% include nav.html %}
 <section class="hero" id="hero">
   <img class="hero-bg hero-bg-desktop" src="images/bg-desktop.png" alt="Aurelia Iwanow"/>
   <img class="hero-bg hero-bg-mobile" src="images/bg-mobile.png" alt="Aurelia Iwanow"/>
@@ -907,8 +908,7 @@ background-position: top center;
 </div>
 
 <!-- FOOTER zostanie wstrzyknięty tutaj przez common.js -->
-<div id="footer-placeholder"></div>
-
+{% include footer.html %}
 <!-- WSPÓLNY JS: wczytuje nav/footer i obsługuje hamburger/menu mobilne -->
 <script src="/js/common.js"></script>
 
