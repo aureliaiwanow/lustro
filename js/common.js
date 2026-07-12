@@ -1,24 +1,8 @@
-/* ═══ Wczytywanie wspólnych partiali (nav + footer) ═══ */
+/* ═══ Obsługa menu mobilnego ═══ */
+/* Nav i footer są teraz wklejone bezpośrednio w HTML (przez Jekyll include),
+   więc nie ma już fetch()'a ani czekania na wstrzyknięcie — ta funkcja
+   uruchamia się od razu. */
 
-async function loadPartials() {
-  try {
-    const navRes = await fetch('/partials/nav.html');
-    const navHTML = await navRes.text();
-    const navPlaceholder = document.getElementById('nav-placeholder');
-    if (navPlaceholder) navPlaceholder.innerHTML = navHTML;
-
-    const footerRes = await fetch('/partials/footer.html');
-    const footerHTML = await footerRes.text();
-    const footerPlaceholder = document.getElementById('footer-placeholder');
-    if (footerPlaceholder) footerPlaceholder.innerHTML = footerHTML;
-
-    initMenu();
-  } catch (err) {
-    console.error('Nie udało się wczytać nav/footer:', err);
-  }
-}
-
-/* ═══ Obsługa menu mobilnego (uruchamiana po wstrzyknięciu nav.html) ═══ */
 function initMenu() {
   const hamburger = document.getElementById('hbg');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -53,4 +37,4 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-document.addEventListener('DOMContentLoaded', loadPartials);
+document.addEventListener('DOMContentLoaded', initMenu);
