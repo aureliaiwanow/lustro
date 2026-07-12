@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -558,7 +560,8 @@ section{min-height:100vh;scroll-margin-top:120px}
 <body>
 
 <!-- NAV zostanie wstrzyknięty tutaj przez common.js -->
-<div id="nav-placeholder"></div>
+  {% include nav.html %}
+
 
 <!-- HERO -->
 <section class="podcast-hero">
@@ -665,7 +668,7 @@ section{min-height:100vh;scroll-margin-top:120px}
 </div>
 
 <!-- FOOTER zostanie wstrzyknięty tutaj przez common.js -->
-<div id="footer-placeholder"></div>
+  {% include footer.html %}
 
 <script>
 /* Wyszukiwarka + filtry odcinków — funkcjonalność specyficzna dla tej strony */
