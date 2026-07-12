@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -317,7 +319,8 @@
 <body>
 
 <!-- NAV zostanie wstrzyknięty tutaj przez common.js -->
-<div id="nav-placeholder"></div>
+  {% include nav.html %}
+
 
 <!-- ============ HERO ============ -->
 <section class="hero">
@@ -397,8 +400,7 @@
 </section>
 
 <!-- FOOTER zostanie wstrzyknięty tutaj przez common.js -->
-<div id="footer-placeholder"></div>
-
+{% include footer.html %}
 <!-- WSPÓLNY JS: wczytuje nav/footer i obsługuje hamburger/menu mobilne -->
 <script src="/js/common.js"></script>
 
