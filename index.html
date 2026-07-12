@@ -771,8 +771,10 @@ background-position: top center;
 <!-- NAV zostanie wstrzyknięty tutaj przez common.js -->
  {% include nav.html %}
 <section class="hero" id="hero">
-  <img class="hero-bg hero-bg-desktop" src="images/bg-desktop.webp" alt="Aurelia Iwanow"/>
-  <img class="hero-bg hero-bg-mobile" src="images/bg-mobile.webp" alt="Aurelia Iwanow"/>
+ <picture>
+  <source media="(max-width:768px)" srcset="images/bg-mobile.png"/>
+  <img class="hero-bg hero-bg-desktop" src="images/bg-desktop.png" alt="Aurelia Iwanow" fetchpriority="high"/>
+</picture>
   <div class="hero-overlay"></div>
 
   <div class="hero-content">
