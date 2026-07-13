@@ -218,10 +218,11 @@ section{min-height:100vh;scroll-margin-top:120px}
 .episode-thumb{
   position:relative;
   overflow: visible;
-  width:calc(100% + 20px);
-  margin-left:-10px;
-  margin-right:-10px;
-  margin-top:-10px;
+  width:calc(100% + 24px);   /* było: calc(100% + 20px) */
+  margin-left:-12px;         /* było: -10px */
+  margin-right:-12px;        /* było: -10px */
+  margin-top:-12px;          /* było: -10px */
+
 
    height: 60%;
   flex-shrink: 0;
@@ -471,10 +472,10 @@ section{min-height:100vh;scroll-margin-top:120px}
   /* miniatura na całą szerokość, na górze — jak na desktopie */
   .episode-thumb{
     position:relative;
-    width:calc(100% + 16px);
-    margin-left:-8px;
-    margin-right:-8px;
-    margin-top:-8px;
+    width:calc(100% + 20px);   /* było: calc(100% + 16px) */
+  margin-left:-10px;         /* było: -8px */
+  margin-right:-10px;        /* było: -8px */
+  margin-top:-10px;          /* było: -8px */
     height:auto;
     aspect-ratio:16/12;
     flex:0 0 auto;
