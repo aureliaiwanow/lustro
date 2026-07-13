@@ -600,11 +600,13 @@ background-position: top center;
 
   background:linear-gradient(
     90deg,
-    #8f6d42 0%,
-    #c9a46a 25%,
-    #f8e7c2 50%,
-    #c9a46a 75%,
-    #8f6d42 100%
+    #8f6d42 0%,     /* B – start ciemny */
+    #f8e7c2 30%,    /* O – koniec "bio", pełna jasność */
+    #f3e0b8 40%,    /* H – delikatny gradient, dopiero lekko przygasa */
+    #f3e0b8 60%,    /* A,C – płasko, bez gradientu (ta sama wartość co wyżej) */
+    #e8d2a0 70%,    /* K – delikatny gradient, kolejny mały spadek */
+    #c9a46a 85%,    /* I,N – gradient w dół */
+    #8f6d42 100%    /* G – najciemniej na końcu */
   );
 
   -webkit-background-clip:text;
