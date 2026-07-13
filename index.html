@@ -27,6 +27,22 @@
   <link rel="stylesheet" href="/css/common.css"/>
 
   <style>
+    /* Ukryj tekst do czasu załadowania właściwych fontów */
+.hero-content h1,
+.hero-eyebrow span,
+.quote-text,
+.nav-logo {
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.fonts-loaded .hero-content h1,
+.fonts-loaded .hero-eyebrow span,
+.fonts-loaded .quote-text,
+.fonts-loaded .nav-logo {
+  opacity: 1;
+}
+/* fallback: gdyby JS się nie wykonał / font się nie załadował w rozsądnym czasie */
+.hero-content h1 { transition-delay: 0s; }
 @font-face {
   font-family: 'Proxon';
   src: url('Proxon-Regular.woff2') format('woff2'),
@@ -918,6 +934,18 @@ background-position: top center;
 {% include footer.html %}
 <!-- WSPÓLNY JS: wczytuje nav/footer i obsługuje hamburger/menu mobilne -->
 <script src="/js/common.js"></script>
-
+<script>
+if ("fonts" in document) {
+  document.fonts.ready.then(function () {
+    document.documentElement.classList.add("fonts-loaded");
+  });
+  // Zabezpieczenie: jeśli coś pójdzie nie tak z API, i tak pokaż tekst po 400ms
+  setTimeout(function () {
+    document.documentElement.classList.add("fonts-loaded");
+  }, 400);
+} else {
+  document.documentElement.classList.add("fonts-loaded");
+}
+</script>
 </body>
 </html>
