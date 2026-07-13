@@ -320,7 +320,10 @@ section{min-height:100vh;scroll-margin-top:120px}
 .episode-body{padding:0px 20px 20px 20px;
               overflow: visible;
        margin-top:-10px;
-             }   /* było: padding:20px */
+  position: relative;
+  z-index: 25;   /* było: 5 — teraz wyżej niż .episode-person (20) */
+}
+      /* było: padding:20px */
 
 .episode-meta{
   display:flex;align-items:center;gap:10px;
