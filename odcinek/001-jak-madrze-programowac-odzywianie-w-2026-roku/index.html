@@ -77,13 +77,13 @@ body{
 
   .hero-left {
     display: flex;
-    align-items: center;
+   align-items: flex-start;
     justify-content: center;
     padding: 4rem 3rem;
     margin-left:30px;
     position: relative;
    z-index: 1;
-   transform: translateY(-170px);
+    padding-top: 10rem; 
   }
 
   .cover-card {
@@ -100,7 +100,7 @@ body{
     justify-content: flex-end;
     padding-bottom: 2rem;
    0 40px 80px rgba(0,0,0,.8);
-transform: translate(30px, 50px);
+transform: translateX(30px);
    }
 
    .cover-card::after{
@@ -192,13 +192,12 @@ transform: translate(30px, 50px);
     display: flex;
     flex-direction: column;
    align-items:flex-start;
-    justify-content: center;
+    justify-content: flex-start;
 padding: 4rem 4rem 4rem 0;
 
     padding-top: 10rem;
     position: relative;
     z-index: 1;
-   transform: translateY(20px);
 }
   .ep-label {
     font-family:'Montserrat',sans-serif;
