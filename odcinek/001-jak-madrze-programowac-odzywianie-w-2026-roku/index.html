@@ -593,7 +593,7 @@ padding: 4rem 4rem 4rem 0;
   /* ============================================================ */
   @media (max-width: 768px) {
    
-   .share-section {
+  .share-section {
       padding: 0 20px 4rem;
     }
 
@@ -604,7 +604,7 @@ padding: 4rem 4rem 4rem 0;
 
     .share-btn {
       width: 100%;
-      justify-content: center;
+      text-align: center;
     }
     /* HERO — z układu dwukolumnowego robimy jednokolumnowy,       */
     /* dokładnie w kolejności: kafel odcinka -> informacje          */
@@ -806,9 +806,24 @@ padding: 4rem 4rem 4rem 0;
   }
 
   .share-btn {
-    border: none;
+    background: var(--gold);
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: .15em;
+    padding: 7px 45px;
+    border: 2px solid transparent;
     cursor: pointer;
-    display: inline-flex;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.4s ease, border-color 0.4s ease, color 0.4s ease, transform 0.15s;
+  }
+
+  .share-btn:hover {
+    background: transparent;
+    border: 2px solid var(--gold);
+    color: var(--gold);
   }
  
 </style>
@@ -966,9 +981,9 @@ padding: 4rem 4rem 4rem 0;
 <!-- UDOSTĘPNIJ ODCINEK -->
 <section class="share-section">
   <h2 class="share-title">PODZIEL SIĘ WIEDZĄ</h2>
-  <button class="share-btn platform-btn" onclick="shareEpisode()">
-    Udostępnij ten odcinek
-  </button>
+ <button class="share-btn" onclick="shareEpisode()">
+  Udostępnij ten odcinek
+</button>
 </section>
 
 <!-- FOOTER zostanie wstrzyknięty tutaj przez common.js -->
