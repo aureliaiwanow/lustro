@@ -592,6 +592,20 @@ padding: 4rem 4rem 4rem 0;
   /*  common.js — NIE dotykamy ich w tym pliku)                    */
   /* ============================================================ */
   @media (max-width: 768px) {
+   
+   .share-section {
+      padding: 0 20px 4rem;
+    }
+
+    .share-title {
+      font-size: 1.9rem;
+      letter-spacing: 2px;
+    }
+
+    .share-btn {
+      width: 100%;
+      justify-content: center;
+    }
 
     /* HERO — z układu dwukolumnowego robimy jednokolumnowy,       */
     /* dokładnie w kolejności: kafel odcinka -> informacje          */
@@ -772,7 +786,48 @@ padding: 4rem 4rem 4rem 0;
     background: url("/images/bg-odcinek-mobile.webp") center top / contain no-repeat;
   }
   }
+/* PODZIEL SIĘ WIEDZĄ */
+  .share-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem 3rem 6rem;
+    text-align: center;
+  }
 
+  .share-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.6rem;
+    letter-spacing: 4px;
+    color: #fff;
+    margin-bottom: 2rem;
+  }
+
+  .share-title span {
+    color: var(--cyan);
+  }
+
+  .share-btn {
+    background: var(--gold);
+    color: #000;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 0.9rem 2.2rem;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .share-btn:hover {
+    background: var(--gold-dark);
+    transform: translateY(-1px);
+  }
+
+  .share-btn svg { width: 16px; height: 16px; }
  
 </style>
 </head>
@@ -925,6 +980,17 @@ padding: 4rem 4rem 4rem 0;
   </div>
 
 </div>
+<!-- CTA Podaj dalej -->
+ <!-- UDOSTĘPNIJ ODCINEK -->
+<section class="share-section">
+  <h2 class="share-title">PODZIEL SIĘ <span>WIEDZĄ</span></h2>
+  <button class="share-btn" onclick="shareEpisode()">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L7.04 9.81C6.5 9.31 5.79 9 5 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+    </svg>
+    Udostępnij ten odcinek
+  </button>
+</section>
 
 <!-- FOOTER zostanie wstrzyknięty tutaj przez common.js -->
   {% include footer.html %}
@@ -940,6 +1006,20 @@ padding: 4rem 4rem 4rem 0;
     bar.style.height = h + 'px';
     wf.appendChild(bar);
   });
+
+ function shareEpisode() {
+    const shareData = {
+      title: document.title,
+      text: 'Posłuchaj tego odcinka podcastu Aurelia Iwanow!',
+      url: window.location.href
+    };
+    if (navigator.share) {
+      navigator.share(shareData).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Link do odcinka skopiowany do schowka!');
+    }
+  }
 </script>
 
 <!-- WSPÓLNY JS: wczytuje nav/footer i obsługuje hamburger/menu mobilne -->
