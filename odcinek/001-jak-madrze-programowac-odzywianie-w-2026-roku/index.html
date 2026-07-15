@@ -15,7 +15,8 @@
 <link rel="stylesheet" href="/css/common.css"/>
 
 <style>
-.hero *, .ep-body *, .share-section * { box-sizing: border-box; margin: 0; padding: 0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
   :root {
     --gold:#fdb92a;--cyan:#33e4e0;
     --gold-dark: #D4891A;
@@ -185,14 +186,6 @@ transform: translateX(30px);
     color: var(--gold);
     margin-top: 0.4rem;
   }
-
- .hero-bg {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  background: url("/images/bg-odcinek-desktop.webp") center top / cover no-repeat;
-  pointer-events: none;
-}
 
   /* HERO RIGHT */
  .hero-right {
@@ -469,8 +462,7 @@ padding: 4rem 4rem 4rem 0;
     border: 1px solid #222;
     border-radius: 12px;
     padding: 2rem 2.5rem;
-    margin-top: 4rem;
-  margin-bottom: 4rem;
+    margin: 3rem 0;
   }
 
   .ep-topics h3 {
@@ -812,7 +804,7 @@ padding: 4rem 4rem 4rem 0;
     width:100%;
     border-radius:12px 12px 0 0; /* opcjonalnie */
  }
-  .hero-bg {
+  .hero-bg{
     background: url("/images/bg-odcinek-mobile.webp") center top / contain no-repeat;
   }
   }
@@ -861,11 +853,7 @@ padding: 4rem 4rem 4rem 0;
   }
 
   .share-btn svg { width: 16px; height: 16px; }
-body :not(footer):not(footer *):not(nav):not(nav *) {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+ 
 </style>
 </head>
 <body>
@@ -1019,9 +1007,9 @@ body :not(footer):not(footer *):not(nav):not(nav *) {
 <div class="ep-topics">
   <h3>Materiały</h3>
   <ul>
-    <li>Teal Swan:  <a href="https://..." target="_blank" rel="noopener">Nazwa źródła 1</a></li>
-    <li>Badanie:  <a href="https://..." target="_blank" rel="noopener">Nazwa źródła 2</a></li>
-    <li>JAMA:  <a href="https://..." target="_blank" rel="noopener">Nazwa źródła 3</a></li>
+    <li>Teal Swan:<a href="https://..." target="_blank" rel="noopener">Nazwa źródła 1</a></li>
+    <li>Badanie:<a href="https://..." target="_blank" rel="noopener">Nazwa źródła 2</a></li>
+    <li>JAMA: <a href="https://..." target="_blank" rel="noopener">Nazwa źródła 3</a></li>
   </ul>
 </div>
 <!-- CTA Podaj dalej -->
