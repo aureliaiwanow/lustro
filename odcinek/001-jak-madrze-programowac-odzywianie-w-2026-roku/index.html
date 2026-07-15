@@ -530,7 +530,7 @@ padding: 4rem 4rem 4rem 0;
   }
 
   /* QUOTE cytat */
-  .quote-block {
+ .quote-block {
   position: relative;
   margin: 3rem 0;
   padding: 2.5rem 3rem;
@@ -538,13 +538,18 @@ padding: 4rem 4rem 4rem 0;
 }
 
 .quote-mark {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 4rem;
-  line-height: 1;
-  color: var(--cyan);
-  opacity: 0.5;
+  font-size: 3.5rem;
+  color: var(--gold);
+  font-family: Georgia, serif;
+  line-height: 0.5;
   display: block;
-  margin-bottom: 0.5rem;
+}
+
+.quote-mark.right {
+  text-align: right;
+  position: relative;
+  left: -70px;
+  margin-top: 0.5rem;
 }
 
 .quote-text {
@@ -555,10 +560,11 @@ padding: 4rem 4rem 4rem 0;
   line-height: 1.6;
   color: var(--text);
   max-width: 620px;
-  margin: 0 auto 1.2rem;
+  margin: 0 auto;
 }
 
 .quote-author {
+  margin-top: 1.2rem;
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -718,18 +724,21 @@ padding: 4rem 4rem 4rem 0;
       font-size: 1.7rem;
     }
 
-    .quote-block {
+   .quote-block {
   padding: 2rem 1.5rem;
 }
 
 .quote-mark {
-  font-size: 3rem;
+  font-size: 2.8rem;
+}
+
+.quote-mark.right {
+  left: -30px;
 }
 
 .quote-text {
   font-size: 1.05rem;
 }
-
     .ep-topics {
       padding: 1.6rem 1.5rem;
       margin: 2.8rem 0;
@@ -930,11 +939,12 @@ padding: 4rem 4rem 4rem 0;
 
   <!-- PODMIEŃ: link sponsora jeśli masz, lub usuń całą sekcję sponsor-bar -->
 <div class="quote-block">
-  <span class="quote-mark">"</span>
+  <span class="quote-mark">“</span>
   <div class="quote-text">
     Największą przeszkodą nie jest świat zewnętrzny, lecz historia,
     którą każdego dnia opowiadamy sami sobie.
   </div>
+  <span class="quote-mark right">”</span>
   <div class="quote-author">— Aurelia Iwanow • odcinek #12</div>
 </div>
 
