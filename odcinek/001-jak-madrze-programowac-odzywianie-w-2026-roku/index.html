@@ -617,7 +617,7 @@ padding: 4rem 4rem 4rem 0;
       flex-direction: column;
       min-height: auto;
       overflow: visible;
-      padding: 120px 20px 8px;
+      padding: 120px 20px 40px; /* było: 120px 20px 8px */
     }
 
     .hero::after,
@@ -646,7 +646,7 @@ padding: 4rem 4rem 4rem 0;
     /* układzie tekstu wyrównanego do lewej                         */
     .hero-right {
       width: 100%;
-      padding: 32px 0 0;
+       padding: 48px 0 0; /* było: 32px 0 0 */
       align-items: center;
       text-align: center;
       transform: none;
@@ -712,6 +712,7 @@ padding: 4rem 4rem 4rem 0;
     /* PLATFORMY — pełna szerokość, wygodniejsze dotykanie */
     .section-subscribe {
       width: 100%;
+      margin-top: 1.5rem;
     }
 
     .section-subscribe h3 {
@@ -743,15 +744,16 @@ padding: 4rem 4rem 4rem 0;
 
     .ep-topics {
       padding: 1.6rem 1.5rem;
-      margin: 2.2rem 0;
+      margin: 2.8rem 0;
     }
 
     .timestamps {
-      margin: 2.2rem 0;
+      margin: 2.8rem 0;
     }
 
     .ts-item {
       gap: 1rem;
+     padding: 1rem 0; /* było: 0.8rem 0 */
     }
 
 
@@ -790,7 +792,7 @@ padding: 4rem 4rem 4rem 0;
   .share-section {
     max-width: 900px;
     margin: 0 auto;
-   padding: 0.5rem 3rem 6rem;
+   padding: 3rem 20px 4rem; /* było: 0 20px 4rem */
     text-align: center;
   }
 
