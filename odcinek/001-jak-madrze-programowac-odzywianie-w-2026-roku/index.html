@@ -15,8 +15,7 @@
 <link rel="stylesheet" href="/css/common.css"/>
 
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+.hero *, .ep-body *, .share-section * { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --gold:#fdb92a;--cyan:#33e4e0;
     --gold-dark: #D4891A;
@@ -186,6 +185,14 @@ transform: translateX(30px);
     color: var(--gold);
     margin-top: 0.4rem;
   }
+
+ .hero-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: url("/images/bg-odcinek-desktop.webp") center top / cover no-repeat;
+  pointer-events: none;
+}
 
   /* HERO RIGHT */
  .hero-right {
@@ -805,7 +812,7 @@ padding: 4rem 4rem 4rem 0;
     width:100%;
     border-radius:12px 12px 0 0; /* opcjonalnie */
  }
-  .hero-bg{
+  .hero-bg {
     background: url("/images/bg-odcinek-mobile.webp") center top / contain no-repeat;
   }
   }
@@ -854,7 +861,7 @@ padding: 4rem 4rem 4rem 0;
   }
 
   .share-btn svg { width: 16px; height: 16px; }
- body :not(footer):not(footer *) {
+body :not(footer):not(footer *):not(nav):not(nav *) {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
