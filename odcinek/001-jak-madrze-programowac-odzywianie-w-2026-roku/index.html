@@ -15,8 +15,7 @@
 <link rel="stylesheet" href="/css/common.css"/>
 
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+.hero *, .ep-body *, .share-section * { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --gold:#fdb92a;--cyan:#33e4e0;
     --gold-dark: #D4891A;
@@ -186,6 +185,14 @@ transform: translateX(30px);
     color: var(--gold);
     margin-top: 0.4rem;
   }
+
+ .hero-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: url("/images/bg-odcinek-desktop.webp") center top / cover no-repeat;
+  pointer-events: none;
+}
 
   /* HERO RIGHT */
  .hero-right {
@@ -462,7 +469,8 @@ padding: 4rem 4rem 4rem 0;
     border: 1px solid #222;
     border-radius: 12px;
     padding: 2rem 2.5rem;
-    margin: 3rem 0;
+    margin-top: 4rem;
+  margin-bottom: 4rem;
   }
 
   .ep-topics h3 {
@@ -495,6 +503,17 @@ padding: 4rem 4rem 4rem 0;
     color: var(--gold);
     font-weight: 700;
   }
+.ep-topics ul li a {
+  color: #bbb;
+  text-decoration: underline;
+  text-decoration-color: rgba(187,187,187,0.4);
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+
+.ep-topics ul li a:hover {
+  color: #fff;
+  text-decoration-color: #fff;
+}
 
   .timestamps {
     margin: 3rem 0;
@@ -571,12 +590,12 @@ padding: 4rem 4rem 4rem 0;
   text-transform: uppercase;
   color: var(--gold);
   max-width: 620px;      /* tyle co .quote-text */
-  margin-left: auto;
   margin-right: auto;
   text-align: left;      /* wyrównanie tekstu wewnątrz tego bloku */
  position: relative;
   top: -1.5rem;
  opacity: 0.7;
+  margin-left: -10px;
 }
   /* ============================================================ */
   /* MOBILE — wersja dla ekranów do 768px                          */
@@ -748,7 +767,7 @@ padding: 4rem 4rem 4rem 0;
   font-size: 1.05rem;
 }
    .quote-author {
-  font-size: 0.6rem;
+  font-size: 0.7rem;
     opacity: 0.7;
 }
     .ep-topics {
@@ -793,7 +812,7 @@ padding: 4rem 4rem 4rem 0;
     width:100%;
     border-radius:12px 12px 0 0; /* opcjonalnie */
  }
-  .hero-bg{
+  .hero-bg {
     background: url("/images/bg-odcinek-mobile.webp") center top / contain no-repeat;
   }
   }
@@ -842,7 +861,11 @@ padding: 4rem 4rem 4rem 0;
   }
 
   .share-btn svg { width: 16px; height: 16px; }
- 
+body :not(footer):not(footer *):not(nav):not(nav *) {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 </style>
 </head>
 <body>
@@ -991,7 +1014,15 @@ padding: 4rem 4rem 4rem 0;
     <div class="ts-item"><span class="ts-time">00:00</span><span class="ts-label">Temat 2</span></div>
     <div class="ts-item"><span class="ts-time">00:00</span><span class="ts-label">Podsumowanie</span></div>
   </div>
-
+ 
+<!-- MATERIAŁY -->
+<div class="ep-topics">
+  <h3>Materiały</h3>
+  <ul>
+    <li>Teal Swan:  <a href="https://..." target="_blank" rel="noopener">Nazwa źródła 1</a></li>
+    <li>Badanie:  <a href="https://..." target="_blank" rel="noopener">Nazwa źródła 2</a></li>
+    <li>JAMA:  <a href="https://..." target="_blank" rel="noopener">Nazwa źródła 3</a></li>
+  </ul>
 </div>
 <!-- CTA Podaj dalej -->
  <!-- UDOSTĘPNIJ ODCINEK -->
