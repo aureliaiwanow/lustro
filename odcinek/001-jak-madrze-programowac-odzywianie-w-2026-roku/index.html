@@ -529,62 +529,42 @@ padding: 4rem 4rem 4rem 0;
     color: #aaa;
   }
 
-  /* SPONSOR */
-  .sponsor-bar {
-    background: var(--bg2);
-    border: 1px solid #222;
-    border-left: 3px solid var(--gold);
-    border-radius: 0 12px 12px 0;
-    padding: 1.5rem 2rem;
-    margin: 3rem 0;
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-  }
-
-  .sponsor-label {
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.3rem;
-  }
-
-  .sponsor-name {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 0.3rem;
-  }
-
-  .sponsor-desc {
-    font-size: 0.85rem;
-    color: var(--muted);
-  }
-
-  .sponsor-link {
-    background: var(--gold);
-    color: #000;
-    font-weight: 700;
-    font-size: 0.75rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 0.6rem 1.2rem;
-    text-decoration: none;
-    white-space: nowrap;
-    margin-left: auto;
-    transition: background 0.2s;
-  }
-
-  .sponsor-link:hover { background: var(--gold-dark); }
- .hero-bg{
-    position:absolute;
-    inset:0;
-    background:url("/images/bg-odcinek.webp") center top / contain no-repeat;
-    z-index:-2;
+  /* QUOTE cytat */
+  .quote-block {
+  position: relative;
+  margin: 3rem 0;
+  padding: 2.5rem 3rem;
+  text-align: center;
 }
 
+.quote-mark {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--cyan);
+  opacity: 0.5;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.quote-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--text);
+  max-width: 620px;
+  margin: 0 auto 1.2rem;
+}
+
+.quote-author {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
   /* ============================================================ */
   /* MOBILE — wersja dla ekranów do 768px                          */
   /* (nav i footer są wstrzykiwane i stylowane przez common.css /   */
@@ -738,9 +718,17 @@ padding: 4rem 4rem 4rem 0;
       font-size: 1.7rem;
     }
 
-    .sponsor-bar {
-      padding: 1.3rem 1.5rem;
-    }
+    .quote-block {
+  padding: 2rem 1.5rem;
+}
+
+.quote-mark {
+  font-size: 3rem;
+}
+
+.quote-text {
+  font-size: 1.05rem;
+}
 
     .ep-topics {
       padding: 1.6rem 1.5rem;
@@ -941,15 +929,13 @@ padding: 4rem 4rem 4rem 0;
   <div class="ep-body-subtitle-val">Słowa klucze, słowa klucze, słowa klucze i słowa klucze</div>
 
   <!-- PODMIEŃ: link sponsora jeśli masz, lub usuń całą sekcję sponsor-bar -->
- <div class="sponsor-bar">
-  <div>
-    <div class="sponsor-label">Cytat z odcinka</div>
-    <div class="sponsor-name">
-      „Największą przeszkodą nie jest świat zewnętrzny, lecz historia,
-      którą każdego dnia opowiadamy sami sobie.”
-    </div>
-    <div class="sponsor-desc">— Aurelia Iwanow • odcinek #12</div>
+<div class="quote-block">
+  <span class="quote-mark">"</span>
+  <div class="quote-text">
+    Największą przeszkodą nie jest świat zewnętrzny, lecz historia,
+    którą każdego dnia opowiadamy sami sobie.
   </div>
+  <div class="quote-author">— Aurelia Iwanow • odcinek #12</div>
 </div>
 
   <!-- PODMIEŃ: opis odcinka -->
