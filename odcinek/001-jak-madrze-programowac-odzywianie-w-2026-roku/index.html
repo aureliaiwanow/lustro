@@ -547,8 +547,8 @@ padding: 4rem 4rem 4rem 0;
 
 .quote-mark.right {
   text-align: right;
-  position: relative;
-  left: -70px;
+  position: static
+  left: auto;
   margin-top: 0.5rem;
 }
 
@@ -575,6 +575,15 @@ padding: 4rem 4rem 4rem 0;
   margin-right: auto;
   text-align: left;      /* wyrównanie tekstu wewnątrz tego bloku */
 }
+ 
+ .quote-closing {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  max-width: 620px;
+  margin: 0.4rem auto 0;
+}
+
   /* ============================================================ */
   /* MOBILE — wersja dla ekranów do 768px                          */
   /* (nav i footer są wstrzykiwane i stylowane przez common.css /   */
@@ -953,9 +962,12 @@ padding: 4rem 4rem 4rem 0;
     Największą przeszkodą nie jest świat zewnętrzny, lecz historia,
     którą każdego dnia opowiadamy sami sobie.
   </div>
-  <span class="quote-mark right">”</span>
+  <div class="quote-closing">
+  <span class="quote-mark right">"</span>
   <div class="quote-author">— Aurelia Iwanow • odcinek #12</div>
 </div>
+</div>
+ 
 
   <!-- PODMIEŃ: opis odcinka -->
   <p>
