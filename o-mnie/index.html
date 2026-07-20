@@ -312,9 +312,20 @@
     }
 
     .quote-section{ padding: 48px 0; }
-    .quote-mark{ font-size: 3.2rem; }
-    .quote-mark.right{ left: -30px; }
     .quote-text{ font-size: 1.25rem; }
+    
+    .quote-mark{
+    font-size: 3.2rem;
+    position: relative;
+    left: -70px;   /* lewo/prawo */
+    top: 15px;     /* góra/dół */
+  }
+
+  .quote-mark.right{
+    position: relative;
+    left: -30px;   /* lewo/prawo */
+    top: -10px;    /* góra/dół */
+  }
   }
 
   @media (max-width: 380px){
